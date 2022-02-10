@@ -13,8 +13,7 @@ from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
 from telethon.tl import functions
 
-from ..Config import Config
-from . import eod, legend, reply_id
+from . import legend
 
 menu_category = "tools"
 
