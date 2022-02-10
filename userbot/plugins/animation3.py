@@ -1,7 +1,7 @@
 import asyncio
 from collections import deque
 
-from . import eod, eor, legend, mention
+from . import eor, legend, mention
 
 menu_category = "fun"
 
