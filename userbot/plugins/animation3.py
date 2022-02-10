@@ -109,6 +109,8 @@ async def _(event):
             inp = "🥞 🎂 🍫"
         else:
             inp = " ".join(obj)
+    except Exception as e:
+        await eor(event, e)
     event = await eor(event, "`droping....`")
     u, t, g, o, s, n = inp.split(), "🗑", "<(^_^ <)", "(> ^_^)>", "⠀ ", "\n"
     h = [(u[0], u[1], u[2]), (u[0], u[1], ""), (u[0], "", "")]
