@@ -106,10 +106,9 @@ async def _(event):
     try:
         obj = event.pattern_match.group(1)
         if len(obj) != 3:
-            return await eod(event, "`Input length must be 3 or empty`")
-            inp = " ".join(obj)
-        else:
             inp = "🥞 🎂 🍫"
+        else:
+            inp = " ".join(obj)
     event = await eor(event, "`droping....`")
     u, t, g, o, s, n = inp.split(), "🗑", "<(^_^ <)", "(> ^_^)>", "⠀ ", "\n"
     h = [(u[0], u[1], u[2]), (u[0], u[1], ""), (u[0], "", "")]
