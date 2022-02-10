@@ -20,7 +20,7 @@ menu_category = "tools"
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
 # Add telegraph media links of profile pics that are to be used
-ACTIOND_MEDIA_LINKS = [
+ACTION_MEDIA_LINKS = [
     "https://te.legra.ph/file/329cff91cfe957c848cc7.jpg",
     "https://te.legra.ph/file/7b9bac130967ab536838f.jpg",
     "https://te.legra.ph/file/bfdf1d167f3307ec5c671.jpg",
