@@ -201,3 +201,65 @@ async def autopic(event):
             await asyncio.sleep(60)
         except:
             return
+
+
+ANIME_LINKS = [
+    "https://telegra.ph/file/ca335a2a3bb5d7001e41b.jpg",
+    "https://telegra.ph/file/bfbacd6483392862aca6d.jpg",
+    "https://telegra.ph/file/ec1b70a4652880810ce09.jpg",
+    "https://telegra.ph/file/29ce4b5c3e44b41e2895e.jpg",
+    "https://telegra.ph/file/76dc6ad9f6150fed804ef.jpg",
+    "https://telegra.ph/file/1de3050588a6bb32157bc.jpg",
+    "https://telegra.ph/file/6a0746910c8a04d7a8125.jpg",
+    "https://telegra.ph/file/01f5bce05ca65351d6caf.jpg",
+    "https://telegra.ph/file/02ad4cb5c664afbfa9f0f.jpg",
+    "https://telegra.ph/file/f4b7e726585748db34a42.jpg",
+    "https://telegra.ph/file/782e6ef64f98c0cbab22b.jpg",
+]
+
+
+@legend.legend_cmd(
+    pattern="animedp(?:\s|$)([\s\S]*)",
+    command=("animedp", menu_category),
+    info={
+        "header": "Start Random Pic Upload Of Anime",
+        "usage": [
+            "{tr}pubgdp",
+        ],
+    },
+)
+async def autopic(event):
+    while True:
+        piclink = random.randint(0, len(ANIME_LINKS) - 1)
+        AUTOPP = ANIME_LINKS[piclink]
+        downloaded_file_name = "./downloads/original_pic.png"
+        downloader = SmartDL(AUTOPP, downloaded_file_name, progress_bar=True)
+        downloader.start(blocking=False)
+        photo = "photo_pfp.png"
+        while not downloader.isFinished():
+            pass
+
+        shutil.copy(downloaded_file_name, photo)
+        Image.open(photo)
+        current_time = datetime.now().strftime(
+            "\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n                                                   Time: %H:%M:%S \n                                                   Date: %d/%m/%y "
+        )
+        img = Image.open(photo)
+        drawn_text = ImageDraw.Draw(img)
+        fnt = ImageFont.truetype(FONT_FILE_TO_USE, 30)
+        drawn_text.text((300, 450), current_time, font=fnt, fill=(255, 255, 255))
+        img.save(photo)
+        file = await event.client.upload_file(photo)  # pylint:disable=E0602
+        try:
+            await event.client(
+                functions.photos.UploadProfilePhotoRequest(file)  # pylint:disable=E0602
+            )
+            await eor(event, "Profile Pic Uploaded Successfully")
+            os.remove(photo)
+
+            await asyncio.sleep(60)
+        except:
+            return
+
+
+
