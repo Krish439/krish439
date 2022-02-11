@@ -260,6 +260,3 @@ async def autopic(event):
             await asyncio.sleep(60)
         except:
             return
-
-
-
