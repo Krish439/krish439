@@ -37,12 +37,12 @@ def admin_cmd(pattern=None, command=None, **args):  # sourcery no-metrics
                 CMD_LIST.update({file_test: [cmd]})
         else:
             if len(Config.HANDLER) == 2:
-                catreg = "^" + Config.HANDLER
+                legendreg = "^" + Config.HANDLER
                 reg = Config.HANDLER[1]
             elif len(Config.HANDLER) == 1:
-                catreg = "^\\" + Config.HANDLER
+                legendreg = "^\\" + Config.HANDLER
                 reg = Config.HANDLER
-            args["pattern"] = re.compile(catreg + pattern)
+            args["pattern"] = re.compile(legendreg + pattern)
             if command is not None:
                 cmd = reg + command
             else:
@@ -89,12 +89,12 @@ def sudo_cmd(pattern=None, command=None, **args):  # sourcery no-metrics
                 SUDO_LIST.update({file_test: [cmd]})
         else:
             if len(Config.SUDO_HANDLER) == 2:
-                catreg = "^" + Config.SUDO_HANDLER
+                legendreg = "^" + Config.SUDO_HANDLER
                 reg = Config.SUDO_HANDLER[1]
             elif len(Config.SUDO_HANDLER) == 1:
-                catreg = "^\\" + Config.SUDO_HANDLER
+                legendreg = "^\\" + Config.SUDO_HANDLER
                 reg = Config.HANDLER
-            args["pattern"] = re.compile(catreg + pattern)
+            args["pattern"] = re.compile(legendreg + pattern)
             if command is not None:
                 cmd = reg + command
             else:

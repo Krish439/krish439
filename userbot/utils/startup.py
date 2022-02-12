@@ -61,7 +61,7 @@ async def startupmessage():
     """
     try:
         if BOTLOG:
-            Config.CATUBLOGO = await legend.tgbot.send_file(
+            Config.LEGENDUBLOGO = await legend.tgbot.send_file(
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/294b4dbdb74334fb0a8c1.jpg",
                 caption="**Your LegendBot has been started successfully.**",
