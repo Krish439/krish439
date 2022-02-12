@@ -182,11 +182,11 @@ def paginate_help(
                 modulo_page * number_of_rows : number_of_rows * (modulo_page + 1)
             ] + [
                 (
-                    Button.inline("⌫", data=f"{prefix}_prev({modulo_page})_plugin"),
+                    Button.inline("⬅️", data=f"{prefix}_prev({modulo_page})_plugin"),
                     Button.inline(
                         f"{HELP_EMOJI} Back {HELP_EMOJI}", data="help_k_minu"
                     ),
-                    Button.inline("⌦", data=f"{prefix}_next({modulo_page})_plugin"),
+                    Button.inline("➡️", data=f"{prefix}_next({modulo_page})_plugin"),
                 )
             ]
         else:
@@ -199,7 +199,7 @@ def paginate_help(
         ] + [
             (
                 Button.inline(
-                    "⌫",
+                    "⬅️",
                     data=f"{prefix}_prev({modulo_page})_command_{category_plugins}_{category_pgno}",
                 ),
                 Button.inline(
@@ -207,7 +207,7 @@ def paginate_help(
                     data=f"back_plugin_{category_plugins}_{category_pgno}",
                 ),
                 Button.inline(
-                    "⌦",
+                    "➡️",
                     data=f"{prefix}_next({modulo_page})_command_{category_plugins}_{category_pgno}",
                 ),
             )
@@ -286,7 +286,7 @@ async def inline_handler(event):  # sourcery no-metrics
         elif query == "repo":
             result = builder.article(
                 title="Repository",
-                text=f"**⚜ Legendary Af - LegendBot ⚜**",
+                text=f"**⚜ Legendary Af LegendBot ⚜**",
                 buttons=[
                     [Button.url("♥️ Tutorial ♥", "https://youtu.be/9dQgdUJfk_k")],
                     [Button.url("📍 𝚁𝚎𝚙𝚘 📍", "https://github.com/PROBOY-OP/LegendBot")],
@@ -456,13 +456,29 @@ async def inline_handler(event):  # sourcery no-metrics
                 json.dump(newhide, open(hide, "w"))
         elif string == "help":
             _result = main_menu()
-            result = builder.article(
-                title="© LegendBot Help",
-                description="Help menu for LegendBot",
-                text=_result[0],
-                buttons=_result[1],
-                link_preview=False,
-            )
+            if help_pic == "OFF":
+                result = builder.article(
+                    title="© LegendBot Help",
+                    description="Help menu for LegendBot",
+                    text=_result[0],
+                    buttons=_result[1],
+                    link_preview=False,
+                )
+            elif help_pic.endswith((".jpg", ".png")):
+                result = builder.photo(
+                    help_pic,
+                    text=_result[0],
+                    buttons=_result[1],
+                    link_preview=False,
+                ) 
+            elif help_pic:
+                result = builder.document(
+                    help_pic,
+                    text=_result[0],
+                    title="LegendBot Help Menu",
+                    buttons=_result[1],
+                    link_preview=False,
+                )
             await event.answer([result] if result else None)
         elif str_y[0].lower() == "ytdl" and len(str_y) == 2:
             link = get_yt_video_id(str_y[1].strip())
