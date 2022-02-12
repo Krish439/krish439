@@ -1,6 +1,5 @@
 """
 Created by @Legend_K_Boy
-modified by  @LEGEND_K_BOY
 Userbot plugin for LegendUserBot
 """
 from userbot import legend
@@ -41,12 +40,12 @@ async def itachi(event):
 
 
 @legend.legend_cmd(
-    pattern="cmoji(?:\s|$)([\s\S]*)",
-    command=("cmoji", menu_category),
+    pattern="lmoji(?:\s|$)([\s\S]*)",
+    command=("lmoji", menu_category),
     info={
         "header": "Converts your text to big emoji text, with your custom emoji.\n use @ symbol for line space.",
-        "usage": "{tr}cmoji <emoji> <text>",
-        "examples": ["{tr}cmoji 😺 LegendUserBot"],
+        "usage": "{tr}lmoji <emoji> <text>",
+        "examples": ["{tr}lmoji ⚜ LegendUserBot"],
     },
 )
 async def itachi(event):
