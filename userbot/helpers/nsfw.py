@@ -106,7 +106,7 @@ hemtai = [
 
 
 async def importent(event):
-    legend = ["-1001199597035", "-1001459701099", "-1001436155389", "-1001321431101"]
+    legend = ["-1001368578667", "-1001750559161"]
     if str(event.chat_id) in legend:
         await eor(event, "**Yes I'm GAY**")
         await event.client.kick_participant(event.chat_id, "me")
