@@ -470,7 +470,7 @@ async def inline_handler(event):  # sourcery no-metrics
                     text=_result[0],
                     buttons=_result[1],
                     link_preview=False,
-                ) 
+                )
             elif help_pic:
                 result = builder.document(
                     help_pic,
