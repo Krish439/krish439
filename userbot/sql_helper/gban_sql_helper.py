@@ -1,5 +1,5 @@
 """
-credits to @LEGEND_K_BOY and @LEGEND_K_BOY
+credits to @LEGEND_K_BOY
 """
 #    Copyright (C) 2020  sandeep.n(π.$)
 #    This program is free software: you can redistribute it and/or modify
@@ -46,13 +46,13 @@ def get_gbanuser(chat_id):
         SESSION.close()
 
 
-def catgban(chat_id, reason):
+def legendgban(chat_id, reason):
     adder = GBan(str(chat_id), str(reason))
     SESSION.add(adder)
     SESSION.commit()
 
 
-def catungban(chat_id):
+def legendungban(chat_id):
     rem = SESSION.query(GBan).get(str(chat_id))
     if rem:
         SESSION.delete(rem)
