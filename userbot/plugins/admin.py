@@ -83,7 +83,7 @@ menu_category = "admin"
     info={
         "header": "For changing group display pic or deleting display pic",
         "description": "Reply to Image for changing display picture",
-        "types": {
+        "flags": {
             "-s": "To set group pic",
             "-d": "To delete group pic",
         },
@@ -672,7 +672,7 @@ async def pin(event):
     info={
         "header": "To get recent deleted messages in group",
         "description": "To check recent deleted messages in group, by default will show 5. you can get 1 to 15 messages.",
-        "types": {
+        "flags": {
             "u": "use this type to upload media to chat else will just show as media."
         },
         "usage": [
