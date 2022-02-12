@@ -31,45 +31,45 @@ async def media_to_pic(event, reply, noedits=False):  # sourcery no-metrics
     else:
         legendevent = event
     legendmedia = None
-    catfile = os.path.join("./temp/", "meme.png")
-    if os.path.exists(catfile):
-        os.remove(catfile)
+    swtfile = os.path.join("./temp/", "meme.png")
+    if os.path.exists(swtfile):
+        os.remove(swtfile)
     if mediatype == "Photo":
         legendmedia = await reply.download_media(file="./temp")
         im = Image.open(legendmedia)
-        im.save(catfile)
+        im.save(swtfile)
     elif mediatype in ["Audio", "Voice"]:
-        await event.client.download_media(reply, catfile, thumb=-1)
+        await event.client.download_media(reply, swtfile, thumb=-1)
     elif mediatype == "Sticker":
         legendmedia = await reply.download_media(file="./temp")
         if legendmedia.endswith(".tgs"):
-            catcmd = f"lottie_convert.py --frame 0 -if lottie -of png '{legendmedia}' '{catfile}'"
-            stdout, stderr = (await runcmd(catcmd))[:2]
+            swtcmd = f"lottie_convert.py --frame 0 -if lottie -of png '{legendmedia}' '{swtfile}'"
+            stdout, stderr = (await runcmd(swtcmd))[:2]
             if stderr:
                 LOGS.info(stdout + stderr)
         elif legendmedia.endswith(".webp"):
             im = Image.open(legendmedia)
-            im.save(catfile)
+            im.save(swtfile)
     elif mediatype in ["Round Video", "Video", "Gif"]:
-        await event.client.download_media(reply, catfile, thumb=-1)
-        if not os.path.exists(catfile):
+        await event.client.download_media(reply, swtfile, thumb=-1)
+        if not os.path.exists(swtfile):
             legendmedia = await reply.download_media(file="./temp")
             clip = VideoFileClip(media)
             try:
-                clip = clip.save_frame(catfile, 0.1)
+                clip = clip.save_frame(swtfile, 0.1)
             except Exception:
-                clip = clip.save_frame(catfile, 0)
+                clip = clip.save_frame(swtfile, 0)
     elif mediatype == "Document":
         mimetype = reply.document.mime_type
         mtype = mimetype.split("/")
         if mtype[0].lower() == "image":
             legendmedia = await reply.download_media(file="./temp")
             im = Image.open(legendmedia)
-            im.save(catfile)
+            im.save(swtfile)
     if legendmedia and os.path.lexists(legendmedia):
         os.remove(legendmedia)
-    if os.path.lexists(catfile):
-        return legendevent, catfile, mediatype
+    if os.path.lexists(swtfile):
+        return legendevent, swtfile, mediatype
     return legendevent, None
 
 

