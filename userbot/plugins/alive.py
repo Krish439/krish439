@@ -46,17 +46,17 @@ async def amireallyalive(event):
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     EMOJI = gvarstatus("ALIVE_EMOJI") or "✥"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**⚜ LegendBot Is Online ⚜**"
+    LOL_TEXT = gvarstatus("ALIVE_TEXT") or "**⚜ LegendBot Is Online ⚜**"
     LEGEND_IMG = (
         gvarstatus("IALIVE_PIC") or "https://telegra.ph/file/144d8ea74fef8ca12253c.jpg"
     )
     lal = [x for x in EMOJI.split()]
     EMOTES = random.choice(lal)
-    tick = [x for x in ALIVE_TEXT.split(", ")]
-    IALIVE_TEXT = random.choice(tick)
+    tick = [x for x in LOL_TEXT.split(", ")]
+    ALIVE_TEXT = random.choice(tick)
     hell_caption = gvarstatus("ALIVE_TEMPLATE") or temp
     caption = hell_caption.format(
-        IALIVE_TEXT=IALIVE_TEXT,
+        ALIVE_TEXT=ALIVE_TEXT,
         EMOTES=EMOTES,
         mention=mention,
         uptime=uptime,
@@ -86,7 +86,7 @@ async def amireallyalive(event):
         )
 
 
-temp = """{IALIVE_TEXT}
+temp = """{ALIVE_TEXT}
 **{EMOTES} Master:** {mention}
 **{EMOTES} Uptime :** `{uptime}`
 **{EMOTES} Telethon Version :** `{telever}`
