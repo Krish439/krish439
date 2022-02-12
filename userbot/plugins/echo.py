@@ -1,6 +1,5 @@
 """
 created by @LEGEND_K_BOY
-Idea by @BlazingRobonix
 """
 
 from telethon.utils import get_display_name
