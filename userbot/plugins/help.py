@@ -131,12 +131,12 @@ async def cmdlist():
         "header": "To get guide for LegendBot.",
         "description": "To get information or guide for the command or plugin",
         "note": "if command name and plugin name is same then you get guide for plugin. So by using this type you get command guide",
-        "types": {
+        "flags": {
             "c": "To get info of command.",
             "p": "To get info of plugin.",
             "t": "To get all plugins in text format.",
         },
-        "": [
+        "usage": [
             "{tr}help (plugin/command name)",
             "{tr}help -c (command name)",
         ],
