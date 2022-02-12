@@ -35,7 +35,7 @@ async def yt_search(legend):
     try:
         legend = urllib.parse.quote(legend)
         html = urllib.request.urlopen(
-            "https://www.youtube.com/results?search_query=" + cat
+            "https://www.youtube.com/results?search_query=" + swt
         )
         user_data = re.findall(r"watch\?v=(\S{11})", html.read().decode())
         video_link = []
@@ -88,7 +88,7 @@ ytsearch_data = YT_Search_X()
 
 
 async def yt_data(legend):
-    params = {"format": "json", "url": cat}
+    params = {"format": "json", "url": swt}
     url = "https://www.youtube.com/oembed"  # https://stackoverflow.com/questions/29069444/returning-the-urls-as-a-list-from-a-youtube-search-query
     query_string = urllib.parse.urlencode(params)
     url = url + "?" + query_string

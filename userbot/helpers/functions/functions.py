@@ -247,7 +247,7 @@ async def hide_inlinebot(borg, bot_name, text, chat_id, reply_to_id, c_lick=0):
     sticcers = await borg.inline_query(bot_name, f"{text}.")
     legend = await sticcers[c_lick].click("me", hide_via=True)
     if legend:
-        await borg.send_file(int(chat_id), cat, reply_to=reply_to_id)
+        await borg.send_file(int(chat_id), legend, reply_to=reply_to_id)
         await legend.delete()
 
 
