@@ -6,7 +6,7 @@ from telethon.sessions import StringSession
 from ..Config import Config
 from .client import LegendClient
 
-__version__ = "2.10.6"
+__version__ = "1.10.6"
 
 loop = None
 

@@ -29,7 +29,6 @@ from .logger import logging
 LOGS = logging.getLogger(__name__)
 
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
-CATLOGO = "https://te.legra.ph/file/74530a36e7b5e60ced878.jpg"
 tr = Config.HANDLER
 
 

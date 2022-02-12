@@ -52,7 +52,7 @@ def _format_about(
             tmp_chelp += f"\n    __{about['options']}__"
         del about["options"]
     if "types" in about:
-        tmp_chelp += "\n\n**⚡ Supported Types :**"
+        tmp_chelp += "\n\n**🔥 Supported Types :**"
         if isinstance(about["types"], list):
             for _opt in about["types"]:
                 tmp_chelp += f"\n    `{_opt}` ,"
