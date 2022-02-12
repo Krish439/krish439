@@ -45,10 +45,10 @@ async def amireallyalive(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
-    EMOJI = gvarstatus("IALIVE_EMOJI") or "✧"
-    ALIVE_TEXT = gvarstatus("IALIVE_TEXT") or "**⚜ LegendBot Is Online ⚜**"
+    EMOJI = gvarstatus("ALIVE_EMOJI") or "✥"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**⚜ LegendBot Is Online ⚜**"
     LEGEND_IMG = (
-        gvarstatus("IALIVE_PIC") or "https://te.legra.ph/file/74530a36e7b5e60ced878.jpg"
+        gvarstatus("IALIVE_PIC") or "https://telegra.ph/file/144d8ea74fef8ca12253c.jpg"
     )
     lal = [x for x in EMOJI.split()]
     EMOTES = random.choice(lal)
