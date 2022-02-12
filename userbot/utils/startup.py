@@ -63,8 +63,8 @@ async def startupmessage():
         if BOTLOG:
             Config.CATUBLOGO = await legend.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://te.legra.ph/file/74530a36e7b5e60ced878.jpg",
-                caption="**Your LegendUserBot has been started successfully.**",
+                "https://telegra.ph/file/294b4dbdb74334fb0a8c1.jpg",
+                caption="**Your LegendBot has been started successfully.**",
                 buttons=[(Button.url("Support", "https://t.me/LEGEND_K_USERBOT"),)],
             )
     except Exception as e:
@@ -192,10 +192,6 @@ async def hekp():
 
     try:
         await legend(JoinChannelRequest("@Legend_K_Userbot"))
-    except BaseException:
-        pass
-    try:
-        await legend(LeaveChannelRequest("@catuserbot17"))
     except BaseException:
         pass
     try:
