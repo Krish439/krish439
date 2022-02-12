@@ -455,6 +455,12 @@ async def inline_handler(event):  # sourcery no-metrics
             else:
                 json.dump(newhide, open(hide, "w"))
         elif string == "help":
+            oso = gvarstatus("HELP_PIC")
+            if oso is None:
+                lol = [x for x in oso.split()]
+                help_pic = random.choice(lol)
+            else:
+                help_pic = "https://telegra.ph/file/144d8ea74fef8ca12253c.jpg"
             _result = main_menu()
             if help_pic == "OFF":
                 result = builder.article(
