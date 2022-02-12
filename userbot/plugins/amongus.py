@@ -81,7 +81,7 @@ async def get_imposter_img(text: str) -> str:
     command=("amongus", menu_category),
     info={
         "header": "Create a Sticker based on the popular game Among Us",
-        "types": {
+        "flags": {
             "1": "red",
             "2": "lime",
             "3": "green",
