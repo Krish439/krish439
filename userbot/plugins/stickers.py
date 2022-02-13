@@ -9,7 +9,7 @@ import urllib.request
 from os import remove
 
 import cloudscraper
-import emoji as catemoji
+import emoji as swtemoji
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon import events
@@ -62,8 +62,8 @@ KANGING_STR = [
 ]
 
 
-def verify_cond(catarray, text):
-    return any(i in text for i in catarray)
+def verify_cond(owoarray, text):
+    return any(i in text for i in owoarray)
 
 
 def pack_name(userid, pack, is_anim):
@@ -73,7 +73,7 @@ def pack_name(userid, pack, is_anim):
 
 
 def char_is_emoji(character):
-    return character in catemoji.UNICODE_EMOJI["en"]
+    return character in swtemoji.UNICODE_EMOJI["en"]
 
 
 def pack_nick(username, pack, is_anim):
@@ -277,7 +277,7 @@ async def kang(args):  # sourcery no-metrics
             user.first_name.encode("utf-8").decode("ascii")
             username = user.first_name
         except UnicodeDecodeError:
-            username = f"cat_{user.id}"
+            username = f"swt_{user.id}"
     else:
         username = user.username
     userid = user.id
@@ -430,7 +430,7 @@ async def pack_kang(event):  # sourcery no-metrics
             user.first_name.encode("utf-8").decode("ascii")
             username = user.first_name
         except UnicodeDecodeError:
-            username = f"cat_{user.id}"
+            username = f"swt_{user.id}"
     photo = None
     userid = user.id
     is_anim = False
@@ -587,7 +587,7 @@ async def pack_kang(event):  # sourcery no-metrics
     command=("gridpack", menu_category),
     info={
         "header": "To split the replied image and make sticker pack.",
-        "types": {
+        "flags": {
             "-e": "to use custom emoji by default ▫️ is emoji.",
         },
         "usage": [

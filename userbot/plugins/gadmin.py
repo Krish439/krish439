@@ -50,27 +50,27 @@ UNBAN_RIGHTS = ChatBannedRights(
         "usage": "{tr}gban <username/reply/userid> <reason (optional)>",
     },
 )
-async def catgban(event):  # sourcery no-metrics
+async def lolgban(event):  # sourcery no-metrics
     "To ban user in every group where you are admin."
-    cate = await eor(event, "`gbanning.......`")
+    swte = await eor(event, "`gbanning.......`")
     start = datetime.now()
-    user, reason = await get_user_from_event(event, cate)
+    user, reason = await get_user_from_event(event, swte)
     if not user:
         return
     if user.id == legend.uid:
-        return await eod(cate, "`why would I ban myself`")
+        return await eod(swte, "`why would I ban myself`")
     if gban_sql.is_gbanned(user.id):
-        await cate.edit(
+        await swte.edit(
             f"`the `[user](tg://user?id={user.id})` is already in gbanned list any way checking again`"
         )
     else:
-        gban_sql.catgban(user.id, reason)
+        gban_sql.swtgban(user.id, reason)
     san = await admin_groups(event.client)
     count = 0
     LEGEND = len(san)
     if LEGEND == 0:
-        return await eod(cate, "`you are not admin of atleast one group` ")
-    await cate.edit(
+        return await eod(swte, "`you are not admin of atleast one group` ")
+    await swte.edit(
         f"`initiating gban of the `[user](tg://user?id={user.id}) `in {len(san)} groups`"
     )
     for i in range(LEGEND):
@@ -85,14 +85,14 @@ async def catgban(event):  # sourcery no-metrics
                 f"`You don't have required permission in :`\n**Chat :** {get_display_name(achat)}(`{achat.id}`)\n`For banning here`",
             )
     end = datetime.now()
-    cattaken = (end - start).seconds
+    swttaken = (end - start).seconds
     if reason:
-        await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was gbanned in {count} groups in {cattaken} seconds`!!\n**Reason :** `{reason}`"
+        await swte.edit(
+            f"[{user.first_name}](tg://user?id={user.id}) `was gbanned in {count} groups in {swttaken} seconds`!!\n**Reason :** `{reason}`"
         )
     else:
-        await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was gbanned in {count} groups in {cattaken} seconds`!!"
+        await swte.edit(
+            f"[{user.first_name}](tg://user?id={user.id}) `was gbanned in {count} groups in {swttaken} seconds`!!"
         )
     if BOTLOG and count != 0:
         reply = await event.get_reply_message()
@@ -105,7 +105,7 @@ async def catgban(event):  # sourcery no-metrics
                 \n**ID : **`{user.id}`\
                 \n**Reason :** `{reason}`\
                 \n__Banned in {count} groups__\
-                \n**Time taken : **`{cattaken} seconds`",
+                \n**Time taken : **`{swttaken} seconds`",
             )
         else:
             await event.client.send_message(
@@ -115,7 +115,7 @@ async def catgban(event):  # sourcery no-metrics
                 \n**User : **[{user.first_name}](tg://user?id={user.id})\
                 \n**ID : **`{user.id}`\
                 \n__Banned in {count} groups__\
-                \n**Time taken : **`{cattaken} seconds`",
+                \n**Time taken : **`{swttaken} seconds`",
             )
         try:
             if reply:
@@ -134,25 +134,25 @@ async def catgban(event):  # sourcery no-metrics
         "usage": "{tr}ungban <username/reply/userid>",
     },
 )
-async def catgban(event):
+async def lolgban(event):
     "To unban the person from every group where you are admin."
-    cate = await eor(event, "`ungbanning.....`")
+    swte = await eor(event, "`ungbanning.....`")
     start = datetime.now()
-    user, reason = await get_user_from_event(event, cate)
+    user, reason = await get_user_from_event(event, swte)
     if not user:
         return
     if gban_sql.is_gbanned(user.id):
-        gban_sql.catungban(user.id)
+        gban_sql.swtungban(user.id)
     else:
         return await eod(
-            cate, f"the [user](tg://user?id={user.id}) `is not in your gbanned list`"
+            swte, f"the [user](tg://user?id={user.id}) `is not in your gbanned list`"
         )
     san = await admin_groups(event.client)
     count = 0
     LEGEND = len(san)
     if LEGEND == 0:
-        return await eod(cate, "`you are not even admin of atleast one group `")
-    await cate.edit(
+        return await eod(swte, "`you are not even admin of atleast one group `")
+    await swte.edit(
         f"initiating ungban of the [user](tg://user?id={user.id}) in `{len(san)}` groups"
     )
     for i in range(LEGEND):
@@ -167,14 +167,14 @@ async def catgban(event):
                 f"`You don't have required permission in :`\n**Chat :** {get_display_name(achat)}(`{achat.id}`)\n`For Unbanning here`",
             )
     end = datetime.now()
-    cattaken = (end - start).seconds
+    swttaken = (end - start).seconds
     if reason:
-        await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}`) was ungbanned in {count} groups in {cattaken} seconds`!!\n**Reason :** `{reason}`"
+        await swte.edit(
+            f"[{user.first_name}](tg://user?id={user.id}`) was ungbanned in {count} groups in {swttaken} seconds`!!\n**Reason :** `{reason}`"
         )
     else:
-        await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was ungbanned in {count} groups in {cattaken} seconds`!!"
+        await swte.edit(
+            f"[{user.first_name}](tg://user?id={user.id}) `was ungbanned in {count} groups in {swttaken} seconds`!!"
         )
 
     if BOTLOG and count != 0:
@@ -187,7 +187,7 @@ async def catgban(event):
                 \n**ID : **`{user.id}`\
                 \n**Reason :** `{reason}`\
                 \n__Unbanned in {count} groups__\
-                \n**Time taken : **`{cattaken} seconds`",
+                \n**Time taken : **`{swttaken} seconds`",
             )
         else:
             await event.client.send_message(
@@ -197,7 +197,7 @@ async def catgban(event):
                 \n**User : **[{user.first_name}](tg://user?id={user.id})\
                 \n**ID : **`{user.id}`\
                 \n__Unbanned in {count} groups__\
-                \n**Time taken : **`{cattaken} seconds`",
+                \n**Time taken : **`{swttaken} seconds`",
             )
 
 
@@ -368,21 +368,21 @@ async def watcher(event):
         "usage": "{tr}gkick <username/reply/userid> <reason (optional)>",
     },
 )
-async def catgkick(event):  # sourcery no-metrics
+async def lolgkick(event):  # sourcery no-metrics
     "kicks the person in all groups where you are admin"
-    cate = await eor(event, "`gkicking.......`")
+    swte = await eor(event, "`gkicking.......`")
     start = datetime.now()
-    user, reason = await get_user_from_event(event, cate)
+    user, reason = await get_user_from_event(event, swte)
     if not user:
         return
     if user.id == legend.uid:
-        return await eod(cate, "`why would I kick myself`")
+        return await eod(swte, "`why would I kick myself`")
     san = await admin_groups(event.client)
     count = 0
     LEGEND = len(san)
     if LEGEND == 0:
-        return await eod(cate, "`you are not admin of atleast one group` ")
-    await cate.edit(
+        return await eod(swte, "`you are not admin of atleast one group` ")
+    await swte.edit(
         f"`initiating gkick of the `[user](tg://user?id={user.id}) `in {len(san)} groups`"
     )
     for i in range(LEGEND):
@@ -397,14 +397,14 @@ async def catgkick(event):  # sourcery no-metrics
                 f"`You don't have required permission in :`\n**Chat :** {get_display_name(achat)}(`{achat.id}`)\n`For kicking there`",
             )
     end = datetime.now()
-    cattaken = (end - start).seconds
+    swttaken = (end - start).seconds
     if reason:
-        await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was gkicked in {count} groups in {cattaken} seconds`!!\n**Reason :** `{reason}`"
+        await swte.edit(
+            f"[{user.first_name}](tg://user?id={user.id}) `was gkicked in {count} groups in {swttaken} seconds`!!\n**Reason :** `{reason}`"
         )
     else:
-        await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was gkicked in {count} groups in {cattaken} seconds`!!"
+        await swte.edit(
+            f"[{user.first_name}](tg://user?id={user.id}) `was gkicked in {count} groups in {swttaken} seconds`!!"
         )
 
     if BOTLOG and count != 0:
@@ -418,7 +418,7 @@ async def catgkick(event):  # sourcery no-metrics
                 \n**ID : **`{user.id}`\
                 \n**Reason :** `{reason}`\
                 \n__Kicked in {count} groups__\
-                \n**Time taken : **`{cattaken} seconds`",
+                \n**Time taken : **`{swttaken} seconds`",
             )
         else:
             await event.client.send_message(
@@ -428,7 +428,7 @@ async def catgkick(event):  # sourcery no-metrics
                 \n**User : **[{user.first_name}](tg://user?id={user.id})\
                 \n**ID : **`{user.id}`\
                 \n__Kicked in {count} groups__\
-                \n**Time taken : **`{cattaken} seconds`",
+                \n**Time taken : **`{swttaken} seconds`",
             )
         if reply:
             await reply.forward_to(BOTLOG_CHATID)

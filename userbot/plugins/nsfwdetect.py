@@ -1,5 +1,4 @@
-# Copyright (C) 2020 BY - GitHub.com/code-rgb [TG - @deleteduser420]
-# ported to cat by @LEGEND_K_BOY (@LEGEND_K_BOY)
+# Copyright
 
 import os
 

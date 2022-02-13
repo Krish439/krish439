@@ -20,8 +20,8 @@ LOGS = logging.getLogger(__name__)
 async def selfdestruct(destroy):
     "To self destruct the sent message"
     legend = ("".join(destroy.text.split(maxsplit=1)[1:])).split(" ", 1)
-    message = cat[1]
-    ttl = int(cat[0])
+    message = legend[1]
+    ttl = int(legend[0])
     await destroy.delete()
     smsg = await destroy.client.send_message(destroy.chat_id, message)
     await sleep(ttl)
@@ -41,8 +41,8 @@ async def selfdestruct(destroy):
 async def selfdestruct(destroy):
     "To self destruct the sent message"
     legend = ("".join(destroy.text.split(maxsplit=1)[1:])).split(" ", 1)
-    message = cat[1]
-    ttl = int(cat[0])
+    message = legend[1]
+    ttl = int(legend[0])
     text = message + f"\n\n`This message shall be self-destructed in {ttl} seconds`"
 
     await destroy.delete()

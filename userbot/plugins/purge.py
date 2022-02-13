@@ -212,7 +212,7 @@ async def purgeme(event):
         \n•  If type is used then selects that type of messages else will select all types\
         \n•  You can use multiple types like -gi 10 (It will delete 10 images and 10 gifs but not 10 messages of combination images and gifs.)\
         ",
-        "types": {
+        "flags": {
             "a": "To delete Voice messages.",
             "f": "To delete documents.",
             "g": "To delete gif's.",
@@ -465,7 +465,7 @@ async def fastpurger(event):  # sourcery no-metrics
         \n•  Use -s type to delete all his messages which contatins given word.\
         \n•  You cann't use both types at a time\
         ",
-        "types": {
+        "flags": {
             "a": "To delete all messages of replied user.",
             "s": "To delete all messages of replied user with the given query.",
         },

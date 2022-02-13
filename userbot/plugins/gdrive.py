@@ -174,11 +174,11 @@ async def download(event, gdrive, service, uri=None):  # sourcery no-metrics
         try:
             from .torrentutils import aria2, check_metadata
 
-            cattorrent = True
+            swttorrent = True
         except Exception:
-            cattorrent = False
+            swttorrent = False
         full_path = os.path.join(os.getcwd(), TMP_DOWNLOAD_DIRECTORY)
-        if cattorrent:
+        if swttorrent:
             LOGS.info("torrentutils exists")
             if os.path.isfile(uri) and uri.endswith(".torrent"):
                 downloads = aria2.add_torrent(
@@ -193,7 +193,7 @@ async def download(event, gdrive, service, uri=None):  # sourcery no-metrics
             LOGS.info("No torrentutils")
             await eor(
                 gdrive,
-                "`To use torrent files or download files from link install torrentutils from` @catplugins",
+                "`To use torrent files or download files from link install torrentutils from` @legendplugins",
             )
             return "install torrentutils"
         from .torrentutils import aria2, check_metadata
@@ -1016,7 +1016,7 @@ async def reset_credentials(gdrive):
     command=("glist", menu_category),
     info={
         "header": "Get list of folders and files with default size 50",
-        "types": {
+        "flags": {
             "l": "Use type `-l range[1-1000]` for limit output",
             "p": "Use type `-p parents-folder_id` for files/folder in given folder in gdrive.",
         },
@@ -1031,7 +1031,7 @@ async def reset_credentials(gdrive):
         ],
     },
 )
-async def catlists(gdrive):
+async def owolists(gdrive):
     "To get list of files and folers"
     await lists(gdrive)
 
@@ -1475,7 +1475,7 @@ async def set_upload_folder(gdrive):
     info={
         "header": "To download files form gdrive.",
         "description": "G-Drive File Downloader Plugin For Userbot. only gdrive files are supported now",
-        "types": {
+        "flags": {
             "u": "to directly upload to telegram",
         },
         "usage": [
@@ -1492,10 +1492,10 @@ async def g_download(event):
     cmd = event.pattern_match.group(1)
     drive_link = event.pattern_match.group(2)
     legendevent = await eor(event, "`Downloading Requested File from G-Drive...`")
-    file_name, catprocess = await gdrive_download(
+    file_name, swtprocess = await gdrive_download(
         event, legendevent, service, drive_link
     )
-    if catprocess is not None:
+    if swtprocess is not None:
         return await eod(legendevent, file_name)
     thumb = thumb_image_path if os.path.exists(thumb_image_path) else None
     if not cmd:

@@ -278,8 +278,8 @@ async def upstream(event):
     pattern="update deploy$",
 )
 async def upstream(event):
-    event = await eor(event, "`Pulling the nekopack repo wait a sec ....`")
-    off_repo = "https://github.com/LEGEND-AI/nekopack"
+    event = await eor(event, "`Pulling the LEGENDBOT repo wait a sec ....`")
+    off_repo = "https://github.com/LEGEND-AI/LEGENDBOT"
     os.chdir("/app")
     try:
         txt = "`Oops.. Updater cannot continue due to "
@@ -318,7 +318,7 @@ async def upstream(event):
     },
 )
 async def variable(var):
-    "To update to goocat."
+    "To update to goolegend."
     if Config.API_KEY is None:
         return await eod(
             var,

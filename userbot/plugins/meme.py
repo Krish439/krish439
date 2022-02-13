@@ -115,9 +115,9 @@ async def typewriter(typew):
 )
 async def _(event):
     "To repeat the given text."
-    legend = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
-    message = cat[1]
-    count = int(cat[0])
+    lol = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
+    message = lol[1]
+    count = int(lol[0])
     repsmessage = (f"{message} ") * count
     await eor(event, repsmessage)
 

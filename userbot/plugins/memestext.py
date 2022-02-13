@@ -3,7 +3,7 @@ import random
 from userbot import legend
 
 from ..core.managers import eor
-from . import catmemes
+from . import swtmemes
 
 menu_category = "fun"
 
@@ -18,7 +18,7 @@ menu_category = "fun"
 )
 async def _(e):
     "Congratulate the people."
-    txt = random.choice(catmemes.CONGOREACTS)
+    txt = random.choice(swtmemes.CONGOREACTS)
     await eor(e, txt)
 
 
@@ -32,7 +32,7 @@ async def _(e):
 )
 async def shrugger(e):
     "Shrug at it !!"
-    txt = random.choice(catmemes.SHGS)
+    txt = random.choice(swtmemes.SHGS)
     await eor(e, txt)
 
 
@@ -46,7 +46,7 @@ async def shrugger(e):
 )
 async def runner_lol(e):
     "Run, run, RUNNN!"
-    txt = random.choice(catmemes.RUNSREACTS)
+    txt = random.choice(swtmemes.RUNSREACTS)
     await eor(e, txt)
 
 
@@ -60,7 +60,7 @@ async def runner_lol(e):
 )
 async def metoo(e):
     "Whadya want to know? Are you a NOOB?"
-    txt = random.choice(catmemes.NOOBSTR)
+    txt = random.choice(swtmemes.NOOBSTR)
     await eor(e, txt)
 
 
@@ -74,7 +74,7 @@ async def metoo(e):
 )
 async def insult(e):
     "insult someone."
-    txt = random.choice(catmemes.INSULT_STRINGS)
+    txt = random.choice(swtmemes.INSULT_STRINGS)
     await eor(e, txt)
 
 
@@ -88,7 +88,7 @@ async def insult(e):
 )
 async def suru(chutiyappa):
     "Chutiyappa suru"
-    txt = random.choice(catmemes.LOVESTR)
+    txt = random.choice(swtmemes.LOVESTR)
     await eor(chutiyappa, txt)
 
 
@@ -102,7 +102,7 @@ async def suru(chutiyappa):
 )
 async def katgya(chutiya):
     "Dhokha kha gya"
-    txt = random.choice(catmemes.DHOKA)
+    txt = random.choice(swtmemes.DHOKA)
     await eor(chutiya, txt)
 
 
@@ -116,7 +116,7 @@ async def katgya(chutiya):
 )
 async def hoi(e):
     "start a conversation with people."
-    txt = random.choice(catmemes.HELLOSTR)
+    txt = random.choice(swtmemes.HELLOSTR)
     await eor(e, txt)
 
 
@@ -130,7 +130,7 @@ async def hoi(e):
 )
 async def proo(e):
     "If you think you're pro, try this."
-    txt = random.choice(catmemes.PRO_STRINGS)
+    txt = random.choice(swtmemes.PRO_STRINGS)
     await eor(e, txt)
 
 
@@ -139,7 +139,7 @@ async def proo(e):
     command=("react", menu_category),
     info={
         "header": "Make your userbot react",
-        "types": [
+        "flags": [
             "happy",
             "think",
             "wave",
@@ -157,25 +157,25 @@ async def _(e):
     "Make your userbot react."
     input_str = e.pattern_match.group(1)
     if input_str in "happy":
-        emoticons = catmemes.FACEREACTS[0]
+        emoticons = swtmemes.FACEREACTS[0]
     elif input_str in "think":
-        emoticons = catmemes.FACEREACTS[1]
+        emoticons = swtmemes.FACEREACTS[1]
     elif input_str in "wave":
-        emoticons = catmemes.FACEREACTS[2]
+        emoticons = swtmemes.FACEREACTS[2]
     elif input_str in "wtf":
-        emoticons = catmemes.FACEREACTS[3]
+        emoticons = swtmemes.FACEREACTS[3]
     elif input_str in "love":
-        emoticons = catmemes.FACEREACTS[4]
+        emoticons = swtmemes.FACEREACTS[4]
     elif input_str in "confused":
-        emoticons = catmemes.FACEREACTS[5]
+        emoticons = swtmemes.FACEREACTS[5]
     elif input_str in "dead":
-        emoticons = catmemes.FACEREACTS[6]
+        emoticons = swtmemes.FACEREACTS[6]
     elif input_str in "sad":
-        emoticons = catmemes.FACEREACTS[7]
+        emoticons = swtmemes.FACEREACTS[7]
     elif input_str in "dog":
-        emoticons = catmemes.FACEREACTS[8]
+        emoticons = swtmemes.FACEREACTS[8]
     else:
-        emoticons = catmemes.FACEREACTS[9]
+        emoticons = swtmemes.FACEREACTS[9]
     txt = random.choice(emoticons)
     await eor(e, txt)
 

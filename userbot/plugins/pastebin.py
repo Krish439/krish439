@@ -43,7 +43,7 @@ def get_key(val):
     command=("pcode", menu_category),
     info={
         "header": "Will paste the entire text on the blank white image.",
-        "types": {
+        "flags": {
             "f": "Use this type to send it as file rather than image",
         },
         "usage": ["{tr}pcode <reply>", "{tr}pcode text"],
@@ -105,7 +105,7 @@ async def paste_img(event):
     info={
         "header": "To paste text to a paste bin.",
         "description": "Uploads the given text to website so that you can share text/code with others easily. If no type is used then it will use p as default",
-        "types": {
+        "flags": {
             "d": "Will paste text to dog.bin",
             "p": "Will paste text to pasty.lus.pm",
             "s": "Will paste text to spaceb.in (language extension not there at present.)",
@@ -211,7 +211,7 @@ async def get_dogbin_content(event):
                 ("pasty" in iurl)
                 or ("spaceb" in iurl)
                 or ("nekobin" in iurl)
-                or ("catbin" in iurl)
+                or ("legendbin" in iurl)
             ):
                 url = iurl
                 break
@@ -229,8 +229,8 @@ async def get_dogbin_content(event):
             rawurl = f"https://spaceb.in/api/v1/documents/{fid[0]}/raw"
         elif "nekobin" in url:
             rawurl = f"nekobin.com/raw/{fid[0]}"
-        elif "catbin" in url:
-            rawurl = f"http://catbin.up.railway.app/raw/{fid[0]}"
+        elif "legendbin" in url:
+            rawurl = f"http://legendbin.up.railway.app/raw/{fid[0]}"
         else:
             return await eod(event, "__This pastebin is not supported.__")
     resp = requests.get(rawurl)

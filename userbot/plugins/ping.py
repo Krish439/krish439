@@ -12,7 +12,7 @@ menu_category = "tools"
     command=("ping", menu_category),
     info={
         "header": "check how long it takes to ping your userbot",
-        "types": {"-a": "average ping"},
+        "flags": {"-a": "average ping"},
         "usage": ["{tr}ping", "{tr}ping -a"],
     },
 )

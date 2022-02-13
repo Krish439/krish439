@@ -44,7 +44,7 @@ menu_category = "useless"
     info={
         "header": "Make a logo in image or sticker",
         "description": "Just a fun purpose plugin to create logo in image or in sticker.",
-        "types": {
+        "flags": {
             "s": "To create a logo in sticker instade of image.",
         },
         "usage": [
@@ -139,7 +139,7 @@ async def very(event):
     info={
         "header": "Change the background of logo",
         "description": "To change the background on which logo will created, in **bg** there few built-in backgrounds.",
-        "types": {
+        "flags": {
             "c": "Custom background for logo, can set by giving a telegraph link or reply to media.",
         },
         "usage": [
@@ -163,8 +163,8 @@ async def bad(event):
     lbg_list = "**Available background names are here:-**\n\n"
     for i, each in enumerate(links, start=1):
         legend = os.path.splitext(each.text)[0]
-        bg_name.append(legend)
-        lbg_list += f"**{i}.**  `{cat}`\n"
+        owo = bg_name.append(legend)
+        lbg_list += f"**{i}.**  `{owo}`\n"
     if os.path.exists("./temp/bg_img.jpg"):
         os.remove("./temp/bg_img.jpg")
     if cmd == "c":
@@ -201,7 +201,7 @@ async def bad(event):
     info={
         "header": "Change text style for logo.",
         "description": "Customise logo font, font size, font position like text hight or width.",
-        "types": {
+        "flags": {
             "c": "To change color of logo font.",
             "s": "To change size of logo font.",
             "h": "To change hight of logo font.",
@@ -241,8 +241,8 @@ async def pussy(event):
         font_name = "**Available font names are here:-**\n\n"
         for i, each in enumerate(links, start=1):
             legend = os.path.splitext(each.text)[0]
-            logo_font.append(legend)
-            font_name += f"**{i}.**  `{cat}`\n"
+            owo = logo_font.append(legend)
+            font_name += f"**{i}.**  `{owo}`\n"
         if not input_str:
             return await eod(event, font_name, time=80)
         if input_str not in logo_font:
@@ -294,7 +294,7 @@ async def pussy(event):
             )
     else:
         legend = re.compile(r"^\-?[1-9][0-9]*\.?[0-9]*")
-        isint = re.match(cat, input_str)
+        isint = re.match(legend, input_str)
         if not input_str or not isint:
             return await eod(event, "**Give an integer value to set**", time=10)
         if cmd == "s":
@@ -347,7 +347,7 @@ async def pussy(event):
     info={
         "header": "Manage values which set for logo",
         "description": "To see which value have been set, or to delete a value , or to reset all values.",
-        "types": {
+        "flags": {
             "g": "Gets the value of the var which you set manually for logo.",
             "d": "Delete the value of the var which you set manually for logo.",
             "r": "Delete all the values of the vars which you set manually for logo & reset all changes.",
@@ -363,7 +363,7 @@ async def pussy(event):
         ],
     },
 )
-async def cat(event):
+async def legend(event):
     "Manage all values of logo"
     cmd = event.pattern_match.group(1).lower()
     input_str = event.pattern_match.group(2)

@@ -43,7 +43,7 @@ SONGBOT_BLOCKED_STRING = "<code>Please unblock @songdl_bot and try again</code>"
     info={
         "header": "To get songs from youtube.",
         "description": "Basically this command searches youtube and send the first video as audio file.",
-        "types": {
+        "flags": {
             "320": "if you use song320 then you get 320k quality else 128k quality",
         },
         "usage": "{tr}song <song name>",
@@ -80,24 +80,24 @@ async def _(event):
     stderr = (await _legendutils.runcmd(song_cmd))[1]
     if stderr:
         return await legendevent.edit(f"**Error :** `{stderr}`")
-    catname, stderr = (await _legendutils.runcmd(name_cmd))[:2]
+    owoname, stderr = (await _legendutils.runcmd(name_cmd))[:2]
     if stderr:
         return await legendevent.edit(f"**Error :** `{stderr}`")
     # stderr = (await runcmd(thumb_cmd))[1]
-    catname = os.path.splitext(catname)[0]
+    owoname = os.path.splitext(owoname)[0]
     # if stderr:
     #    return await legendevent.edit(f"**Error :** `{stderr}`")
-    song_file = Path(f"{catname}.mp3")
+    song_file = Path(f"{owoname}.mp3")
     if not os.path.exists(song_file):
         return await legendevent.edit(
             f"Sorry!. I can't find any related video/audio for `{query}`"
         )
     await legendevent.edit("`yeah..! i found something wi8..🥰`")
-    catthumb = Path(f"{catname}.jpg")
-    if not os.path.exists(catthumb):
-        catthumb = Path(f"{catname}.webp")
-    elif not os.path.exists(catthumb):
-        catthumb = None
+    swtthumb = Path(f"{owoname}.jpg")
+    if not os.path.exists(swtthumb):
+        swtthumb = Path(f"{owoname}.webp")
+    elif not os.path.exists(swtthumb):
+        swtthumb = None
     ytdata = await yt_data(video_link)
     await event.client.send_file(
         event.chat_id,
@@ -105,12 +105,12 @@ async def _(event):
         force_document=False,
         caption=f"<b><i>➥ Title :- {ytdata['title']}</i></b>\n<b><i>➥ Uploaded by :- {hmention}</i></b>",
         parse_mode="html",
-        thumb=catthumb,
+        thumb=swtthumb,
         supports_streaming=True,
         reply_to=reply_to_id,
     )
     await legendevent.delete()
-    for files in (catthumb, song_file):
+    for files in (swtthumb, song_file):
         if files and os.path.exists(files):
             os.remove(files)
 
@@ -157,7 +157,7 @@ async def _(event):
     stderr = (await _legendutils.runcmd(video_cmd))[1]
     if stderr:
         return await legendevent.edit(f"**Error :** `{stderr}`")
-    catname, stderr = (await _legendutils.runcmd(name_cmd))[:2]
+    owoname, stderr = (await _legendutils.runcmd(name_cmd))[:2]
     if stderr:
         return await legendevent.edit(f"**Error :** `{stderr}`")
     # stderr = (await runcmd(thumb_cmd))[1]
@@ -168,20 +168,20 @@ async def _(event):
         pass
     # if stderr:
     #    return await legendevent.edit(f"**Error :** `{stderr}`")
-    catname = os.path.splitext(catname)[0]
-    vsong_file = Path(f"{catname}.mp4")
+    owoname = os.path.splitext(owoname)[0]
+    vsong_file = Path(f"{owoname}.mp4")
     if not os.path.exists(vsong_file):
-        vsong_file = Path(f"{catname}.mkv")
+        vsong_file = Path(f"{owoname}.mkv")
     elif not os.path.exists(vsong_file):
         return await legendevent.edit(
             f"Sorry!. I can't find any related video/audio for `{query}`"
         )
     await legendevent.edit("`yeah..! i found something wi8..🥰`")
-    catthumb = Path(f"{catname}.jpg")
-    if not os.path.exists(catthumb):
-        catthumb = Path(f"{catname}.webp")
-    elif not os.path.exists(catthumb):
-        catthumb = None
+    swtthumb = Path(f"{owoname}.jpg")
+    if not os.path.exists(swtthumb):
+        swtthumb = Path(f"{owoname}.webp")
+    elif not os.path.exists(swtthumb):
+        swtthumb = None
     ytdata = await yt_data(video_link)
     await event.client.send_file(
         event.chat_id,
@@ -189,12 +189,12 @@ async def _(event):
         force_document=False,
         caption=f"<b><i>➥ Title :- {ytdata['title']}</i></b>\n<b><i>➥ Uploaded by :- {hmention}</i></b>",
         parse_mode="html",
-        thumb=catthumb,
+        thumb=swtthumb,
         supports_streaming=True,
         reply_to=reply_to_id,
     )
     await legendevent.delete()
-    for files in (catthumb, vsong_file):
+    for files in (swtthumb, vsong_file):
         if files and os.path.exists(files):
             os.remove(files)
 

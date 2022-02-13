@@ -14,7 +14,7 @@ from telethon.tl.types import ChannelParticipantsAdmins, MessageEntityMentionNam
 from userbot import legend
 
 from ..core.managers import eod, eor
-from ..helpers import catmemes
+from ..helpers import swtmemes
 from ..helpers.utils import _legendutils, parse_pre
 from . import BOTLOG, BOTLOG_CHATID, mention
 
@@ -59,7 +59,7 @@ async def get_user(event):
     command=("cowsay", menu_category),
     info={
         "header": "A fun art plugin.",
-        "types": [
+        "flags": [
             "default",
             "beavis",
             "bongcow",
@@ -184,7 +184,7 @@ async def who(event):
     replied_user = await get_user(event)
     if replied_user is None:
         return
-    caption = await catmemes.slap(replied_user, event, mention)
+    caption = await swtmemes.slap(replied_user, event, mention)
     try:
         await eor(event, caption)
     except BaseException:
@@ -276,9 +276,9 @@ async def faces(owo):
     reply_text = re.sub(r"(R|L)", "W", reply_text)
     reply_text = re.sub(r"n([aeiou])", r"ny\1", reply_text)
     reply_text = re.sub(r"N([aeiouAEIOU])", r"Ny\1", reply_text)
-    reply_text = re.sub(r"\!+", " " + random.choice(catmemes.UWUS), reply_text)
+    reply_text = re.sub(r"\!+", " " + random.choice(swtmemes.UWUS), reply_text)
     reply_text = reply_text.replace("ove", "uv")
-    reply_text += " " + random.choice(catmemes.UWUS)
+    reply_text += " " + random.choice(swtmemes.UWUS)
     await eor(owo, reply_text)
 
 

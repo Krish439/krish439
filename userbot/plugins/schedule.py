@@ -17,8 +17,8 @@ menu_category = "utils"
 async def _(event):
     "To schedule a message after given time"
     legend = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
-    message = cat[1]
-    ttl = int(cat[0])
+    message = legend[1]
+    ttl = int(legend[0])
     await event.delete()
     await sleep(ttl)
     await event.respond(message)

@@ -248,11 +248,11 @@ async def download_video(event):
     if ytdl_down is None:
         return
     f = pathlib.Path(f"{ytdl_data['title']}.mp4".replace("|", "_"))
-    catthumb = pathlib.Path(f"{ytdl_data['title']}.jpg".replace("|", "_"))
-    if not os.path.exists(catthumb):
-        catthumb = pathlib.Path(f"{ytdl_data['title']}.webp".replace("|", "_"))
-    if not os.path.exists(catthumb):
-        catthumb = None
+    swtthumb = pathlib.Path(f"{ytdl_data['title']}.jpg".replace("|", "_"))
+    if not os.path.exists(swtthumb):
+        swtthumb = pathlib.Path(f"{ytdl_data['title']}.webp".replace("|", "_"))
+    if not os.path.exists(swtthumb):
+        swtthumb = None
     await legendevent.edit(
         f"`Preparing to upload video:`\
         \n**{ytdl_data['title']}**\
@@ -272,7 +272,7 @@ async def download_video(event):
         file=uploaded,
         mime_type=mime_type,
         attributes=attributes,
-        thumb=await event.client.upload_file(catthumb) if catthumb else None,
+        thumb=await event.client.upload_file(swtthumb) if swtthumb else None,
     )
     await event.client.send_file(
         event.chat_id,
@@ -281,8 +281,8 @@ async def download_video(event):
         caption=ytdl_data["title"],
     )
     os.remove(f)
-    if catthumb:
-        os.remove(catthumb)
+    if swtthumb:
+        os.remove(swtthumb)
     await event.delete()
 
 
@@ -362,7 +362,7 @@ async def kakashi(event):
         )
         end = datetime.now()
         ms = (end - start).seconds
-        await cat.edit(
+        await legend.edit(
             f"<b><i>➥ Video uploaded in {ms} seconds.</i></b>\n<b><i>➥ Uploaded by :- {hmention}</i></b>",
             parse_mode="html",
         )

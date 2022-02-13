@@ -17,11 +17,11 @@ from . import BOTLOG, BOTLOG_CHATID
 menu_category = "extra"
 
 
-async def spam_function(event, LEGEND, cat, sleeptimem, sleeptimet, DelaySpam=False):
+async def spam_function(event, LEGEND, lol, sleeptimem, sleeptimet, DelaySpam=False):
     # sourcery no-metrics
-    counter = int(cat[0])
+    counter = int(lol[0])
     if len(legend) == 2:
-        spam_message = str(cat[1])
+        spam_message = str(lol[1])
         for _ in range(counter):
             if gvarstatus("spamwork") is None:
                 return
@@ -126,7 +126,7 @@ async def spammer(event):
     LEGEND = await event.get_reply_message()
     legend = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
     try:
-        counter = int(cat[0])
+        counter = int(lol[0])
     except Exception:
         return await eod(
             event, "__Use proper syntax to spam. For syntax refer help menu.__"
@@ -139,7 +139,7 @@ async def spammer(event):
         sleeptimem = 0.3
     await event.delete()
     addgvar("spamwork", True)
-    await spam_function(event, LEGEND, cat, sleeptimem, sleeptimet)
+    await spam_function(event, LEGEND, lol, sleeptimem, sleeptimet)
 
 
 @legend.legend_cmd(
@@ -310,11 +310,11 @@ async def spammer(event):
         )
     legend = input_str[1:]
     try:
-        int(cat[0])
+        int(legend[0])
     except Exception:
         return await eod(
             event, "__Use proper syntax for delay spam. For syntax refer help menu.__"
         )
     await event.delete()
     addgvar("spamwork", True)
-    await spam_function(event, reply, cat, sleeptimem, sleeptimet, DelaySpam=True)
+    await spam_function(event, reply, lol, sleeptimem, sleeptimet, DelaySpam=True)

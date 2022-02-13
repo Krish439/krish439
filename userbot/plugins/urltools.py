@@ -29,8 +29,8 @@ async def _(event):
         )
     check = url(input_str)
     if not check:
-        catstr = "http://" + input_str
-        check = url(catstr)
+        lolstr = "http://" + input_str
+        check = url(lolstr)
     if not check:
         return await eod(event, "`the given link is not supported`", 5)
     sample_url = f"https://da.gd/dns/{input_str}"
@@ -62,8 +62,8 @@ async def _(event):
         )
     check = url(input_str)
     if not check:
-        catstr = f"http://" + input_str
-        check = url(catstr)
+        lolstr = f"http://" + input_str
+        check = url(lolstr)
     if not check:
         return await eod(event, "`the given link is not supported`", 5)
     if not input_str.startswith("http"):
@@ -99,8 +99,8 @@ async def _(event):
         )
     check = url(input_str)
     if not check:
-        catstr = "http://" + input_str
-        check = url(catstr)
+        lolstr = "http://" + input_str
+        check = url(lolstr)
     if not check:
         return await eod(event, "`the given link is not supported`", 5)
     if not input_str.startswith("http"):
@@ -141,8 +141,8 @@ async def _(event):
         )
     check = url(input_str)
     if not check:
-        catstr = "http://" + input_str
-        check = url(catstr)
+        lolstr = "http://" + input_str
+        check = url(lolstr)
     if not check:
         return await eod(event, "`the given link is not supported`", 5)
     await eor(event, "[ㅤㅤㅤㅤㅤㅤㅤ](" + input_str + ")")

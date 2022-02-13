@@ -61,7 +61,7 @@ async def legend(event):
         "usage": "{tr}talkme <text>",
     },
 )
-async def cat(event):
+async def legend(event):
     "talk to me troll"
     reply_to_id = await reply_id(event)
     input_text = event.pattern_match.group(1)

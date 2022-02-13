@@ -244,8 +244,8 @@ async def rm_deletedacc(show):  # sourcery no-metrics
                 del_status = f"__Found__ **{del_u}** __ghost/deleted/zombie account(s) in this group,\
                             \nclean them by using__ `.zombies clean`"
         else:
-            catadmin = await is_admin(show.client, show.chat_id, show.client.uid)
-            if not catadmin:
+            legendadmin = await is_admin(show.client, show.chat_id, show.client.uid)
+            if not legendadmin:
                 return await eod(
                     event,
                     "`You must be admin to check zombies in restricted users`",
@@ -307,8 +307,8 @@ async def rm_deletedacc(show):  # sourcery no-metrics
             del_status = f"Successfully cleaned **{del_u}** deleted account(s) in the group.\
             \n**{del_a}** deleted admin accounts are not removed"
     else:
-        catadmin = await is_admin(show.client, show.chat_id, show.client.uid)
-        if not catadmin:
+        legendadmin = await is_admin(show.client, show.chat_id, show.client.uid)
+        if not legendadmin:
             return await eod(
                 event, "`You must be admin to clean zombies in restricted users`", 10
             )

@@ -53,9 +53,9 @@ async def tmuter(event):  # sourcery no-metrics
         return await legendevent.edit("you haven't mentioned time, check `.help tmute`")
     reason = reason.split(" ", 1)
     hmm = len(reason)
-    cattime = reason[0].strip()
+    swttime = reason[0].strip()
     reason = "".join(reason[1:]) if hmm > 1 else None
-    ctime = await extract_time(legendevent, cattime)
+    ctime = await extract_time(legendevent, swttime)
     if not ctime:
         return
     if user.id == event.client.uid:
@@ -72,7 +72,7 @@ async def tmuter(event):  # sourcery no-metrics
         if reason:
             await legendevent.edit(
                 f"{_format.mentionuser(user.first_name ,user.id)} was muted in {get_display_name(await event.get_chat())}\n"
-                f"**Muted for : **{cattime}\n"
+                f"**Muted for : **{swttime}\n"
                 f"**Reason : **__{reason}__"
             )
             if BOTLOG:
@@ -81,13 +81,13 @@ async def tmuter(event):  # sourcery no-metrics
                     "#TMUTE\n"
                     f"**User : **[{user.first_name}](tg://user?id={user.id})\n"
                     f"**Chat : **{get_display_name(await event.get_chat())}(`{event.chat_id}`)\n"
-                    f"**Muted for : **`{cattime}`\n"
+                    f"**Muted for : **`{swttime}`\n"
                     f"**Reason : **`{reason}``",
                 )
         else:
             await legendevent.edit(
                 f"{_format.mentionuser(user.first_name ,user.id)} was muted in {get_display_name(await event.get_chat())}\n"
-                f"Muted for {cattime}\n"
+                f"Muted for {swttime}\n"
             )
             if BOTLOG:
                 await event.client.send_message(
@@ -95,7 +95,7 @@ async def tmuter(event):  # sourcery no-metrics
                     "#TMUTE\n"
                     f"**User : **[{user.first_name}](tg://user?id={user.id})\n"
                     f"**Chat : **{get_display_name(await event.get_chat())}(`{event.chat_id}`)\n"
-                    f"**Muted for : **`{cattime}`",
+                    f"**Muted for : **`{swttime}`",
                 )
         # Announce to logging group
     except UserIdInvalidError:
@@ -140,9 +140,9 @@ async def tban(event):  # sourcery no-metrics
         return await legendevent.edit("you haven't mentioned time, check `.help tban`")
     reason = reason.split(" ", 1)
     hmm = len(reason)
-    cattime = reason[0].strip()
+    swttime = reason[0].strip()
     reason = "".join(reason[1:]) if hmm > 1 else None
-    ctime = await extract_time(legendevent, cattime)
+    ctime = await extract_time(legendevent, swttime)
     if not ctime:
         return
     if user.id == event.client.uid:
@@ -177,7 +177,7 @@ async def tban(event):  # sourcery no-metrics
     if reason:
         await legendevent.edit(
             f"{_format.mentionuser(user.first_name ,user.id)} was banned in {get_display_name(await event.get_chat())}\n"
-            f"banned for {cattime}\n"
+            f"banned for {swttime}\n"
             f"Reason:`{reason}`"
         )
         if BOTLOG:
@@ -186,13 +186,13 @@ async def tban(event):  # sourcery no-metrics
                 "#TBAN\n"
                 f"**User : **[{user.first_name}](tg://user?id={user.id})\n"
                 f"**Chat : **{get_display_name(await event.get_chat())}(`{event.chat_id}`)\n"
-                f"**Banned untill : **`{cattime}`\n"
+                f"**Banned untill : **`{swttime}`\n"
                 f"**Reason : **__{reason}__",
             )
     else:
         await legendevent.edit(
             f"{_format.mentionuser(user.first_name ,user.id)} was banned in {get_display_name(await event.get_chat())}\n"
-            f"banned for {cattime}\n"
+            f"banned for {swttime}\n"
         )
         if BOTLOG:
             await event.client.send_message(
@@ -200,5 +200,5 @@ async def tban(event):  # sourcery no-metrics
                 "#TBAN\n"
                 f"**User : **[{user.first_name}](tg://user?id={user.id})\n"
                 f"**Chat : **{get_display_name(await event.get_chat())}(`{event.chat_id}`)\n"
-                f"**Banned untill : **`{cattime}`",
+                f"**Banned untill : **`{swttime}`",
             )

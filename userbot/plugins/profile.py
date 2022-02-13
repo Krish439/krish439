@@ -104,15 +104,15 @@ async def _(event):
                     await legendevent.edit("`size must be less than 2 mb`")
                     os.remove(photo)
                     return
-                catpic = None
-                catvideo = await event.client.upload_file(photo)
+                lolpic = None
+                lolvideo = await event.client.upload_file(photo)
             else:
-                catpic = await event.client.upload_file(photo)
-                catvideo = None
+                lolpic = await event.client.upload_file(photo)
+                lolvideo = None
             try:
                 await event.client(
                     functions.photos.UploadProfilePhotoRequest(
-                        file=catpic, video=catvideo, video_start_ts=0.01
+                        file=lolpic, video=lolvideo, video_start_ts=0.01
                     )
                 )
             except Exception as e:

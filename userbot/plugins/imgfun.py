@@ -21,7 +21,7 @@ menu_category = "fun"
     info={
         "header": "gives to reflected  image of one part on other part.",
         "description": "Additionaly use along with cmd i.e, imirrors to gib out put as sticker.",
-        "types": {
+        "flags": {
             "-l": "Right half will be reflection of left half.",
             "-r": "Left half will be reflection of right half.",
             "-u": "bottom half will be reflection of upper half.",

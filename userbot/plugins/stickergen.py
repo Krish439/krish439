@@ -15,7 +15,7 @@ menu_category = "useless"
     command=("quby", menu_category),
     info={
         "header": "Make doge say anything.",
-        "types": {
+        "flags": {
             "b": "Give the sticker on background.",
         },
         "usage": [
@@ -64,9 +64,9 @@ async def quby(event):
         position=position,
     )
     if cmd == "b":
-        convert_tosticker(file_name)
+        lol = convert_tosticker(file_name)
         await event.client.send_file(
-            event.chat_id, cat, reply_to=reply_to_id, force_document=False
+            event.chat_id, lol, reply_to=reply_to_id, force_document=False
         )
     else:
         await clippy(event.client, file_name, event.chat_id, reply_to_id)
@@ -81,7 +81,7 @@ async def quby(event):
     command=("blob", menu_category),
     info={
         "header": "Give the sticker on background.",
-        "types": {
+        "flags": {
             "b": "To create knife sticker transparent.",
         },
         "usage": [
@@ -131,9 +131,9 @@ async def knife(event):
         direction="upwards",
     )
     if cmd == "b":
-        convert_tosticker(file_name)
+        lol = convert_tosticker(file_name)
         await event.client.send_file(
-            event.chat_id, cat, reply_to=reply_to_id, force_document=False
+            event.chat_id, lol, reply_to=reply_to_id, force_document=False
         )
     else:
         await clippy(event.client, file_name, event.chat_id, reply_to_id)
@@ -148,7 +148,7 @@ async def knife(event):
     command=("doge", menu_category),
     info={
         "header": "Make doge say anything.",
-        "types": {
+        "flags": {
             "h": "To create doge sticker with highligted text.",
         },
         "usage": [
@@ -196,9 +196,9 @@ async def doge(event):
         foreground=fg,
         transparency=alpha,
     )
-    convert_tosticker(file_name)
+    lol = convert_tosticker(file_name)
     await event.client.send_file(
-        event.chat_id, cat, reply_to=reply_to_id, force_document=False
+        event.chat_id, lol, reply_to=reply_to_id, force_document=False
     )
     await event.delete()
     for files in (temp_name, file_name):
@@ -212,7 +212,7 @@ async def doge(event):
     command=("penguin", menu_category),
     info={
         "header": "To make penguin meme sticker. ",
-        "types": {
+        "flags": {
             "h": "To create penguin sticker with highligted text.",
         },
         "usage": [
@@ -260,9 +260,9 @@ async def penguin(event):
         foreground=fg,
         transparency=alpha,
     )
-    convert_tosticker(file_name)
+    olo = convert_tosticker(file_name)
     await event.client.send_file(
-        event.chat_id, cat, reply_to=reply_to_id, force_document=False
+        event.chat_id, olo, reply_to=reply_to_id, force_document=False
     )
     await event.delete()
     for files in (temp_name, file_name):
@@ -276,7 +276,7 @@ async def penguin(event):
     command=("gandhi", menu_category),
     info={
         "header": "Make gandhi text sticker.",
-        "types": {
+        "flags": {
             "h": "To create gandhi sticker with highligted text.",
         },
         "usage": [
@@ -324,9 +324,9 @@ async def gandhi(event):
         foreground=fg,
         transparency=alpha,
     )
-    convert_tosticker(file_name)
+    olo = convert_tosticker(file_name)
     await event.client.send_file(
-        event.chat_id, cat, reply_to=reply_to_id, force_document=False
+        event.chat_id, olo, reply_to=reply_to_id, force_document=False
     )
     await event.delete()
     for files in (temp_name, file_name):

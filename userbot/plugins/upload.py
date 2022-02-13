@@ -36,7 +36,7 @@ class UPLOAD:
 UPLOAD_ = UPLOAD()
 
 
-async def catlst_of_files(path):
+async def lst_of_files(path):
     files = []
     for dirname, dirnames, filenames in os.walk(path):
         # print path to all filenames.
@@ -70,33 +70,33 @@ def get_video_thumb(file, output=None, width=320):
 
 
 def sortthings(contents, path):
-    catsort = []
+    lolsort = []
     contents.sort()
     for file in contents:
-        catpath = os.path.join(path, file)
-        if os.path.isfile(catpath):
-            catsort.append(file)
+        swtpath = os.path.join(path, file)
+        if os.path.isfile(swtpath):
+            lolsort.append(file)
     for file in contents:
-        catpath = os.path.join(path, file)
-        if os.path.isdir(catpath):
-            catsort.append(file)
-    return catsort
+        swtpath = os.path.join(path, file)
+        if os.path.isdir(swtpath):
+            lolsort.append(file)
+    return lolsort
 
 
 async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
     return str(path.absolute()) if full else path.stem + path.suffix
 
 
-async def upload(path, event, udir_event, cattype=None):  # sourcery no-metrics
-    cattype = cattype or False
+async def upload(path, event, udir_event, sweetiepe=None):  # sourcery no-metrics
+    sweetiepe = sweetiepe or False
     reply_to_id = await reply_id(event)
     if os.path.isdir(path):
         await event.client.send_message(event.chat_id, f"**Folder : **`{path}`")
         Files = os.listdir(path)
         Files = sortthings(Files, path)
         for file in Files:
-            catpath = os.path.join(path, file)
-            await upload(Path(catpath), event, udir_event)
+            swtpath = os.path.join(path, file)
+            await upload(Path(swtpath), event, udir_event)
     elif os.path.isfile(path):
         fname = os.path.basename(path)
         c_time = time.time()
@@ -115,7 +115,7 @@ async def upload(path, event, udir_event, cattype=None):  # sourcery no-metrics
             file=uploaded,
             mime_type=mime_type,
             attributes=attributes,
-            force_file=cattype,
+            force_file=sweetiepe,
             thumb=await event.client.upload_file(thumb) if thumb else None,
         )
         await event.client.send_file(
@@ -134,7 +134,7 @@ async def upload(path, event, udir_event, cattype=None):  # sourcery no-metrics
     info={
         "header": "To upload files from server to telegram",
         "description": "To upload files which are downloaded in your bot.",
-        "types": {"f": "Use this to make upload files as documents."},
+        "flags": {"f": "Use this to make upload files as documents."},
         "examples": [
             "{tr}upload <file/folder path>",
             "{tr}upload -f ./downloads",
@@ -157,7 +157,7 @@ async def uploadir(event):
     if os.path.isdir(path):
         await eor(udir_event, f"`Gathering file details in directory {path}`")
         UPLOAD_.uploaded = 0
-        await upload(path, event, udir_event, cattype=type)
+        await upload(path, event, udir_event, sweetiepe=type)
         end = datetime.now()
         ms = (end - start).seconds
         await eod(
@@ -167,7 +167,7 @@ async def uploadir(event):
     else:
         await eor(udir_event, "`Uploading file .....`")
         UPLOAD_.uploaded = 0
-        await upload(path, event, udir_event, cattype=type)
+        await upload(path, event, udir_event, sweetiepe=type)
         end = datetime.now()
         ms = (end - start).seconds
         await eod(

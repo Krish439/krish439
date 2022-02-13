@@ -1,4 +1,4 @@
-# reverse search and google search  plugin for cat
+# reverse search and google search  plugin for legend
 import io
 import os
 import re
@@ -65,7 +65,7 @@ async def scam(results, lim):
     command=("gs", menu_category),
     info={
         "header": "Google search command.",
-        "types": {
+        "flags": {
             "-l": "for number of search results.",
             "-p": "for choosing which page results should be showed.",
         },
@@ -149,7 +149,7 @@ async def gsearch(q_event):
     info={
         "header": "Google search in image format",
         "usage": "{tr}gis <query>",
-        "examples": "{tr}gis cat",
+        "examples": "{tr}gis legend",
     },
 )
 async def _(event):

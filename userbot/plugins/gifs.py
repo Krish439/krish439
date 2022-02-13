@@ -23,8 +23,8 @@ menu_category = "useless"
         "header": "Sends random gifs",
         "usage": "Search and send your desire gif randomly and in bulk",
         "examples": [
-            "{tr}gifs cat",
-            "{tr}gifs cat ; <1-20>",
+            "{tr}gifs legend",
+            "{tr}gifs legend ; <1-20>",
         ],
     },
 )

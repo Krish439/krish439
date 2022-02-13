@@ -58,7 +58,7 @@ async def kakashi(event):
         link = "Forward"
     elif link in ("custompmtext", "cppt"):
         link = "Custom PM Permit Text"
-    elif link in ("customalivetext", "cat"):
+    elif link in ("customalivetext", "legend"):
         link = "Custom Alive Text"
     elif link in ("customaliveemoji", "cae"):
         link = "Custom Alive Emoji"

@@ -33,14 +33,14 @@ menu_category = "fun"
 async def glitch(event):
     "Glitches the given Image."
     cmd = event.pattern_match.group(1)
-    catinput = event.pattern_match.group(2)
+    legendinput = event.pattern_match.group(2)
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
-    catinput = int(catinput) if catinput else 2
+    legendinput = int(legendinput) if legendinput else 2
     glitch_file = await _legendtools.media_to_pic(event, reply)
     if glitch_file[1] is None:
         return await eod(
@@ -50,12 +50,12 @@ async def glitch(event):
     img = Image.open(glitch_file[1])
     if cmd:
         glitched = os.path.join("./temp", "glitched.webp")
-        glitch_img = glitcher.glitch_image(img, catinput, color_offset=True)
+        glitch_img = glitcher.glitch_image(img, legendinput, color_offset=True)
         glitch_img.save(glitched)
-        await event.client.send_file(event.chat_id, glitched, reply_to=catid)
+        await event.client.send_file(event.chat_id, glitched, reply_to=swtid)
     else:
         glitched = os.path.join("./temp", "glitched.gif")
-        glitch_img = glitcher.glitch_image(img, catinput, color_offset=True, gif=True)
+        glitch_img = glitcher.glitch_image(img, legendinput, color_offset=True, gif=True)
         DURATION = 200
         LOOP = 0
         glitch_img[0].save(
@@ -66,7 +66,7 @@ async def glitch(event):
             duration=DURATION,
             loop=LOOP,
         )
-        LEGEND = await event.client.send_file(event.chat_id, glitched, reply_to=catid)
+        LEGEND = await event.client.send_file(event.chat_id, glitched, reply_to=swtid)
         await _legendutils.unsavegif(event, LEGEND)
     await glitch_file[0].delete()
     for files in (glitch_file[1], glitched):

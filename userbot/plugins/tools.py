@@ -415,16 +415,16 @@ async def _(event):
         return await event.edit(str(e))
     else:
         im = Image.new(mode="RGB", size=(1280, 720), color=usercolor)
-        im.save("cat.png", "PNG")
+        im.save("legend.png", "PNG")
         input_str = input_str.replace("#", "#COLOR_")
         await event.client.send_file(
             event.chat_id,
-            "cat.png",
+            "legend.png",
             force_document=False,
             caption=input_str,
             reply_to=message_id,
         )
-        os.remove("cat.png")
+        os.remove("legend.png")
         await event.delete()
 
 

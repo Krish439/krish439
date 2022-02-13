@@ -43,7 +43,7 @@ def user_full_name(user):
     info={
         "header": "To get statistics of your telegram account.",
         "description": "Shows you the count of  your groups, channels, private chats...etc if no input is given.",
-        "types": {
+        "flags": {
             "g": "To get list of all group you in",
             "ga": "To get list of all groups where you are admin",
             "go": "To get list of all groups where you are owner/creator.",
@@ -57,7 +57,7 @@ def user_full_name(user):
 )
 async def stats(event):  # sourcery no-metrics
     "To get statistics of your telegram account."
-    await eor(event, STAT_INDICATION)
+    legend = await eor(event, STAT_INDICATION)
     start_time = time.time()
     private_chats = 0
     bots = 0
@@ -115,14 +115,14 @@ async def stats(event):  # sourcery no-metrics
     response += f"**Unread:** {unread} \n"
     response += f"**Unread Mentions:** {unread_mentions} \n\n"
     response += f"📌 __It Took:__ {stop_time:.02f}s \n"
-    await cat.edit(response)
+    await legend.edit(response)
 
 
 @legend.legend_cmd(
     pattern="stat (c|ca|co)$",
 )
 async def stats(event):  # sourcery no-metrics
-    catcmd = event.pattern_match.group(1)
+    legendcmd = event.pattern_match.group(1)
     legendevent = await eor(event, STAT_INDICATION)
     start_time = time.time()
     legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -137,17 +137,17 @@ async def stats(event):  # sourcery no-metrics
                 hica.append([entity.title, entity.id])
             if entity.creator:
                 hico.append([entity.title, entity.id])
-    if catcmd == "c":
+    if legendcmd == "c":
         output = CHANNELS_STR
         for k, i in enumerate(hi, start=1):
             output += f"{k} .) [{i[0]}](https://t.me/c/{i[1]}/1)\n"
         caption = CHANNELS_STR
-    elif catcmd == "ca":
+    elif legendcmd == "ca":
         output = CHANNELS_ADMINSTR
         for k, i in enumerate(hica, start=1):
             output += f"{k} .) [{i[0]}](https://t.me/c/{i[1]}/1)\n"
         caption = CHANNELS_ADMINSTR
-    elif catcmd == "co":
+    elif legendcmd == "co":
         output = CHANNELS_OWNERSTR
         for k, i in enumerate(hico, start=1):
             output += f"{k} .) [{i[0]}](https://t.me/c/{i[1]}/1)\n"
@@ -173,7 +173,7 @@ async def stats(event):  # sourcery no-metrics
     pattern="stat (g|ga|go)$",
 )
 async def stats(event):  # sourcery no-metrics
-    catcmd = event.pattern_match.group(1)
+    legendcmd = event.pattern_match.group(1)
     legendevent = await eor(event, STAT_INDICATION)
     start_time = time.time()
     legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -196,17 +196,17 @@ async def stats(event):  # sourcery no-metrics
                 higa.append([entity.title, entity.id])
             if entity.creator:
                 higo.append([entity.title, entity.id])
-    if catcmd == "g":
+    if legendcmd == "g":
         output = GROUPS_STR
         for k, i in enumerate(hi, start=1):
             output += f"{k} .) [{i[0]}](https://t.me/c/{i[1]}/1)\n"
         caption = GROUPS_STR
-    elif catcmd == "ga":
+    elif legendcmd == "ga":
         output = GROUPS_ADMINSTR
         for k, i in enumerate(higa, start=1):
             output += f"{k} .) [{i[0]}](https://t.me/c/{i[1]}/1)\n"
         caption = GROUPS_ADMINSTR
-    elif catcmd == "go":
+    elif legendcmd == "go":
         output = GROUPS_OWNERSTR
         for k, i in enumerate(higo, start=1):
             output += f"{k} .) [{i[0]}](https://t.me/c/{i[1]}/1)\n"

@@ -23,21 +23,21 @@ menu_category = "extra"
         "usage": "{tr}mask",
     },
 )
-async def _(catbot):
+async def _(owobot):
     "Hazmat suit maker"
-    reply_message = await catbot.get_reply_message()
+    reply_message = await owobot.get_reply_message()
     if not reply_message.media or not reply_message:
-        return await eor(catbot, "```reply to media message```")
+        return await eor(owobot, "```reply to media message```")
     chat = "@hazmat_suit_bot"
     if reply_message.sender.bot:
-        return await eor(catbot, "```Reply to actual users message.```")
-    event = await catbot.edit("```Processing```")
-    async with catbot.client.conversation(chat) as conv:
+        return await eor(owobot, "```Reply to actual users message.```")
+    event = await owobot.edit("```Processing```")
+    async with owobot.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=905164246)
             )
-            await catbot.client.send_message(chat, reply_message)
+            await owobot.client.send_message(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             return await event.edit(
@@ -48,7 +48,7 @@ async def _(catbot):
                 "```can you kindly disable your forward privacy settings for good?```"
             )
         else:
-            await catbot.client.send_file(event.chat_id, response.message.media)
+            await owobot.client.send_file(event.chat_id, response.message.media)
             await event.delete()
 
 
@@ -60,18 +60,18 @@ async def _(catbot):
         "usage": "{tr}awooify",
     },
 )
-async def catbot(catmemes):
+async def owobot(swtmemes):
     "replied Image will be face of other image"
-    replied = await catmemes.get_reply_message()
+    replied = await swtmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if not replied:
-        return await eor(catmemes, "reply to a supported media file")
+        return await eor(swtmemes, "reply to a supported media file")
     if replied.media:
-        legendevent = await eor(catmemes, "passing to telegraph...")
+        legendevent = await eor(swtmemes, "passing to telegraph...")
     else:
-        return await eor(catmemes, "reply to a supported media file")
-    download_location = await catmemes.client.download_media(
+        return await eor(swtmemes, "reply to a supported media file")
+    download_location = await swtmemes.client.download_media(
         replied, Config.TMP_DOWNLOAD_DIRECTORY
     )
     if download_location.endswith((".webp")):
@@ -94,9 +94,9 @@ async def catbot(catmemes):
         os.remove(download_location)
         return await legendevent.edit("ERROR: " + str(exc))
     legend = f"https://telegra.ph{response[0]}"
-    legend = await awooify(legend)
+    lol = await awooify(legend)
     await legendevent.delete()
-    await catmemes.client.send_file(catmemes.chat_id, cat, reply_to=replied)
+    await swtmemes.client.send_file(swtmemes.chat_id, lol, reply_to=replied)
 
 
 @legend.legend_cmd(
@@ -107,18 +107,18 @@ async def catbot(catmemes):
         "usage": "{tr}lolice",
     },
 )
-async def catbot(catmemes):
+async def owobot(swtmemes):
     "replied Image will be face of other image"
-    replied = await catmemes.get_reply_message()
+    replied = await swtmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if not replied:
-        return await eor(catmemes, "reply to a supported media file")
+        return await eor(swtmemes, "reply to a supported media file")
     if replied.media:
-        legendevent = await eor(catmemes, "passing to telegraph...")
+        legendevent = await eor(swtmemes, "passing to telegraph...")
     else:
-        return await eor(catmemes, "reply to a supported media file")
-    download_location = await catmemes.client.download_media(
+        return await eor(swtmemes, "reply to a supported media file")
+    download_location = await swtmemes.client.download_media(
         replied, Config.TMP_DOWNLOAD_DIRECTORY
     )
     if download_location.endswith((".webp")):
@@ -141,9 +141,9 @@ async def catbot(catmemes):
         os.remove(download_location)
         return await legendevent.edit("ERROR: " + str(exc))
     legend = f"https://telegra.ph{response[0]}"
-    legend = await lolice(legend)
+    lol = await lolice(legend)
     await legendevent.delete()
-    await catmemes.client.send_file(catmemes.chat_id, cat, reply_to=replied)
+    await swtmemes.client.send_file(swtmemes.chat_id, lol, reply_to=replied)
 
 
 @legend.legend_cmd(
@@ -154,18 +154,18 @@ async def catbot(catmemes):
         "usage": "{tr}bun",
     },
 )
-async def catbot(catmemes):
+async def owobot(swtmemes):
     "replied Image will be face of other image"
-    replied = await catmemes.get_reply_message()
+    replied = await swtmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if not replied:
-        return await eor(catmemes, "reply to a supported media file")
+        return await eor(swtmemes, "reply to a supported media file")
     if replied.media:
-        legendevent = await eor(catmemes, "passing to telegraph...")
+        legendevent = await eor(swtmemes, "passing to telegraph...")
     else:
-        return await eor(catmemes, "reply to a supported media file")
-    download_location = await catmemes.client.download_media(
+        return await eor(swtmemes, "reply to a supported media file")
+    download_location = await swtmemes.client.download_media(
         replied, Config.TMP_DOWNLOAD_DIRECTORY
     )
     if download_location.endswith((".webp")):
@@ -188,9 +188,9 @@ async def catbot(catmemes):
         os.remove(download_location)
         return await legendevent.edit("ERROR: " + str(exc))
     legend = f"https://telegra.ph{response[0]}"
-    legend = await baguette(legend)
+    lol = await baguette(legend)
     await legendevent.delete()
-    await catmemes.client.send_file(catmemes.chat_id, cat, reply_to=replied)
+    await swtmemes.client.send_file(swtmemes.chat_id, lol, reply_to=replied)
 
 
 @legend.legend_cmd(
@@ -201,18 +201,18 @@ async def catbot(catmemes):
         "usage": "{tr}iphx",
     },
 )
-async def catbot(catmemes):
+async def owobot(swtmemes):
     "replied image as iphone x wallpaper."
-    replied = await catmemes.get_reply_message()
+    replied = await swtmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if not replied:
-        return await eor(catmemes, "reply to a supported media file")
+        return await eor(swtmemes, "reply to a supported media file")
     if replied.media:
-        legendevent = await eor(catmemes, "passing to telegraph...")
+        legendevent = await eor(swtmemes, "passing to telegraph...")
     else:
-        return await eor(catmemes, "reply to a supported media file")
-    download_location = await catmemes.client.download_media(
+        return await eor(swtmemes, "reply to a supported media file")
+    download_location = await swtmemes.client.download_media(
         replied, Config.TMP_DOWNLOAD_DIRECTORY
     )
     if download_location.endswith((".webp")):
@@ -235,6 +235,6 @@ async def catbot(catmemes):
         os.remove(download_location)
         return await legendevent.edit("ERROR: " + str(exc))
     legend = f"https://telegra.ph{response[0]}"
-    legend = await iphonex(legend)
+    lol = await iphonex(legend)
     await legendevent.delete()
-    await catmemes.client.send_file(catmemes.chat_id, cat, reply_to=replied)
+    await swtmemes.client.send_file(swtmemes.chat_id, lol, reply_to=replied)

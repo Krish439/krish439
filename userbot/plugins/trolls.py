@@ -22,10 +22,10 @@ menu_category = "fun"
         "usage": "{tr}trash",
     },
 )
-async def catbot(event):
+async def owobot(event):
     "image meme creator."
     replied = await event.get_reply_message()
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not replied:
         return await eor(event, "reply to a supported media file")
     output = await _legendtools.media_to_pic(event, replied)
@@ -48,10 +48,10 @@ async def catbot(event):
         os.remove(download_location)
         return await output[0].edit(f"**Error: **\n`{exc}`")
     legend = f"https://telegra.ph{response[0]}"
-    legend = await trash(legend)
+    olt = await trash(legend)
     os.remove(download_location)
     await output[0].delete()
-    await event.client.send_file(event.chat_id, cat, reply_to=catid)
+    await event.client.send_file(event.chat_id, olt, reply_to=swtid)
 
 
 @legend.legend_cmd(
@@ -62,10 +62,10 @@ async def catbot(event):
         "usage": "{tr}threats",
     },
 )
-async def catbot(event):
+async def owobot(event):
     "image meme creator."
     replied = await event.get_reply_message()
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not replied:
         return await eor(event, "reply to a supported media file")
     output = await _legendtools.media_to_pic(event, replied)
@@ -87,10 +87,10 @@ async def catbot(event):
         os.remove(download_location)
         return await output[0].edit(f"**Error: **\n`{exc}`")
     legend = f"https://telegra.ph{response[0]}"
-    legend = await threats(legend)
+    plo = await threats(legend)
     await output[0].delete()
     os.remove(download_location)
-    await event.client.send_file(event.chat_id, cat, reply_to=catid)
+    await event.client.send_file(event.chat_id, plo, reply_to=swtid)
 
 
 @legend.legend_cmd(
@@ -102,7 +102,7 @@ async def catbot(event):
         "usage": "{tr}trap (name of the person to trap) ; (trapper name)",
     },
 )
-async def catbot(event):
+async def owobot(event):
     "image meme creator."
     input_str = event.pattern_match.group(1)
     input_str = deEmojify(input_str)
@@ -114,7 +114,7 @@ async def catbot(event):
             "**Syntax :** reply to image or sticker with `.trap (name of the person to trap);(trapper name)`",
         )
     replied = await event.get_reply_message()
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not replied:
         return await eor(event, "reply to a supported media file")
     output = await _legendtools.media_to_pic(event, replied)
@@ -136,10 +136,10 @@ async def catbot(event):
         os.remove(download_location)
         return await output[0].edit(f"**Error: **\n`{exc}`")
     legend = f"https://telegra.ph{response[0]}"
-    await trap(text1, text2, cat)
+    await trap(text1, text2, legend)
     await output[0].delete()
     os.remove(download_location)
-    await event.client.send_file(event.chat_id, cat, reply_to=catid)
+    await event.client.send_file(event.chat_id, legend, reply_to=swtid)
 
 
 @legend.legend_cmd(
@@ -151,7 +151,7 @@ async def catbot(event):
         "usage": "{tr}phub (username);(text in comment)",
     },
 )
-async def catbot(event):
+async def owobot(event):
     "image meme creator."
     input_str = event.pattern_match.group(1)
     input_str = deEmojify(input_str)
@@ -163,7 +163,7 @@ async def catbot(event):
             "**Syntax :** reply to image or sticker with `.phub (username);(text in comment)`",
         )
     replied = await event.get_reply_message()
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not replied:
         return await eor(event, "reply to a supported media file")
     output = await _legendtools.media_to_pic(event, replied)
@@ -186,7 +186,7 @@ async def catbot(event):
         os.remove(download_location)
         return await output[0].edit(f"**Error: **\n`{exc}`")
     legend = f"https://telegra.ph{response[0]}"
-    await phcomment(cat, text, username)
+    await phcomment(legend, text, username)
     await output[0].delete()
     os.remove(download_location)
-    await event.client.send_file(event.chat_id, cat, reply_to=catid)
+    await event.client.send_file(event.chat_id, legend, reply_to=swtid)

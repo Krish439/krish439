@@ -167,7 +167,7 @@ async def who(event):
     try:
         photo, caption = await fetch_info(replied_user, event)
     except AttributeError:
-        return await eor(cat, "`Could not fetch info of that user.`")
+        return await eor(event, "`Could not fetch info of that user.`")
     message_id_to_reply = await reply_id(event)
     try:
         await event.client.send_file(
@@ -183,7 +183,7 @@ async def who(event):
             os.remove(photo)
         await legend.delete()
     except TypeError:
-        await cat.edit(caption, parse_mode="html")
+        await legend.edit(caption, parse_mode="html")
 
 
 @legend.legend_cmd(

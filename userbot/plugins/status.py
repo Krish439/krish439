@@ -67,7 +67,7 @@ async def pussy(event):
         "usage": "{tr}online",
     },
 )
-async def cat(event):
+async def legend(event):
     "make yourself online"
     user = await event.client.get_entity("me")
     if user.first_name.startswith(OFFLINE_TAG):

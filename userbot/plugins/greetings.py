@@ -3,7 +3,7 @@ import random
 from userbot import legend
 
 from ..core.managers import eor
-from . import catmemes
+from . import swtmemes
 
 menu_category = "extra"
 
@@ -120,7 +120,7 @@ async def gn(event):
 )
 async def morning(morning):
     "Good morning random strings."
-    txt = random.choice(catmemes.GDMORNING)
+    txt = random.choice(swtmemes.GDMORNING)
     await eor(morning, txt)
 
 
@@ -134,7 +134,7 @@ async def morning(morning):
 )
 async def noon(noon):
     "Good afternoon random strings."
-    txt = random.choice(catmemes.GDNOON)
+    txt = random.choice(swtmemes.GDNOON)
     await eor(noon, txt)
 
 
@@ -148,7 +148,7 @@ async def noon(noon):
 )
 async def night(night):
     "Good night random strings."
-    txt = random.choice(catmemes.GDNIGHT)
+    txt = random.choice(swtmemes.GDNIGHT)
     await eor(night, txt)
 
 
@@ -264,7 +264,7 @@ async def hi(event):
         legend = "🌺"
     await eor(
         event,
-        f"{cat}✨✨{cat}✨{cat}{cat}{cat}\n{cat}✨✨{cat}✨✨{cat}✨\n{cat}{cat}{cat}{cat}✨✨{cat}✨\n{cat}✨✨{cat}✨✨{cat}✨\n{cat}✨✨{cat}✨{cat}{cat}{cat}\n☁☁☁☁☁☁☁☁",
+        f"{legend}✨✨{legend}✨{legend}{legend}{legend}\n{legend}✨✨{legend}✨✨{legend}✨\n{legend}{legend}{legend}{legend}✨✨{legend}✨\n{legend}✨✨{legend}✨✨{legend}✨\n{legend}✨✨{legend}✨{legend}{legend}{legend}\n☁☁☁☁☁☁☁☁",
     )
 
 

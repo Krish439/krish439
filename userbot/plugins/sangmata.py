@@ -16,7 +16,7 @@ menu_category = "utils"
     command=("sg", menu_category),
     info={
         "header": "To get name history of the user.",
-        "types": {
+        "flags": {
             "u": "That is sgu to get username history.",
         },
         "usage": [

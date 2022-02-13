@@ -36,7 +36,7 @@ def get_warp_length(width):
     command=("qpic", menu_category),
     info={
         "header": "Makes quote pic.",
-        "types": {
+        "flags": {
             "-b": "To get black and white output.",
             "-s": "To output file as sticker",
         },
@@ -147,29 +147,29 @@ async def q_pic(event):  # sourcery no-metrics
         "usage": "{tr}q",
     },
 )
-async def stickerchat(catquotes):
+async def stickerchat(owoquotes):
     "Makes your message as sticker quote"
-    reply = await catquotes.get_reply_message()
+    reply = await owoquotes.get_reply_message()
     if not reply:
-        return await eor(catquotes, "`I cant quote the message . reply to a message`")
+        return await eor(owoquotes, "`I cant quote the message . reply to a message`")
     fetchmsg = reply.message
     repliedreply = None
     mediatype = media_type(reply)
     if mediatype and mediatype in ["Photo", "Round Video", "Gif"]:
-        return await eor(catquotes, "`Replied message is not supported now`")
-    legendevent = await eor(catquotes, "`Making quote...`")
+        return await eor(owoquotes, "`Replied message is not supported now`")
+    legendevent = await eor(owoquotes, "`Making quote...`")
     user = (
-        await catquotes.client.get_entity(reply.forward.sender)
+        await owoquotes.client.get_entity(reply.forward.sender)
         if reply.fwd_from
         else reply.sender
     )
-    res, catmsg = await process(fetchmsg, user, catquotes.client, reply, repliedreply)
+    res, swtmsg = await process(fetchmsg, user, owoquotes.client, reply, repliedreply)
     if not res:
         return
     outfi = os.path.join("./temp", "sticker.png")
-    catmsg.save(outfi)
+    swtmsg.save(outfi)
     endfi = convert_tosticker(outfi)
-    await catquotes.client.send_file(catquotes.chat_id, endfi, reply_to=reply)
+    await owoquotes.client.send_file(owoquotes.chat_id, endfi, reply_to=reply)
     await legendevent.delete()
     os.remove(endfi)
 
@@ -182,29 +182,29 @@ async def stickerchat(catquotes):
         "usage": "{tr}rq",
     },
 )
-async def stickerchat(catquotes):
+async def stickerchat(owoquotes):
     "To make sticker message."
-    reply = await catquotes.get_reply_message()
+    reply = await owoquotes.get_reply_message()
     if not reply:
-        return await eor(catquotes, "`I cant quote the message . reply to a message`")
+        return await eor(owoquotes, "`I cant quote the message . reply to a message`")
     fetchmsg = reply.message
     repliedreply = await reply.get_reply_message()
     mediatype = media_type(reply)
     if mediatype and mediatype in ["Photo", "Round Video", "Gif"]:
-        return await eor(catquotes, "`Replied message is not supported now`")
-    legendevent = await eor(catquotes, "`Making quote...`")
+        return await eor(owoquotes, "`Replied message is not supported now`")
+    legendevent = await eor(owoquotes, "`Making quote...`")
     user = (
-        await catquotes.client.get_entity(reply.forward.sender)
+        await owoquotes.client.get_entity(reply.forward.sender)
         if reply.fwd_from
         else reply.sender
     )
-    res, catmsg = await process(fetchmsg, user, catquotes.client, reply, repliedreply)
+    res, stmsg = await process(fetchmsg, user, owoquotes.client, reply, repliedreply)
     if not res:
         return
     outfi = os.path.join("./temp", "sticker.png")
-    catmsg.save(outfi)
+    stmsg.save(outfi)
     endfi = convert_tosticker(outfi)
-    await catquotes.client.send_file(catquotes.chat_id, endfi, reply_to=reply)
+    await owoquotes.client.send_file(owoquotes.chat_id, endfi, reply_to=reply)
     await legendevent.delete()
     os.remove(endfi)
 

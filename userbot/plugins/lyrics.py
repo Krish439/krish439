@@ -20,7 +20,7 @@ GENIUS = Config.GENIUS_API_TOKEN
     info={
         "header": "Song lyrics searcher using genius api.",
         "description": "if you want to provide artist name with song name then use this format {tr}lyrics <artist name> - <song name> . if you use this format in your query then types won't work. by default it will show first query.",
-        "types": {
+        "flags": {
             "-l": "to get list of search lists.",
             "-g": "To get paticular song lyrics.",
         },

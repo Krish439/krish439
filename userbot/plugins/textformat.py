@@ -106,5 +106,5 @@ async def here(event):
     else:
         bad = list(intxt.upper())[::2]
         legend = list(intxt.lower())[1::2]
-    mystring = "".join(f"{i}{j}" for i, j in zip(bad, cat))
+    mystring = "".join(f"{i}{j}" for i, j in zip(bad, legend))
     await eor(event, mystring)

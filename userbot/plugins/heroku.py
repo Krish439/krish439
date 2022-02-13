@@ -34,7 +34,7 @@ API_KEY = Config.API_KEY
     command=("var", menu_category),
     info={
         "header": "To manage heroku vars.",
-        "types": {
+        "flags": {
             "set": "To set new var in heroku or modify the old var",
             "get": "To show the already existing var value.",
             "del": "To delete the existing value",
@@ -62,15 +62,15 @@ async def variable(var):  # sourcery no-metrics
     exe = var.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "get":
-        await eor(var, "`Getting information...`")
+        legend = await eor(var, "`Getting information...`")
         await asyncio.sleep(1.0)
         try:
             variable = var.pattern_match.group(2).split()[0]
             if variable in heroku_var:
-                return await cat.edit(
+                return await legend.edit(
                     "**ConfigVars**:" f"\n\n`{variable}` = `{heroku_var[variable]}`\n"
                 )
-            await cat.edit(
+            await legend.edit(
                 "**ConfigVars**:" f"\n\n__Error:\n-> __`{variable}`__ don't exists__"
             )
         except IndexError:
@@ -80,7 +80,7 @@ async def variable(var):  # sourcery no-metrics
             with open("configs.json", "r") as fp:
                 result = fp.read()
                 await eor(
-                    cat,
+                    var,
                     "`[HEROKU]` ConfigVars:\n\n"
                     "================================"
                     f"\n```{result}```\n"
@@ -89,32 +89,32 @@ async def variable(var):  # sourcery no-metrics
             os.remove("configs.json")
     elif exe == "set":
         variable = "".join(var.text.split(maxsplit=2)[2:])
-        await eor(var, "`Setting information...`")
+        legend = await eor(var, "`Setting information...`")
         if not variable:
-            return await cat.edit("`.set var <ConfigVars-name> <value>`")
+            return await legend.edit("`.set var <ConfigVars-name> <value>`")
         value = "".join(variable.split(maxsplit=1)[1:])
         variable = "".join(variable.split(maxsplit=1)[0])
         if not value:
-            return await cat.edit("`.set var <ConfigVars-name> <value>`")
+            return await legend.edit("`.set var <ConfigVars-name> <value>`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await cat.edit(f"`{variable}` **successfully changed to  ->  **`{value}`")
+            await legend.edit(f"`{variable}` **successfully changed to  ->  **`{value}`")
         else:
-            await cat.edit(
+            await legend.edit(
                 f"`{variable}`**  successfully added with value`  ->  **{value}`"
             )
         heroku_var[variable] = value
     elif exe == "del":
-        await eor(var, "`Getting information to deleting variable...`")
+        legend = await eor(var, "`Getting information to deleting variable...`")
         try:
             variable = var.pattern_match.group(2).split()[0]
         except IndexError:
-            return await cat.edit("`Please specify ConfigVars you want to delete`")
+            return await legend.edit("`Please specify ConfigVars you want to delete`")
         await asyncio.sleep(1.5)
         if variable not in heroku_var:
-            return await cat.edit(f"`{variable}`**  does not exist**")
+            return await legend.edit(f"`{variable}`**  does not exist**")
 
-        await cat.edit(f"`{variable}`  **successfully deleted**")
+        await legend.edit(f"`{variable}`  **successfully deleted**")
         del heroku_var[variable]
 
 

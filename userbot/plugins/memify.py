@@ -13,7 +13,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from userbot import legend
 
 from ..core.managers import eod, eor
-from ..helpers import asciiart, cat_meeme, cat_meme, media_type
+from ..helpers import asciiart, swt_meeme, swt_meme, media_type
 from ..helpers.functions import (
     add_frame,
     convert_toimage,
@@ -54,7 +54,7 @@ font_list = [
     command=("pframe", menu_category),
     info={
         "header": "Adds frame for the replied image.",
-        "types": {
+        "flags": {
             "-f": "To send output file not as streamble image.",
         },
         "usage": [
@@ -151,20 +151,20 @@ async def maccmd(event):  # sourcery no-metrics
 async def memes(event):
     "To write text on stickers or image"
     cmd = event.pattern_match.group(1)
-    catinput = event.pattern_match.group(2)
+    legendinput = event.pattern_match.group(2)
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    if not catinput:
+    if not legendinput:
         return await eod(
             event, "`what should i write on that u idiot give text to memify`"
         )
-    if ";" in catinput:
-        top, bottom = catinput.split(";", 1)
+    if ";" in legendinput:
+        top, bottom = legendinput.split(";", 1)
     else:
-        top = catinput
+        top = legendinput
         bottom = ""
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -179,19 +179,19 @@ async def memes(event):
     except BaseException:
         pass
     meme_file = convert_toimage(output[1])
-    meme = os.path.join("./temp", "catmeme.jpg")
+    meme = os.path.join("./temp", "legendmeme.jpg")
     if gvarstatus("CNG_FONTS") is None:
         CNG_FONTS = "userbot/helpers/styles/impact.ttf"
     else:
         CNG_FONTS = gvarstatus("CNG_FONTS")
     if max(len(top), len(bottom)) < 21:
-        await cat_meme(CNG_FONTS, top, bottom, meme_file, meme)
+        await swt_meme(CNG_FONTS, top, bottom, meme_file, meme)
     else:
-        await cat_meeme(top, bottom, CNG_FONTS, meme_file, meme)
+        await swt_meeme(top, bottom, CNG_FONTS, meme_file, meme)
     if cmd != "mmf":
         meme = convert_tosticker(meme)
     await event.client.send_file(
-        event.chat_id, meme, reply_to=catid, force_document=False
+        event.chat_id, meme, reply_to=swtid, force_document=False
     )
     await output[0].delete()
     for files in (meme, meme_file):
@@ -238,12 +238,12 @@ async def lang(event):
 )
 async def memes(event):
     "To get ascii image of replied image."
-    catinput = event.pattern_match.group(1)
+    legendinput = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     jisanidea = None
@@ -268,10 +268,10 @@ async def memes(event):
     c_list = random_color()
     color1 = c_list[0]
     color2 = c_list[1]
-    bgcolor = "#080808" if not catinput else catinput
+    bgcolor = "#080808" if not legendinput else legendinput
     asciiart(meme_file, 0.3, 1.9, outputfile, color1, color2, bgcolor)
     await event.client.send_file(
-        event.chat_id, outputfile, reply_to=catid, force_document=False
+        event.chat_id, outputfile, reply_to=swtid, force_document=False
     )
     await output[0].delete()
     for files in (outputfile, meme_file):
@@ -293,7 +293,7 @@ async def memes(event):
         await eor(event, "`Reply to supported Media...`")
         return
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not os.path.isdir("./temp/"):
         os.mkdir("./temp/")
     jisanidea = None
@@ -317,7 +317,7 @@ async def memes(event):
     )
     await invert_colors(meme_file, outputfile)
     await event.client.send_file(
-        event.chat_id, outputfile, force_document=False, reply_to=catid
+        event.chat_id, outputfile, force_document=False, reply_to=swtid
     )
     await output[0].delete()
     for files in (outputfile, meme_file):
@@ -339,7 +339,7 @@ async def memes(event):
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     jisanidea = None
@@ -363,7 +363,7 @@ async def memes(event):
     )
     await solarize(meme_file, outputfile)
     await event.client.send_file(
-        event.chat_id, outputfile, force_document=False, reply_to=catid
+        event.chat_id, outputfile, force_document=False, reply_to=swtid
     )
     await output[0].delete()
     for files in (outputfile, meme_file):
@@ -385,7 +385,7 @@ async def memes(event):
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     jisanidea = None
@@ -409,7 +409,7 @@ async def memes(event):
     )
     await mirror_file(meme_file, outputfile)
     await event.client.send_file(
-        event.chat_id, outputfile, force_document=False, reply_to=catid
+        event.chat_id, outputfile, force_document=False, reply_to=swtid
     )
     await output[0].delete()
     for files in (outputfile, meme_file):
@@ -431,7 +431,7 @@ async def memes(event):
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     jisanidea = None
@@ -455,7 +455,7 @@ async def memes(event):
     )
     await flip_image(meme_file, outputfile)
     await event.client.send_file(
-        event.chat_id, outputfile, force_document=False, reply_to=catid
+        event.chat_id, outputfile, force_document=False, reply_to=swtid
     )
     await output[0].delete()
     for files in (outputfile, meme_file):
@@ -477,7 +477,7 @@ async def memes(event):
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     jisanidea = None
@@ -501,7 +501,7 @@ async def memes(event):
     )
     await grayscale(meme_file, outputfile)
     await event.client.send_file(
-        event.chat_id, outputfile, force_document=False, reply_to=catid
+        event.chat_id, outputfile, force_document=False, reply_to=swtid
     )
     await output[0].delete()
     for files in (outputfile, meme_file):
@@ -519,13 +519,13 @@ async def memes(event):
 )
 async def memes(event):
     "zooms your media file."
-    catinput = event.pattern_match.group(1)
-    catinput = 50 if not catinput else int(catinput)
+    legendinput = event.pattern_match.group(1)
+    legendinput = 50 if not legendinput else int(legendinput)
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     jisanidea = None
@@ -548,12 +548,12 @@ async def memes(event):
         else os.path.join("./temp", "zoomimage.jpg")
     )
     try:
-        await crop(meme_file, outputfile, catinput)
+        await crop(meme_file, outputfile, legendinput)
     except Exception as e:
         return await output[0].edit(f"`{e}`")
     try:
         await event.client.send_file(
-            event.chat_id, outputfile, force_document=False, reply_to=catid
+            event.chat_id, outputfile, force_document=False, reply_to=swtid
         )
     except Exception as e:
         return await output[0].edit(f"`{e}`")
@@ -574,14 +574,14 @@ async def memes(event):
 )
 async def memes(event):
     "make a frame for your media file"
-    catinput = event.pattern_match.group(1)
-    if not catinput:
-        catinput = "50"
-    if ";" in str(catinput):
-        catinput, colr = catinput.split(";", 1)
+    legendinput = event.pattern_match.group(1)
+    if not legendinput:
+        legendinput = "50"
+    if ";" in str(legendinput):
+        legendinput, colr = legendinput.split(";", 1)
     else:
         colr = 0
-    catinput = int(catinput)
+    legendinput = int(legendinput)
     try:
         colr = int(colr)
     except Exception as e:
@@ -590,7 +590,7 @@ async def memes(event):
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
     san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     jisanidea = None
@@ -613,12 +613,12 @@ async def memes(event):
         else os.path.join("./temp", "framed.jpg")
     )
     try:
-        await add_frame(meme_file, outputfile, catinput, colr)
+        await add_frame(meme_file, outputfile, legendinput, colr)
     except Exception as e:
         return await output[0].edit(f"`{e}`")
     try:
         await event.client.send_file(
-            event.chat_id, outputfile, force_document=False, reply_to=catid
+            event.chat_id, outputfile, force_document=False, reply_to=swtid
         )
     except Exception as e:
         return await output[0].edit(f"`{e}`")

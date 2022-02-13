@@ -155,7 +155,7 @@ async def sticklet(event):
     image = Image.new("RGBA", (512, 512), (255, 255, 255, 0))
     draw = ImageDraw.Draw(image)
     fontsize = 230
-    FONT_FILE = await get_font_file(event.client, "@catfonts", font_file_name)
+    FONT_FILE = await get_font_file(event.client, "@lolfonts", font_file_name)
     font = ImageFont.truetype(FONT_FILE, size=fontsize)
     while draw.multiline_textsize(sticktext, font=font) > (512, 512):
         fontsize -= 3
@@ -235,7 +235,7 @@ async def twt(event):
     command=("glax", menu_category),
     info={
         "header": "Make glax the dragon scream your text.",
-        "types": {
+        "flags": {
             "r": "Reverse the face of the dragon",
         },
         "usage": [

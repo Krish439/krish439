@@ -45,7 +45,7 @@ async def source(e):
     command=("github", menu_category),
     info={
         "header": "Shows the information about an user on GitHub of given username",
-        "types": {"-l": "repo limit : default to 5"},
+        "flags": {"-l": "repo limit : default to 5"},
         "usage": ".github [type] [username]",
         "examples": [".github LEGEND-AI", ".github -l5 LEGEND-AI"],
     },

@@ -47,9 +47,9 @@ command=("Just command name", menu_category) use menu_category name from predefi
 info={
         "header":string - "intro for command",
         "description": string - "Description for command",
-        "types": dict or string - "Types u are using in your plugin",
+        "flags": dict or string - "Types u are using in your plugin",
         "options": dict or string - "Options u are using in your plugin",
-        "types": list or string - "types u are using in your plugin",
+        "flags": list or string - "types u are using in your plugin",
         "usage": "Usage for your command",
         "examples": "Example for the command",
         "your custom name if you want to use other": str or list or dict - "data/information about it",

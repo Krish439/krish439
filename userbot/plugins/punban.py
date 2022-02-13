@@ -287,7 +287,7 @@ async def pussy(event):
         ],
     },
 )
-async def cat(event):
+async def legend(event):
     """Send a list of xvideos posts"""
     reply_to = await reply_id(event)
     intxt = event.pattern_match.group(1)

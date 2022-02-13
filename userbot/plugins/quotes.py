@@ -5,7 +5,7 @@ from userbot import legend
 
 from ..core.logger import logging
 from ..core.managers import eod, eor
-from ..helpers import catmemes
+from ..helpers import swtmemes
 from ..helpers.functions import random_quote, search_quotes
 from ..helpers.utils import parse_pre
 
@@ -43,5 +43,5 @@ async def quote_search(event):
 )
 async def _(event):
     "Shows random programming quotes"
-    txt = random.choice(catmemes.PROGQUOTES)
+    txt = random.choice(swtmemes.PROGQUOTES)
     await eor(event, txt)

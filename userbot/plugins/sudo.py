@@ -189,7 +189,7 @@ async def _(event):
     command=("addscmd", menu_category),
     info={
         "header": "To enable cmds for sudo users.",
-        "types": {
+        "flags": {
             "-all": "Will enable all cmds for sudo users. (except few like eval, exec, profile).",
             "-full": "Will add all cmds including eval,exec...etc. compelete sudo.",
             "-p": "Will add all cmds from the given plugin names.",
@@ -284,7 +284,7 @@ async def _(event):  # sourcery no-metrics
     command=("rmscmd", menu_category),
     info={
         "header": "To disable given cmds for sudo.",
-        "types": {
+        "flags": {
             "-all": "Will disable all enabled cmds for sudo users.",
             "-type": "Will disable all typeed cmds like eval, exec...etc.",
             "-p": "Will disable all cmds from the given plugin names.",
@@ -375,7 +375,7 @@ async def _(event):  # sourcery no-metrics
     info={
         "header": "To show list of enabled cmds for sudo.",
         "description": "will show you the list of all enabled commands",
-        "types": {"-d": "To show disabled cmds instead of enabled cmds."},
+        "flags": {"-d": "To show disabled cmds instead of enabled cmds."},
         "usage": [
             "{tr}vscmds",
             "{tr}vscmds -d",

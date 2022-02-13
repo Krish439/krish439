@@ -7,7 +7,7 @@ import asyncio
 import random
 
 from ..core.managers import eor
-from . import catmemes, legend
+from . import swtmemes, legend
 
 menu_category = "extra"
 
@@ -22,7 +22,7 @@ menu_category = "extra"
 )
 async def abusing(abused):
     "random abuse string"
-    reply_text = random.choice(catmemes.ABUSE_STRINGS)
+    reply_text = random.choice(swtmemes.ABUSE_STRINGS)
     await eor(abused, reply_text)
 
 
@@ -36,7 +36,7 @@ async def abusing(abused):
 )
 async def fuckedd(abusehard):
     "random gali string"
-    reply_text = random.choice(catmemes.ABUSEHARD_STRING)
+    reply_text = random.choice(swtmemes.ABUSEHARD_STRING)
     await eor(abusehard, reply_text)
 
 
@@ -50,7 +50,7 @@ async def fuckedd(abusehard):
 )
 async def metoo(e):
     "random gali string"
-    txt = random.choice(catmemes.RENDISTR)
+    txt = random.choice(swtmemes.RENDISTR)
     await eor(e, txt)
 
 
@@ -64,7 +64,7 @@ async def metoo(e):
 )
 async def chutiya(fuks):
     "random gali string"
-    reply_text = random.choice(catmemes.CHU_STRINGS)
+    reply_text = random.choice(swtmemes.CHU_STRINGS)
     await eor(fuks, reply_text)
 
 
@@ -78,7 +78,7 @@ async def chutiya(fuks):
 )
 async def thanos(thanos):
     "random gali string"
-    reply_text = random.choice(catmemes.THANOS_STRINGS)
+    reply_text = random.choice(swtmemes.THANOS_STRINGS)
     await eor(thanos, reply_text)
 
 
@@ -327,7 +327,7 @@ async def kakashi(event):
         "usage": "{tr}gaali",
     },
 )
-async def cat(event):
+async def legend(event):
     "random gali string"
     await eor(
         event,
@@ -343,7 +343,7 @@ async def cat(event):
         "usage": "{tr}gali",
     },
 )
-async def cat(event):
+async def legend(event):
     "random gali string"
     await eor(
         event,
@@ -359,7 +359,7 @@ async def cat(event):
         "usage": "{tr}egali",
     },
 )
-async def cat(event):
+async def legend(event):
     "random gali string"
     await eor(
         event,
