@@ -21,6 +21,7 @@ vlist = [
     "ALLOW_NSFW",
     "HELP_EMOJI",
     "HELP_TEXT",
+    "HELP_PIC",
     "IALIVE_PIC",
     "IALIVE_EMOJI",
     "IALIVE_TEXT",
@@ -41,8 +42,8 @@ oldvars = {
 
 
 @legend.legend_cmd(
-    pattern="(set|get|del)dv(?: |$)([\s\S]*)",
-    command=("dv", menu_category),
+    pattern="(set|get|del)db(?: |$)([\s\S]*)",
+    command=("db", menu_category),
     info={
         "header": "Set vars in database or Check or Delete",
         "description": "Set , Fetch or Delete values or vars directly in database without restart or heroku vars.\n\nYou can set multiple pics by giving space after links in alive, ialive, pm permit.",
@@ -53,15 +54,15 @@ oldvars = {
         },
         "var name": "**[List of Database Vars]**",
         "usage": [
-            "{tr}setdv <var name> <var value>",
-            "{tr}getdv <var name>",
-            "{tr}deldv <var name>",
+            "{tr}setdb <var name> <var value>",
+            "{tr}getdb <var name>",
+            "{tr}deldb <var name>",
         ],
         "examples": [
-            "{tr}setdv ALIVE_PIC <pic link>",
-            "{tr}setdv ALIVE_PIC <pic link 1> <pic link 2>",
-            "{tr}getdv ALIVE_PIC",
-            "{tr}deldv ALIVE_PIC",
+            "{tr}setdb ALIVE_PIC <pic link>",
+            "{tr}setdb ALIVE_PIC <pic link 1> <pic link 2>",
+            "{tr}getdb ALIVE_PIC",
+            "{tr}deldb ALIVE_PIC",
         ],
     },
 )
