@@ -55,7 +55,9 @@ async def glitch(event):
         await event.client.send_file(event.chat_id, glitched, reply_to=swtid)
     else:
         glitched = os.path.join("./temp", "glitched.gif")
-        glitch_img = glitcher.glitch_image(img, legendinput, color_offset=True, gif=True)
+        glitch_img = glitcher.glitch_image(
+            img, legendinput, color_offset=True, gif=True
+        )
         DURATION = 200
         LOOP = 0
         glitch_img[0].save(

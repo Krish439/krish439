@@ -7,7 +7,7 @@ import asyncio
 import random
 
 from ..core.managers import eor
-from . import swtmemes, legend
+from . import legend, swtmemes
 
 menu_category = "extra"
 
