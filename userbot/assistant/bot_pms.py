@@ -384,7 +384,7 @@ async def send_flood_alert(user_) -> None:
         (
             Button.inline("🚫  BAN", data=f"bot_pm_ban_{user_.id}"),
             Button.inline(
-                "➖ Bot Antiflood [OFF]",
+                "Bot Antiflood [OFF]",
                 data="toggle_bot-antiflood_off",
             ),
         )
@@ -466,7 +466,7 @@ async def send_flood_alert(user_) -> None:
         FloodConfig.ALERT[user_.id]["fa_id"] = fa_msg.id
 
 
-@legend.tgbot.on(CallbackQuery(data=re.compile(b"bot_pm_ban_([0-5]+)")))
+@legend.tgbot.on(CallbackQuery(data=re.compile(b"bot_pm_ban_([0-9]+)")))
 @check_owner
 async def bot_pm_ban_cb(c_q: CallbackQuery):
     user_id = int(c_q.pattern_match.group(1))
