@@ -99,7 +99,7 @@ async def remove_chatbot(event):
     info={
         "header": "To delete ai in this chat.",
         "description": "To stop ai for all enabled users in this chat only..",
-        "types": {"a": "To stop in all chats"},
+        "flags": {"a": "To stop in all chats"},
         "usage": [
             "{tr}delai",
             "{tr}delai -a",
@@ -140,7 +140,7 @@ async def delete_chatbot(event):
     command=("listai", menu_category),
     info={
         "header": "shows the list of users for whom you enabled ai",
-        "types": {
+        "flags": {
             "a": "To list ai enabled users in all chats",
         },
         "usage": [

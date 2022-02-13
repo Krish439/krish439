@@ -150,7 +150,7 @@ async def digitalpicloop():
         legend = str(
             base64.b64decode("dXNlcmJvdC9oZWxwZXJzL3N0eWxlcy9kaWdpdGFsLnR0Zg==")
         )[2:36]
-        fnt = ImageFont.truetype(cat, 200)
+        fnt = ImageFont.truetype(legend, 200)
         drawn_text.text((350, 100), current_time, font=fnt, fill=(124, 252, 0))
         img.save(autophoto_path)
         file = await legend.upload_file(autophoto_path)
@@ -436,7 +436,7 @@ async def _(event):
     info={
         "header": "Set Your Custom pfps",
         "description": "Set links of pic to use them as auto profile. You can use cpfp or custompp as command",
-        "types": {
+        "flags": {
             "a": "To add links for custom pfp",
             "r": "To remove links for custom pfp",
             "l": "To get links of custom pfp",

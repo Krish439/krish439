@@ -45,17 +45,17 @@ async def corona(event):
     else:
         data = await covidindia(country)
         if data:
-            cat1 = int(data["new_positive"]) - int(data["positive"])
-            cat2 = int(data["new_death"]) - int(data["death"])
-            cat3 = int(data["new_cured"]) - int(data["cured"])
+            swt1 = int(data["new_positive"]) - int(data["positive"])
+            swt2 = int(data["new_death"]) - int(data["death"])
+            swt3 = int(data["new_cured"]) - int(data["cured"])
             result = f"<b>Corona virus info of {data['state_name']}\
                 \n\n⚠️ Confirmed   : <code>{data['new_positive']}</code>\
                 \n😔 Active           : <code>{data['new_active']}</code>\
                 \n⚰️ Deaths         : <code>{data['new_death']}</code>\
                 \n😊 Recovered   : <code>{data['new_cured']}</code>\
-                \n🥺 New Cases   : <code>{cat1}</code>\
-                \n😟 New Deaths : <code>{cat2}</code>\
-                \n😃 New cured  : <code>{cat3}</code> </b>"
+                \n🥺 New Cases   : <code>{swt1}</code>\
+                \n😟 New Deaths : <code>{swt2}</code>\
+                \n😃 New cured  : <code>{swt3}</code> </b>"
             await legendevent.edit(result, parse_mode="html")
         else:
             await eod(

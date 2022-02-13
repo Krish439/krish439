@@ -58,7 +58,7 @@ async def _(event):
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await cat.edit(animation_chars[i % 5])
+        await legend.edit(animation_chars[i % 5])
 
 
 @legend.legend_cmd(

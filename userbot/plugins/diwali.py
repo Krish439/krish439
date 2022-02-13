@@ -1446,7 +1446,7 @@ async def _(event):
     info={
         "header": "To Wish Diwali",
         "description": "It Can Help U To Send Diwali Message To All Group/user According to type",
-        "types": {
+        "flags": {
             "-a": "To Send Diwali Wish In All User & Group",
             "-g": "To Send Diwali Wish In All Group",
             "-p": "To Send Diwali Wish In All User",

@@ -21,7 +21,7 @@ LOGS = logging.getLogger(__name__)
     info={
         "header": "To Send A Message/Media In All.",
         "description": "It Can Help U Ti Send Message/Media To All Group/usee According to type",
-        "types": {
+        "flags": {
             "-a": "To Send Message In All User & Group",
             "-g": "To Send Message In All Group",
             "-p": "To Send Message In All User",

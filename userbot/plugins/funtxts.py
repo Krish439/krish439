@@ -8,17 +8,17 @@ menu_category = "fun"
 
 
 @legend.legend_cmd(
-    pattern="tcat$",
-    command=("tcat", menu_category),
+    pattern="tlegend$",
+    command=("tlegend", menu_category),
     info={
-        "header": "Some random cat facial text art",
-        "usage": "{tr}tcat",
+        "header": "Some random legend facial text art",
+        "usage": "{tr}tlegend",
     },
 )
 async def hmm(legend):
-    "Some random cat facial text art"
-    nekos.textcat()
-    await eor(cat, reactcat)
+    "Some random legend facial text art"
+    legend = nekos.textlegend()
+    await eor(legend, legend)
 
 
 @legend.legend_cmd(
@@ -31,8 +31,8 @@ async def hmm(legend):
 )
 async def hmm(legend):
     "Some random Funny questions"
-    nekos.why()
-    await eor(cat, whycat)
+    lol = nekos.why()
+    await eor(legend, lol)
 
 
 @legend.legend_cmd(
@@ -45,5 +45,5 @@ async def hmm(legend):
 )
 async def hmm(legend):
     "Some random facts"
-    nekos.fact()
-    await eor(cat, factcat)
+    tol = nekos.fact()
+    await eor(legend, tol)

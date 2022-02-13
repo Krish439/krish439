@@ -54,7 +54,7 @@ thumb_loc = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
     command=("spin", menu_category),
     info={
         "header": "To convert replied image or sticker to spining round video.",
-        "types": {
+        "flags": {
             "-s": "to save in saved gifs.",
         },
         "usage": [
@@ -154,11 +154,11 @@ async def pic_gifcmd(event):  # sourcery no-metrics
         "usage": "{tr}circle <reply to video/sticker/image>",
     },
 )
-async def video_catfile(event):  # sourcery no-metrics
+async def video_swtfile(event):  # sourcery no-metrics
     "To make circular video note."
     reply = await event.get_reply_message()
     args = event.pattern_match.group(1)
-    catid = await reply_id(event)
+    swtid = await reply_id(event)
     if not reply or not reply.media:
         return await eod(event, "`Reply to supported media`")
     mediatype = media_type(reply)
@@ -171,14 +171,14 @@ async def video_catfile(event):  # sourcery no-metrics
         return await eod(event, "```Supported Media not found...```")
     type = True
     legendevent = await eor(event, "`Converting to round format..........`")
-    catfile = await reply.download_media(file="./temp/")
+    swtfile = await reply.download_media(file="./temp/")
     if mediatype in ["Gif", "Video", "Sticker"]:
-        if not catfile.endswith((".webp")):
-            if catfile.endswith((".tgs")):
-                hmm = await make_gif(legendevent, catfile)
+        if not swtfile.endswith((".webp")):
+            if swtfile.endswith((".tgs")):
+                hmm = await make_gif(legendevent, swtfile)
                 os.rename(hmm, "./temp/circle.mp4")
-                catfile = "./temp/circle.mp4"
-            media_info = MediaInfo.parse(catfile)
+                swtfile = "./temp/circle.mp4"
+            media_info = MediaInfo.parse(swtfile)
             aspect_ratio = 1
             for track in media_info.tracks:
                 if track.track_type == "Video":
@@ -188,41 +188,41 @@ async def video_catfile(event):  # sourcery no-metrics
             if aspect_ratio != 1:
                 crop_by = min(height, width)
                 await _legendutils.runcmd(
-                    f'ffmpeg -i {catfile} -vf "crop={crop_by}:{crop_by}" {PATH}'
+                    f'ffmpeg -i {swtfile} -vf "crop={crop_by}:{crop_by}" {PATH}'
                 )
             else:
-                copyfile(catfile, PATH)
-            if str(catfile) != str(PATH):
-                os.remove(catfile)
+                copyfile(swtfile, PATH)
+            if str(swtfile) != str(PATH):
+                os.remove(swtfile)
             try:
-                catthumb = await reply.download_media(thumb=-1)
+                swtthumb = await reply.download_media(thumb=-1)
             except Exception as e:
                 LOGS.error(f"circle - {e}")
     elif mediatype in ["Voice", "Audio"]:
-        catthumb = None
+        swtthumb = None
         try:
-            catthumb = await reply.download_media(thumb=-1)
+            swtthumb = await reply.download_media(thumb=-1)
         except Exception:
-            catthumb = os.path.join("./temp", "thumb.jpg")
-            await thumb_from_audio(catfile, catthumb)
-        if catthumb is not None and not os.path.exists(catthumb):
-            catthumb = os.path.join("./temp", "thumb.jpg")
-            copyfile(thumb_loc, catthumb)
+            swtthumb = os.path.join("./temp", "thumb.jpg")
+            await thumb_from_audio(swtfile, swtthumb)
+        if swtthumb is not None and not os.path.exists(swtthumb):
+            swtthumb = os.path.join("./temp", "thumb.jpg")
+            copyfile(thumb_loc, swtthumb)
         if (
-            catthumb is not None
-            and not os.path.exists(catthumb)
+            swtthumb is not None
+            and not os.path.exists(swtthumb)
             and os.path.exists(thumb_loc)
         ):
             type = False
-            catthumb = os.path.join("./temp", "thumb.jpg")
-            copyfile(thumb_loc, catthumb)
-        if catthumb is not None and os.path.exists(catthumb):
+            swtthumb = os.path.join("./temp", "thumb.jpg")
+            copyfile(thumb_loc, swtthumb)
+        if swtthumb is not None and os.path.exists(swtthumb):
             await _legendutils.runcmd(
-                f"""ffmpeg -loop 1 -i {catthumb} -i {catfile} -c:v libx264 -tune stillimage -c:a aac -b:a 192k -vf \"scale=\'iw-mod (iw,2)\':\'ih-mod(ih,2)\',format=yuv420p\" -shortest -movtypes +faststart {PATH}"""
+                f"""ffmpeg -loop 1 -i {swtthumb} -i {swtfile} -c:v libx264 -tune stillimage -c:a aac -b:a 192k -vf \"scale=\'iw-mod (iw,2)\':\'ih-mod(ih,2)\',format=yuv420p\" -shortest -movtypes +faststart {PATH}"""
             )
-            os.remove(catfile)
+            os.remove(swtfile)
         else:
-            os.remove(catfile)
+            os.remove(swtfile)
             return await eod(legendevent, "`No thumb found to make it video note`", 5)
     if mediatype in [
         "Voice",
@@ -230,7 +230,7 @@ async def video_catfile(event):  # sourcery no-metrics
         "Gif",
         "Video",
         "Sticker",
-    ] and not catfile.endswith((".webp")):
+    ] and not swtfile.endswith((".webp")):
         if os.path.exists(PATH):
             c_time = time.time()
             attributes, mime_type = get_attributes(PATH)
@@ -255,12 +255,12 @@ async def video_catfile(event):  # sourcery no-metrics
                     )
                 ],
                 force_file=False,
-                thumb=await event.client.upload_file(catthumb) if catthumb else None,
+                thumb=await event.client.upload_file(swtthumb) if swtthumb else None,
             )
             LEGEND = await event.client.send_file(
                 event.chat_id,
                 media,
-                reply_to=catid,
+                reply_to=swtid,
                 video_note=True,
                 supports_streaming=True,
             )
@@ -269,7 +269,7 @@ async def video_catfile(event):  # sourcery no-metrics
                 await _legendutils.unsavegif(event, LEGEND)
             os.remove(PATH)
             if type:
-                os.remove(catthumb)
+                os.remove(swtthumb)
         await legendevent.delete()
         return
     data = reply.photo or reply.media.document
@@ -289,10 +289,10 @@ async def video_catfile(event):  # sourcery no-metrics
     img = ImageOps.fit(img, (w, h))
     img.putalpha(mask)
     im = io.BytesIO()
-    im.name = "cat.webp"
+    im.name = "swt.webp"
     img.save(im)
     im.seek(0)
-    await event.client.send_file(event.chat_id, im, reply_to=catid)
+    await event.client.send_file(event.chat_id, im, reply_to=swtid)
     await legendevent.delete()
 
 
@@ -445,7 +445,7 @@ async def on_file_to_photo(event):
         return await eod(event, "`For sticker to image use stoi command`")
     if image.size > 10 * 1024 * 1024:
         return  # We'd get PhotoSaveFileInvalidError otherwise
-    catt = await eor(event, "`Converting.....`")
+    swtt = await eor(event, "`Converting.....`")
     file = await event.client.download_media(target, file=BytesIO())
     file.seek(0)
     img = await event.client.upload_file(file)
@@ -462,7 +462,7 @@ async def on_file_to_photo(event):
         )
     except PhotoInvalidDimensionsError:
         return
-    await catt.delete()
+    await swtt.delete()
 
 
 @legend.legend_cmd(
@@ -515,11 +515,11 @@ async def _(event):  # sourcery no-metrics
                 quality = loc[0].strip()
             else:
                 return await eod(event, "Use quality of range 0 to 721")
-    catreply = await event.get_reply_message()
-    cat_event = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    if not catreply or not catreply.media or not catreply.media.document:
+    swtreply = await event.get_reply_message()
+    swt_event = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    if not swtreply or not swtreply.media or not swtreply.media.document:
         return await eor(event, "`Stupid!, This is not animated sticker.`")
-    if catreply.media.document.mime_type != "application/x-tgsticker":
+    if swtreply.media.document.mime_type != "application/x-tgsticker":
         return await eor(event, "`Stupid!, This is not animated sticker.`")
     legendevent = await eor(
         event,
@@ -527,23 +527,23 @@ async def _(event):  # sourcery no-metrics
         parse_mode=_format.parse_pre,
     )
     try:
-        cat_event = Get(cat_event)
-        await event.client(cat_event)
+        swt_event = Get(swt_event)
+        await event.client(swt_event)
     except BaseException:
         pass
     reply_to_id = await reply_id(event)
-    catfile = await event.client.download_media(catreply)
-    catgif = await make_gif(event, catfile, quality, fps)
+    swtfile = await event.client.download_media(swtreply)
+    swtgif = await make_gif(event, swtfile, quality, fps)
     LEGEND = await event.client.send_file(
         event.chat_id,
-        catgif,
+        swtgif,
         support_streaming=True,
         force_document=False,
         reply_to=reply_to_id,
     )
     await _legendutils.unsavegif(event, LEGEND)
     await legendevent.delete()
-    for files in (catgif, catfile):
+    for files in (swtgif, swtfile):
         if files and os.path.exists(files):
             os.remove(files)
 
@@ -665,7 +665,7 @@ async def _(event):
     info={
         "header": "To convert replied image or sticker to gif",
         "description": "Bt deafualt will use -i as type",
-        "types": {
+        "flags": {
             "-r": "Right rotate gif.",
             "-l": "Left rotate gif.",
             "-u": "Rotates upward gif.",

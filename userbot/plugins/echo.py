@@ -92,7 +92,7 @@ async def echo(event):
     info={
         "header": "To delete echo in this chat.",
         "description": "To stop echoing users messages of all enabled users in the paticular chat or all chats.",
-        "types": {"a": "To stop in all chats"},
+        "flags": {"a": "To stop in all chats"},
         "usage": [
             "{tr}delecho",
             "{tr}delecho -a",
@@ -133,7 +133,7 @@ async def echo(event):
     command=("listecho", menu_category),
     info={
         "header": "shows the list of users for whom you enabled echo",
-        "types": {
+        "flags": {
             "a": "To list echoed users in all chats",
         },
         "usage": [

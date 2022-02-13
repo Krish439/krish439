@@ -27,9 +27,9 @@ menu_category = "tools"
     },
 )
 async def get_media(event):
-    catty = event.pattern_match.group(1)
-    limit = int(catty.split(" ")[0])
-    channel_username = str(catty.split(" ")[1])
+    sweetie = event.pattern_match.group(1)
+    limit = int(sweetie.split(" ")[0])
+    channel_username = str(sweetie.split(" ")[1])
     tempdir = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, channel_username)
     try:
         os.makedirs(tempdir)

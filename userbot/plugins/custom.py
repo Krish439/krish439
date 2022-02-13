@@ -46,7 +46,7 @@ oldvars = {
     info={
         "header": "Set vars in database or Check or Delete",
         "description": "Set , Fetch or Delete values or vars directly in database without restart or heroku vars.\n\nYou can set multiple pics by giving space after links in alive, ialive, pm permit.",
-        "types": {
+        "flags": {
             "set": "To set new var in database or modify the old var",
             "get": "To show the already existing var value.",
             "del": "To delete the existing value",

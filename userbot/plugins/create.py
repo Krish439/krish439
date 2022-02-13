@@ -14,7 +14,7 @@ menu_category = "tools"
     info={
         "header": "To create a private group/channel with userbot.",
         "description": "Use this cmd to create super group , normal group or channel.",
-        "types": {
+        "flags": {
             "b": "to create a private super group",
             "g": "To create a private basic group.",
             "c": "to create a private channel",

@@ -19,8 +19,8 @@ ANTI_FLOOD_WARN_MODE = ChatBannedRights(
 async def _(event):
     if not CHAT_FLOOD:
         return
-    catadmin = await is_admin(event.client, event.chat_id, event.client.uid)
-    if not catadmin:
+    legendadmin = await is_admin(event.client, event.chat_id, event.client.uid)
+    if not legendadmin:
         return
     if str(event.chat_id) not in CHAT_FLOOD:
         return

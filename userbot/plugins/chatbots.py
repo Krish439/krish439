@@ -93,7 +93,7 @@ async def echo(event):
     info={
         "header": "To delete echo in this chat.",
         "description": "To stop Chatbot users messages of all enabled users in the paticular chat or all chats.",
-        "types": {"a": "To stop in all chats"},
+        "flags": {"a": "To stop in all chats"},
         "usage": [
             "{tr}delchatbot",
             "{tr}delecho -a",
@@ -134,7 +134,7 @@ async def chatbot(event):
     command=("listchatbot", menu_category),
     info={
         "header": "shows the list of users for whom you enabled chatbot",
-        "types": {
+        "flags": {
             "a": "To list chatbot users in all chats",
         },
         "usage": [

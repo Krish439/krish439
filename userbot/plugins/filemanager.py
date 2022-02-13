@@ -28,14 +28,14 @@ menu_category = "utils"
 async def lst(event):  # sourcery no-metrics
     "To list all files and folders."
     legend = "".join(event.text.split(maxsplit=1)[1:])
-    path = cat or os.getcwd()
+    path = legend or os.getcwd()
     if not os.path.exists(path):
         await eor(
             event,
-            f"there is no such directory or file with the name `{cat}` check again",
+            f"there is no such directory or file with the name `{legend}` check again",
         )
         return
-    path = Path(legend) if cat else os.getcwd()
+    path = Path(legend) if legend else os.getcwd()
     if os.path.isdir(path):
         if legend:
             msg = "Folders and Files in `{}` :\n".format(path)
@@ -45,9 +45,9 @@ async def lst(event):  # sourcery no-metrics
         files = ""
         folders = ""
         for contents in sorted(lists):
-            catpath = os.path.join(path, contents)
-            if not os.path.isdir(catpath):
-                size = os.stat(catpath).st_size
+            swtpath = os.path.join(path, contents)
+            if not os.path.isdir(swtpath):
+                size = os.stat(swtpath).st_size
                 if str(contents).endswith((".mp3", ".flac", ".wav", ".m4a")):
                     files += "🎵" + f"`{contents}`\n"
                 if str(contents).endswith((".opus")):
@@ -125,15 +125,15 @@ async def lst(event):
     if not os.path.exists(path):
         await eor(
             event,
-            f"there is no such directory or file with the name `{cat}` check again",
+            f"there is no such directory or file with the name `{legend}` check again",
         )
         return
-    catcmd = f"rm -rf {path}"
+    legendcmd = f"rm -rf {path}"
     if os.path.isdir(path):
-        await _legendutils.runcmd(catcmd)
+        await _legendutils.runcmd(legendcmd)
         await eor(event, f"successfully removed `{path}` directory")
     else:
-        await _legendutils.runcmd(catcmd)
+        await _legendutils.runcmd(legendcmd)
         await eor(event, f"successfully removed `{path}` file")
 
 
@@ -143,7 +143,7 @@ async def lst(event):
     info={
         "header": "To create a new directory.",
         "usage": "{tr}mkdir <topic>",
-        "examples": "{tr}mkdir cat",
+        "examples": "{tr}mkdir legend",
     },
 )
 async def _(event):
@@ -204,7 +204,7 @@ async def _(event):
     if not os.path.exists(original):
         await eod(
             event,
-            f"there is no such directory or file with the name `{cat}` check again",
+            f"there is no such directory or file with the name `{input_str}` check again",
         )
         return
     mone = await eor(event, "copying the file ...", parse_mode=_format.parse_pre)

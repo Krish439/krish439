@@ -202,7 +202,7 @@ async def group_unfban(event):
     info={
         "header": "Add the federation to given category in database.",
         "description": "You can add multiple federations to one category like a group of feds under one category. And you can access all thoose feds by that name.",
-        "types": {
+        "flags": {
             "-all": "If you want to add all your feds to database then use this as {tr}addfedto -all <category name>"
         },
         "usage": [
@@ -315,7 +315,7 @@ async def quote_search(event):  # sourcery no-metrics
     info={
         "header": "Remove the federation from given category in database.",
         "description": "To remove given fed from the given category name",
-        "types": {
+        "flags": {
             "-all": "If you want to delete compelete category then use this type as {tr}rmfedfrom -all <category name>"
         },
         "usage": [

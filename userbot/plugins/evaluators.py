@@ -16,7 +16,7 @@ menu_category = "tools"
     info={
         "header": "To Execute terminal commands in a subprocess.",
         "usage": "{tr}exec <command>",
-        "examples": "{tr}exec cat stringsetup.py",
+        "examples": "{tr}exec legend stringsetup.py",
     },
 )
 async def _(event):

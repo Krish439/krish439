@@ -264,7 +264,7 @@ async def get_manga(event):
     command=("fillers", menu_category),
     info={
         "header": "To get list of filler episodes.",
-        "types": {
+        "flags": {
             "-n": "If more than one name have same common word then to select required anime"
         },
         "usage": ["{tr}fillers <anime name>", "{tr}fillers -n<number> <anime name>"],

@@ -27,7 +27,7 @@ thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg"
     command=("install", menu_category),
     info={
         "header": "To install an external plugin.",
-        "description": "Reply to any external plugin(supported by cat) to install it in your bot.",
+        "description": "Reply to any external plugin(supported by LegendBot) to install it in your bot.",
         "usage": "{tr}install",
     },
 )

@@ -57,7 +57,7 @@ async def gethash(hash_q):
     command=("base", menu_category),
     info={
         "header": "Find the base64 encoding or decoding of the given string.",
-        "types": {
+        "flags": {
             "en": "Use this to encode the given text.",
             "de": "use this to decode the given text.",
         },

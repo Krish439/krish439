@@ -23,12 +23,12 @@ FPOST_ = FPOST()
 
 
 async def all_groups_id(legend):
-    catgroups = []
-    async for dialog in cat.client.iter_dialogs():
+    legendgroups = []
+    async for dialog in legend.client.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, Channel) and entity.megagroup:
-            catgroups.append(entity.id)
-    return catgroups
+            legendgroups.append(entity.id)
+    return legendgroups
 
 
 @legend.legend_cmd(
