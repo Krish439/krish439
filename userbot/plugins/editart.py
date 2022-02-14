@@ -1,6 +1,6 @@
 import random
 
-from . import ALIVE_NAME, eor, legend
+from . import eor, legend
 
 menu_category = "fun"
 
@@ -125,7 +125,6 @@ async def metoo(e):
     await eor(e, txt)
 
 
-
 @legend.legend_cmd(
     pattern="dome ([\s\S]*)",
     command=("dome", menu_category),
@@ -152,7 +151,6 @@ async def metoo(e):
     await eor(e, txt)
 
 
-
 @legend.legend_cmd(
     pattern="medead ([\s\S]*)",
     command=("medead", menu_category),
@@ -177,9 +175,6 @@ async def metoo(e):
 async def metoo(e):
     txt = random.choice(CONFUSED)
     await eor(e, txt)
-
-
-
 
 
 @legend.legend_cmd(
