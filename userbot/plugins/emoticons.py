@@ -15,9 +15,15 @@ LOGS = logging.getLogger(__name__)
         "header": "Try It Your Self.",
         "description": "Random Flags",
         "flags": {
-            "ex": "To Send Message In All User & Group",
-            "think": "To Send Message In All Group",
-            "p": "To Send Message In All User",
+            "ex": "Try Yourself",
+            "think": "Try Yourself",
+            "wave": "Try Yourself",
+            "wtf": "Try Yourself",
+            "love": "Try Yourself",
+            "confuse": "Try Yourself",
+            "dead": "Try Yourself",
+            "sad": "Try Yourself",
+            "dog": "Try Yourself",
         },
         "usage": [
             "{tr}swt <flags>",
@@ -38,7 +44,7 @@ async def _(event):
             "u is gey",
             "u is chakka",
         ]
-    elif input_str in "thinkings":
+    elif input_str in "think":
         emoticons = [
             "(҂⌣̀_⌣́)",
             "（；¬＿¬)",
@@ -46,7 +52,7 @@ async def _(event):
             "┌[ O ʖ̯ O ]┐",
             "〳 ͡° Ĺ̯ ͡° 〵",
         ]
-    elif input_str in "waving":
+    elif input_str in "wave":
         emoticons = [
             "(ノ^∇^)",
             "(;-_-)/",
@@ -56,7 +62,7 @@ async def _(event):
             "(ό‿ὸ)ﾉ",
             "(ヾ(´・ω・｀)",
         ]
-    elif input_str in "wtfs":
+    elif input_str in "wtf":
         emoticons = [
             "༎ຶ‿༎ຶ",
             "(‿ˠ‿)",
@@ -73,7 +79,7 @@ async def _(event):
             "໒( ♥ ◡ ♥ )७",
             "༼♥ل͜♥༽",
         ]
-    elif input_str in "confuses":
+    elif input_str in "confuse":
         emoticons = [
             "(・_・ヾ",
             "｢(ﾟﾍﾟ)",
@@ -99,7 +105,7 @@ async def _(event):
             "(　´_ﾉ` )",
             "彡(-_-;)彡",
         ]
-    elif input_str in "dogs":
+    elif input_str in "dog":
         emoticons = [
             "-ᄒᴥᄒ-",
             "◖⚆ᴥ⚆◗",
