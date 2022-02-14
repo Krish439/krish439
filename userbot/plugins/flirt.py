@@ -219,7 +219,6 @@ async def _(event):
         await event.edit("Not in a mood to sing. Sorry!")
 
 
-
 @legend.legend_cmd(
     pattern="flirt$",
     command=("flirt", menu_category),
