@@ -616,7 +616,7 @@ async def inline_handler(event):  # sourcery no-metrics
             buttons = [
                 (
                     Button.url(
-                        "Source code", "https://github.com/ITS-LEGENDBOT/LEGENDBOT"
+                        "Source code", "https://github.com/LEGEND-AI/LEGENDBOT"
                     ),
                     Button.url(
                         "Deploy",
@@ -638,7 +638,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 type="photo",
                 title=f"Lêɠêɳ̃dẞø†",
                 description=f"Lêɠêɳ̃dẞø†\nhttps://t.me/Legend_K_Userbot",
-                url="https://github.com/ITS-LEGENDBOT/LEGENDBOT",
+                url="https://github.com/LEGEND-AI/LEGENDBOT",
                 thumb=photo,
                 content=photo,
                 send_message=types.InputBotInlineMessageMediaAuto(
