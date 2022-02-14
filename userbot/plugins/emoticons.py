@@ -1,3 +1,4 @@
+import random 
 from .. import legend
 from ..core.logger import logging
 
