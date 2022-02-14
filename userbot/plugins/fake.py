@@ -3,10 +3,8 @@ from random import choice, randint
 
 from telethon.errors import BadRequestError
 from telethon.tl.functions.channels import EditAdminRequest
-from telethon.tl.types import ChatAdminRights
 from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import ChannelParticipantsAdmins
-
+from telethon.tl.types import ChannelParticipantsAdmins, ChatAdminRights
 
 from userbot import legend
 
@@ -215,7 +213,6 @@ async def gbun(event):
         mention = "`Warning!! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By Admin...\nReason: Not Given `"
         await event.reply(mention)
     await event.delete()
-
 
 
 @legend.legend_cmd(
