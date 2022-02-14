@@ -3,10 +3,8 @@ import random
 
 from userbot import legend
 
-from ..core.managers import eod, eor
-from ..helpers.utils import _legendutils, parse_pre, yaml_format
-
 menu_category = "tools"
+
 
 @legend.legend_cmd(
     pattern="flirt$",
