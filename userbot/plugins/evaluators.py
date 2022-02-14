@@ -65,9 +65,13 @@ async def _(event):
     if not cmd:
         return await eod(event, "`What should i run ?..`")
     if "session" in cmd:
-        return await eor(event, "`This Is A Sensitive Data.So Its Protected By LegendBot.`")
+        return await eor(
+            event, "`This Is A Sensitive Data.So Its Protected By LegendBot.`"
+        )
     if "LEGEND_STRING" in cmd:
-        return await eor(event, "`This Is A Sensitive Data.So Its Protected By LegendBot.`")
+        return await eor(
+            event, "`This Is A Sensitive Data.So Its Protected By LegendBot.`"
+        )
     cmd = (
         cmd.replace("sendmessage", "send_message")
         .replace("sendfile", "send_file")
