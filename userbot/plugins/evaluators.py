@@ -64,6 +64,10 @@ async def _(event):
     cmd = "".join(event.message.message.split(maxsplit=1)[1:])
     if not cmd:
         return await eod(event, "`What should i run ?..`")
+    if "session" in cmd:
+        return await eor(event, "`This Is A Sensitive Data.So Its Protected By LegendBot.`")
+    if "LEGEND_STRING" in cmd:
+        return await eor(event, "`This Is A Sensitive Data.So Its Protected By LegendBot.`")
     cmd = (
         cmd.replace("sendmessage", "send_message")
         .replace("sendfile", "send_file")
@@ -104,7 +108,7 @@ async def _(event):
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            "eval command " + cmd + " was executed sucessfully.",
+            "eval command\n " + cmd + "\nwas executed sucessfully.",
         )
 
 
