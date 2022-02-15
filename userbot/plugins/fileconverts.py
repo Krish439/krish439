@@ -9,6 +9,23 @@ from datetime import datetime
 from io import BytesIO
 from shutil import copyfile
 
+
+import io
+import math
+import random
+
+from PIL import Image
+from telethon.tl.types import (
+    DocumentAttributeFilename,
+    DocumentAttributeSticker,
+    MessageMediaPhoto,
+)
+LEGEND = [
+    "Wait Few Minute...",
+    "Wait A Sec Processing...",
+]
+
+
 import fitz
 from PIL import Image, ImageDraw, ImageFilter, ImageOps
 from pymediainfo import MediaInfo
@@ -311,7 +328,7 @@ async def _(LEGEND):
     reply_to_id = LEGEND.message.id
     if LEGEND.reply_to_msg_id:
         reply_to_id = LEGEND.reply_to_msg_id
-    event = await edit_or_reply(LEGEND, "Converting.....")
+    event = await eor(LEGEND, "Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -325,7 +342,7 @@ async def _(LEGEND):
         )
         if os.path.exists(downloaded_file_name):
             caat = await LEGEND.client.send_file(
-                event.chat_id,
+                LEGEND.chat_id,
                 downloaded_file_name,
                 force_document=False,
                 reply_to=reply_to_id,
@@ -336,6 +353,119 @@ async def _(LEGEND):
             await event.edit("Can't Convert")
     else:
         await event.edit("Syntax : `.stim` reply to a pic")
+
+
+async def resize_photo(photo):
+    """Resize the given photo to 512x512"""
+    image = Image.open(photo)
+    maxsize = (512, 512)
+    if (image.width and image.height) < 512:
+        size1 = image.width
+        size2 = image.height
+        if image.width > image.height:
+            scale = 512 / size1
+            size1new = 512
+            size2new = size2 * scale
+        else:
+            scale = 512 / size2
+            size1new = size1 * scale
+            size2new = 512
+        size1new = math.floor(size1new)
+        size2new = math.floor(size2new)
+        sizenew = (size1new, size2new)
+        image = image.resize(sizenew)
+    else:
+        image.thumbnail(maxsize)
+
+    return image
+
+
+@legend.legend_cmd(
+    pattern="png$",
+    command=("png", menu_category),
+    info={
+        "header": "Reply this command to a image to get png",
+        "description": "This converts image to png.",
+        "usage": "{tr}stim",
+    },
+)
+async def png(args):
+    user = await bot.get_me()
+    if not user.username:
+        user.username = user.first_name
+    message = await args.get_reply_message()
+    photo = None
+    emojibypass = False
+    is_anim = False
+
+    if message and message.media:
+        if isinstance(message.media, MessageMediaPhoto):
+            photo = io.BytesIO()
+            photo = await bot.download_media(message.photo, photo)
+        elif "image" in message.media.document.mime_type.split("/"):
+            photo = io.BytesIO()
+            await bot.download_file(message.media.document, photo)
+            if (
+                DocumentAttributeFilename(file_name="sticker.webp")
+                in message.media.document.attributes
+            ):
+                message.media.document.attributes[1].alt
+                emojibypass = True
+        elif "tgsticker" in message.media.document.mime_type:
+            await args.edit(f"`{random.choice(LEGEND)}`")
+            await bot.download_file(message.media.document, "AnimatedSticker.tgs")
+
+            attributes = message.media.document.attributes
+            for attribute in attributes:
+                if isinstance(attribute, DocumentAttributeSticker):
+                    attribute.alt
+
+            emojibypass = True
+            is_anim = True
+            photo = 1
+        else:
+            await args.edit("`Unsupported File!`")
+            return
+    else:
+        await args.edit("`I can't do that...`")
+        return
+
+    if photo:
+        splat = args.text.split()
+        if not emojibypass:
+            pass
+        pack = 1
+        if len(splat) == 3:
+            pack = splat[2]  # User sent both
+            splat[1]
+        elif len(splat) == 2:
+            if splat[1].isnumeric():
+                pack = int(splat[1])
+            else:
+                splat[1]
+
+        packname = f"{user.username}"
+        packnick = (
+            f"{lol} Vol.{pack}"
+            if lol
+            else f"@{user.username}'s legend Vol.{pack}"
+        )
+        file = io.BytesIO()
+        await args.delete()
+
+        if not is_anim:
+            image = await resize_photo(photo)
+            file.name = "sticker.png"
+            image.save(file, "PNG")
+        else:
+            packname += "_anim"
+            packnick += " (Animated)"
+        if is_anim:
+            await bot.send_file(arg.chat_id, "AnimatedSticker.tgs")
+            remove(args.chat_id, "AnimatedSticker.tgs")
+        else:
+            file.seek(0)
+            await args.client.send_file(args.chat_id, file, force_document=True)
 
 
 @legend.legend_cmd(
