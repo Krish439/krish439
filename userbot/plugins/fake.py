@@ -117,7 +117,7 @@ async def _(event):
 
 @legend.legend_cmd(
     pattern="padmin$",
-    command=("padmin", plugin_category),
+    command=("padmin", menu_category),
     info={
         "header": "Fun animation for faking user promotion",
         "description": "An animation that shows enabling all permissions to him that he is admin(fake promotion)",
@@ -217,7 +217,7 @@ async def gbun(event):
 
 @legend.legend_cmd(
     pattern="fgben$",
-    command=("fgben", plugin_category),
+    command=("fgben", menu_category),
     info={
         "header": "Fun animation for fucking fake Gban",
         "description": "An animation that shows  globally Banning all in Group to him that he is gbanned(fake gban)",
@@ -320,7 +320,7 @@ async def _(event):
 
 @legend.legend_cmd(
     pattern="fungben$",
-    command=("fungben", plugin_category),
+    command=("fungben", menu_category),
     info={
         "header": "Fun animation for fucking fake unGban",
         "description": "An animation that shows  globally UnBanning all in Group to him that he is ungbanned(fake ungban)",
@@ -425,7 +425,7 @@ async def _(event):
 
 @legend.legend_cmd(
     pattern="fmute$",
-    command=("fmute", plugin_category),
+    command=("fmute", menu_category),
     info={
         "header": "A kind of fake gmute try it yourself",
         "description": "An animation that shows  globally Muted all in Group to him that he is gmutted(fake gmute)",
@@ -482,7 +482,7 @@ async def gmute(event):
 
 @legend.legend_cmd(
     pattern="funmute$",
-    command=("funmute", plugin_category),
+    command=("funmute", menu_category),
     info={
         "header": "A kind of fake ungmute try it yourself",
         "description": "An animation that shows  globally UnMuted all in Group to him that he is ungmutted(fake ungmute)",
