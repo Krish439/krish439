@@ -444,7 +444,7 @@ async def png(args):
 
         packname = f"{user.username}"
         packnick = (
-            f"{lol} Vol.{pack}" if lol else f"@{user.username}'s legend Vol.{pack}"
+            f" Vol.{pack}"
         )
         file = io.BytesIO()
         await args.delete()
