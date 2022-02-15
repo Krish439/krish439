@@ -1177,7 +1177,6 @@ async def _(event):
         )
 
 
-
 @legend.legend_cmd(
     pattern="bbl$",
     command=("bbl", menu_category),
