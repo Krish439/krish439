@@ -443,9 +443,7 @@ async def png(args):
                 splat[1]
 
         packname = f"{user.username}"
-        packnick = (
-            f" Vol.{pack}"
-        )
+        packnick = f" Vol.{pack}"
         file = io.BytesIO()
         await args.delete()
 
