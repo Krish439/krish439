@@ -1178,11 +1178,11 @@ async def _(event):
 
 
 @legend.legend_cmd(
-    pattern="bbl$",
-    command=("bbl", menu_category),
+    pattern="facts$",
+    command=("facts", menu_category),
     info={
-        "header": "To Get Data From Holy Bible",
-        "options": "Random Select From Holy Bible",
+        "header": "To Get Data From Facts",
+        "options": "Random Select From Facts",
         "usage": [
             "{tr}bbl",
         ],
