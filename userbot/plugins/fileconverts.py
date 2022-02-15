@@ -299,6 +299,45 @@ async def video_swtfile(event):  # sourcery no-metrics
 
 
 @legend.legend_cmd(
+    pattern="stim$",
+    command=("stim", menu_category),
+    info={
+        "header": "Reply this command to a image to get stivkrr.",
+        "description": "This converts image to stcker.",
+        "usage": "{tr}stim",
+    },
+)
+async def _(LEGEND):
+    reply_to_id = LEGEND.message.id
+    if LEGEND.reply_to_msg_id:
+        reply_to_id = LEGEND.reply_to_msg_id
+    event = await edit_or_reply(LEGEND, "Converting.....")
+    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if event.reply_to_msg_id:
+        filename = "hi.jpg"
+        file_name = filename
+        reply_message = await event.get_reply_message()
+        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        downloaded_file_name = os.path.join(to_download_directory, file_name)
+        downloaded_file_name = await LEGEND.client.download_media(
+            reply_message, downloaded_file_name
+        )
+        if os.path.exists(downloaded_file_name):
+            caat = await LEGEND.client.send_file(
+                event.chat_id,
+                downloaded_file_name,
+                force_document=False,
+                reply_to=reply_to_id,
+            )
+            os.remove(downloaded_file_name)
+            await event.delete()
+        else:
+            await event.edit("Can't Convert")
+    else:
+        await event.edit("Syntax : `.stim` reply to a pic")
+
+@legend.legend_cmd(
     pattern="stoi$",
     command=("stoi", menu_category),
     info={
