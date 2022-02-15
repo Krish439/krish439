@@ -337,6 +337,7 @@ async def _(LEGEND):
     else:
         await event.edit("Syntax : `.stim` reply to a pic")
 
+
 @legend.legend_cmd(
     pattern="stoi$",
     command=("stoi", menu_category),
