@@ -38,7 +38,7 @@ async def group_fban(event):
     if FBAN_GROUP_ID == 0:
         return await eod(
             event,
-            "__For working of this cmd you need to set FBAN_GROUP_ID in heroku vars__",
+            "__For working of this cmd you need to set FBAN_GROUP_ID in heroku vars__, .set var FBAN_GROUP_ID <value>",
         )
     user, reason = await get_user_from_event(event)
     if not user:
