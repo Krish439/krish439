@@ -3,16 +3,13 @@ import asyncio
 import base64
 import io
 import logging
+import math
 import os
+import random
 import time
 from datetime import datetime
 from io import BytesIO
 from shutil import copyfile
-
-
-import io
-import math
-import random
 
 from PIL import Image
 from telethon.tl.types import (
@@ -20,6 +17,7 @@ from telethon.tl.types import (
     DocumentAttributeSticker,
     MessageMediaPhoto,
 )
+
 LEGEND = [
     "Wait Few Minute...",
     "Wait A Sec Processing...",
@@ -446,9 +444,7 @@ async def png(args):
 
         packname = f"{user.username}"
         packnick = (
-            f"{lol} Vol.{pack}"
-            if lol
-            else f"@{user.username}'s legend Vol.{pack}"
+            f"{lol} Vol.{pack}" if lol else f"@{user.username}'s legend Vol.{pack}"
         )
         file = io.BytesIO()
         await args.delete()
