@@ -6,7 +6,6 @@ from userbot import legend
 menu_category = "useless"
 
 
-
 @legend.legend_cmd(
     pattern="snow$",
     command=("snow", menu_category),
