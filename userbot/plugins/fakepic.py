@@ -4,7 +4,7 @@ import requests
 
 from userbot import legend
 
-
+menu_category = "useless"
 @legend.legend_cmd(
     pattern="fpic(?:\s|$)([\s\S]*)",
     command=("fpic", menu_category),
