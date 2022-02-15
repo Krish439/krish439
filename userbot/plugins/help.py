@@ -120,19 +120,19 @@ async def cmdlist():
             for cmd in sorted(cmds):
                 outstr += f"  - `{cmdprefix}{cmd}`\n"
             outstr += "\n"
-    outstr += f"**👨‍💻 Usage : ** `{cmdprefix}help -c <command name>`"
+    outstr += f"**👨‍💻 Usage : ** `{cmdprefix}help -l <command name>`"
     return outstr
 
 
 @legend.legend_cmd(
-    pattern="help ?(-c|-p|-t)? ?([\s\S]*)?",
+    pattern="help ?(-l|-p|-t)? ?([\s\S]*)?",
     command=("help", menu_category),
     info={
         "header": "To get guide for LegendBot.",
         "description": "To get information or guide for the command or plugin",
         "note": "if command name and plugin name is same then you get guide for plugin. So by using this type you get command guide",
         "flags": {
-            "c": "To get info of command.",
+            "l": "To get info of command.",
             "p": "To get info of plugin.",
             "t": "To get all plugins in text format.",
         },
@@ -140,7 +140,7 @@ async def cmdlist():
             "{tr}help (plugin/command name)",
             "{tr}help -c (command name)",
         ],
-        "examples": ["{tr}help help", "{tr}help -c help"],
+        "examples": ["{tr}help help", "{tr}help -l help"],
     },
 )
 async def _(event):
@@ -148,7 +148,7 @@ async def _(event):
     type = event.pattern_match.group(1)
     input_str = event.pattern_match.group(2)
     reply_to_id = await reply_id(event)
-    if type and type == "-c" and input_str:
+    if type and type == "-l" and input_str:
         outstr = await cmdinfo(input_str, event)
         if outstr is None:
             return
@@ -193,7 +193,7 @@ async def _(event):
         outstr = f"**📜 {input_str.title()} has {len(cmds)} commands**\n"
         for cmd in cmds:
             outstr += f"  - `{cmdprefix}{cmd}`\n"
-        outstr += f"**👨‍💻  Usage : ** `{cmdprefix}help -c <command name>`"
+        outstr += f"**👨‍💻  Usage : ** `{cmdprefix}help -l <command name>`"
     await eor(event, outstr, aslink=True, linktext="Total Commands of LegendBot are :")
 
 
@@ -212,7 +212,7 @@ async def _(event):
     if found:
         out_str = "".join(f"`{i}`    " for i in found)
         out = f"**I found {len(found)} command(s) for: **`{cmd}`\n\n{out_str}"
-        out += f"\n\n👨‍💻__For more info check {cmdprefix}help -c <command>__"
+        out += f"\n\n👨‍💻__For more info check {cmdprefix}help -l <command>__"
     else:
         out = f"I can't find any such command `{cmd}` in LegendBot"
     await eor(event, out)
