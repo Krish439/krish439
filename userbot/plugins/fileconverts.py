@@ -71,7 +71,7 @@ async def pic_gifcmd(event):  # sourcery no-metrics
         return await eod(event, "`Reply to supported Media...`")
     mediatype = media_type(reply)
     if mediatype in ["Gif", "Video"]:
-        return await eod (event, "Reply to supported Media...")
+        return await eod(event, "Reply to supported Media...")
     legendevent = await eor(event, "__Making round spin video wait a sec.....__")
     output = await _legendtools.media_to_pic(event, reply, noedits=True)
     if output[1] is None:
