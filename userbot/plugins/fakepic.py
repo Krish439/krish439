@@ -1,14 +1,8 @@
-import asyncio
-import requests 
-import os 
-from telethon.errors.rpcerrorlist import YouBlockedUserError
+import os
 
-from userbot import BOTLOG, BOTLOG_CHATID, legend
+import requests
 
-from ..core.logger import logging
-from ..core.managers import eod, eor
-from ..helpers.utils import _format, get_user_from_event, reply_id
-from ..sql_helper.global_collectionjson import add_collection, get_collection
+from userbot import legend
 
 
 @legend.legend_cmd(
