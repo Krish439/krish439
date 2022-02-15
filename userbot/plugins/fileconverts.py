@@ -10,7 +10,8 @@ import time
 from datetime import datetime
 from io import BytesIO
 from shutil import copyfile
-
+import requests
+from bs4 import BeautifulSoup
 from PIL import Image
 from telethon.tl.types import (
     DocumentAttributeFilename,
@@ -311,6 +312,39 @@ async def video_swtfile(event):  # sourcery no-metrics
     im.seek(0)
     await event.client.send_file(event.chat_id, im, reply_to=swtid)
     await legendevent.delete()
+
+
+@legend.legend_cmd(
+    pattern="fext$",
+    command=("fext", menu_category),
+    info={
+        "header": "Detail About Extension ",
+        "description": "This help U To Get Extension Detail ",
+        "usage": "{tr}ftext <extension>",
+    },
+)
+async def _(event):
+    sample_url = "https://www.fileext.com/file-extension/{}.html"
+    input_str = event.pattern_match.group(1).lower()
+    response_api = requests.get(sample_url.format(input_str))
+    status_code = response_api.status_code
+    if status_code == 200:
+        raw_html = response_api.content
+        soup = BeautifulSoup(raw_html, "html.parser")
+        ext_details = soup.find_all("td", {"colspan": "3"})[-1].text
+        await eor(
+            event,
+            "**File Extension**: `{}`\n**Description**: `{}`".format(
+                input_str, ext_details
+            ),
+        )
+    else:
+        await eor(
+            event,
+            "https://www.fileext.com/ responded with {} for query: {}".format(
+                status_code, input_str
+            ),
+        )
 
 
 @legend.legend_cmd(
