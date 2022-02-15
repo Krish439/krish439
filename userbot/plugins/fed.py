@@ -25,6 +25,49 @@ unfbanresults = ["I'll give", "Un-FedBan", "un-FedBan"]
 
 
 @legend.legend_cmd(
+    pattern="roseinfo(?:\s|$)([\s\S]*)",
+    command=("roseinfo", menu_category),
+    info={
+        "header": "Get Info From rose Database",
+        "usage": "{tr}info <userid/username/reply>",
+    },
+)
+async def _(event):
+    "Info of a person."
+    if event.pattern_match.group(1):
+        sysarg = event.pattern_match.group(1)
+    else:
+        sysarg = ""
+    if event.reply_to_msg_id:
+        previous_message = await event.get_reply_message()
+        replied_user = await event.client(
+            GetFullUserRequest(previous_message.sender_id)
+        )
+        getuser = str(replied_user.user.id)
+        async with event.client.conversation(bots) as conv:
+            try:
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/info " + getuser)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
+            except YouBlockedUserError:
+                await event.edit("**Error:** `unblock` @MissRose_bot `and retry! Or `.unblock @missrose_bot`")
+    else:
+        async with event.client.conversation(bots) as conv:
+            try:
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/info " + sysarg)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
+            except YouBlockedUserError:
+                await event.edit("**Error:** `unblock` @MissRose_Bot `and try again! Or `.unblock @missrose_bot`")
+
+
+@legend.legend_cmd(
     pattern="fban(?:\s|$)([\s\S]*)",
     command=("fban", menu_category),
     info={
