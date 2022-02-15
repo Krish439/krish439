@@ -53,7 +53,9 @@ async def _(event):
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
             except YouBlockedUserError:
-                await event.edit("**Error:** `unblock` @MissRose_bot `and retry! Or `.unblock @missrose_bot`")
+                await event.edit(
+                    "**Error:** `unblock` @MissRose_bot `and retry! Or `.unblock @missrose_bot`"
+                )
     else:
         async with event.client.conversation(bots) as conv:
             try:
@@ -64,7 +66,9 @@ async def _(event):
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
             except YouBlockedUserError:
-                await event.edit("**Error:** `unblock` @MissRose_Bot `and try again! Or `.unblock @missrose_bot`")
+                await event.edit(
+                    "**Error:** `unblock` @MissRose_Bot `and try again! Or `.unblock @missrose_bot`"
+                )
 
 
 @legend.legend_cmd(
