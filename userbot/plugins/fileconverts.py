@@ -10,6 +10,7 @@ import time
 from datetime import datetime
 from io import BytesIO
 from shutil import copyfile
+
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image
