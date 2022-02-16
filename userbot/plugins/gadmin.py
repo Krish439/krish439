@@ -313,7 +313,7 @@ async def lolgban(event):  # sourcery no-metrics
             \n**User : **[{name}](tg://user?id={userid})\
             \n**ID : **`{userid}`\
             \n**Reason :** `{reason}`\
-            \n__Banned in {chats} groups__\
+            \n__Banned in {chats} groups__"
         )
     else:
         await event.client.send_message(
@@ -322,7 +322,7 @@ async def lolgban(event):  # sourcery no-metrics
             \nGlobal Ban\
             \n**User : **[{name}](tg://user?id={userid})\
             \n**ID : **`{userid}`\
-            \n__Banned in {chats} groups__\
+            \n__Banned in {chats} groups__"
         )
     try:
         if reply:
@@ -378,7 +378,7 @@ async def lolgban(event):
         \nGlobal Unban
         \n**User : **[{name}](tg://user?id={userid})\
         \n**ID : **`{userid}`\
-        \n__Unbanned in {chats} groups__\
+        \n__Unbanned in {chats} groups__"
          )
 
 
