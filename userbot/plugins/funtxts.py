@@ -7,7 +7,6 @@ from ..core.managers import eor
 menu_category = "fun"
 
 
-
 @legend.legend_cmd(
     pattern="why$",
     command=("why", menu_category),
