@@ -659,7 +659,10 @@ bubbletextfont = [
     command=("weebify", menu_category),
     info={
         "header": "Font style command.(Changes font style of the given text)",
-        "usage": ["{tr}weebify <text>", "{tr}weebify reply this command to text message"],
+        "usage": [
+            "{tr}weebify <text>",
+            "{tr}weebify reply this command to text message",
+        ],
         "examples": "{tr}weebify LegendUserBot",
     },
 )
