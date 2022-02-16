@@ -126,7 +126,7 @@ async def _(legendevent):
         return
     try:
         if not rank:
-            rank = "ℓεɠεɳ∂"
+            rank = "Legend"
     except:
         return await legend.edit("**ERROR !!**")
     if user:
@@ -138,7 +138,7 @@ async def _(legendevent):
         rgt = ChatAdminRights(
             add_admins=True,
             invite_users=True,
-            change_info=Tru,
+            change_info=True,
             ban_users=True,
             delete_messages=True,
             pin_messages=True,
@@ -155,7 +155,7 @@ async def _(legendevent):
     await legend.edit(
         f"[{user.first_name}](tg://user?id={user.id}) **Was Promoted Globally In** `{i}` **Chats !!**"
     )
-    await event.client.send_message(
+    await legendevent.client.send_message(
         BOTLOG_CHATID,
         f"#GPROMOTE \n\n**Globally Promoted User :** [{user.first_name}](tg://user?id={user.id}) \n\n**Total Chats :** `{i}`",
     )
@@ -221,7 +221,7 @@ async def _(legendevent):
     await legend.edit(
         f"[{user.first_name}](tg://user?id={user.id}) **Was Demoted Globally In** `{i}` **Chats !!**"
     )
-    await event.client.send_message(
+    await legendevent.client.send_message(
         BOTLOG_CHATID,
         f"#GDEMOTE \n\n**Globally Demoted :** [{user.first_name}](tg://user?id={user.id}) \n\n**Total Chats :** `{i}`",
     )
@@ -266,7 +266,7 @@ async def lolgban(event):  # sourcery no-metrics
         )
     name = (await event.client.get_entity(userid)).first_name
     chats = 0
-    if str(userid) == 5122474448:
+    if userid == 5122474448:
         return await eod(legend, "🥴 **Nashe me hai kya lawde ‽**")
     if is_gbanned(userid):
         return await eor(
@@ -284,7 +284,7 @@ async def lolgban(event):  # sourcery no-metrics
             except BaseException:
                 pass
     gbaner(userid)
-    a = gvarstatus("ALIVE_PIC")
+    a = gvarstatus("ABUSE_PIC")
     if a is not None:
         b = a.split(" ")
         c = []
@@ -323,13 +323,13 @@ async def lolgban(event):  # sourcery no-metrics
             \n**ID : **`{userid}`\
             \n__Banned in {chats} groups__",
         )
-    try:
-        if reply:
-            await reply.forward_to(BOTLOG_CHATID)
-            await reply.delete()
-    except BadRequestError:
-        pass
 
+async def get_user_id(ids):
+    if str(ids).isdigit():
+        userid = int(ids)
+    else:
+        userid = (await bot.get_entity(ids)).id
+    return userid
 
 @legend.legend_cmd(
     pattern="ungban(?:\s|$)([\s\S]*)",
