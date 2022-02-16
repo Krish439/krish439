@@ -336,11 +336,11 @@ async def legend(event):
 
 
 @legend.legend_cmd(
-    pattern="gali$",
-    command=("gali", menu_category),
+    pattern="lgali$",
+    command=("lgali", menu_category),
     info={
         "header": "shows you some gali sentences",
-        "usage": "{tr}gali",
+        "usage": "{tr}lgali",
     },
 )
 async def legend(event):
