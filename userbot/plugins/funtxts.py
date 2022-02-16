@@ -7,19 +7,6 @@ from ..core.managers import eor
 menu_category = "fun"
 
 
-@legend.legend_cmd(
-    pattern="tlegend$",
-    command=("tlegend", menu_category),
-    info={
-        "header": "Some random legend facial text art",
-        "usage": "{tr}tlegend",
-    },
-)
-async def hmm(legend):
-    "Some random legend facial text art"
-    legend = nekos.textlegend()
-    await eor(legend, legend)
-
 
 @legend.legend_cmd(
     pattern="why$",
