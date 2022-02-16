@@ -177,7 +177,6 @@ async def _(legendevent):
     legend = await eor(legendevent, "`Demoting Globally...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
-    await legendevent.get_chat()
     if legendevent.is_private:
         user = legendevent.chat
         rank = legendevent.pattern_match.group(1)
