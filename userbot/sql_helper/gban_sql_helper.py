@@ -20,11 +20,9 @@ from . import BASE, SESSION
 class GBan(BASE):
     __tablename__ = "gban"
     chat_id = Column(String(14), primary_key=True)
-    reason = Column(String(127))
 
-    def __init__(self, chat_id, reason=""):
+    def __init__(self, chat_id):
         self.chat_id = chat_id
-        self.reason = reason
 
 
 GBan.__table__.create(checkfirst=True)
@@ -39,27 +37,20 @@ def is_gbanned(chat_id):
         SESSION.close()
 
 
-def get_gbanuser(chat_id):
-    try:
-        return SESSION.query(GBan).get(str(chat_id))
-    finally:
-        SESSION.close()
-
-
-def legendgban(chat_id, reason):
-    adder = GBan(str(chat_id), str(reason))
+def gbaner(chat_id):
+    adder = GBan(str(chat_id))
     SESSION.add(adder)
     SESSION.commit()
 
 
-def legendungban(chat_id):
+def ungbaner(chat_id):
     rem = SESSION.query(GBan).get(str(chat_id))
     if rem:
         SESSION.delete(rem)
         SESSION.commit()
 
 
-def get_all_gbanned():
+def all_gbanned():
     rem = SESSION.query(GBan).all()
     SESSION.close()
     return rem
