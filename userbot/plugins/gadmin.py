@@ -375,7 +375,7 @@ async def lolgban(event):
     await event.client.send_message(
         BOTLOG_CHATID,
         f"#UNGBAN\
-        \nGlobal Unban
+        \nGlobal Unban\
         \n**User : **[{name}](tg://user?id={userid})\
         \n**ID : **`{userid}`\
         \n__Unbanned in {chats} groups__"
