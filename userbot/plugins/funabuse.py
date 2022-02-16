@@ -1,8 +1,8 @@
 import random
+
 from userbot import legend
 
 from ..core.managers import eor
-from . import fonts
 
 menu_category = "extra"
 # ✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓#
@@ -280,6 +280,7 @@ INSULT_STRINGS = [
     "`If you’re talking behind my back then you’re in a perfect position to kiss my a**!.`",
 ]
 # ===========================================
+
 
 @legend.legend_cmd(
     pattern="randi(?:\s|$)([\s\S]*)",
