@@ -239,7 +239,6 @@ async def _(legendevent):
 )
 async def lolgban(event):  # sourcery no-metrics
     "To ban user in every group where you are admin."
-    async def _(event):
     legend = await eor(event, "`Gbanning...`")
     reason = ""
     await event.get_reply_message()
