@@ -1,31 +1,33 @@
 import asyncio
-from datetime import datetime
-import asyncio
 import random
+from datetime import datetime
 
 from telethon import events
-from telethon.tl.functions.channels import EditAdminRequest
-from telethon.tl.types import ChatAdminRights, MessageEntityMentionName
-
 from telethon.errors import BadRequestError
-from telethon.tl.functions.channels import EditBannedRequest
+from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import ChatBannedRights
+from telethon.tl.types import (
+    ChatAdminRights,
+    ChatBannedRights,
+    MessageEntityMentionName,
+)
 from telethon.utils import get_display_name
 
 from userbot import legend
 
 from ..core.managers import eod, eor
 from ..helpers.utils import _format
-from ..sql_helper.gban_sql_helper import (
-    all_gbanned,
-    gbaner,
-    is_gbanned,
-    ungbaner,
-)
+from ..sql_helper.gban_sql_helper import all_gbanned, gbaner, is_gbanned, ungbaner
+from ..sql_helper.globals import gvarstatus
 from ..sql_helper.mute_sql import is_muted, mute, unmute
-from . import BOTLOG, BOTLOG_CHATID, admin_groups, get_user_from_event, gban_pic, mention
-from ..sql_helper.globals import gvarstatus 
+from . import (
+    BOTLOG,
+    BOTLOG_CHATID,
+    admin_groups,
+    gban_pic,
+    get_user_from_event,
+    mention,
+)
 
 menu_category = "admin"
 
@@ -51,6 +53,7 @@ UNBAN_RIGHTS = ChatBannedRights(
     send_inline=None,
     embed_links=None,
 )
+
 
 async def get_full_user(event):
     args = event.pattern_match.group(1).split(":", 1)
@@ -90,8 +93,6 @@ async def get_user_from_id(user, event):
         await event.edit(str(err))
         return None
     return user_obj
-
-
 
 
 @legend.legend_cmd(
@@ -160,7 +161,6 @@ async def _(legendevent):
     )
 
 
-
 @legend.legend_cmd(
     pattern="gdemote(?:\s|$)([\s\S]*)",
     command=("gdemote", menu_category),
@@ -225,7 +225,6 @@ async def _(legendevent):
         BOTLOG_CHATID,
         f"#GDEMOTE \n\n**Globally Demoted :** [{user.first_name}](tg://user?id={user.id}) \n\n**Total Chats :** `{i}`",
     )
-
 
 
 @legend.legend_cmd(
@@ -313,7 +312,7 @@ async def lolgban(event):  # sourcery no-metrics
             \n**User : **[{name}](tg://user?id={userid})\
             \n**ID : **`{userid}`\
             \n**Reason :** `{reason}`\
-            \n__Banned in {chats} groups__"
+            \n__Banned in {chats} groups__",
         )
     else:
         await event.client.send_message(
@@ -322,7 +321,7 @@ async def lolgban(event):  # sourcery no-metrics
             \nGlobal Ban\
             \n**User : **[{name}](tg://user?id={userid})\
             \n**ID : **`{userid}`\
-            \n__Banned in {chats} groups__"
+            \n__Banned in {chats} groups__",
         )
     try:
         if reply:
@@ -378,8 +377,8 @@ async def lolgban(event):
         \nGlobal Unban\
         \n**User : **[{name}](tg://user?id={userid})\
         \n**ID : **`{userid}`\
-        \n__Unbanned in {chats} groups__"
-         )
+        \n__Unbanned in {chats} groups__",
+    )
 
 
 @legend.legend_cmd(
@@ -430,7 +429,6 @@ async def _(event):
                     await event.reply(gban_watcher)
                 except BaseException:
                     pass
-
 
 
 @legend.legend_cmd(
