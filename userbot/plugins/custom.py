@@ -14,6 +14,8 @@ cmdhd = Config.HANDLER
 
 
 vlist = [
+    "ABUSE"
+    "ABUSE_PIC"
     "ALIVE_PIC",
     "ALIVE_EMOJI",
     "ALIVE_TEXT",
