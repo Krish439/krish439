@@ -36,11 +36,13 @@ def is_gbanned(chat_id):
     finally:
         SESSION.close()
 
+
 def get_gbanuser(chat_id):
     try:
         return SESSION.query(GBan).get(str(chat_id))
     finally:
         SESSION.close()
+
 
 def gbaner(chat_id):
     adder = GBan(str(chat_id))
