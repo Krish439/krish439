@@ -324,12 +324,14 @@ async def lolgban(event):  # sourcery no-metrics
             \n__Banned in {chats} groups__",
         )
 
+
 async def get_user_id(ids):
     if str(ids).isdigit():
         userid = int(ids)
     else:
         userid = (await bot.get_entity(ids)).id
     return userid
+
 
 @legend.legend_cmd(
     pattern="ungban(?:\s|$)([\s\S]*)",
