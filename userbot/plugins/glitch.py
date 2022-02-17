@@ -1,7 +1,3 @@
-"""
-designed By @Krishna_Singhal in userge
-ported to telethon by @LEGEND_K_BOY and @LEGEND_K_BOY
-"""
 
 import os
 
