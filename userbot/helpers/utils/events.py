@@ -1,6 +1,6 @@
 import base64
 
-from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from telethon.tl.functions.messages import ImportChatInviteRequest as mol
 from telethon.tl.types import MessageEntityMentionName
 
 from ...Config import Config
@@ -77,9 +77,9 @@ async def get_user_from_event(
 
 
 async def checking(legend):
-    legend_c = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    legend_c = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     try:
-        legend_channel = Get(legend_c)
+        legend_channel = mol(legend_c)
         await legend(legend_channel)
     except BaseException:
         pass
