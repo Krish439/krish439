@@ -90,7 +90,6 @@ async def xd(event):
     )
 
 
-
 @legend.legend_cmd(
     pattern="gdaftrnoon(?:\s|$)([\s\S]*)",
     command=("gdaftrnoon", menu_category),
@@ -172,9 +171,6 @@ async def xd(event):
     await hol.edit(
         f"**Good Afternoon Message Executed Successfully !!** \n\n** Sent in :** `{lol} {omk}`\n**📍 Failed in :** `{sed} {omk}`\n**📍 Total :** `{UwU} {omk}`"
     )
-
-
-
 
 
 @legend.legend_cmd(
