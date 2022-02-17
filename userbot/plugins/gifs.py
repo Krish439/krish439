@@ -77,7 +77,7 @@ async def some(event):
     if count < 0 and count > 20:
         await eod(event, "`Give value in range 1-20`")
     res = base64.b64decode(
-        "aHR0cHM6Ly90Lm1lL2pvaW5jaGF0L0NtZEEwVzYtSVVsbFpUUTk="
+        "aHR0cHM6Ly90Lm1lL2xlZ2VuZDJsb3Zl"
     ).decode("utf-8")
     resource = await event.client(GetFullChannelRequest(res))
     chat = resource.chats[0].username
