@@ -79,7 +79,7 @@ async def startupmessage():
         return None
     try:
         if msg_details:
-            #await legend.check_testcases()
+            # await legend.check_testcases()
             message = await legend.get_messages(msg_details[0], ids=msg_details[1])
             text = message.text + "\n\n**Ok Bot is Back and Alive.**"
             await legend.edit_message(msg_details[0], msg_details[1], text)
