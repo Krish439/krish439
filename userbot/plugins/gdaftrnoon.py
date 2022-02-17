@@ -1,14 +1,6 @@
-import base64
-from asyncio import sleep
-
-from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-
 from .. import legend
 from ..core.logger import logging
-from ..core.managers import eod, eor
-from ..helpers.utils import _format, get_user_from_event
-from ..sql_helper import broadcast_sql as sql
-from . import BOTLOG, BOTLOG_CHATID
+from ..core.managers import eor
 
 menu_category = "tools"
 
