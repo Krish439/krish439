@@ -120,7 +120,7 @@ async def _(event):
         "header": "To ban everyone from group.",
         "description": "To ban all from the group except admins.",
         "usage": [
-            "{tr}kickall",
+            "{tr}banall",
         ],
     },
     groups_only=True,
@@ -494,26 +494,26 @@ async def _(event):  # sourcery no-metrics
             n += 1
     if input_str:
         required_string = """Kicked {} / {} users
-Deleted Accounts: {}
-UserStatusEmpty: {}
-UserStatusLastMonth: {}
-UserStatusLastWeek: {}
-UserStatusOffline: {}
-UserStatusOnline: {}
-UserStatusRecently: {}
-Bots: {}
-None: {}"""
+🗒Deleted Accounts: {}
+🚩UserStatusEmpty: {}
+🚩UserStatusLastMonth: {}
+🚩UserStatusLastWeek: {}
+🚩UserStatusOffline: {}
+🚩UserStatusOnline: {}
+🚩UserStatusRecently: {}
+🚩Bots: {}
+🚩None: {}"""
         await et.edit(required_string.format(c, p, d, y, m, w, o, q, r, b, n))
         await sleep(5)
     await et.edit(
         """Total: {} users
-Deleted Accounts: {}
-UserStatusEmpty: {}
-UserStatusLastMonth: {}
-UserStatusLastWeek: {}
-UserStatusOffline: {}
-UserStatusOnline: {}
-UserStatusRecently: {}
+🗒Deleted Accounts: {}
+🚩UserStatusEmpty: {}
+🚩UserStatusLastMonth: {}
+🚩UserStatusLastWeek: {}
+🚩UserStatusOffline: {}
+🚩UserStatusOnline: {}
+🚩UserStatusRecently: {}
 Bots: {}
 None: {}""".format(
             p, d, y, m, w, o, q, r, b, n
