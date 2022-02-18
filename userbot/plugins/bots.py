@@ -1,7 +1,7 @@
 from telegraph import Telegraph
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-
+from telethon.tl import functions
 from .. import legend
 from ..core.managers import eod, eor
 
@@ -45,7 +45,8 @@ async def _(event):
             await event.client.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.edit("unblock @Rekognition_Bot and try again")
+            await event.client(functions.contacts.UnblockRequest("@Rekognition_Bot"))
+            await event.edit("Unblocked Now try again")
             await legend.delete()
             return
         if response.text.startswith("See next message."):
@@ -89,7 +90,8 @@ async def _(event):
             response2 = await conv.get_response()
             response3 = await conv.get_response()
         except YouBlockedUserError:
-            await eod(event, "Please unblock @Sangmatainfo_bot")
+            await event.client(functions.contacts.UnblockRequest("@spambot"))
+            await eod(event, "Unblocked @Sangmatainfo_bot & Now Try Again")
             return
         if response1.text.startswith("Name History"):
             await legend.edit(response1.text)
@@ -136,7 +138,8 @@ async def _(event):
             response2 = await conv.get_response()
             response3 = await conv.get_response()
         except YouBlockedUserError:
-            await eod(event, "Please unblock @Sangmatainfo_bot")
+            await event.client(functions.contacts.UnblockRequest("@spambot"))
+            await eod(event, "Unblocked @Sangmatainfo_bot & Now Try Again")
             return
         if response1.text.startswith("Username History"):
             await legend.edit(response1.text)
@@ -178,4 +181,5 @@ async def _(event):
                 yup = await conv.get_response()
                 await conv.send_message(event.chat_id, yup.text)
             except YouBlockedUserError:
-                await eod("**Error:** \nUnblock @spambot and retry!")
+                await event.client(functions.contacts.UnblockRequest("@spambot"))
+                await eod("**Unblocked @spambot and Now try Again")
