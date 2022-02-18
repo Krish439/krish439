@@ -93,7 +93,7 @@ async def variable(var):  # sourcery no-metrics
             return await legend.edit("`.set var <ConfigVars-name> <value>`")
         await asyncio.sleep(1.5)
         if "LEGEND_STRING" in variable:
-            await legend.edit(var, "Successfully Changed")
+            await legend.edit("Successfully Changed")
             return
         if variable in heroku_var:
             await legend.edit(
