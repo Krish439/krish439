@@ -91,7 +91,7 @@ async def plugininfo(input_str, event, type):
         except IndexError:
             outstr += "**📜Info :** `None`\n\n"
     outstr += f"**👨‍💻 Usage : ** `{cmdprefix}help <command name>`\
-        \n**Note : **If command name is same as plugin name then use this `{cmdprefix}help -c <command name>`."
+        \n**Note : **If command name is same as plugin name then use this `{cmdprefix}help -l <command name>`."
     return outstr
 
 
@@ -138,7 +138,7 @@ async def cmdlist():
         },
         "usage": [
             "{tr}help (plugin/command name)",
-            "{tr}help -c (command name)",
+            "{tr}help -l (command name)",
         ],
         "examples": ["{tr}help help", "{tr}help -l help"],
     },
@@ -197,25 +197,6 @@ async def _(event):
     await eor(event, outstr, aslink=True, linktext="Total Commands of LegendBot are :")
 
 
-@legend.legend_cmd(
-    pattern="s ([\s\S]*)",
-    command=("s", menu_category),
-    info={
-        "header": "To search commands.",
-        "examples": "{tr}s song",
-    },
-)
-async def _(event):
-    "To search commands."
-    cmd = event.pattern_match.group(1)
-    found = [i for i in sorted(list(CMD_INFO)) if cmd in i]
-    if found:
-        out_str = "".join(f"`{i}`    " for i in found)
-        out = f"**I found {len(found)} command(s) for: **`{cmd}`\n\n{out_str}"
-        out += f"\n\n👨‍💻__For more info check {cmdprefix}help -l <command>__"
-    else:
-        out = f"I can't find any such command `{cmd}` in LegendBot"
-    await eor(event, out)
 
 
 @legend.legend_cmd(
