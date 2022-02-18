@@ -197,8 +197,6 @@ async def _(event):
     await eor(event, outstr, aslink=True, linktext="Total Commands of LegendBot are :")
 
 
-
-
 @legend.legend_cmd(
     pattern="dc$",
     command=("dc", menu_category),
