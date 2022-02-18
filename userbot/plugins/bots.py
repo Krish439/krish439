@@ -89,25 +89,19 @@ async def _(event):
             first = await conv.send_message(f"/search_id {victim}")
             response1 = await conv.get_response()
             response2 = await conv.get_response()
-            response3 = await conv.get_response()
         except YouBlockedUserError:
             await event.client(functions.contacts.UnblockRequest("@spambot"))
-            await eod(event, "Unblocked @Sangmatainfo_bot & Now Try Again")
+            await eod(event, "Done Unblocked @Sangmatainfo_bot & Now Try Again")
             return
         if response1.text.startswith("Name History"):
             await legend.edit(response1.text)
             await event.client.delete_messages(
-                conv.chat_id, [first.id, response1.id, response2.id, response3.id]
+                conv.chat_id, [first.id, response1.id, response2.id]
             )
         elif response2.text.startswith("Name History"):
             await legend.edit(response2.text)
             await event.client.delete_messages(
-                conv.chat_id, [first.id, response1.id, response2.id, response3.id]
-            )
-        elif response3.text.startswith("Name History"):
-            await legend.edit(response3.text)
-            await event.client.delete_messages(
-                conv.chat_id, [first.id, response1.id, response2.id, response3.id]
+                conv.chat_id, [first.id, response1.id, response2.id]
             )
         else:
             await legend.edit("No Records Found !")
@@ -149,11 +143,6 @@ async def _(event):
             )
         elif response2.text.startswith("Username History"):
             await legend.edit(response2.text)
-            await event.client.delete_messages(
-                conv.chat_id, [first.id, response1.id, response2.id, response3.id]
-            )
-        elif response3.text.startswith("Username History"):
-            await legend.edit(response3.text)
             await event.client.delete_messages(
                 conv.chat_id, [first.id, response1.id, response2.id, response3.id]
             )
