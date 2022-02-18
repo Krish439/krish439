@@ -5,7 +5,6 @@ from . import eor, legend
 menu_category = "fun"
 
 
-
 @legend.legend_cmd(
     pattern="gim$",
     command=("gim", menu_category),
@@ -18,7 +17,6 @@ async def _(event):
 
     a = "🎱➖✊➖➖✊➖🎱\n🌟        \         /          🌟\n⭐          \😁/            ⭐\n✨           🎽             ✨\n              /    \ \n            👟    👟"
     await event.edit(a)
-
 
 
 @legend.legend_cmd(
