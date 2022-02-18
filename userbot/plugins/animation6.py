@@ -5,6 +5,22 @@ from . import eor, legend
 menu_category = "fun"
 
 
+
+@legend.legend_cmd(
+    pattern="gim$",
+    command=("gim", menu_category),
+    info={
+        "header": "Fun animation try yourself to know more",
+        "usage": "{tr}gim",
+    },
+)
+async def _(event):
+
+    a = "🎱➖✊➖➖✊➖🎱\n🌟        \         /          🌟\n⭐          \😁/            ⭐\n✨           🎽             ✨\n              /    \ \n            👟    👟"
+    await event.edit(a)
+
+
+
 @legend.legend_cmd(
     pattern="cry$",
     command=("cry", menu_category),
