@@ -1,10 +1,3 @@
-# Heroku manager for your LegendUserBot
-
-# CC- @refundisillegal\nSyntax:-\n.get var NAME\n.del var NAME\n.set var NAME
-
-# Copyright (C) 2020 Adek Maulana.
-# All rights reserved.
-
 import asyncio
 import math
 import os
@@ -66,6 +59,8 @@ async def variable(var):  # sourcery no-metrics
         await asyncio.sleep(1.0)
         try:
             variable = var.pattern_match.group(2).split()[0]
+            if "LEGEND_STRING", in heroku_var:
+                return await legend.edit("Legend String Is A Sensitive Data So Its Protected By LegendBot")
             if variable in heroku_var:
                 return await legend.edit(
                     "**ConfigVars**:" f"\n\n`{variable}` = `{heroku_var[variable]}`\n"
@@ -97,6 +92,9 @@ async def variable(var):  # sourcery no-metrics
         if not value:
             return await legend.edit("`.set var <ConfigVars-name> <value>`")
         await asyncio.sleep(1.5)
+        if "LEGEND_STRING" in variable:
+            await legend.edit(var, "Successfully Changed")
+            return
         if variable in heroku_var:
             await legend.edit(
                 f"`{variable}` **successfully changed to  ->  **`{value}`"
@@ -132,7 +130,7 @@ async def dyno_usage(dyno):
     """
     Get your account Dyno Usage
     """
-    if (APP_NAME is None) or (API_KEY is None):
+    if (Config.APP_NAME is None) or (Config.API_KEY is None):
         return await eod(
             dyno,
             "Set the required vars in heroku to function this normally `API_KEY` and `APP_NAME`.",
@@ -180,7 +178,7 @@ async def dyno_usage(dyno):
     await asyncio.sleep(1.5)
     return await dyno.edit(
         "**Dyno Usage**:\n\n"
-        f" -> `Dyno usage for`  **{Config.APP_NAME}**:\n"
+        f" 🗒 `Dyno usage for`  **{Config.APP_NAME}**:\n"
         f"     •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
         f"**|**  [`{AppPercentage}`**%**]"
         "\n\n"
@@ -200,7 +198,7 @@ async def dyno_usage(dyno):
 )
 async def _(dyno):
     "To get recent 100 lines logs from heroku"
-    if (APP_NAME is None) or (API_KEY is None):
+    if (Config.APP_NAME is None) or (Config.API_KEY is None):
         return await eod(
             dyno,
             "Set the required vars in heroku to function this normally `API_KEY` and `APP_NAME`.",
