@@ -39,9 +39,9 @@ class Config(object):
     # set this value with channel id of private channel use full for .frwd cmd
     PRIVATE_CHANNEL_BOT_API_ID = int(os.environ.get("PRIVATE_CHANNEL_BOT_API_ID") or 0)
     # for heroku plugin you can get this value from https://dashboard.heroku.com/account
-    API_KEY = os.environ.get("HEROKU_API_KEY", None)
+    API_KEY = os.environ.get("API_KEY", None)
     # set this with same app name you given for heroku
-    APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
+    APP_NAME = os.environ.get("APP_NAME", None)
     # Owner id to show profile link of given id as owner
     OWNER_ID = int(os.environ.get("OWNER_ID") or 0)
     # set this with group id so it keeps notifying about your tagged messages or pms
