@@ -2,6 +2,7 @@ from telegraph import Telegraph
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import functions
+
 from .. import legend
 from ..core.managers import eod, eor
 
