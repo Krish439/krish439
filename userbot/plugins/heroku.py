@@ -59,7 +59,7 @@ async def variable(var):  # sourcery no-metrics
         await asyncio.sleep(1.0)
         try:
             variable = var.pattern_match.group(2).split()[0]
-            if "LEGEND_STRING", in heroku_var:
+            if "LEGEND_STRING" in heroku_var:
                 return await legend.edit("Legend String Is A Sensitive Data So Its Protected By LegendBot")
             if variable in heroku_var:
                 return await legend.edit(
