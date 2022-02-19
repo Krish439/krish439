@@ -10,6 +10,29 @@ menu_category = "utils"
 
 
 @legend.legend_cmd(
+    pattern="join ([\s\S]*)",
+    command=("join", menu_category),
+    info={
+        "header": "To Join a Group Or Channel .",
+        "description": "U Can Join Channel or Group Without Going Into That Chat",
+        "usage": "{tr}join <username>",
+        "examples": "{tr}join @LegendBot_XD",
+    },
+)
+async def lol(event):
+    a = event.text
+    bol = a[5:]
+    sweetie = "Joining...."
+    await e.reply(sweetie, parse_mode=None, link_preview=None)
+    try:
+        await legend(functions.channels.JoinChannelRequest(bol))
+        await event.edit("𝐉𝐎𝐢𝐍 𝐇𝐎𝐆𝐘𝐀 𝐕𝐀𝐈")
+    except Exception as e:
+        await event.edit(str(e))
+
+
+
+@legend.legend_cmd(
     pattern="add ([\s\S]*)",
     command=("add", menu_category),
     info={
