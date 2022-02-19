@@ -2,17 +2,11 @@
 import io
 import os
 from io import BytesIO
-import asyncio
-import os
-import shlex
-from typing import Tuple
 
-import PIL.ImageOps
 import requests
-from PIL import Image
+from PIL import Image, ImageFilter, ImageOps
 from telegraph import upload_file
 from telethon.tl.types import MessageMediaPhoto
-from PIL import Image, ImageFilter, ImageOps
 
 from userbot import legend
 
