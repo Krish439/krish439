@@ -32,7 +32,8 @@ async def lon(frog):
         "⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
     )
     await eor(frog, D)
-    
+
+
 @legend.legend_cmd(
     pattern="shitos$",
     command=("shitos", menu_category),
@@ -122,7 +123,7 @@ async def lisj(frogsay):
         "⠄⠻⣦⣀⣀⣀⣀⣀⣤⣤⣤⣤⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋\n"
     )
     await eor(frogsay, C)
-    
+
 
 @legend.legend_cmd(
     pattern="bye$",
