@@ -1,5 +1,3 @@
-import asyncio
-
 from . import ALIVE_NAME, eor, legend
 
 menu_category = "fun"
@@ -37,6 +35,8 @@ async def lon(frog):
         await eor(frog, D)
     else:
         await eor(frog, "Give me Some Text")
+
+
 @legend.legend_cmd(
     pattern="shitos$",
     command=("shitos", menu_category),
@@ -48,6 +48,8 @@ async def lon(frog):
 async def bluedevilshitos(shitos):
     "fun art command"
     await eor(shitos, P)
+
+
 @legend.legend_cmd(
     pattern="dislike$",
     command=("dislike", menu_category),
@@ -59,6 +61,8 @@ async def bluedevilshitos(shitos):
 async def bluedislike(dislike):
     "fun art command"
     await eor(dislike, R)
+
+
 @legend.legend_cmd(
     pattern="sthink$",
     command=("sthink", menu_category),
@@ -91,6 +95,8 @@ async def legend(think):
         await eor(think, B)
     else:
         await eor(think, "Give Me Some Text")
+
+
 @legend.legend_cmd(
     pattern="frog$",
     command=("frog", menu_category),
@@ -123,6 +129,8 @@ async def lisj(frogsay):
         await eor(frogsay, C)
     else:
         await eor(frogsay, "Give Me Some Text")
+
+
 @legend.legend_cmd(
     pattern="bye$",
     command=("bye", menu_category),
