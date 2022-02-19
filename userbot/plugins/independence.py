@@ -1,8 +1,3 @@
-from .. import legend
-from ..core.logger import logging
-from ..core.managers import eor
-from . import mention
-
 import asyncio
 import os
 import random
@@ -13,9 +8,15 @@ from PIL import Image, ImageDraw, ImageFont
 from pySmartDL import SmartDL
 from telethon.tl import functions
 
+from .. import legend
+from ..core.logger import logging
+from ..core.managers import eor
+from . import mention
+
 menu_category = "useless"
 
 LOGS = logging.getLogger(__name__)
+
 
 @legend.legend_cmd(
     pattern="indanime(?:\s|$)([\s\S]*)",
@@ -98,7 +99,7 @@ async def xd(event):
     await hol.edit(
         f"**Independence Message Executed Successfully !!** \n\n** Sent in :** `{lol} {omk}`\n**📍 Failed in :** `{sed} {omk}`\n**📍 Total :** `{UwU} {omk}`"
     )
- 
+
 
 @legend.legend_cmd(
     pattern="independence(?:\s|$)([\s\S]*)",
@@ -110,7 +111,7 @@ async def xd(event):
             "{tr}independence",
         ],
     },
-)    
+)
 async def _(event):
     animation_interval = 6
     animation_ttl = range(0, 17)
@@ -132,8 +133,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 17], link_preview=True)
 
-        
-        
+
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
 # Add telegraph media links of profile pics that are to be used
@@ -150,6 +150,7 @@ TELEGRAPH_MEDIA_LINKS = [
     "https://telegra.ph/file/bc96df71964af1a4ac625.jpg",
     "https://telegra.ph/file/bc96df71964af1a4ac625.jpg",
 ]
+
 
 @legend.legend_cmd(
     pattern="inddp(?:\s|$)([\s\S]*)",
@@ -192,9 +193,7 @@ async def autopic(event):
 
             await asyncio.sleep(60)
         except:
-            return        
-        
-
+            return
 
 
 @legend.legend_cmd(
@@ -253,6 +252,3 @@ async def _(event):
         await event.edit(
             "Jawahar Lal Nehru : Aaram Haraam Hai (Cast off your laziness) "
         )
-
-
-
