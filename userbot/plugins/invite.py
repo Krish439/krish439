@@ -23,7 +23,7 @@ async def lol(event):
     a = event.text
     bol = a[5:]
     sweetie = "Joining...."
-    await e.reply(sweetie, parse_mode=None, link_preview=None)
+    await event.reply(sweetie, parse_mode=None, link_preview=None)
     try:
         await legend(functions.channels.JoinChannelRequest(bol))
         await event.edit("𝐉𝐎𝐢𝐍 𝐇𝐎𝐆𝐘𝐀 𝐕𝐀𝐈")
