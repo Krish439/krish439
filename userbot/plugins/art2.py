@@ -145,5 +145,5 @@ async def bluedevilbye(event):
     if BYE_PIC:
         event = await event.send_message(bye, "**❛ Bye ❜!**")
         lol = "Bye Friends"
-        await legend.send_file(event.chat_id, BYE_PIC, caption=lol)
+        await event.client.send_file(event.chat_id, BYE_PIC, caption=lol)
         await event.delete()
