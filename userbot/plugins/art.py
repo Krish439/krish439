@@ -611,9 +611,6 @@ async def bluedevilshitos(shitos):
     await eor(shitos, P)
 
 
-"""
-
-
 @legend.legend_cmd(
     pattern="dislike$",
     command=("dislike", menu_category),
@@ -711,3 +708,4 @@ async def bluedevilbye(event):
         lol = "Bye Friends"
         await legend.send_file(event.chat_id, BYE_PIC, caption=lol)
         await event.delete()
+"""
