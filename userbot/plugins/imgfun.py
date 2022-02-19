@@ -2,7 +2,16 @@
 import io
 import os
 from io import BytesIO
+import asyncio
+import os
+import shlex
+from typing import Tuple
 
+import PIL.ImageOps
+import requests
+from PIL import Image
+from telegraph import upload_file
+from telethon.tl.types import MessageMediaPhoto
 from PIL import Image, ImageFilter, ImageOps
 
 from userbot import legend
@@ -111,6 +120,72 @@ async def imirror(event):  # sourcery no-metrics
         "header": "To rotate the replied image or sticker",
         "usage": [
             "{tr}irotate <angle>",
+        ],
+    },
+)
+async def dc(event):
+    await event.edit("Making this image 😡triggered😈")
+    dc = await event.get_reply_message()
+    if isinstance(dc.media, MessageMediaPhoto):
+        img = await bot.download_media(dc.media, pathdc)
+    elif "image" in dc.media.document.mime_type.split("/"):
+        img = await bot.download_media(dc.media, pathdc)
+    else:
+        await event.edit("Reply To any Image only 😅😅")
+        return
+    url = upload_file(img)
+    link = f"https://telegra.ph{url[0]}"
+    hmm = f"https://some-random-api.ml/canvas/triggered?avatar={link}"
+    r = requests.get(hmm)
+    open("legend.gif", "wb").write(r.content)
+    hehe = "legend.gif"
+    await bot.send_file(event.chat_id, hehe, caption="Got Triggered 😈😂", reply_to=dc)
+    for files in (hehe, img):
+        if files and os.path.exists(files):
+            os.remove(files)
+    await event.delete()
+
+
+@legend.legend_cmd(
+    pattern="waste(?: |$)(\d+)$",
+    command=("waste", menu_category),
+    info={
+        "header": "To waste the replied image or sticker",
+        "usage": [
+            "{tr}waste",
+        ],
+    },
+)
+async def dc(event):
+    await event.edit("What a waste 😒😒")
+    dc = await event.get_reply_message()
+    if isinstance(dc.media, MessageMediaPhoto):
+        img = await bot.download_media(dc.media, pathdc)
+    elif "image" in dc.media.document.mime_type.split("/"):
+        img = await bot.download_media(dc.media, pathdc)
+    else:
+        await event.edit("Reply To any Image only 😅😅")
+        return
+    url = upload_file(img)
+    link = f"https://telegra.ph{url[0]}"
+    hmm = f"https://some-random-api.ml/canvas/wasted?avatar={link}"
+    r = requests.get(hmm)
+    open("legend.png", "wb").write(r.content)
+    hehe = "legend.png"
+    await bot.send_file(event.chat_id, hehe, caption="Totally wasted⚰️ 😒", reply_to=dc)
+    for files in (hehe, img):
+        if files and os.path.exists(files):
+            os.remove(files)
+    await event.delete()
+
+
+@legend.legend_cmd(
+    pattern="trig(?: |$)(\d+)$",
+    command=("trig", menu_category),
+    info={
+        "header": "To Trig the replied image or sticker",
+        "usage": [
+            "{tr}trig",
         ],
     },
 )
@@ -246,6 +321,40 @@ async def square_cmd(event):
     img.seek(0)
     await event.client.send_file(event.chat_id, img, reply_to=reply)
     await legendevent.delete()
+
+
+@legend.legend_cmd(
+    pattern="bright(?: |$)(\d+)?$",
+    command=("bright", menu_category),
+    info={
+        "header": "To convert image into doted image",
+        "usage": [
+            "{tr}bright",
+        ],
+    },
+)
+await event.edit("Adding Brightness 😎")
+    dc = await event.get_reply_message()
+    if isinstance(dc.media, MessageMediaPhoto):
+        img = await bot.download_media(dc.media, pathdc)
+    elif "image" in dc.media.document.mime_type.split("/"):
+        img = await bot.download_media(dc.media, pathdc)
+    else:
+        await event.edit("Reply To any Image only 😅😅")
+        return
+    url = upload_file(img)
+    link = f"https://telegra.ph{url[0]}"
+    hehe = f"https://some-random-api.ml/canvas/brightness?avatar={link}"
+    r = requests.get(hehe)
+    open("legend.png", "wb").write(r.content)
+    hehe = "legend.png"
+    await bot.send_file(
+        event.chat_id, hehe, caption="Brightness increased 😎😎", reply_to=dc
+    )
+    for files in (hehe, img):
+        if files and os.path.exists(files):
+            os.remove(files)
+    await event.delete()
 
 
 @legend.legend_cmd(
