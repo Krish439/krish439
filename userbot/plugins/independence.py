@@ -1,20 +1,14 @@
+import asyncio
+
 from .. import legend
 from ..core.logger import logging
 from ..core.managers import eor
 from . import mention
 
-import asyncio
-import os
-import random
-import shutil
-from datetime import datetime
-
-from PIL import Image, ImageDraw, ImageFont
-from pySmartDL import SmartDL
-from telethon.tl import functions
 menu_category = "useless"
 
 LOGS = logging.getLogger(__name__)
+
 
 @legend.legend_cmd(
     pattern="indanime(?:\s|$)([\s\S]*)",
@@ -97,7 +91,7 @@ async def xd(event):
     await hol.edit(
         f"**Independence Message Executed Successfully !!** \n\n** Sent in :** `{lol} {omk}`\n**📍 Failed in :** `{sed} {omk}`\n**📍 Total :** `{UwU} {omk}`"
     )
- 
+
 
 @legend.legend_cmd(
     pattern="independence(?:\s|$)([\s\S]*)",
@@ -109,7 +103,7 @@ async def xd(event):
             "{tr}inmependence",
         ],
     },
-)    
+)
 async def _(event):
     animation_interval = 6
     animation_ttl = range(0, 17)
@@ -130,9 +124,3 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 17], link_preview=True)
-
-        
-        
-        
-        
-
