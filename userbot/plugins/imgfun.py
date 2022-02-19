@@ -333,7 +333,8 @@ async def square_cmd(event):
         ],
     },
 )
-await event.edit("Adding Brightness 😎")
+async def dc(event):
+    await event.edit("Adding Brightness 😎")
     dc = await event.get_reply_message()
     if isinstance(dc.media, MessageMediaPhoto):
         img = await bot.download_media(dc.media, pathdc)
