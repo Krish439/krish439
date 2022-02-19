@@ -1,7 +1,4 @@
-"""
-Created By @Legend_K_Boy
-GF created by @KshitijGagan
-"""
+
 
 import asyncio
 import random
