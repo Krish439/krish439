@@ -40,7 +40,7 @@ LOGS = logging.getLogger(__name__)
 async def xd(event):
     "Help U To Send Independance Day Message In All Group & User"
     await event.get_reply_message()
-    type = event.text[7:9] or "-a"
+    type = event.text[9:11] or "-a"
     hol = await eor(event, "`Sending Independance Day message...`")
     sed = 0
     lol = 0
