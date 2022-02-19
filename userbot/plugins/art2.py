@@ -31,12 +31,8 @@ async def lon(frog):
         "⠄⠄⠄⠄⠄⠄⠄⠁⠙⠒⠙⠯⠍⠙⢉⣡⣶⣿⣿⣿⣿⣿⣿⣿\n"
         "⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
     )
-    if name:
-        await eor(frog, D)
-    else:
-        await eor(frog, "Give me Some Text")
-
-
+    await eor(frog, D)
+    
 @legend.legend_cmd(
     pattern="shitos$",
     command=("shitos", menu_category),
@@ -125,11 +121,8 @@ async def lisj(frogsay):
         "⠄⣿⠁⠄⠐⠛⠛⠛⠉⠉⠉⠉⠄⠄⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿\n"
         "⠄⠻⣦⣀⣀⣀⣀⣀⣤⣤⣤⣤⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋\n"
     )
-    if name:
         await eor(frogsay, C)
-    else:
-        await eor(frogsay, "Give Me Some Text")
-
+    
 
 @legend.legend_cmd(
     pattern="bye$",
