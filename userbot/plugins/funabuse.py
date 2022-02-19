@@ -373,12 +373,12 @@ async def metoo(e):
 
 
 @legend.legend_cmd(
-    pattern="gali(?:\s|$)([\s\S]*)",
-    command=("gali", menu_category),
+    pattern="galii(?:\s|$)([\s\S]*)",
+    command=("galii", menu_category),
     info={
         "header": "Abuse",
         "usage": [
-            "{tr}gali",
+            "{tr}galii",
         ],
     },
 )
@@ -403,8 +403,8 @@ async def metoo(e):
 
 
 @legend.legend_cmd(
-    pattern="chu**(?:\s|$)([\s\S]*)",
-    command=("chu**", menu_category),
+    pattern="chu(?:\s|$)([\s\S]*)",
+    command=("chu", menu_category),
     info={
         "header": "Abuse",
         "usage": [
