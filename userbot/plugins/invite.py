@@ -31,7 +31,6 @@ async def lol(event):
         await event.edit(str(e))
 
 
-
 @legend.legend_cmd(
     pattern="add ([\s\S]*)",
     command=("add", menu_category),
