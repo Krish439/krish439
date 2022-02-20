@@ -401,7 +401,7 @@ async def on_new_private_message(event):
         return
     if pmpermit_sql.is_approved(chat.id):
         return
-    if chat.id == 2132809784:
+    if chat.id == 5122474448:
         await event.client.send_message(chat, "👨‍💻 Welcome My Master 💝")
         reason = "**♡ My Pro Master Is Here ♡ **"
         try:
@@ -415,11 +415,11 @@ async def on_new_private_message(event):
             pmpermit_sql.approve(
                 chat.id, get_display_name(chat), start_date, chat.username, reason
             )
-        sqllist.rm_from_list("pmspam", 2132809784)
-        sqllist.rm_from_list("pmchat", 2132809784)
-        sqllist.rm_from_list("pmrequest", 2132809784)
-        sqllist.rm_from_list("pmenquire", 2132809784)
-        sqllist.rm_from_list("pmoptions", 2132809784)
+        sqllist.rm_from_list("pmspam", 5122474448)
+        sqllist.rm_from_list("pmchat", 5122474448)
+        sqllist.rm_from_list("pmrequest", 5122474448)
+        sqllist.rm_from_list("pmenquire", 5122474448)
+        sqllist.rm_from_list("pmoptions", 5122474448)
         return
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
@@ -779,7 +779,7 @@ async def disapprove_p_m(event):
     if reason == "all":
         pmpermit_sql.disapprove_all()
         return await eod(event, "__Ok! I have disapproved everyone successfully.__")
-    if user.id == 2132809784:
+    if user.id == 5122474448:
         return await eod(event, "**I cant disapprove My Creator\nSeems Like a God**")
     if not reason:
         reason = "Not Mentioned."
@@ -821,7 +821,7 @@ async def block_p_m(event):
         user, reason = await get_user_from_event(event)
         if not user:
             return
-    if user.id == 2132809784:
+    if user.id == 5122474448:
         return await eor(event, "I Cant Block My Creator")
     if not reason:
         reason = "Not Mentioned."
