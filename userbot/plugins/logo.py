@@ -137,72 +137,83 @@ async def very(event):
     await legendevent.delete()
     if os.path.exists(file_name):
         os.remove(file_name)
-    elif cmd == "o":
-        event = await eor(event, "`Processing.....`")
-        fnt = await get_font_file(event.client, "@Legend_Fonts")
-        if event.reply_to_msg_id:
-            rply = await event.get_reply_message()
-            try:
-                logo_ = await rply.download_media()
-            except Exception as e:
-                await event.edit(e)
-        else:
-            async for i in bot.iter_messages(
-                "@LegendBot_Logos", filter=InputMessagesFilterPhotos
-            ):
-                PICS_STR.append(i)
-            pic = random.choice(PICS_STR)
-            logo_ = await pic.download_media()
-        text = event.pattern_match.group(1)
-        if len(text) <= 8:
-            font_size_ = 150
-            strik = 10
-        elif len(text) >= 9:
-            font_size_ = 50
-            strik = 5
-        else:
-            font_size_ = 130
-            strik = 20
-        if not text:
-            await eod(event, "**Give some text to make a logo !!**")
-            return
-        img = Image.open(logo_)
-        draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype(fnt, font_size_)
-        image_widthz, image_heightz = img.size
-        w, h = draw.textsize(text, font=font)
-        h += int(h * 0.21)
-        image_width, image_height = img.size
-        draw.text(
-            ((image_width - w) / 2, (image_height - h) / 2),
-            text,
-            font=font,
-            fill=(255, 255, 255),
-        )
-        w_ = (image_width - w) / 2
-        h_ = (image_height - h) / 2
-        draw.text(
-            (w_, h_),
-            text,
-            font=font,
-            fill="white",
-            stroke_width=strik,
-            stroke_fill="black",
-        )
-        file_name = "LEGENDBOT.png"
-        img.save(file_name, "png")
-        await event.client.send_file(
-            event.chat_id,
-            file_name,
-            caption=f"**Made By :** {mention}",
-        )
-        await event.delete()
-        try:
-            os.remove(file_name)
-            os.remove(fnt)
-            os.remove(logo_)
-        except:
-            pass
+
+
+
+@legend.legend_cmd(
+    pattern="ologo(?: |$)([\s\S]*)",
+    command=("ologo", menu_category),
+    info={
+        "header": "Make a logo in image or sticker",
+        "description": "Just a fun purpose plugin to create logo in image or in sticker.",
+        "usage": [
+            "{tr}logo <text>",
+            "{tr}slogo <text>",
+            "{tr}ologo <text> <reply to image media only>",
+        ],
+        "examples": [
+            "{tr}logo Legend",
+        ],
+    },
+)
+async def lg1(event):
+    event = await eor(event, "`Processing.....`")
+    fnt = await get_font_file(event.client, "@LegendFonts")
+    if event.reply_to_msg_id:
+        rply = await event.get_reply_message()
+        logo_ = await rply.download_media()
+    else:
+        async for i in bot.iter_messages(
+            "@LEGEND_MR_LOGOS", filter=InputMessagesFilterPhotos
+        ):
+            PICS_STR.append(i)
+        pic = random.choice(PICS_STR)
+        logo_ = await pic.download_media()
+    text = event.pattern_match.group(1)
+    if len(text) <= 8:
+        font_size_ = 150
+        strik = 10
+    elif len(text) >= 9:
+        font_size_ = 50
+        strik = 5
+    else:
+        font_size_ = 130
+        strik = 20
+    if not text:
+        await eod(event, "**Give some text to make a logo !!**")
+        return
+    img = Image.open(logo_)
+    draw = ImageDraw.Draw(img)
+    font = ImageFont.truetype(fnt, font_size_)
+    image_widthz, image_heightz = img.size
+    w, h = draw.textsize(text, font=font)
+    h += int(h * 0.21)
+    image_width, image_height = img.size
+    draw.text(
+        ((image_width - w) / 2, (image_height - h) / 2),
+        text,
+        font=font,
+        fill=(255, 255, 255),
+    )
+    w_ = (image_width - w) / 2
+    h_ = (image_height - h) / 2
+    draw.text(
+        (w_, h_), text, font=font, fill="white", stroke_width=strik, stroke_fill="black"
+    )
+    file_name = "LEGENDBOT.png"
+    img.save(file_name, "png")
+    await event.client.send_file(
+        event.chat_id,
+        file_name,
+        caption=f"**Made By :** {mention}",
+    )
+    await event.delete()
+    try:
+        os.remove(file_name)
+        os.remove(fnt)
+        os.remove(logo_)
+    except:
+        pass
 
 
 async def get_font_file(client, channel_id):
