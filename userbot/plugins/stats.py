@@ -125,7 +125,7 @@ async def stats(event):  # sourcery no-metrics
     legendcmd = event.pattern_match.group(1)
     legendevent = await eor(event, STAT_INDICATION)
     start_time = time.time()
-    legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    legend = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     hi = []
     hica = []
     hico = []
@@ -176,7 +176,7 @@ async def stats(event):  # sourcery no-metrics
     legendcmd = event.pattern_match.group(1)
     legendevent = await eor(event, STAT_INDICATION)
     start_time = time.time()
-    legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    legend = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     hi = []
     higa = []
     higo = []
