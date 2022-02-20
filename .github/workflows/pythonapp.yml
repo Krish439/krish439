@@ -1,4 +1,4 @@
-name: Checker
+name: LegendChecker
 
 on: [push, pull_request]
 
