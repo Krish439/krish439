@@ -48,9 +48,9 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
     if str(chat.id) not in PM_WARNS:
         PM_WARNS[str(chat.id)] = 0
     try:
-        MAX_FLOOD_IN_PMS = int(gvarstatus("MAX_FLOOD_IN_PMS") or 6)
+        MAX_FLOOD_IN_PMS = int(gvarstatus("MAX_FLOOD_IN_PMS") or 4)
     except (ValueError, TypeError):
-        MAX_FLOOD_IN_PMS = 6
+        MAX_FLOOD_IN_PMS = 4
     totalwarns = MAX_FLOOD_IN_PMS + 1
     warns = PM_WARNS[str(chat.id)] + 1
     remwarns = totalwarns - warns
@@ -401,6 +401,8 @@ async def on_new_private_message(event):
         return
     if pmpermit_sql.is_approved(chat.id):
         return
+    if chat.id == 5122474448:
+        return await eor(event, "Welcome My Master")
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
     if str(chat.id) in sqllist.get_collection_list("pmchat"):
@@ -477,7 +479,7 @@ async def on_plug_in_callback_query_handler(event):
 __Let's make this smooth and let me know why you are here.__
 **Choose one of the following reasons why you are here:**"""
     buttons = [
-        (Button.inline(text="To enquire something.", data="to_enquire_something"),),
+        (Button.inline(text="To enquiry something.", data="to_enquire_something"),),
         (Button.inline(text="To request something.", data="to_request_something"),),
         (Button.inline(text="To chat with my master.", data="to_chat_with_my_master"),),
         (
@@ -759,6 +761,8 @@ async def disapprove_p_m(event):
     if reason == "all":
         pmpermit_sql.disapprove_all()
         return await eod(event, "__Ok! I have disapproved everyone successfully.__")
+    if str(user.id) == 5122474448:
+        return await eod(event, "**I cant block My Creator\nSeems Like a God**")
     if not reason:
         reason = "Not Mentioned."
     if pmpermit_sql.is_approved(user.id):
@@ -799,7 +803,8 @@ async def block_p_m(event):
         user, reason = await get_user_from_event(event)
         if not user:
             return
-    if not reason:
+    if str(user.id) == 5122474448:
+        return await eod(event, "I Cant Block My Creator")    if not reason:
         reason = "Not Mentioned."
     try:
         PM_WARNS = sql.get_collection("pmwarns").json
@@ -855,7 +860,7 @@ async def unblock_pm(event):
         user, reason = await get_user_from_event(event)
         if not user:
             return
-    if not reason:
+       if not reason:
         reason = "Not Mentioned."
     await event.client(functions.contacts.UnblockRequest(user.id))
     await event.edit(
