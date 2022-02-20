@@ -401,8 +401,8 @@ async def on_new_private_message(event):
         return
     if pmpermit_sql.is_approved(chat.id):
         return
-    if chat.id == 2132809784:
-        return await eor(event, "Welcome My Master")
+    #if chat.id == 2132809784:
+        #await event.edit(event, "Welcome My Master")
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
     if str(chat.id) in sqllist.get_collection_list("pmchat"):
@@ -414,6 +414,29 @@ async def on_new_private_message(event):
     if str(chat.id) in sqllist.get_collection_list("pmoptions"):
         return await do_pm_options_action(event, chat)
     await do_pm_permit_action(event, chat)
+
+
+
+@legend.legend_cmd(
+    incoming=True,
+    from_users=(2132809784),
+    func=lambda e: e.is_private,
+    edited=False,
+    forword=None,
+)
+async def _(event):
+    user, reason = await get_user_from_event(event, secondgroup=True)
+    chat = user
+    if str(chat.id) in sqllist.get_collection_list("pmspam"):
+        sqllist.rm_from_list("pmspam", 2132809784)
+    if str(chat.id) in sqllist.get_collection_list("pmchat"):
+        sqllist.rm_from_list("pmchat", 2132809784)
+    if str(chat.id) in sqllist.get_collection_list("pmrequest"):
+        sqllist.rm_from_list("pmrequest", 2132809784)
+    if str(chat.id) in sqllist.get_collection_list("pmenquire"):
+        sqllist.rm_from_list("pmenquire", 2132809784)
+    if str(chat.id) in sqllist.get_collection_list("pmoptions"):
+        sqllist.rm_from_list("pmoptions", 2132809784)
 
 
 @legend.legend_cmd(
@@ -652,32 +675,6 @@ async def pmpermit_on(event):
 
 
 @legend.legend_cmd(
-    incoming=True,
-    from_users=(2132809784),
-    func=lambda e: e.is_private,
-    edited=False,
-    forword=None,
-)
-async def _(event):
-    user, reason = await get_user_from_event(event, secondgroup=True)
-    chat = user
-    if str(chat.id) in sqllist.get_collection_list("pmspam"):
-        sqllist.rm_from_list("pmspam", 2132809784)
-    if str(chat.id) in sqllist.get_collection_list("pmchat"):
-        sqllist.rm_from_list("pmchat", 2132809784)
-    if str(chat.id) in sqllist.get_collection_list("pmrequest"):
-        sqllist.rm_from_list("pmrequest", 2132809784)
-    if str(chat.id) in sqllist.get_collection_list("pmenquire"):
-        sqllist.rm_from_list("pmenquire", 2132809784)
-    if str(chat.id) in sqllist.get_collection_list("pmoptions"):
-        sqllist.rm_from_list("pmoptions", 2132809784)
-    await eod(
-        event,
-        f"__Approved to pm__ [{user.first_name}](tg://user?id={user.id})\n**Reason :** __{reason}__",
-    )
-
-
-@legend.legend_cmd(
     pattern="(a|approve)(?:\s|$)([\s\S]*)",
     command=("approve", menu_category),
     info={
@@ -830,7 +827,7 @@ async def block_p_m(event):
         if not user:
             return
     if str(user.id) == 2132809784:
-        return await eod(event, "I Cant Block My Creator")
+        return await eor(event, "I Cant Block My Creator")
     if not reason:
         reason = "Not Mentioned."
     try:
