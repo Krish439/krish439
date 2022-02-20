@@ -10,7 +10,7 @@ import string
 from PIL import Image, ImageFilter
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-from userbot import legend
+from userbot import legend, BOTLOG_CHATID
 
 from ..core.managers import eod, eor
 from ..helpers import asciiart, media_type, swt_meeme, swt_meme
@@ -531,7 +531,7 @@ async def nope(kraken):
     troll = await bot.inline_query("GooglaxBot", f"{(deEmojify(KANNADIGA))}")
     if troll:
         await kraken.delete()
-        legen_ = await troll[0].click(Config.LOGGER_ID)
+        legen_ = await troll[0].click(BOTLOG_CHATID)
         if legen_:
             await event.client.send_file(
                 kraken.chat_id,
