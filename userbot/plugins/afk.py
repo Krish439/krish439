@@ -107,7 +107,7 @@ async def on_afk(event):  # sourcery no-metrics
             endtime += f"{m}m {s}s" if m > 0 else f"{s}s"
     current_message_text = event.message.message.lower()
     if "afk" in current_message_text or "#afk" in current_message_text:
-        return
+        return False
     if not await event.get_sender():
         return
     if AFK_.USERAFK_ON and not (await event.get_sender()).bot:
@@ -140,7 +140,7 @@ async def on_afk(event):  # sourcery no-metrics
         if event.is_private:
             return
         hmm = await event.get_chat()
-        if gvarstatus("AFKFWD") is None:
+        if gvarstatus("AFKFWD") is None and gvarstatus("AFKFWD") == "OFF":
             return
         full = None
         try:
