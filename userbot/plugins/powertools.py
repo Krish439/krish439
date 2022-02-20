@@ -3,7 +3,7 @@ from asyncio.exceptions import CancelledError
 from time import sleep
 
 from userbot import legend
-
+from ..helpers.reload import reload_LEGENDBOT
 from ..core.logger import logging
 from ..core.managers import eor
 from ..sql_helper.global_collection import (
@@ -31,8 +31,11 @@ async def _(event):
     "Restarts the bot !!"
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "#RESTART \n" "Bot Restarted")
-    LEGEND = await eor(
-        event,
+    await event.edit("Restarting **[ ░░░ ]** ...\nωαιτ ƒєω мιиυτє⚠️")
+    await event.edit("Restarting **[ █░░ ]** ...\nωαιτ ƒєω мιиυτє☣️")
+    await event.edit("Restarting **[ ██░ ]** ...\nωαιτ ƒєω мιиυτє☢️")
+    await event.edit("Restarting **[ ███ ]** ...\nωαιτ ƒєω мιиυτєѕ☢️")
+    await event.edit(
         "Restarted.\nAfter 2 min Type `.ping` me or `.help` to check if I am online, Actually I Am Going To Restart To Restart All System",
     )
     try:
@@ -53,6 +56,37 @@ async def _(event):
         pass
     except Exception as e:
         LOGS.error(e)
+
+
+@legend.legend_cmd(
+    pattern="reload$",
+    command=("reload", menu_category),
+    info={
+        "header": "Reload the bot !!",
+        "description": "Its Only Reload The All Plugins",
+        "usage": "{tr}reload",
+    },
+)
+async def rel(event):
+    await eor(event, "Reloading Legend Bot... Wait for few seconds...")
+    try:
+        ulist = get_collectionlist_items()
+        for i in ulist:
+            if i == "restart_update":
+                del_keyword_collectionlist("restart_update")
+    except Exception as e:
+        LOGS.error(e)
+    try:
+        add_to_collectionlist("restart_update", [LEGEND.chat_id, LEGEND.id])
+    except Exception as e:
+        LOGS.error(e)
+    try:
+        delgvar("ipaddress")
+    except CancelledError:
+        pass
+    except Exception as e:
+        LOGS.error(e)
+    await reload_LEGENDBOT()
 
 
 @legend.legend_cmd(
