@@ -29,9 +29,9 @@ async def _(event):
         end = datetime.now()
         tms = (end - start).microseconds / 1000
         ms = round((tms - 0.6) / 3, 3)
-        await legendevent.edit(f"**🚩 Average Pong!**\n➥ {ms} ms")
+        await legendevent.edit(f"**👨‍💻 Average Pong!**\n➥ {ms} ms")
     else:
-        sweetie = gvarstatus("PING_PIC") or ""
+        sweetie = gvarstatus("PING_PIC") or "https://telegra.ph/file/e15a2fe1430358e26713c.jpg"
         legendevent = await eor(event, "<b><i>⚡ Pong! ⚡</b></i>", "html")
         end = datetime.now()
         ms = (end - start).microseconds / 1000
@@ -39,7 +39,7 @@ async def _(event):
         await event.client.send_file(
             event.chat_id,
             sweetie,
-            caption=f"<b><i>🚩 Pong</b></i>\n➥ {ms} <b><i>ms\n➥ Bot of {hmention}</b></i>",
+            caption=f"<b><i>👨‍💻 Pong</b></i>\n➥ {ms} <b><i>ms\n➥ Bot of {hmention}</b></i>",
             parse_mode="html",
         )
 
