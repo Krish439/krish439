@@ -43,7 +43,7 @@ async def _(event):
         )
         LOGS.info(e)
 
-
+"""
 @legend.legend_cmd(
     pattern="meaning ([\s\S]*)",
     command=("meaning", menu_category),
@@ -88,3 +88,4 @@ async def _(event):
     except:
         pass
     await event.edit(caption_str)
+"""
