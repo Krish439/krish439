@@ -24,7 +24,6 @@ from telethon import Button, custom, events
 from . import legendversion
 from .core.logger import logging
 from .core.session import legend, tgbot
-from .helpers.reload import reload_LEGENDBOT
 
 LOGS = logging.getLogger("LegendUserBot")
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
@@ -156,7 +155,9 @@ async def rel(event):
             "Reloading Lêɠêɳ̃dẞø†... Wait for few seconds...", cache_time=0, alert=True
         )
         if BOTLOG:
-            await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down")
+            await event.client.send_message(
+                BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down"
+            )
         await eor(event, "`Turning off bot now ...Manually turn me on later`")
         if HEROKU_APP is not None:
             HEROKU_APP.process_formation()["worker"].scale(0)
@@ -173,7 +174,9 @@ async def restart(event):
     if event.query.user_id == bot.uid:
         await event.answer("Restarting Please Wait 4 min... ", cache_time=0, alert=True)
         if BOTLOG:
-            await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down")
+            await event.client.send_message(
+                BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down"
+            )
         try:
             ulist = get_collectionlist_items()
             for i in ulist:
