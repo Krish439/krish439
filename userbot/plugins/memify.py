@@ -25,6 +25,7 @@ from ..helpers.functions import (
     mirror_file,
     solarize,
 )
+from .import deEmojify 
 from ..helpers.utils import _legendtools, reply_id
 from ..sql_helper.globals import addgvar, gvarstatus
 
@@ -156,7 +157,7 @@ async def memes(event):
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
     swtid = await reply_id(event)
-    san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    san = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     if not legendinput:
         return await eod(
             event, "`what should i write on that u idiot give text to memify`"
@@ -242,7 +243,7 @@ async def memes(event):
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
-    san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    san = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -292,7 +293,7 @@ async def memes(event):
     if not (reply and (reply.media)):
         await eor(event, "`Reply to supported Media...`")
         return
-    san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    san = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     swtid = await reply_id(event)
     if not os.path.isdir("./temp/"):
         os.mkdir("./temp/")
@@ -338,7 +339,7 @@ async def memes(event):
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
-    san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    san = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -384,7 +385,7 @@ async def memes(event):
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
-    san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    san = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -430,7 +431,7 @@ async def memes(event):
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
-    san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    san = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -476,7 +477,7 @@ async def memes(event):
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
-    san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    san = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -509,6 +510,40 @@ async def memes(event):
             os.remove(files)
 
 
+
+@legend.legend_cmd(
+    pattern="gg ?([\s\S]*)",
+    command=("gg", menu_category),
+    info={
+        "header": "Try with Your Self,",
+    },
+)
+async def nope(kraken):
+    KANNADIGA = kraken.pattern_match.group(1)
+    if not KANNADIGA:
+        if kraken.is_reply:
+            (await kraken.get_reply_message()).message
+        else:
+            if gvarstatus("ABUSE") == "ON":
+                return await eor(kraken, "Abe chumtiye kuch likhne ke liye de")
+            else:
+                return await eor(kraken, "Googlax need some text to make sticker.")
+
+    troll = await bot.inline_query("GooglaxBot", f"{(deEmojify(KANNADIGA))}")
+    if troll:
+        await kraken.delete()
+        legen_ = await troll[0].click(Config.LOGGER_ID)
+        if legen_:
+            await event.client.send_file(
+                kraken.chat_id,
+                legen_,
+                caption="",
+            )
+        await kraken.delete()
+    else:
+        await eod(kraken, "Error 404:  Not Found")
+
+
 @legend.legend_cmd(
     pattern="zoom ?([\s\S]*)",
     command=("zoom", menu_category),
@@ -524,7 +559,7 @@ async def memes(event):
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
-    san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    san = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -589,7 +624,7 @@ async def memes(event):
     reply = await event.get_reply_message()
     if not reply:
         return await eod(event, "`Reply to supported Media...`")
-    san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    san = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     swtid = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
