@@ -5,16 +5,15 @@ Created by @Legend_K_Boy
 
 import asyncio
 import os
+import random
 import re
 import urllib
-import random
 
 import PIL
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterPhotos
-
 
 from userbot import legend
 
@@ -179,7 +178,12 @@ async def very(event):
         w_ = (image_width - w) / 2
         h_ = (image_height - h) / 2
         draw.text(
-            (w_, h_), text, font=font, fill="white", stroke_width=strik, stroke_fill="black"
+            (w_, h_),
+            text,
+            font=font,
+            fill="white",
+            stroke_width=strik,
+            stroke_fill="black",
         )
         file_name = "LEGENDBOT.png"
         img.save(file_name, "png")
