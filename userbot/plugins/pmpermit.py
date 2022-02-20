@@ -2,7 +2,7 @@ import random
 import re
 from datetime import datetime
 
-from telethon import Button, functions, events 
+from telethon import Button, functions
 from telethon.events import CallbackQuery
 from telethon.utils import get_display_name
 
@@ -414,7 +414,6 @@ async def on_new_private_message(event):
     if str(chat.id) in sqllist.get_collection_list("pmoptions"):
         return await do_pm_options_action(event, chat)
     await do_pm_permit_action(event, chat)
-
 
 
 @legend.legend_cmd(
