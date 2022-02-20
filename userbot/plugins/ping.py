@@ -31,7 +31,10 @@ async def _(event):
         ms = round((tms - 0.6) / 3, 3)
         await legendevent.edit(f"**👨‍💻 Average Pong!**\n➥ {ms} ms")
     else:
-        sweetie = gvarstatus("PING_PIC") or "https://telegra.ph/file/e15a2fe1430358e26713c.jpg"
+        sweetie = (
+            gvarstatus("PING_PIC")
+            or "https://telegra.ph/file/e15a2fe1430358e26713c.jpg"
+        )
         legendevent = await eor(event, "<b><i>⚡ Pong! ⚡</b></i>", "html")
         end = datetime.now()
         ms = (end - start).microseconds / 1000
