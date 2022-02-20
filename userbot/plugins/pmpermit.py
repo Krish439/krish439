@@ -412,7 +412,7 @@ async def on_new_private_message(event):
             sqllist.rm_from_list("pmenquire", 2132809784)
         if str(chat.id) in sqllist.get_collection_list("pmoptions"):
             sqllist.rm_from_list("pmoptions", 2132809784)
-        return await event.client.send_message(event.chat_id, "Welcome My Master")
+        return await event.client.send_message(chat, "Welcome My Master")
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
     if str(chat.id) in sqllist.get_collection_list("pmchat"):
