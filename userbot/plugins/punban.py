@@ -1,5 +1,3 @@
-# Created by @Legend_K_Boy
-# All rights reserved.
 
 import asyncio
 import os
@@ -19,6 +17,97 @@ API = useless.API
 horny = useless.nsfw(useless.pawn)
 
 menu_category = "useless"
+
+@legend.legend_cmd(
+    pattern="linkdl(?: |$)([\s\S]*)",
+    command=("linkdl", menu_category),
+    info={
+        "header": "download porn video or gif in bulk or single from xvideos, imgur or redgif or direct link.\n\nFor multiple link give one space between links or reply to to any link contain text, like listporn or xsearch post",
+        "usage": "{tr}linkdl <input link /reply to link>",
+        "examples": "{tr}linkdl https://redgifs.com/watch/virtuousgorgeousindianspinyloach https://i.imgur.com/3Ffkon9.gifv",
+    },
+)
+async def wants_ur_noods(event):
+    """Download ~~porns~~ *posts from link"""
+    reply_to = await reply_id(event)
+    intxt = event.pattern_match.group(1)
+    reply = await event.get_reply_message()
+    if not intxt and reply:
+        intxt = reply.text
+    if not intxt:
+        return await eod(
+            event,
+            "**ಠ∀ಠ  Reply to valid link or give valid link url as input...you moron!!**",
+        )
+    extractor = URLExtract()
+    plink = extractor.find_urls(intxt)
+    await eor(event, "** Just hold a sec u horny kid...**")
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
+    i = 0
+    for m in plink:
+        if not m.startswith("https://"):
+            return await eod(event, "**(ノಠ益ಠ)ノ Give me a vaid link to download**")
+        if "xvideo" in m:
+            if ".mp4" not in m:
+                req = requests.get(m)
+                soup = BeautifulSoup(req.text, "lxml")
+                soups = soup.find("div", {"id": "video-player-bg"})
+                for a in soups.find_all("a", href=True):
+                    m = a["href"]
+            await eor(
+                event,
+                "**Just hold your candel & sit tight, It will take some time...**",
+            )
+            if not os.path.isdir("./xvdo"):
+                os.mkdir("./xvdo")
+            xvdo = SmartDL(m, "./xvdo/porn.mp4", progress_bar=False)
+            xvdo.start(blocking=False)
+            xvdo.wait("finished")
+            media_url = "./xvdo/porn.mp4"
+        elif "https://i.imgur.com" in m and m.endswith(".gifv"):
+            media_url = m.replace(".gifv", ".mp4")
+        elif "redgifs.com/watch" in m:
+            try:
+                source = requests.get(m)
+                soup = BeautifulSoup(source.text, "lxml")
+                links = [
+                    itm["content"] for itm in soup.findAll("meta", property="og:video")
+                ]
+                try:
+                    media_url = links[1]
+                except IndexError:
+                    media_url = links[0]
+            except IndexError:
+                media_url = m
+        else:
+            media_url = m
+        try:
+            LEGEND = await event.client.send_file(
+                event.chat_id, media_url, reply_to=reply_to
+            )
+            if media_url.endswith((".mp4", ".gif")):
+                await _legendutils.unsavegif(event, LEGEND)
+            if os.path.exists(media_url):
+                os.remove(media_url)
+            await eor(
+                event, f"**Download Started.\n\nFile Downloaded :  {i+1}/{len(plink)}**"
+            )
+            await asyncio.sleep(2)
+        except WebpageCurlFailedError:
+            await event.client.send_message(
+                event.chat_id, f"**Value error!!..Link is :** {m}"
+            )
+        i += 1
+        if i == len(plink):
+            await event.delete()
+            if os.path.isdir("./xvdo"):
+                os.rmdir("./xvdo")
+
+
 
 
 @legend.legend_cmd(
@@ -340,93 +429,3 @@ async def legend(event):
             f"<b><i>{count}. <a href = {link}>{n.replace('_',' ').title()}</a></b>\n"
         )
     await eor(event, string, parse_mode="html")
-
-
-@legend.legend_cmd(
-    pattern="linkdl(?: |$)([\s\S]*)",
-    command=("linkdl", menu_category),
-    info={
-        "header": "download porn video or gif in bulk or single from xvideos, imgur or redgif or direct link.\n\nFor multiple link give one space between links or reply to to any link contain text, like listporn or xsearch post",
-        "usage": "{tr}linkdl <input link /reply to link>",
-        "examples": "{tr}linkdl https://redgifs.com/watch/virtuousgorgeousindianspinyloach https://i.imgur.com/3Ffkon9.gifv",
-    },
-)
-async def wants_ur_noods(event):
-    """Download ~~porns~~ *posts from link"""
-    reply_to = await reply_id(event)
-    intxt = event.pattern_match.group(1)
-    reply = await event.get_reply_message()
-    if not intxt and reply:
-        intxt = reply.text
-    if not intxt:
-        return await eod(
-            event,
-            "**ಠ∀ಠ  Reply to valid link or give valid link url as input...you moron!!**",
-        )
-    extractor = URLExtract()
-    plink = extractor.find_urls(intxt)
-    await eor(event, "** Just hold a sec u horny kid...**")
-    if await age_verification(event, reply_to):
-        return
-    type = await useless.importent(event)
-    if type:
-        return
-    i = 0
-    for m in plink:
-        if not m.startswith("https://"):
-            return await eod(event, "**(ノಠ益ಠ)ノ Give me a vaid link to download**")
-        if "xvideo" in m:
-            if ".mp4" not in m:
-                req = requests.get(m)
-                soup = BeautifulSoup(req.text, "lxml")
-                soups = soup.find("div", {"id": "video-player-bg"})
-                for a in soups.find_all("a", href=True):
-                    m = a["href"]
-            await eor(
-                event,
-                "**Just hold your candel & sit tight, It will take some time...**",
-            )
-            if not os.path.isdir("./xvdo"):
-                os.mkdir("./xvdo")
-            xvdo = SmartDL(m, "./xvdo/porn.mp4", progress_bar=False)
-            xvdo.start(blocking=False)
-            xvdo.wait("finished")
-            media_url = "./xvdo/porn.mp4"
-        elif "https://i.imgur.com" in m and m.endswith(".gifv"):
-            media_url = m.replace(".gifv", ".mp4")
-        elif "redgifs.com/watch" in m:
-            try:
-                source = requests.get(m)
-                soup = BeautifulSoup(source.text, "lxml")
-                links = [
-                    itm["content"] for itm in soup.findAll("meta", property="og:video")
-                ]
-                try:
-                    media_url = links[1]
-                except IndexError:
-                    media_url = links[0]
-            except IndexError:
-                media_url = m
-        else:
-            media_url = m
-        try:
-            LEGEND = await event.client.send_file(
-                event.chat_id, media_url, reply_to=reply_to
-            )
-            if media_url.endswith((".mp4", ".gif")):
-                await _legendutils.unsavegif(event, LEGEND)
-            if os.path.exists(media_url):
-                os.remove(media_url)
-            await eor(
-                event, f"**Download Started.\n\nFile Downloaded :  {i+1}/{len(plink)}**"
-            )
-            await asyncio.sleep(2)
-        except WebpageCurlFailedError:
-            await event.client.send_message(
-                event.chat_id, f"**Value error!!..Link is :** {m}"
-            )
-        i += 1
-        if i == len(plink):
-            await event.delete()
-            if os.path.isdir("./xvdo"):
-                os.rmdir("./xvdo")
