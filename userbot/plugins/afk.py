@@ -5,7 +5,6 @@ from telethon.tl import functions, types
 
 from userbot import legend
 
-from ..Config import Config
 from ..core.logger import logging
 from ..core.managers import eod, eor
 from ..helpers.tools import media_type
