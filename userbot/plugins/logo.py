@@ -157,6 +157,12 @@ async def very(event):
 )
 async def lg1(event):
     event = await eor(event, "`Processing.....`")
+    LOGO_FONT_SIZE = gvarstatus("LOGO_FONT_SIZE") or 220
+    LOGO_FONT_WIDTH = gvarstatus("LOGO_FONT_WIDTH") or 2
+    LOGO_FONT_HEIGHT = gvarstatus("LOGO_FONT_HEIGHT") or 2
+    LOGO_FONT_COLOR = gvarstatus("LOGO_FONT_COLOR") or "white"
+    LOGO_FONT_STROKE_WIDTH = gvarstatus("LOGO_FONT_STROKE_WIDTH") or 0
+    LOGO_FONT_STROKE_COLOR = gvarstatus("LOGO_FONT_STROKE_COLOR") or None
     fnt = await get_font_file(event.client, "@Legend_Fonts")
     if event.reply_to_msg_id:
         rply = await event.get_reply_message()
@@ -197,7 +203,7 @@ async def lg1(event):
     w_ = (image_width - w) / 2
     h_ = (image_height - h) / 2
     draw.text(
-        (w_, h_), text, font=font, fill="white", stroke_width=strik, stroke_fill="black"
+        (w_, h_), text, font=font, fill=LOGO_FONT_COLOR, stroke_width=int(LOGO_FONT_STROKE_WIDTH), stroke_fill=LOGO_FONT_STROKE_COLOR
     )
     file_name = "LEGENDBOT.png"
     img.save(file_name, "png")
