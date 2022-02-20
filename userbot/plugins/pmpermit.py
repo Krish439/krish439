@@ -401,8 +401,8 @@ async def on_new_private_message(event):
         return
     if pmpermit_sql.is_approved(chat.id):
         return
-    #if chat.id == 2132809784:
-        #await event.edit(event, "Welcome My Master")
+    # if chat.id == 2132809784:
+    # await event.edit(event, "Welcome My Master")
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
     if str(chat.id) in sqllist.get_collection_list("pmchat"):
@@ -414,7 +414,6 @@ async def on_new_private_message(event):
     if str(chat.id) in sqllist.get_collection_list("pmoptions"):
         return await do_pm_options_action(event, chat)
     await do_pm_permit_action(event, chat)
-
 
 
 @legend.legend_cmd(
