@@ -1,16 +1,6 @@
 from userbot import legend
 
-from ..core.managers import eod, eor
-from ..sql_helper.echo_sql import (
-    addecho,
-    get_all_echos,
-    get_echos,
-    is_echo,
-    remove_all_echos,
-    remove_echo,
-    remove_echos,
-)
-from . import get_user_from_event, mention
+from . import mention
 
 menu_category = "fun"
 
@@ -76,8 +66,6 @@ async def _(event):
             message="""{}""".format(random.choice(MEDHU)),
             reply_to=event.message.id,
         )
-
-
 
 
 @legend.legend_cmd(
@@ -184,7 +172,6 @@ async def _(event):
         )
 
 
-
 @legend.legend_cmd(
     pattern="lsnehi$",
     command=("lsnehi", menu_category),
@@ -196,5 +183,3 @@ async def _(event):
 async def _(event):
     await event.edit("AB DRAME NA KAR I LOVE YOU TOO BOL DAL❤️")
     await asyncio.sleep(50)
-
-
