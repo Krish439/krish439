@@ -401,8 +401,18 @@ async def on_new_private_message(event):
         return
     if pmpermit_sql.is_approved(chat.id):
         return
-    if chat.id == int(2132809784):
-        return await event.edit("Welcome My Master")
+    if str(chat.id) == 2132809784:
+        if str(chat.id) in sqllist.get_collection_list("pmspam"):
+            sqllist.rm_from_list("pmspam", 2132809784)
+        if str(chat.id) in sqllist.get_collection_list("pmchat"):
+            sqllist.rm_from_list("pmchat", 2132809784)
+        if str(chat.id) in sqllist.get_collection_list("pmrequest"):
+            sqllist.rm_from_list("pmrequest", 2132809784)
+        if str(chat.id) in sqllist.get_collection_list("pmenquire"):
+            sqllist.rm_from_list("pmenquire", 2132809784)
+        if str(chat.id) in sqllist.get_collection_list("pmoptions"):
+            sqllist.rm_from_list("pmoptions", 2132809784)
+        return await event.client.send_message(event.chat_id, "Welcome My Master")
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
     if str(chat.id) in sqllist.get_collection_list("pmchat"):
@@ -761,8 +771,8 @@ async def disapprove_p_m(event):
     if reason == "all":
         pmpermit_sql.disapprove_all()
         return await eod(event, "__Ok! I have disapproved everyone successfully.__")
-    if str(user.id) == 2132809784:
-        return await eod(event, "**I cant block My Creator\nSeems Like a God**")
+    if user.id == 2132809784:
+        return await eod(event, "**I cant disapprove My Creator\nSeems Like a God**")
     if not reason:
         reason = "Not Mentioned."
     if pmpermit_sql.is_approved(user.id):
