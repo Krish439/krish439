@@ -9,8 +9,8 @@ from ..core.logger import logging
 from ..core.managers import eod, eor
 from ..helpers.tools import media_type
 from ..helpers.utils import _format
+from ..sql_helper.globals import gvarstatus
 from . import BOTLOG, BOTLOG_CHATID
-from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 
 menu_category = "utils"
 
