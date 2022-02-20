@@ -1,4 +1,3 @@
-
 import asyncio
 import os
 
@@ -9,15 +8,16 @@ from telethon.errors.rpcerrorlist import WebpageCurlFailedError
 from urlextract import URLExtract
 
 from ..core.managers import eod, eor
+from ..core.session import legend
 from ..helpers.functions import age_verification
 from ..helpers.utils import _legendutils, reply_id
-from ..core.session import legend
 from . import useless
 
 API = useless.API
 horny = useless.nsfw(useless.pawn)
 
 menu_category = "useless"
+
 
 @legend.legend_cmd(
     pattern="linkdl(?: |$)([\s\S]*)",
@@ -107,8 +107,6 @@ async def wants_ur_noods(event):
             await event.delete()
             if os.path.isdir("./xvdo"):
                 os.rmdir("./xvdo")
-
-
 
 
 @legend.legend_cmd(
