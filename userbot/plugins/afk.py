@@ -140,7 +140,9 @@ async def on_afk(event):  # sourcery no-metrics
         if event.is_private:
             return
         hmm = await event.get_chat()
-        if gvarstatus("AFKFWD") is None and gvarstatus("AFKFWD") == "OFF":
+        if gvarstatus("AFKFWD") is None:
+            return False
+        if gvarstatus("AFKFWD") == "OFF":
             return False
         full = None
         try:
