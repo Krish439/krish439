@@ -157,9 +157,9 @@ async def very(event):
 )
 async def lg1(event):
     event = await eor(event, "`Processing.....`")
-    LOGO_FONT_SIZE = gvarstatus("LOGO_FONT_SIZE") or 220
-    LOGO_FONT_WIDTH = gvarstatus("LOGO_FONT_WIDTH") or 2
-    LOGO_FONT_HEIGHT = gvarstatus("LOGO_FONT_HEIGHT") or 2
+    gvarstatus("LOGO_FONT_SIZE") or 220
+    gvarstatus("LOGO_FONT_WIDTH") or 2
+    gvarstatus("LOGO_FONT_HEIGHT") or 2
     LOGO_FONT_COLOR = gvarstatus("LOGO_FONT_COLOR") or "white"
     LOGO_FONT_STROKE_WIDTH = gvarstatus("LOGO_FONT_STROKE_WIDTH") or 0
     LOGO_FONT_STROKE_COLOR = gvarstatus("LOGO_FONT_STROKE_COLOR") or None
@@ -177,13 +177,10 @@ async def lg1(event):
     text = event.pattern_match.group(1)
     if len(text) <= 8:
         font_size_ = 150
-        strik = 10
     elif len(text) >= 9:
         font_size_ = 50
-        strik = 5
     else:
         font_size_ = 130
-        strik = 20
     if not text:
         await eod(event, "**Give some text to make a logo !!**")
         return
@@ -203,7 +200,12 @@ async def lg1(event):
     w_ = (image_width - w) / 2
     h_ = (image_height - h) / 2
     draw.text(
-        (w_, h_), text, font=font, fill=LOGO_FONT_COLOR, stroke_width=int(LOGO_FONT_STROKE_WIDTH), stroke_fill=LOGO_FONT_STROKE_COLOR
+        (w_, h_),
+        text,
+        font=font,
+        fill=LOGO_FONT_COLOR,
+        stroke_width=int(LOGO_FONT_STROKE_WIDTH),
+        stroke_fill=LOGO_FONT_STROKE_COLOR,
     )
     file_name = "LEGENDBOT.png"
     img.save(file_name, "png")
