@@ -125,6 +125,7 @@ async def lisj(frogsay):
     )
     await eor(frogsay, C)
 
+
 """
 @legend.legend_cmd(
     pattern="bye$",
