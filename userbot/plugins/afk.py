@@ -140,7 +140,7 @@ async def on_afk(event):  # sourcery no-metrics
         if event.is_private:
             return
         hmm = await event.get_chat()
-        if Config.PM_LOGGER_GROUP_ID == -100:
+        if gvarstatus("AFKFWD") is None:
             return
         full = None
         try:
@@ -158,7 +158,7 @@ async def on_afk(event):  # sourcery no-metrics
         resalt += f"\n<b>Message link: </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>"
         if not event.is_private:
             await event.client.send_message(
-                Config.PM_LOGGER_GROUP_ID,
+                BOTLOG_CHATID,
                 resalt,
                 parse_mode="html",
                 link_preview=False,
