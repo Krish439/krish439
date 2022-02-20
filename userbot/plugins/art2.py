@@ -3,7 +3,7 @@ from . import ALIVE_NAME, eor
 
 menu_category = "useless"
 
-
+"'"
 @legend.legend_cmd(
     pattern="dead$",
     command=("dead", menu_category),
@@ -34,6 +34,7 @@ async def lon(frog):
     )
     await eor(frog, D)
 
+"""
 
 @legend.legend_cmd(
     pattern="shitos$",
@@ -69,7 +70,7 @@ async def bluedislike(dislike):
         "usage": "{tr}sthink <text>",
     },
 )
-async def legend(think):
+async def legedjjd(think):
     name = think.pattern_match.group(1)
     B = (
         f"**{ALIVE_NAME} ~> {name} .\n\n**"
@@ -126,7 +127,7 @@ async def lisj(frogsay):
     await eor(frogsay, C)
 
 
-"""
+
 @legend.legend_cmd(
     pattern="bye$",
     command=("bye", menu_category),
@@ -143,4 +144,4 @@ async def bluedevilbye(event):
         lol = "Bye Friends"
         await event.client.send_file(event.chat_id, BYE_PIC, caption=lol)
         await event.delete()
-"""
+
