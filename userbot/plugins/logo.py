@@ -157,13 +157,13 @@ async def very(event):
 )
 async def lg1(event):
     event = await eor(event, "`Processing.....`")
-    fnt = await get_font_file(event.client, "@LegendFonts")
+    fnt = await get_font_file(event.client, "@Legend_Fonts")
     if event.reply_to_msg_id:
         rply = await event.get_reply_message()
         logo_ = await rply.download_media()
     else:
         async for i in event.client.iter_messages(
-            "@LEGEND_MR_LOGOS", filter=InputMessagesFilterPhotos
+            "@LegendBot_Logos", filter=InputMessagesFilterPhotos
         ):
             PICS_STR.append(i)
         pic = random.choice(PICS_STR)
