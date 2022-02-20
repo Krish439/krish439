@@ -157,7 +157,7 @@ async def very(event):
 )
 async def lg1(event):
     event = await eor(event, "`Processing.....`")
-    LOGO_FONT_SIZE = gvarstatus("LOGO_FONT_SIZE") or 220
+    gvarstatus("LOGO_FONT_SIZE") or 220
     LOGO_FONT_WIDTH = gvarstatus("LOGO_FONT_WIDTH") or 2
     LOGO_FONT_HEIGHT = gvarstatus("LOGO_FONT_HEIGHT") or 2
     LOGO_FONT_COLOR = gvarstatus("LOGO_FONT_COLOR") or "white"
