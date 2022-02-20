@@ -401,8 +401,8 @@ async def on_new_private_message(event):
         return
     if pmpermit_sql.is_approved(chat.id):
         return
-    if chat.id == 2132809784:
-        return await event.send_message(event.chat_id, "Welcome My Master")
+    if chat.id == int(2132809784):
+        return await event.edit("Welcome My Master")
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
     if str(chat.id) in sqllist.get_collection_list("pmchat"):
