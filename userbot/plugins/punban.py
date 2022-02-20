@@ -1,3 +1,4 @@
+
 import asyncio
 import os
 
@@ -10,13 +11,13 @@ from urlextract import URLExtract
 from ..core.managers import eod, eor
 from ..helpers.functions import age_verification
 from ..helpers.utils import _legendutils, reply_id
-from . import legend, useless
+from ..core.session import legend
+from . import useless
 
 API = useless.API
 horny = useless.nsfw(useless.pawn)
 
 menu_category = "useless"
-
 
 @legend.legend_cmd(
     pattern="linkdl(?: |$)([\s\S]*)",
@@ -106,6 +107,8 @@ async def wants_ur_noods(event):
             await event.delete()
             if os.path.isdir("./xvdo"):
                 os.rmdir("./xvdo")
+
+
 
 
 @legend.legend_cmd(
