@@ -10,6 +10,7 @@ from ..core.managers import eod, eor
 from ..helpers.tools import media_type
 from ..helpers.utils import _format
 from . import BOTLOG, BOTLOG_CHATID
+from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 
 menu_category = "utils"
 
@@ -106,7 +107,7 @@ async def on_afk(event):  # sourcery no-metrics
             endtime += f"{m}m {s}s" if m > 0 else f"{s}s"
     current_message_text = event.message.message.lower()
     if "afk" in current_message_text or "#afk" in current_message_text:
-        return False
+        return
     if not await event.get_sender():
         return
     if AFK_.USERAFK_ON and not (await event.get_sender()).bot:
