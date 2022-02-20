@@ -60,7 +60,7 @@ async def _(event):
         query = reply.message
     else:
         return await eor(event, "`What I am Supposed to find `")
-    legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    legend = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     legendevent = await eor(event, "`wi8..! I am finding your song....`")
     video_link = await yt_search(str(query))
     if not url(video_link):
@@ -144,7 +144,7 @@ async def _(event):
         query = reply.message
     else:
         return await eor(event, "`What I am Supposed to find`")
-    legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    legend = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     legendevent = await eor(event, "`wi8..! I am finding your song....`")
     video_link = await yt_search(str(query))
     if not url(video_link):
