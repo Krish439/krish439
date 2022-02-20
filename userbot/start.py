@@ -2,8 +2,10 @@ import asyncio
 import os
 import re
 from os import system
-from .core.managers import eor
+
 from telethon import Button, events
+
+from .core.managers import eor
 
 api_id = os.environ.get("APP_ID")
 api_hash = os.environ.get("API_HASH")
