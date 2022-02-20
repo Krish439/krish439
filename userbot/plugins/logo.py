@@ -162,7 +162,7 @@ async def lg1(event):
         rply = await event.get_reply_message()
         logo_ = await rply.download_media()
     else:
-        async for i in bot.iter_messages(
+        async for i in event.client.iter_messages(
             "@LEGEND_MR_LOGOS", filter=InputMessagesFilterPhotos
         ):
             PICS_STR.append(i)
