@@ -1,5 +1,4 @@
 # Urban Dictionary for LegendUserBot by @LEGEND_K_BOY
-import requests
 
 from userbot import legend
 
@@ -42,6 +41,7 @@ async def _(event):
             text="`The Urban Dictionary API could not be reached`",
         )
         LOGS.info(e)
+
 
 """
 @legend.legend_cmd(
