@@ -886,7 +886,7 @@ async def unblock_pm(event):
         user, reason = await get_user_from_event(event)
         if not user:
             return
-       if not reason:
+    if not reason:
         reason = "Not Mentioned."
     await event.client(functions.contacts.UnblockRequest(user.id))
     await event.edit(
