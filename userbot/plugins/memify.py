@@ -10,7 +10,7 @@ import string
 from PIL import Image, ImageFilter
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-from userbot import legend, BOTLOG_CHATID
+from userbot import BOTLOG_CHATID, legend
 
 from ..core.managers import eod, eor
 from ..helpers import asciiart, media_type, swt_meeme, swt_meme
