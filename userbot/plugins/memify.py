@@ -25,9 +25,9 @@ from ..helpers.functions import (
     mirror_file,
     solarize,
 )
-from .import deEmojify 
 from ..helpers.utils import _legendtools, reply_id
 from ..sql_helper.globals import addgvar, gvarstatus
+from . import deEmojify
 
 menu_category = "fun"
 
@@ -508,7 +508,6 @@ async def memes(event):
     for files in (outputfile, meme_file):
         if files and os.path.exists(files):
             os.remove(files)
-
 
 
 @legend.legend_cmd(
