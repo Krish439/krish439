@@ -41,7 +41,7 @@ menu_category = "useless"
 
 
 @legend.legend_cmd(
-    pattern="(|s)logo(?: |$)([\s\S]*)",
+    pattern="(o|s)logo(?: |$)([\s\S]*)",
     command=("logo", menu_category),
     info={
         "header": "Make a logo in image or sticker",
@@ -52,10 +52,12 @@ menu_category = "useless"
         "usage": [
             "{tr}logo <text>",
             "{tr}slogo <text>",
+            "{tr}ologo <text> <reply to image media only>",
         ],
         "examples": [
             "{tr}logo Legend",
             "{tr}slogo Legend",
+            "{tr}ologo LegendBot
         ],
     },
 )
