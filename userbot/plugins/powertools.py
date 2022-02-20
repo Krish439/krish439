@@ -13,7 +13,9 @@ from ..sql_helper.global_collection import (
     get_collectionlist_items,
 )
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
+
 from . import BOTLOG, BOTLOG_CHATID, HEROKU_APP
+
 
 LOGS = logging.getLogger(__name__)
 menu_category = "tools"
@@ -58,36 +60,6 @@ async def _(event):
     except Exception as e:
         LOGS.error(e)
 
-
-@legend.legend_cmd(
-    pattern="reload$",
-    command=("reload", menu_category),
-    info={
-        "header": "Reload the bot !!",
-        "description": "Its Only Reload The All Plugins",
-        "usage": "{tr}reload",
-    },
-)
-async def rel(event):
-    await eor(event, "Reloading Legend Bot... Wait for few seconds...")
-    try:
-        ulist = get_collectionlist_items()
-        for i in ulist:
-            if i == "restart_update":
-                del_keyword_collectionlist("restart_update")
-    except Exception as e:
-        LOGS.error(e)
-    try:
-        add_to_collectionlist("restart_update", [LEGEND.chat_id, LEGEND.id])
-    except Exception as e:
-        LOGS.error(e)
-    try:
-        delgvar("ipaddress")
-    except CancelledError:
-        pass
-    except Exception as e:
-        LOGS.error(e)
-    await reload_LEGENDBOT()
 
 
 @legend.legend_cmd(
