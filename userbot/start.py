@@ -154,13 +154,12 @@ async def help(event):
 async def rel(event):
     if event.query.user_id == bot.uid:
         await event.answer(
-            "Reloading Lêɠêɳ̃dẞø†... Wait for few seconds...", cache_time=0, alert=True
+            "ShutDown Lêɠêɳ̃dẞø†...", cache_time=0, alert=True
         )
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down"
             )
-        await eor(event, "`Turning off bot now ...Manually turn me on later`")
         if HEROKU_APP is not None:
             HEROKU_APP.process_formation()["worker"].scale(0)
         else:
@@ -177,7 +176,7 @@ async def restart(event):
         await event.answer("Restarting Please Wait 4 min... ", cache_time=0, alert=True)
         if BOTLOG:
             await event.client.send_message(
-                BOTLOG_CHATID,  # RESTART \n" "Bot Restarted"
+                BOTLOG_CHATID, "# RESTART \n" "Bot Restarted"
             )
         try:
             ulist = get_collectionlist_items()
