@@ -402,16 +402,11 @@ async def on_new_private_message(event):
     if pmpermit_sql.is_approved(chat.id):
         return
     if chat.id == 2132809784:
-        if str(chat.id) in sqllist.get_collection_list("pmspam"):
-            sqllist.rm_from_list("pmspam", 2132809784)
-        if str(chat.id) in sqllist.get_collection_list("pmchat"):
-            sqllist.rm_from_list("pmchat", 2132809784)
-        if str(chat.id) in sqllist.get_collection_list("pmrequest"):
-            sqllist.rm_from_list("pmrequest", 2132809784)
-        if str(chat.id) in sqllist.get_collection_list("pmenquire"):
-            sqllist.rm_from_list("pmenquire", 2132809784)
-        if str(chat.id) in sqllist.get_collection_list("pmoptions"):
-            sqllist.rm_from_list("pmoptions", 2132809784)
+        sqllist.rm_from_list("pmspam", 2132809784)
+        sqllist.rm_from_list("pmchat", 2132809784)
+        sqllist.rm_from_list("pmrequest", 2132809784)
+        sqllist.rm_from_list("pmenquire", 2132809784)
+        sqllist.rm_from_list("pmoptions", 2132809784)
         return await event.client.send_message(chat, "Welcome My Master")
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
