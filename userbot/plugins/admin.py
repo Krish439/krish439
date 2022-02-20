@@ -191,9 +191,9 @@ async def promote(event):
     )
     await event.delete()
     if BOTLOG:
-        await legend.tgbot.send_file(
+        await event.client.send_message(
             BOTLOG_CHATID,
-            caption=f"#PROMOTE\
+            f"#PROMOTE\
             \nUSER: [{user.first_name}](tg://user?id={user.id})\
             \nCHAT: {get_display_name(await event.get_chat())} (`{event.chat_id}`)",
         )
