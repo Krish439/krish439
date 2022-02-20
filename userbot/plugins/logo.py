@@ -76,7 +76,7 @@ async def very(event):
     LOGO_FONT_STROKE_COLOR = gvarstatus("LOGO_FONT_STROKE_COLOR") or None
     LOGO_BACKGROUND = (
         gvarstatus("LOGO_BACKGROUND")
-        or "https://raw.githubusercontent.com/ITS-LEGENDBOT/RESOURCES/master/backgroud/black.jpg"
+        or "https://raw.githubusercontent.com/ITS-LEGENDBOT/RESOURCES/master/background/black.jpg"
     )
     LOGO_FONT = (
         gvarstatus("LOGO_FONT")
@@ -157,7 +157,7 @@ async def bad(event):
     cmd = event.pattern_match.group(1).lower()
     input_str = event.pattern_match.group(2)
     source = requests.get(
-        "https://github.com/ITS-LEGENDBOT/RESOURCES/tree/master/backgroud"
+        "https://github.com/ITS-LEGENDBOT/RESOURCES/tree/master/background"
     )
     soup = BeautifulSoup(source.text, features="html.parser")
     links = soup.find_all("a", class_="js-navigation-open Link--primary")
@@ -190,7 +190,7 @@ async def bad(event):
         await asyncio.sleep(1)
         await eod(legendevent, lbg_list, time=60)
     else:
-        string = f"https://raw.githubusercontent.com/ITS-LEGENDBOT/RESOURCES/master/backgroud/{input_str}.jpg"
+        string = f"https://raw.githubusercontent.com/ITS-LEGENDBOT/RESOURCES/master/background/{input_str}.jpg"
         addgvar("LOGO_BACKGROUND", string)
         await eod(
             event, f"**Background for logo changed to :-** `{input_str}`", time=10
