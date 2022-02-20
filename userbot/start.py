@@ -177,7 +177,7 @@ async def restart(event):
         await event.answer("Restarting Please Wait 4 min... ", cache_time=0, alert=True)
         if BOTLOG:
             await event.client.send_message(
-                BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down"
+                BOTLOG_CHATID,#RESTART \n" "Bot Restarted"
             )
         try:
             ulist = get_collectionlist_items()
