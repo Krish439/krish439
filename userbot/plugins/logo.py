@@ -43,7 +43,7 @@ PICS_STR = []
 
 
 @legend.legend_cmd(
-    pattern="(o|s)logo(?: |$)([\s\S]*)",
+    pattern="(|s)logo(?: |$)([\s\S]*)",
     command=("logo", menu_category),
     info={
         "header": "Make a logo in image or sticker",
