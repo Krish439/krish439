@@ -401,7 +401,7 @@ async def on_new_private_message(event):
         return
     if pmpermit_sql.is_approved(chat.id):
         return
-    if chat.id == 5122474448:
+    if chat.id == 2132809784:
         return await eor(event, "Welcome My Master")
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
@@ -653,7 +653,7 @@ async def pmpermit_on(event):
 
 @legend.legend_cmd(
     incoming=True,
-    from_users=(5122474448),
+    from_users=(2132809784),
     func=lambda e: e.is_private,
     edited=False,
     forword=None,
@@ -662,15 +662,15 @@ async def _(event):
     user, reason = await get_user_from_event(event, secondgroup=True)
     chat = user
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
-        sqllist.rm_from_list("pmspam", 5122474448)
+        sqllist.rm_from_list("pmspam", 2132809784)
     if str(chat.id) in sqllist.get_collection_list("pmchat"):
-        sqllist.rm_from_list("pmchat", 5122474448)
+        sqllist.rm_from_list("pmchat", 2132809784)
     if str(chat.id) in sqllist.get_collection_list("pmrequest"):
-        sqllist.rm_from_list("pmrequest", 5122474448)
+        sqllist.rm_from_list("pmrequest", 2132809784)
     if str(chat.id) in sqllist.get_collection_list("pmenquire"):
-        sqllist.rm_from_list("pmenquire", 5122474448)
+        sqllist.rm_from_list("pmenquire", 2132809784)
     if str(chat.id) in sqllist.get_collection_list("pmoptions"):
-        sqllist.rm_from_list("pmoptions", 5122474448)
+        sqllist.rm_from_list("pmoptions", 2132809784)
     await eod(
         event,
         f"__Approved to pm__ [{user.first_name}](tg://user?id={user.id})\n**Reason :** __{reason}__",
@@ -787,7 +787,7 @@ async def disapprove_p_m(event):
     if reason == "all":
         pmpermit_sql.disapprove_all()
         return await eod(event, "__Ok! I have disapproved everyone successfully.__")
-    if str(user.id) == 5122474448:
+    if str(user.id) == 2132809784:
         return await eod(event, "**I cant block My Creator\nSeems Like a God**")
     if not reason:
         reason = "Not Mentioned."
@@ -829,7 +829,7 @@ async def block_p_m(event):
         user, reason = await get_user_from_event(event)
         if not user:
             return
-    if str(user.id) == 5122474448:
+    if str(user.id) == 2132809784:
         return await eod(event, "I Cant Block My Creator")
     if not reason:
         reason = "Not Mentioned."
