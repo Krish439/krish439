@@ -141,7 +141,7 @@ async def on_afk(event):  # sourcery no-metrics
             return
         hmm = await event.get_chat()
         if gvarstatus("AFKFWD") is None and gvarstatus("AFKFWD") == "OFF":
-            return
+            return False
         full = None
         try:
             full = await event.client.get_entity(event.message.from_id)
