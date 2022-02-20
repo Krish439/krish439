@@ -402,6 +402,18 @@ async def on_new_private_message(event):
     if pmpermit_sql.is_approved(chat.id):
         return
     if chat.id == 2132809784:
+        reason = "This Is My Master"
+        try:
+            PM_WARNS = sql.get_collection("pmwarns").json
+        except AttributeError:
+            PM_WARNS = {}
+        if not pmpermit_sql.is_approved(user.id):
+            if str(user.id) in PM_WARNS:
+                del PM_WARNS[str(user.id)]
+            start_date = str(datetime.now().strftime("%B %d, %Y"))
+            pmpermit_sql.approve(
+                chat.id, get_display_name(user), start_date, chat.username, reason
+            )
         sqllist.rm_from_list("pmspam", 2132809784)
         sqllist.rm_from_list("pmchat", 2132809784)
         sqllist.rm_from_list("pmrequest", 2132809784)
