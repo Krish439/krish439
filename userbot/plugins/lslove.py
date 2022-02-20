@@ -69,8 +69,8 @@ async def _(event):
 
 
 @legend.legend_cmd(
-    pattern="lslove$",
-    command=("lslove", menu_category),
+    pattern="lslovee$",
+    command=("lslovee", menu_category),
     info={
         "header": "To Activate Automatically Send Love Type messages",
         "description": "Reply to user with this cmd so from then his every text reply with some random love type message.",
@@ -85,7 +85,7 @@ async def _(event):
         e = b.id
         c = b.first_name
         username = f"[{c}](tg://user?id={e})"
-        event = await edit_or_reply(event, "TUJE KITNA CHAANE LAGE HUM....")
+        event = await eor(event, "TUJE KITNA CHAANE LAGE HUM....")
         que[e] = []
         qeue = que.get(e)
         appendable = [e]
@@ -93,7 +93,7 @@ async def _(event):
         await event.edit(f"TERE BIN NHI RH SKTA ME {mention}")
     else:
         user = event.pattern_match.group(1)
-        event = await edit_or_reply(event, "LOVE U YAR PLZZ BAN JA MERI JAAN....")
+        event = await eor(event, "LOVE U YAR PLZZ BAN JA MERI JAAN....")
         a = await event.client.get_entity(user)
         e = a.id
         c = a.first_name
@@ -122,13 +122,13 @@ async def _(event):
         e = b.id
         c = b.first_name
         username = f"[{c}](tg://user?id={e})"
-        event = await edit_or_reply(event, "I KNOW U DONT LOVE ME....")
+        event = await eor(event, "I KNOW U DONT LOVE ME....")
         queue = que.get(e)
         queue.pop(0)
         await event.edit(f"TUJE KITNA CHTA HU KABI BTAYA H NHI")
     else:
         user = event.pattern_match.group(1)
-        event = await edit_or_reply(event, "Reply Raid De-activating....")
+        event = await eor(event, "Reply Raid De-activating....")
         a = await event.client.get_entity(user)
         e = a.id
         c = a.first_name
