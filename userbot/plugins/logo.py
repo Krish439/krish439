@@ -57,7 +57,7 @@ menu_category = "useless"
         "examples": [
             "{tr}logo Legend",
             "{tr}slogo Legend",
-            "{tr}ologo LegendBot
+            "{tr}ologo LegendBot",
         ],
     },
 )
