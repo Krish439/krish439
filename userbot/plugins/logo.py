@@ -20,7 +20,7 @@ from userbot import legend
 from ..core.managers import eod, eor
 from ..helpers.functions import clippy
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
-from . import convert_toimage, reply_id
+from . import convert_toimage, reply_id, mention
 
 # ======================================================================================================================================================================================
 
