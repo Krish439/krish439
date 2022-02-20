@@ -1,5 +1,5 @@
-from . import ALIVE_NAME, eor
 from ..core.session import legend
+from . import ALIVE_NAME, eor
 
 menu_category = "fun"
 
