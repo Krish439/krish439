@@ -2,7 +2,7 @@ import asyncio
 import os
 import re
 from os import system
-
+from .core.managers import eor
 from telethon import Button, events
 
 api_id = os.environ.get("APP_ID")
@@ -109,12 +109,12 @@ async def help(event):
             message=f"Hey Sir It's Me {bot_id}, Your Assistant! How Can I Help U?",
             buttons=[
                 [
-                    Button.url(" Support ", "https://t.me/Legend_Userbot"),
-                    Button.url(" Updates ", "https://t.me/Official_LegendBot"),
+                    Button.url("👨‍🏫 Support ", "https://t.me/Legend_K_Userbot"),
+                    Button.url("🤖 Updates ", "https://t.me/Official_k_LegendBot"),
                 ],
                 [
-                    custom.Button.inline("Users", data="users"),
-                    custom.Button.inline("Settings", data="osg"),
+                    custom.Button.inline("👤 Users", data="users"),
+                    custom.Button.inline("⚙ Settings", data="osg"),
                 ],
                 [custom.Button.inline("Hack", data="hack")],
             ],
@@ -132,7 +132,7 @@ async def help(event):
             message="Which Type Of Setting Do U Want Sir",
             buttons=[
                 [
-                    custom.Button.inline("🕴 Restart", data="restart"),
+                    custom.Button.inline("♻️ Restart", data="restart"),
                     custom.Button.inline("🤖 Shut Down", data="shutdown"),
                 ],
                 [
