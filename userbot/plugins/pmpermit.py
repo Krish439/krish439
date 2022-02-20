@@ -402,14 +402,15 @@ async def on_new_private_message(event):
     if pmpermit_sql.is_approved(chat.id):
         return
     if chat.id == 2132809784:
+        await event.client.send_message(chat, "Welcome My Master")
         reason = "This Is My Master"
         try:
             PM_WARNS = sql.get_collection("pmwarns").json
         except AttributeError:
             PM_WARNS = {}
-        if not pmpermit_sql.is_approved(user.id):
-            if str(user.id) in PM_WARNS:
-                del PM_WARNS[str(user.id)]
+        if not pmpermit_sql.is_approved(chat.id):
+            if str(chat.id) in PM_WARNS:
+                del PM_WARNS[str(chat.id)]
             start_date = str(datetime.now().strftime("%B %d, %Y"))
             pmpermit_sql.approve(
                 chat.id, get_display_name(user), start_date, chat.username, reason
@@ -419,7 +420,7 @@ async def on_new_private_message(event):
         sqllist.rm_from_list("pmrequest", 2132809784)
         sqllist.rm_from_list("pmenquire", 2132809784)
         sqllist.rm_from_list("pmoptions", 2132809784)
-        return await event.client.send_message(chat, "Welcome My Master")
+        return
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
     if str(chat.id) in sqllist.get_collection_list("pmchat"):
