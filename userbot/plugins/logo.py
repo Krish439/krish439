@@ -39,6 +39,7 @@ vars_list = {
 
 menu_category = "useless"
 
+PICS_STR = []
 
 @legend.legend_cmd(
     pattern="(o|s)logo(?: |$)([\s\S]*)",
