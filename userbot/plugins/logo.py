@@ -139,7 +139,6 @@ async def very(event):
         os.remove(file_name)
 
 
-
 @legend.legend_cmd(
     pattern="ologo(?: |$)([\s\S]*)",
     command=("ologo", menu_category),
