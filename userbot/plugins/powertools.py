@@ -6,16 +6,13 @@ from userbot import legend
 
 from ..core.logger import logging
 from ..core.managers import eor
-from ..helpers.reload import reload_LEGENDBOT
 from ..sql_helper.global_collection import (
     add_to_collectionlist,
     del_keyword_collectionlist,
     get_collectionlist_items,
 )
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
-
 from . import BOTLOG, BOTLOG_CHATID, HEROKU_APP
-
 
 LOGS = logging.getLogger(__name__)
 menu_category = "tools"
@@ -59,7 +56,6 @@ async def _(event):
         pass
     except Exception as e:
         LOGS.error(e)
-
 
 
 @legend.legend_cmd(
