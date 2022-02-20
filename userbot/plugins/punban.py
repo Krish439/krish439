@@ -1,4 +1,3 @@
-
 import asyncio
 import os
 
@@ -17,6 +16,7 @@ API = useless.API
 horny = useless.nsfw(useless.pawn)
 
 menu_category = "useless"
+
 
 @legend.legend_cmd(
     pattern="linkdl(?: |$)([\s\S]*)",
@@ -106,8 +106,6 @@ async def wants_ur_noods(event):
             await event.delete()
             if os.path.isdir("./xvdo"):
                 os.rmdir("./xvdo")
-
-
 
 
 @legend.legend_cmd(
