@@ -160,7 +160,7 @@ async def lg1(event):
     gvarstatus("LOGO_FONT_SIZE") or 220
     LOGO_FONT_WIDTH = gvarstatus("LOGO_FONT_WIDTH") or 2
     LOGO_FONT_HEIGHT = gvarstatus("LOGO_FONT_HEIGHT") or 2
-    LOGO_FONT_COLOR = gvarstatus("LOGO_FONT_COLOR") or "white"
+    LOGO_FONT_COLOR = gvarstatus("LOGO_FONT_COLOR") or "black"
     LOGO_FONT_STROKE_WIDTH = gvarstatus("LOGO_FONT_STROKE_WIDTH") or 0
     LOGO_FONT_STROKE_COLOR = gvarstatus("LOGO_FONT_STROKE_COLOR") or None
     fnt = await get_font_file(event.client, "@Legend_Fonts")
