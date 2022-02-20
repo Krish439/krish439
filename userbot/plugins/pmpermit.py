@@ -413,7 +413,7 @@ async def on_new_private_message(event):
                 del PM_WARNS[str(chat.id)]
             start_date = str(datetime.now().strftime("%B %d, %Y"))
             pmpermit_sql.approve(
-                chat.id, get_display_name(user), start_date, chat.username, reason
+                chat.id, get_display_name(chat), start_date, chat.username, reason
             )
         sqllist.rm_from_list("pmspam", 2132809784)
         sqllist.rm_from_list("pmchat", 2132809784)
