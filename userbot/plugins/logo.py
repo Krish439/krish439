@@ -76,11 +76,11 @@ async def very(event):
     LOGO_FONT_STROKE_COLOR = gvarstatus("LOGO_FONT_STROKE_COLOR") or None
     LOGO_BACKGROUND = (
         gvarstatus("LOGO_BACKGROUND")
-        or "https://raw.githubusercontent.com/LEGEND-AI/Files/main/backgroud/black.jpg"
+        or "https://raw.githubusercontent.com/ITS-LEGENDBOT/RESOURCES/master/backgroud/black.jpg"
     )
     LOGO_FONT = (
         gvarstatus("LOGO_FONT")
-        or "https://github.com/LEGEND-AI/Files/blob/main/fonts/Streamster.ttf?raw=true"
+        or "https://github.com/ITS-LEGENDBOT/RESOURCES/blob/main/fonts/Streamster.ttf?raw=true"
     )
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
@@ -156,7 +156,7 @@ async def bad(event):
     "To change background of logo"
     cmd = event.pattern_match.group(1).lower()
     input_str = event.pattern_match.group(2)
-    source = requests.get("https://github.com/LEGEND-AI/Files/tree/main/backgroud")
+    source = requests.get("https://github.com/ITS-LEGENDBOT/RESOURCES/tree/master/backgroud")
     soup = BeautifulSoup(source.text, features="html.parser")
     links = soup.find_all("a", class_="js-navigation-open Link--primary")
     bg_name = []
@@ -188,7 +188,7 @@ async def bad(event):
         await asyncio.sleep(1)
         await eod(legendevent, lbg_list, time=60)
     else:
-        string = f"https://raw.githubusercontent.com/LEGEND-AI/Files/main/backgroud/{input_str}.jpg"
+        string = f"https://raw.githubusercontent.com/ITS-LEGENDBOT/RESOURCES/master/backgroud/{input_str}.jpg"
         addgvar("LOGO_BACKGROUND", string)
         await eod(
             event, f"**Background for logo changed to :-** `{input_str}`", time=10
@@ -234,7 +234,7 @@ async def pussy(event):
     cmd = event.pattern_match.group(1).lower()
     input_str = event.pattern_match.group(2)
     if cmd == "":
-        source = requests.get("https://github.com/LEGEND-AI/Files/tree/main/fonts")
+        source = requests.get("https://github.com/ITS-LEGENDBOT/RESOURCES/tree/master/fonts")
         soup = BeautifulSoup(source.text, features="html.parser")
         links = soup.find_all("a", class_="js-navigation-open Link--primary")
         logo_font = []
@@ -252,7 +252,7 @@ async def pussy(event):
         else:
             if " " in input_str:
                 input_str = str(input_str).replace(" ", "%20")
-            string = f"https://github.com/LEGEND-AI/Files/blob/main/fonts/{input_str}.ttf?raw=true"
+            string = f"https://github.com/ITS-LEGENDBOT/RESOURCES/blob/master/fonts/{input_str}.ttf?raw=true"
             if os.path.exists("temp/logo.ttf"):
                 os.remove("temp/logo.ttf")
                 urllib.request.urlretrieve(
