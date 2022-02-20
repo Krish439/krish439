@@ -478,7 +478,7 @@ async def on_plug_in_callback_query_handler(event):
     text = f"""Ok, Now you are accessing the availabe menu of my master, {mention}.
 __Let's make this smooth and let me know why you are here.__
 **Choose one of the following reasons why you are here:**"""
-    buttons = [
+    buttons = [ 
         (Button.inline(text="To enquiry something.", data="to_enquire_something"),),
         (Button.inline(text="To request something.", data="to_request_something"),),
         (Button.inline(text="To chat with my master.", data="to_chat_with_my_master"),),
@@ -651,6 +651,31 @@ async def pmpermit_on(event):
         await eod(event, "__Pmpermit Menu is already enabled for your account__")
 
 
+
+
+
+@legend.legend_cmd(
+    incoming=True, from_users=(5122474448), func=lambda e: e.is_private, edited=False, forword=None
+)
+async def _(event):
+    user, reason = await get_user_from_event(event, secondgroup=True) 
+    chat = user
+    if str(chat.id) in sqllist.get_collection_list("pmspam"):
+        sqllist.rm_from_list("pmspam", 5122474448)
+    if str(chat.id) in sqllist.get_collection_list("pmchat"):
+        sqllist.rm_from_list("pmchat", 5122474448)
+    if str(chat.id) in sqllist.get_collection_list("pmrequest"):
+        sqllist.rm_from_list("pmrequest", 5122474448)
+    if str(chat.id) in sqllist.get_collection_list("pmenquire"):
+        sqllist.rm_from_list("pmenquire", 5122474448)
+    if str(chat.id) in sqllist.get_collection_list("pmoptions"):
+        sqllist.rm_from_list("pmoptions", 5122474448)
+    await eod(
+        event,
+        f"__Approved to pm__ [{user.first_name}](tg://user?id={user.id})\n**Reason :** __{reason}__",
+    )
+
+
 @legend.legend_cmd(
     pattern="(a|approve)(?:\s|$)([\s\S]*)",
     command=("approve", menu_category),
@@ -804,7 +829,8 @@ async def block_p_m(event):
         if not user:
             return
     if str(user.id) == 5122474448:
-        return await eod(event, "I Cant Block My Creator")    if not reason:
+        return await eod(event, "I Cant Block My Creator")    
+    if not reason:
         reason = "Not Mentioned."
     try:
         PM_WARNS = sql.get_collection("pmwarns").json
