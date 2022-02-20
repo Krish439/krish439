@@ -1,7 +1,6 @@
 import asyncio
 import os
 import re
-import sys
 from os import system
 
 from telethon import Button, events
