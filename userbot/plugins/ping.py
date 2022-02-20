@@ -3,7 +3,7 @@ from datetime import datetime
 
 from ..core.managers import eor
 from . import hmention, legend
-
+from ..sql_helper.globals import gvarstatus
 menu_category = "tools"
 
 
