@@ -133,14 +133,14 @@ async def help(event):
             message="Which Type Of Setting Do U Want Sir",
             buttons=[
                 [
-                    custom.Button.inline("Restart", data="restart"),
-                    custom.Button.inline("Reload", data="reload"),
+                    custom.Button.inline("🕴 Restart", data="restart"),
+                    custom.Button.inline("🤖 Shut Down", data="shutdown"),
                 ],
                 [
-                    custom.Button.inline("Var", data="strvar"),
-                    custom.Button.inline("Commmands", data="gibcmd"),
+                    custom.Button.inline("🗒 Var", data="strvar"),
+                    custom.Button.inline("👨‍💻 Commmands", data="gibcmd"),
                 ],
-                [custom.Button.inline("Back", data="start")],
+                [custom.Button.inline("✨ Back ✨", data="start")],
             ],
         )
     else:
@@ -149,30 +149,19 @@ async def help(event):
         )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reload")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"shutdown")))
 async def rel(event):
     if event.query.user_id == bot.uid:
         await event.answer(
             "Reloading Lêɠêɳ̃dẞø†... Wait for few seconds...", cache_time=0, alert=True
         )
-        try:
-            ulist = get_collectionlist_items()
-            for i in ulist:
-                if i == "restart_update":
-                    del_keyword_collectionlist("restart_update")
-        except Exception as e:
-            LOGS.error(e)
-        try:
-            add_to_collectionlist("restart_update", [LEGEND.chat_id, LEGEND.id])
-        except Exception as e:
-            LOGS.error(e)
-        try:
-            delgvar("ipaddress")
-        except CancelledError:
-            pass
-        except Exception as e:
-            LOGS.error(e)
-        await reload_LEGENDBOT()
+        if BOTLOG:
+            await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down")
+        await eor(event, "`Turning off bot now ...Manually turn me on later`")
+        if HEROKU_APP is not None:
+            HEROKU_APP.process_formation()["worker"].scale(0)
+        else:
+            os._exit(143)
     else:
         await event.answer(
             "Sorry U Dont Have Access to Use this Button", cache_time=0, alert=True
@@ -183,6 +172,8 @@ async def rel(event):
 async def restart(event):
     if event.query.user_id == bot.uid:
         await event.answer("Restarting Please Wait 4 min... ", cache_time=0, alert=True)
+        if BOTLOG:
+            await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down")
         try:
             ulist = get_collectionlist_items()
             for i in ulist:
