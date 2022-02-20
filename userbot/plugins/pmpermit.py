@@ -401,7 +401,7 @@ async def on_new_private_message(event):
         return
     if pmpermit_sql.is_approved(chat.id):
         return
-    if str(chat.id) == 2132809784:
+    if chat.id == 2132809784:
         if str(chat.id) in sqllist.get_collection_list("pmspam"):
             sqllist.rm_from_list("pmspam", 2132809784)
         if str(chat.id) in sqllist.get_collection_list("pmchat"):
@@ -813,7 +813,7 @@ async def block_p_m(event):
         user, reason = await get_user_from_event(event)
         if not user:
             return
-    if str(user.id) == 2132809784:
+    if user.id == 2132809784:
         return await eor(event, "I Cant Block My Creator")
     if not reason:
         reason = "Not Mentioned."
