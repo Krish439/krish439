@@ -157,9 +157,9 @@ async def very(event):
 )
 async def lg1(event):
     event = await eor(event, "`Processing.....`")
-    gvarstatus("LOGO_FONT_SIZE") or 220
-    gvarstatus("LOGO_FONT_WIDTH") or 2
-    gvarstatus("LOGO_FONT_HEIGHT") or 2
+    LOGO_FONT_SIZE = gvarstatus("LOGO_FONT_SIZE") or 220
+    LOGO_FONT_WIDTH = gvarstatus("LOGO_FONT_WIDTH") or 2
+    LOGO_FONT_HEIGHT = gvarstatus("LOGO_FONT_HEIGHT") or 2
     LOGO_FONT_COLOR = gvarstatus("LOGO_FONT_COLOR") or "white"
     LOGO_FONT_STROKE_WIDTH = gvarstatus("LOGO_FONT_STROKE_WIDTH") or 0
     LOGO_FONT_STROKE_COLOR = gvarstatus("LOGO_FONT_STROKE_COLOR") or None
@@ -191,22 +191,30 @@ async def lg1(event):
     w, h = draw.textsize(text, font=font)
     h += int(h * 0.21)
     image_width, image_height = img.size
-    draw.text(
-        ((image_width - w) / 2, (image_height - h) / 2),
-        text,
-        font=font,
-        fill=(255, 255, 255),
-    )
-    w_ = (image_width - w) / 2
-    h_ = (image_height - h) / 2
-    draw.text(
-        (w_, h_),
-        text,
-        font=font,
-        fill=LOGO_FONT_COLOR,
-        stroke_width=int(LOGO_FONT_STROKE_WIDTH),
-        stroke_fill=LOGO_FONT_STROKE_COLOR,
-    )
+    try:
+        draw.text(
+            (
+                (image_widthz - w) / float(LOGO_FONT_WIDTH),
+                (image_heightz - h) / float(LOGO_FONT_HEIGHT),
+            ),
+            text,
+            font=font,
+            fill=LOGO_FONT_COLOR,
+            stroke_width=int(LOGO_FONT_STROKE_WIDTH),
+            stroke_fill=LOGO_FONT_STROKE_COLOR,
+        )
+    except OSError:
+        draw.text(
+            (
+                (image_widthz - w) / float(LOGO_FONT_WIDTH),
+                (image_heightz - h) / float(LOGO_FONT_HEIGHT),
+            ),
+            text,
+            font=font,
+            fill=LOGO_FONT_COLOR,
+            stroke_width=0,
+            stroke_fill=None,
+        )
     file_name = "LEGENDBOT.png"
     img.save(file_name, "png")
     await event.client.send_file(
