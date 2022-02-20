@@ -1,9 +1,6 @@
 import asyncio
-from collections import deque
 
-from telethon.tl.functions.users import GetFullUserRequest
-
-from . import eor, legend, mention
+from . import eor, legend
 
 menu_category = "fun"
 
@@ -142,8 +139,6 @@ async def shrugger(shg):
     r"""¯\_(ツ)_/¯"""
     if not shg.text[0].isalpha() and shg.text[0] not in ("/", "#", "@", "!"):
         await edit_or_reply(shg, random.choice(SHGS))
-
-
 
 
 @legend.legend_cmd(
