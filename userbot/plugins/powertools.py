@@ -35,6 +35,7 @@ async def _(event):
     await event.edit("Restarting **[ █░░ ]** ...\nωαιτ ƒєω мιиυτє☣️")
     await event.edit("Restarting **[ ██░ ]** ...\nωαιτ ƒєω мιиυτє☢️")
     await event.edit("Restarting **[ ███ ]** ...\nωαιτ ƒєω мιиυτєѕ☢️")
+    await event.delete()
     LEGEND = await eor(
         event,
         "Restarted.\nAfter 2 min Type `.ping` me or `.help` to check if I am online, Actually I Am Going To Restart To Restart All System",
