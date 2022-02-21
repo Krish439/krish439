@@ -66,10 +66,10 @@ async def f2i(e):
     },
 )
 async def writer(e):
+    lol = e.text
     if e.reply_to:
         reply = await e.get_reply_message()
         text = reply.message
-    lol = e.text
     elif lol:
         text = lol[5:]
     else:
