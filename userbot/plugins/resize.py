@@ -1,9 +1,11 @@
-from PIL import Image
 import os
 
-from . import eor, legend, mention
+from PIL import Image
+
+from . import eor, legend
 
 menu_category = "fun"
+
 
 @legend.legend_cmd(
     pattern="size$",
@@ -28,7 +30,6 @@ async def size(e):
     os.remove(img)
 
 
-
 @legend.legend_cmd(
     pattern="resize$",
     command=("resize", menu_category),
@@ -44,8 +45,7 @@ async def size(e):
     sz = e.pattern_match.group(1).strip()
     if not sz:
         return await eor(
-            e,
-            f"Give Some Size To Resize, Like `.resize 720 1080` ", time=5
+            e, f"Give Some Size To Resize, Like `.resize 720 1080` ", time=5
         )
     k = await eor(e, "Processing..")
     if hasattr(r.media, "document"):
