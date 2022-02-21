@@ -258,12 +258,18 @@ async def shazamcmd(event):
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        await event.client.send_file(
-             event.chat_id,
-             audio_file,
-             caption="Song",
-             thumb=thumb_name
-             )
+    except Exception as e:
+        m.edit("**𝐘𝐨𝐮𝐭𝐮𝐛𝐞  𝐄𝐫𝐫𝐨𝐫 ❌**")
+        print(e)
+    await event.client.send_file(
+         event.chat_id,
+         audio_file,
+         caption="Song",
+         thumb=thumb_name
+         )
+    os.remove(audio_file)
+    os.remove(thumb_name)
+        
 
 
 
