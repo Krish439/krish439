@@ -267,8 +267,8 @@ async def shazamcmd(event):
         thumb=thumb_name,
         attributes=[
             DocumentAttributeAudio(
-                duration=int{duration},
-                title=str{title},
+                duration=int({duration}),
+                title=str({title}),
                 performer=perf,
             )
         ],
