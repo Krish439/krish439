@@ -265,17 +265,7 @@ async def shazamcmd(event):
         supports_streaming=True,
         caption=f"**✘ Song -** `{title}` \n**✘ Views -** `{views}` \n**✘ Duration -** `{duration}` \n\n**✘ By :** {mention}",
         thumb=thumb_name,
-        attributes=[
-            DocumentAttributeAudio(
-                duration=int({duration}),
-                title=str({title}),
-                performer=perf,
-            )
-        ],
-        progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-            progress(d, t, event, c_time, "Uploading..", f"{title}")
-        ),
-    )
+        )
     await event.delete()
     os.remove(audio_file)
     os.remove(thumb_name)
