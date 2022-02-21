@@ -5,7 +5,7 @@ import regex
 from telethon import events
 from telethon.tl import functions, types
 
-from userbot import legend
+from ..core.session import legend
 
 from ..Config import Config
 
