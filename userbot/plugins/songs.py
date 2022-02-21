@@ -24,7 +24,7 @@ from userbot import legend
 from ..core.logger import logging
 from ..core.managers import eod, eor
 from ..helpers.tools import media_type
-from ..helpers.yt_helper import song_search
+from ..helpers.yt_helper import *
 from . import mention
 
 menu_category = "utils"
