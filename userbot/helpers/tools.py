@@ -1,6 +1,85 @@
 from html_telegraph_poster import TelegraphPoster
 
 
+import base64
+import json
+import math
+import os
+import random
+import re
+import ssl
+import string
+from io import BytesIO
+from json.decoder import JSONDecodeError
+from traceback import format_exc
+
+import aiohttp
+
+import requests
+
+try:
+    from PIL import Image, ImageDraw, ImageFont
+except ImportError:
+    Image, ImageDraw, ImageFont = None, None, None
+    LOGS.info("PIL not installed!")
+
+from requests.exceptions import MissingSchema
+from telethon import Button
+from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
+
+try:
+    import cv2
+except ImportError:
+    cv2 = None
+try:
+    import numpy as np
+except ImportError:
+    np = None
+
+
+def text_set(text):
+    lines = []
+    if len(text) <= 55:
+        lines.append(text)
+    else:
+        all_lines = text.split("\n")
+        for line in all_lines:
+            if len(line) <= 55:
+                lines.append(line)
+            else:
+                k = len(line) // 55
+                for z in range(1, k + 2):
+                    lines.append(line[((z - 1) * 55) : (z * 55)])
+    return lines[:25]
+
+
+
+async def async_searcher(
+    url: str,
+    post: bool = None,
+    headers: dict = None,
+    params: dict = None,
+    json: dict = None,
+    data: dict = None,
+    ssl=None,
+    re_json: bool = False,
+    re_content: bool = False,
+    real: bool = False,
+):
+    async with aiohttp.ClientSession(headers=headers) as client:
+        if post:
+            data = await client.post(url, json=json, data=data, ssl=ssl)
+        else:
+            data = await client.get(url, params=params, ssl=ssl)
+        if re_json:
+            return await data.json()
+        if re_content:
+            return await data.read()
+        if real:
+            return data
+        return await data.text()
+
+
 def media_type(message):
     if message and message.photo:
         return "Photo"
