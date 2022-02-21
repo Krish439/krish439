@@ -56,11 +56,11 @@ SONGBOT_BLOCKED_STRING = "<code>Please unblock @songdl_bot and try again</code>"
 
 
 @legend.legend_cmd(
-    pattern="lyrics(?:\s|$)([\s\S]*)",
-    command=("lyrics", menu_category),
+    pattern="slyrics(?:\s|$)([\s\S]*)",
+    command=("slyrics", menu_category),
     info={
         "header": "Lyrics Of Song",
-        "usage": "{tr}lyrics",
+        "usage": "{tr}slyrics",
     },
 )
 async def nope(aura):
