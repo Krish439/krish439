@@ -57,7 +57,8 @@ async def size(e):
     sz = sz.split()
     if len(sz) != 2:
         return await eor(
-            e, f"Give Some Size To Resize, Like `.resize 720 1080` ",
+            e,
+            f"Give Some Size To Resize, Like `.resize 720 1080` ",
         )
     x, y = int(sz[0]), int(sz[1])
     im = Image.open(img)
