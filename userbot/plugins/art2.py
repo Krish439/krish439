@@ -3,7 +3,7 @@ from . import ALIVE_NAME, eor
 
 menu_category = "useless"
 
-"'"
+"""
 @legend.legend_cmd(
     pattern="dead$",
     command=("dead", menu_category),
