@@ -186,7 +186,7 @@ async def _(event):
     command=("aw", menu_category),
     info={
         "header": "List Of All Chats Autowaifu Enabled",
-        "description": "Gives the list of all chats with Autowaifu enabled."",
+        "description": "Gives the list of all chats with Autowaifu enabled.",
         "usage": [
             "{tr}aw ",
         ],
