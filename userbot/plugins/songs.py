@@ -272,8 +272,8 @@ async def shazamcmd(event):
 
 
 @legend.legend_cmd(
-    pattern="shazam$",
-    command=("shazam", menu_category),
+    pattern="spic$",
+    command=("spic", menu_category),
     info={
         "header": "To reverse search song.",
         "description": "Reverse search audio file using shazam api",
