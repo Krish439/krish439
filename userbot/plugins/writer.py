@@ -3,9 +3,8 @@ import os
 from htmlwebshot import WebShot
 from PIL import Image, ImageDraw, ImageFont
 
-
 from ..helpers.tools import async_searcher, text_set
-from . import eor, legend, mention
+from . import legend
 
 
 @legend.legend_cmd(
@@ -90,7 +89,3 @@ async def writer(e):
     await e.reply(file=file)
     os.remove(file)
     await k.delete()
-
-
-
-
