@@ -125,8 +125,6 @@ async def _(event):
         return await eor(hell, f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
     except ExtractorError:
         return await eor(hell, "`There was an error during info extraction.`")
-    except Exception as e:
-        return await eor(hell, e)
     c_time = time.time()
     await event.edit(
         f"**🎶 Preparing to upload song 🎶 :** \n\n{hell_data['title']} \n**By :** {hell_data['uploader']}"
