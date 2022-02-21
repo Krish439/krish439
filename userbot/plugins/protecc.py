@@ -4,13 +4,12 @@ from asyncio import sleep
 import requests
 from bs4 import BeautifulSoup
 
-from ..sql_helper.waifu_sql import add_grp, get_all_grp, is_harem, rm_grp
+from userbot import legend
+
 from ..Config import Config
 from ..core.managers import eod, eor
-from ..helpers import humanbytes, progress
-from ..helpers.utils import _format
-
-from userbot import legend 
+from ..helpers import progress
+from ..sql_helper.waifu_sql import add_grp, get_all_grp, is_harem, rm_grp
 
 qt = "A qt waifu appeared!"
 qt_ = "A waifu appeared!"
@@ -118,7 +117,9 @@ async def _(event):
                         return
                 except:
                     pass
-                hell = await event.client.send_message(event.chat_id, f"/protecc {text}")
+                hell = await event.client.send_message(
+                    event.chat_id, f"/protecc {text}"
+                )
                 await sleep(2)
                 await hell.delete()
                 os.remove(dl)
@@ -126,7 +127,6 @@ async def _(event):
                 pass
         else:
             pass
-
 
 
 @legend.legend_cmd(
