@@ -265,7 +265,7 @@ async def shazamcmd(event):
         supports_streaming=True,
         caption=f"**✘ Song -** `{title}` \n**✘ Views -** `{views}` \n**✘ Duration -** `{duration}` \n\n**✘ By :** {mention}",
         thumb=thumb_name,
-        )
+    )
     await event.delete()
     os.remove(audio_file)
     os.remove(thumb_name)
