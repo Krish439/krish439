@@ -242,10 +242,8 @@ async def shazamcmd(event):
         thumb_name = f"thumb{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, "wb").write(thumb.content)
-
         duration = results[0]["duration"]
-        results[0]["url_suffix"]
-        results[0]["views"]
+        views = results[0]["views"]
 
     except Exception:
         m.edit("𝐒𝐨𝐧𝐠 🥀 𝐍𝐨𝐭 😔 𝐅𝐨𝐮𝐧𝐝.")
@@ -261,12 +259,9 @@ async def shazamcmd(event):
     except Exception as e:
         m.edit("**𝐘𝐨𝐮𝐭𝐮𝐛𝐞  𝐄𝐫𝐫𝐨𝐫 ❌**")
         print(e)
-    #await event.client.send_file(
-        #event.chat_id, audio_file, caption="Song", thumb=thumb_name
-    #)
     await event.client.send_file(
         event.chat_id,
-        f"audio_file",
+        audio_file,
         supports_streaming=True,
         caption=f"**✘ Song -** `{title}` \n**✘ Views -** `{views}` \n**✘ Duration -** `{duration}` \n\n**✘ By :** {mention}",
         thumb=thumb_name,
@@ -278,7 +273,7 @@ async def shazamcmd(event):
             )
         ],
         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-            progress(d, t, event, c_time, "Uploading..", f"{title}.mp3")
+            progress(d, t, event, c_time, "Uploading..", f"{title}")
         ),
     )
     await event.delete()
