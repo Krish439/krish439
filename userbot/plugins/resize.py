@@ -42,7 +42,8 @@ async def size(e):
     r = await e.get_reply_message()
     if not (r and r.media):
         return await eor(e, "Reply To Media")
-    sz = e.pattern_match.group(1).strip()
+    hall = event.text
+    sz = hall[7:]
     if not sz:
         return await eor(
             e, f"Give Some Size To Resize, Like `.resize 720 1080` ", time=5
