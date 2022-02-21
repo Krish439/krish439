@@ -15,6 +15,7 @@ qt = "A qt waifu appeared!"
 qt_ = "A waifu appeared!"
 menu_category = "useless"
 
+
 def progress(current, total):
     logger.info(
         "Downloaded {} of {}\nCompleted {}".format(
