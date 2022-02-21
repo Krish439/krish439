@@ -37,7 +37,7 @@ async def ghtml(e):
 async def f2i(e):
     lol = e.text
     html = None
-    elif e.reply_to:
+    if e.reply_to:
         r = await e.get_reply_message()
         if r.media:
             html = await e.client.download_media(r.media)
