@@ -1,21 +1,5 @@
-from html_telegraph_poster import TelegraphPoster
-
-
-import base64
-import json
-import math
-import os
-import random
-import re
-import ssl
-import string
-from io import BytesIO
-from json.decoder import JSONDecodeError
-from traceback import format_exc
-
 import aiohttp
-
-import requests
+from html_telegraph_poster import TelegraphPoster
 
 try:
     from PIL import Image, ImageDraw, ImageFont
@@ -23,9 +7,6 @@ except ImportError:
     Image, ImageDraw, ImageFont = None, None, None
     LOGS.info("PIL not installed!")
 
-from requests.exceptions import MissingSchema
-from telethon import Button
-from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 
 try:
     import cv2
@@ -51,7 +32,6 @@ def text_set(text):
                 for z in range(1, k + 2):
                     lines.append(line[((z - 1) * 55) : (z * 55)])
     return lines[:25]
-
 
 
 async def async_searcher(
