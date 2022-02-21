@@ -17,30 +17,6 @@ menu_category = "extra"
 BASE_URL = "https://headp.at/pats/{}"
 PAT_IMAGE = "pat.webp"
 
-
-@legend.legend_cmd(
-    pattern="legend$",
-    command=("legend", menu_category),
-    info={
-        "header": "To get random legend stickers.",
-        "usage": "{tr}legend",
-    },
-)
-async def _(event):
-    "To get random legend stickers."
-    await event.delete()
-    reply_to_id = await reply_id(event)
-    with open("temp.png", "wb") as f:
-        f.write(requests.get(nekos.legend()).content)
-    img = Image.open("temp.png")
-    img.save("temp.webp", "webp")
-    img.seek(0)
-    await event.client.send_file(
-        event.chat_id, open("temp.webp", "rb"), reply_to=reply_to_id
-    )
-    remove("temp.webp")
-
-
 # credit to @r4v4n4
 
 
