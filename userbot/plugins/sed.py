@@ -11,7 +11,7 @@ from ..core.session import legend
 menu_category = "tools"
 
 HEADER = "「sed」\n"
-KNOWN_RE_BOTS = re.compile(Config.GROUP_REG_SED_EX_BOT_S, types=re.IGNORECASE)
+KNOWN_RE_BOTS = re.compile(Config.GROUP_REG_SED_EX_BOT_S, flags=re.IGNORECASE)
 
 # Heavily based on
 # https://github.com/SijmenSchoon/regexbot/blob/master/regexbot.py
@@ -31,12 +31,12 @@ def doit(chat_id, match, original):
     except IndexError:
         fl = ""
 
-    # Build Python regex types
+    # Build Python regex flags
     count = 1
-    types = 0
+    flags = 0
     for f in fl:
         if f == "i":
-            types |= regex.IGNORECASE
+            flags |= regex.IGNORECASE
         elif f == "g":
             count = 0
         else:
@@ -47,7 +47,7 @@ def doit(chat_id, match, original):
             s = original.message
             if s.startswith(HEADER):
                 s = s[len(HEADER) :]
-            s, i = regex.subn(fr, to, s, count=count, types=types)
+            s, i = regex.subn(fr, to, s, count=count, flags=flags)
             if i > 0:
                 return original, s
         except Exception as e:
