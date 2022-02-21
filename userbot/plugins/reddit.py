@@ -27,7 +27,7 @@ menu_category = "misc"
     info={
         "header": "get a random reddit post.",
         "usage": "{tr}reddit <subreddit>",
-        "examples": "{tr}reddit dankmemes",
+        "examples": "{tr}reddit memes",
     },
 )
 async def reddit_fetch(event):
