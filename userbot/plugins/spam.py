@@ -225,8 +225,8 @@ async def stickerpack_spam(event):
     },
 )
 async def tiny_pic_spam(e):
-    sender = await e.get_sender()
-    me = await e.client.get_me()
+    await e.get_sender()
+    await e.client.get_me()
     try:
         await e.delete()
     except:
@@ -353,7 +353,3 @@ async def spammer(event):
     await event.delete()
     addgvar("spamwork", True)
     await spam_function(event, reply, lol, sleeptimem, sleeptimet, DelaySpam=True)
-
-
-
-
