@@ -273,8 +273,8 @@ async def bad(event):
     bg_name = []
     lbg_list = "**Available background names are here:-**\n\n"
     for i, each in enumerate(links, start=1):
-        legend = os.path.splitext(each.text)[0]
-        owo = bg_name.append(legend)
+        owo = os.path.splitext(each.text)[0]
+        bg_name.append(legend)
         lbg_list += f"**{i}.**  `{owo}`\n"
     if os.path.exists("./temp/bg_img.jpg"):
         os.remove("./temp/bg_img.jpg")
@@ -353,9 +353,9 @@ async def pussy(event):
         logo_font = []
         font_name = "**Available font names are here:-**\n\n"
         for i, each in enumerate(links, start=1):
-            legend = os.path.splitext(each.text)[0]
-            owo = logo_font.append(legend)
-            font_name += f"**{i}.**  `{owo}`\n"
+            lol = os.path.splitext(each.text)[0]
+            logo_font.append(lol)
+            font_name += f"**{i}.**  `{lol}`\n"
         if not input_str:
             return await eod(event, font_name, time=80)
         if input_str not in logo_font:
