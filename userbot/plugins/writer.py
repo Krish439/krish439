@@ -18,11 +18,8 @@ menu_category = "extra"
     },
 )
 async def ghtml(e):
-    txt = e.pattern_match.group(1).strip()
-    if txt:
-        link = e.text.split(maxsplit=1)[1]
-    else:
-        return await eod(e, "`Either reply to any file or give any text`")
+    txt = e.text()
+    link = txt[8:]
     k = await async_searcher(link)
     with open("file.html", "w+") as f:
         f.write(k)
@@ -38,16 +35,16 @@ async def ghtml(e):
     },
 )
 async def f2i(e):
-    txt = e.pattern_match.group(1).strip()
+    lol = e.text
     html = None
-    if txt:
-        html = e.text.split(maxsplit=1)[1]
     elif e.reply_to:
         r = await e.get_reply_message()
         if r.media:
             html = await e.client.download_media(r.media)
         elif r.text:
             html = r.text
+    elif lol:
+        html = lol[7:]
     if not html:
         return await eod(e, "`Either reply to any file or give any text`")
     html = html.replace("\n", "<br>")
@@ -72,8 +69,9 @@ async def writer(e):
     if e.reply_to:
         reply = await e.get_reply_message()
         text = reply.message
-    elif e.pattern_match.group(1).strip():
-        text = e.text.split(maxsplit=1)[1]
+    lol = e.text
+    elif lol:
+        text = lol[5:]
     else:
         return await eod(e, "Give me Text")
     k = await eor(e, "Processing")
