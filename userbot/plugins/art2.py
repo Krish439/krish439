@@ -36,6 +36,7 @@ async def lon(frog):
 
 """
 
+
 @legend.legend_cmd(
     pattern="shitos$",
     command=("shitos", menu_category),
@@ -127,7 +128,6 @@ async def lisj(frogsay):
     await eor(frogsay, C)
 
 
-
 @legend.legend_cmd(
     pattern="bye$",
     command=("bye", menu_category),
@@ -144,4 +144,3 @@ async def bluedevilbye(event):
         lol = "Bye Friends"
         await event.client.send_file(event.chat_id, BYE_PIC, caption=lol)
         await event.delete()
-
