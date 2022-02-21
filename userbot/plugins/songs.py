@@ -264,6 +264,24 @@ async def shazamcmd(event):
     await event.client.send_file(
         event.chat_id, audio_file, caption="Song", thumb=thumb_name
     )
+    await event.client.send_file(
+        event.chat_id,
+        f"audio_file",
+        supports_streaming=True,
+        caption=f"**✘ Song -** `{title}` \n**✘ Views -** `{views}` \n**✘ Duration -** `{duration}` \n\n**✘ By :** {mention}",
+        thumb=thumb_name,
+        attributes=[
+            DocumentAttributeAudio(
+                duration=int{duration},
+                title=str{title},
+                performer=perf,
+            )
+        ],
+        progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
+            progress(d, t, event, c_time, "Uploading..", f"{title}.mp3")
+        ),
+    )
+    await event.delete()
     os.remove(audio_file)
     os.remove(thumb_name)
 
