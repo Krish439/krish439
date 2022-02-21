@@ -20,7 +20,7 @@ menu_category = "extra"
 async def spam_function(event, LEGEND, lol, sleeptimem, sleeptimet, DelaySpam=False):
     # sourcery no-metrics
     counter = int(lol[0])
-    if len(legend) == 2:
+    if len(lol) == 2:
         spam_message = str(lol[1])
         for _ in range(counter):
             if gvarstatus("spamwork") is None:
