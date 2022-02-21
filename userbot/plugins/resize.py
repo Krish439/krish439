@@ -46,7 +46,8 @@ async def size(e):
     sz = hall[7:]
     if not sz:
         return await eod(
-            e, f"Give Some Size To Resize, Like `.resize 720 1080` ",
+            e,
+            f"Give Some Size To Resize, Like `.resize 720 1080` ",
         )
     k = await eor(e, "Processing..")
     if hasattr(r.media, "document"):
