@@ -174,7 +174,7 @@ class LegendClient(TelegramClient):
                             ftext, pastetype="s", markdown=False
                         )
                         text = "**LegendBot Error report**\n\n"
-                        link = "[here](https://t.me/Legend_K_Userbo5)"
+                        link = "[here](https://t.me/Legend_K_Userbot)"
                         text += "If you wanna you can report it"
                         text += f"- just forward this message {link}.\n"
                         text += (
