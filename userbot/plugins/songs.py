@@ -261,9 +261,9 @@ async def shazamcmd(event):
     except Exception as e:
         m.edit("**𝐘𝐨𝐮𝐭𝐮𝐛𝐞  𝐄𝐫𝐫𝐨𝐫 ❌**")
         print(e)
-    await event.client.send_file(
-        event.chat_id, audio_file, caption="Song", thumb=thumb_name
-    )
+    #await event.client.send_file(
+        #event.chat_id, audio_file, caption="Song", thumb=thumb_name
+    #)
     await event.client.send_file(
         event.chat_id,
         f"audio_file",
