@@ -221,7 +221,14 @@ def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60**i for i, x in enumerate(reversed(stringt.split(":"))))
 
-
+@legend.legend_cmd(
+    pattern="fsong(?:\s|$)([\s\S]*)",
+    command=("fsong", menu_category),
+    info={
+        "header": "Search Song",
+        "usage": "{tr}fsong",
+    },
+)
 async def shazamcmd(event):
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     m = await eor(event, "searching song")
