@@ -42,7 +42,7 @@ async def size(e):
     r = await e.get_reply_message()
     if not (r and r.media):
         return await eor(e, "Reply To Media")
-    hall = event.text
+    hall = e.text
     sz = hall[7:]
     if not sz:
         return await eor(
