@@ -5,9 +5,8 @@ import regex
 from telethon import events
 from telethon.tl import functions, types
 
-from ..core.session import legend
-
 from ..Config import Config
+from ..core.session import legend
 
 menu_category = "tools"
 
