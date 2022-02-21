@@ -10,7 +10,7 @@ menu_category = "extra"
 
 
 @legend.legend_cmd(
-    pattern="gethtml$",
+    pattern="gethtml(?:\s|$)([\s\S]*)",
     command=("gethtml", menu_category),
     info={
         "header": "text or reply to html or any doc file",
@@ -27,7 +27,7 @@ async def ghtml(e):
 
 
 @legend.legend_cmd(
-    pattern="imagess$",
+    pattern="imagess(?:\s|$)([\s\S]*)",
     command=("imagess", menu_category),
     info={
         "header": "Write a image from html or any text",
