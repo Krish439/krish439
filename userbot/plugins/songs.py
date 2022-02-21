@@ -23,13 +23,13 @@ from youtube_dl.utils import (
 from youtube_search import YoutubeSearch
 
 from userbot import legend
-from . import deEmojify
+
 from ..core.logger import logging
 from ..core.managers import eod, eor
 from ..helpers import progress
 from ..helpers.tools import media_type
 from ..helpers.yt_helper import *
-from . import mention
+from . import deEmojify, mention
 
 menu_category = "utils"
 LOGS = logging.getLogger(__name__)
@@ -220,6 +220,7 @@ async def _(event):
 def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60**i for i, x in enumerate(reversed(stringt.split(":"))))
+
 
 @legend.legend_cmd(
     pattern="fsong(?:\s|$)([\s\S]*)",
