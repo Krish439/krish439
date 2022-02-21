@@ -1,10 +1,10 @@
 import asyncio
-import base64
 import io
 import os
-from pathlib import Path
 
 import requests
+from ShazamAPI import Shazam
+from telethon import types
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import DocumentAttributeAudio
 from youtube_dl import YoutubeDL
@@ -19,21 +19,14 @@ from youtube_dl.utils import (
     XAttrMetadataError,
 )
 
-from ShazamAPI import Shazam
-from telethon import types
-from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-from validators.url import url
-
 from userbot import legend
 
 from ..core.logger import logging
 from ..core.managers import eod, eor
-from ..helpers.functions import name_dl, song_dl, video_dl, yt_data, yt_search
 from ..helpers.tools import media_type
-from ..helpers.utils import _legendutils, reply_id
-from . import hmention, mention
 from ..helpers.yt_helper import song_search
+from . import mention
+
 menu_category = "utils"
 LOGS = logging.getLogger(__name__)
 
@@ -56,7 +49,6 @@ SONGBOT_BLOCKED_STRING = "<code>Please unblock @songdl_bot and try again</code>"
 # =========================================================== #
 #                                                             #
 # =========================================================== #
-
 
 
 @legend.legend_cmd(
@@ -88,6 +80,7 @@ async def nope(aura):
     )
 
     await aura.delete()
+
 
 @legend.legend_cmd(
     pattern="song(?:\s|$)([\s\S]*)",
@@ -157,7 +150,6 @@ async def _(event):
     )
     await event.delete()
     os.remove(f"{hell_data['id']}.mp3")
-
 
 
 @legend.legend_cmd(
