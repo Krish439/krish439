@@ -2,14 +2,9 @@ import asyncio
 import io
 import os
 import time
-import os
+
 import requests
-import aiohttp
 import yt_dlp
-
-from youtube_search import YoutubeSearch
-
-import requests
 from ShazamAPI import Shazam
 from telethon import types
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -25,6 +20,7 @@ from youtube_dl.utils import (
     UnavailableVideoError,
     XAttrMetadataError,
 )
+from youtube_search import YoutubeSearch
 
 from userbot import legend
 
@@ -223,8 +219,7 @@ async def _(event):
 
 def time_to_seconds(time):
     stringt = str(time)
-    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
-
+    return sum(int(x) * 60**i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
 async def shazamcmd(event):
@@ -234,43 +229,35 @@ async def shazamcmd(event):
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
-        title = results[0]["title"][:40]       
+        title = results[0]["title"][:40]
         thumbnail = results[0]["thumbnails"][0]
-        thumb_name = f'thumb{title}.jpg'
+        thumb_name = f"thumb{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
-        open(thumb_name, 'wb').write(thumb.content)
-
+        open(thumb_name, "wb").write(thumb.content)
 
         duration = results[0]["duration"]
-        url_suffix = results[0]["url_suffix"]
-        views = results[0]["views"]
+        results[0]["url_suffix"]
+        results[0]["views"]
 
-    except Exception as e:
-        m.edit(
-            "𝐒𝐨𝐧𝐠 🥀 𝐍𝐨𝐭 😔 𝐅𝐨𝐮𝐧𝐝."
-        )
+    except Exception:
+        m.edit("𝐒𝐨𝐧𝐠 🥀 𝐍𝐨𝐭 😔 𝐅𝐨𝐮𝐧𝐝.")
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        secmul, dur, dur_arr = 1, 0, duration.split(':')
-        for i in range(len(dur_arr)-1, -1, -1):
-            dur += (int(dur_arr[i]) * secmul)
+        secmul, dur, dur_arr = 1, 0, duration.split(":")
+        for i in range(len(dur_arr) - 1, -1, -1):
+            dur += int(dur_arr[i]) * secmul
             secmul *= 60
     except Exception as e:
         m.edit("**𝐘𝐨𝐮𝐭𝐮𝐛𝐞  𝐄𝐫𝐫𝐨𝐫 ❌**")
         print(e)
     await event.client.send_file(
-         event.chat_id,
-         audio_file,
-         caption="Song",
-         thumb=thumb_name
-         )
+        event.chat_id, audio_file, caption="Song", thumb=thumb_name
+    )
     os.remove(audio_file)
     os.remove(thumb_name)
-        
-
 
 
 @legend.legend_cmd(
