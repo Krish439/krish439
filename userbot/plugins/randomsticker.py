@@ -3,9 +3,7 @@ from os import remove
 from random import choice
 from urllib import parse
 
-import nekos
 import requests
-from PIL import Image
 from telethon import functions, types, utils
 
 from userbot import legend
