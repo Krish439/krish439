@@ -94,7 +94,7 @@ async def delete_it(event):
     command=("purgefrom", menu_category),
     info={
         "header": "To mark the replied message as starting message of purge list.",
-        "description": "After using this u must use purgeto command also so that the messages in between this will delete.",
+        "description": "Suppose U Want To Delete Between Message Then First Use Command purgefrom then use purgeto also so that the messages in between this will delete.",
         "usage": "{tr}purgefrom",
     },
 )
@@ -196,6 +196,7 @@ async def purgeme(event):
             "#PURGEME \n`Purge of " + str(count) + " messages done successfully.`",
         )
     await sleep(5)
+    i = 1
     await smsg.delete()
 
 
