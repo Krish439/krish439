@@ -7,7 +7,6 @@ import requests
 import yt_dlp
 from ShazamAPI import Shazam
 from telethon import types
-from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import DocumentAttributeAudio
 from youtube_dl import YoutubeDL
 from youtube_dl.utils import (
@@ -315,4 +314,3 @@ async def shazamcmd(event):
         event.chat_id, image, caption=f"**Song:** `{song}`", reply_to=reply
     )
     await legendevent.delete()
-
