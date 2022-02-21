@@ -73,8 +73,8 @@ async def writer(e):
     elif e.pattern_match.group(1).strip():
         text = e.text.split(maxsplit=1)[1]
     else:
-        return await eod(e, get_string("writer_1"))
-    k = await e.eor(get_string("com_1"))
+        return await eod(e, "Give me Text")
+    k = await eor(e, "Processing")
     img = Image.open("userbot/resources/extras/template.jpg")
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("userbot/resources/fonts/assfont.ttf", 30)
@@ -84,7 +84,7 @@ async def writer(e):
     for line in lines:
         draw.text((x, y), line, fill=(1, 22, 55), font=font)
         y = y + line_height - 5
-    file = "ult.jpg"
+    file = "legend.jpg"
     img.save(file)
     await e.reply(file=file)
     os.remove(file)
