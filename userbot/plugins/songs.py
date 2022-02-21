@@ -31,7 +31,7 @@ from . import mention
 menu_category = "utils"
 LOGS = logging.getLogger(__name__)
 
-
+perf = "LegendBot"
 try:
 
     from youtubesearchpython import *
