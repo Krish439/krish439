@@ -43,7 +43,7 @@ async def _(event):
         await event.client.send_file(
             event.chat_id,
             sweetie,
-            caption=f"<b><i>👨‍💻 Pong </b></i>\n   ➡️ {ms} <b><i>ms\n   Bot : {hmention}</b></i>",
+            caption=f"<b><i>👨‍💻 Pong </b></i>\n\n   🚩 {ms} <b><i>ms\n   Bot : {hmention}</b></i>",
             parse_mode="html",
         )
 
