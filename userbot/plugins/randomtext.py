@@ -1,5 +1,5 @@
+import asyncio
 import random
-import asyncio 
 from asyncio import sleep
 
 from userbot import legend
@@ -109,7 +109,6 @@ async def _(event):
         )
     if x == 25:
         await event.edit("Written and Created By: @Legend_K_Boy ! thank you🙏🏻❤")
-
 
 
 @legend.legend_cmd(
