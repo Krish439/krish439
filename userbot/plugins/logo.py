@@ -274,7 +274,7 @@ async def bad(event):
     lbg_list = "**Available background names are here:-**\n\n"
     for i, each in enumerate(links, start=1):
         owo = os.path.splitext(each.text)[0]
-        bg_name.append(legend)
+        bg_name.append(owo)
         lbg_list += f"**{i}.**  `{owo}`\n"
     if os.path.exists("./temp/bg_img.jpg"):
         os.remove("./temp/bg_img.jpg")
