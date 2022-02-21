@@ -13,7 +13,7 @@ from ..sql_helper.waifu_sql import add_grp, get_all_grp, is_harem, rm_grp
 
 qt = "A qt waifu appeared!"
 qt_ = "A waifu appeared!"
-
+menu_category = "useless"
 
 def progress(current, total):
     logger.info(
