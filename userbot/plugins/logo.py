@@ -86,7 +86,7 @@ async def very(event):
     )
     LOGO_FONT = (
         gvarstatus("LOGO_FONT")
-        or "https://github.com/ITS-LEGENDBOT/RESOURCES/blob/master/fonts/Streamster.ttf?raw=true"
+        or "https://github.com/ITS-LEGENDBOT/RESOURCES/blob/master/fonts/VampireWars.ttf?raw=true"
     )
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
