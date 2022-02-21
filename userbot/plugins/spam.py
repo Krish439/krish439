@@ -124,7 +124,7 @@ async def spam_function(event, LEGEND, lol, sleeptimem, sleeptimet, DelaySpam=Fa
 async def spammer(event):
     "Floods the text in the chat !!"
     LEGEND = await event.get_reply_message()
-    legend = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
+    lol = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
     try:
         counter = int(lol[0])
     except Exception:
@@ -308,7 +308,7 @@ async def spammer(event):
         return await eod(
             event, "__Use proper syntax to spam. For syntax refer help menu.__"
         )
-    legend = input_str[1:]
+    lol = input_str[1:]
     try:
         int(legend[0])
     except Exception:
@@ -318,3 +318,7 @@ async def spammer(event):
     await event.delete()
     addgvar("spamwork", True)
     await spam_function(event, reply, lol, sleeptimem, sleeptimet, DelaySpam=True)
+
+
+
+
