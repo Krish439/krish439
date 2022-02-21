@@ -5,7 +5,9 @@ from PIL import Image, ImageDraw, ImageFont
 
 from ..helpers.tools import async_searcher, text_set
 from . import legend
+
 menu_category = "extra"
+
 
 @legend.legend_cmd(
     pattern="gethtml$",
