@@ -16,17 +16,19 @@ from ..core.managers import eod, eor
 
 menu_category="extra"
 
+#regex 
+
 @legend.legend_cmd(
-    pattern="hibuddy(?:\s|$)([\s\S]*)",
-    command=("hibuddy", menu_category),
+    pattern="hilegend(?:\s|$)([\s\S]*)",
+    command=("hilegend", menu_category),
     info={
         "header": "Just to say hi to other user.",
         "description": "input string along with cmd will be added to your hi text",
-        "usage": "{tr}hibuddy <text>",
-        "examples": "{tr}hibuddy how are you doing",
+        "usage": "{tr}hilegend <text>",
+        "examples": "{tr}hulegend how are you bro",
     },
 )
-async def hi_buddy(event):
+async def hi_legend(event):
     "Just to say hi to other user."
     input_str= event.pattern_match.group(1)
     if not input_str:
@@ -35,9 +37,6 @@ async def hi_buddy(event):
     outputtext= f"+-+-+-+-+-+\n|h|e|l|l|o|\n+-+-+-+-+-+\n{input_str}"
     await eor(event,outputtext)
 ```
-
-For more information refer this [Docs](https://docs.telethon.dev/en/latest/)
-
 
 Arguments in legend_cmd are as follows:
 ```
@@ -49,7 +48,7 @@ info={
         "description": string - "Description for command",
         "flags": dict or string - "Types u are using in your plugin",
         "options": dict or string - "Options u are using in your plugin",
-        "flags": list or string - "types u are using in your plugin",
+        "types": list or string - "types u are using in your plugin",
         "usage": "Usage for your command",
         "examples": "Example for the command",
         "your custom name if you want to use other": str or list or dict - "data/information about it",
