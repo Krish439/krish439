@@ -171,7 +171,7 @@ async def restart(event):
     if event.query.user_id == bot.uid:
         await event.answer("Restarting Please Wait 4 min... ", cache_time=0, alert=True)
         if BOTLOG:
-            await event.client.send_message(
+            LEGEND = await event.client.send_message(
                 BOTLOG_CHATID, "# RESTART \n" "Bot Restarted"
             )
         try:
@@ -186,7 +186,6 @@ async def restart(event):
         except Exception as e:
             LOGS.error(e)
         try:
-            delgvar("ipaddress")
             await legend.disconnect()
         except CancelledError:
             pass
