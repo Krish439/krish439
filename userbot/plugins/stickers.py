@@ -128,7 +128,9 @@ async def delpack(legendevent, conv, cmd, args, packname):
     try:
         await conv.send_message(cmd)
     except YouBlockedUserError:
-        await legendevent.edit("You have blocked the @stickers bot. unblock it and try.")
+        await legendevent.edit(
+            "You have blocked the @stickers bot. unblock it and try."
+        )
         return None, None
     await conv.send_message("/delpack")
     await conv.get_response()
