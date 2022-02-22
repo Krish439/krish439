@@ -13,7 +13,7 @@ from .helpers.utils.utils import runasync
 __version__ = "1.0"
 __license__ = "GNU Affero General Public License v3.0"
 __author__ = "LegendBot <https://github.com/ITS-LEGENDBOT/LEGENDBOT>"
-__copyright__ = "LegendBot Copyright (C) 2020 - 2021  { __author__}"
+__copyright__ = f"LegendBot Copyright (C) 2020 - 2021  { __author__}"
 
 legend.version = __version__
 legend.tgbot.version = __version__
