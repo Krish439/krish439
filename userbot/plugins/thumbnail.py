@@ -9,7 +9,6 @@ from userbot import legend
 from ..Config import Config
 from ..core.managers import eor
 from ..helpers.utils import _legendtools
-from . import CMD_HELP
 
 menu_category = "utils"
 
