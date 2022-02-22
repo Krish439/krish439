@@ -124,11 +124,11 @@ async def resize_photo(photo):
     return image
 
 
-async def delpack(catevent, conv, cmd, args, packname):
+async def delpack(legendevent, conv, cmd, args, packname):
     try:
         await conv.send_message(cmd)
     except YouBlockedUserError:
-        await catevent.edit("You have blocked the @stickers bot. unblock it and try.")
+        await legendevent.edit("You have blocked the @stickers bot. unblock it and try.")
         return None, None
     await conv.send_message("/delpack")
     await conv.get_response()
@@ -152,7 +152,7 @@ async def newpacksticker(
     emoji,
     packname,
     is_anim,
-    setfile,
+    stfile,
     otherpack=False,
     pkang=False,
 ):
@@ -260,7 +260,7 @@ async def add_to_pack(
                 emoji,
                 packname,
                 is_anim,
-                setfile,
+                stfile,
                 otherpack=True,
                 pkang=pkang,
             )
@@ -669,7 +669,7 @@ async def lol(args):
         await eor(args, "`I can't convert that...`")
         return
     cmd = "/newvideo"
-    packname = f"LegendO_{userid}_temp_pack"
+    packname = f"LegendOp_{userid}_temp_pack"
     response = urllib.request.urlopen(
         urllib.request.Request(f"http://t.me/addstickers/{packname}")
     )
