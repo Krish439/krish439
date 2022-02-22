@@ -1,15 +1,9 @@
 import random
 import re
 
-
-
-from ..Config import Config
-from ..core.managers import eor
-from ..sql_helper.globals import gvarstatus
-from . import _legendtools, convert_toimage, deEmojify, legend
+from . import legend
 
 menu_category = "utils"
-
 
 
 @legend.legend_cmd(
