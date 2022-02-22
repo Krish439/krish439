@@ -10,10 +10,46 @@ from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
 from ..core.managers import eod, eor
+from ..helpers import media_type
 from ..helpers.utils import _legendutils, reply_id
 from . import legend
 
 menu_category = "useless"
+
+
+
+@legend.legend_cmd(
+    pattern="dis$",
+    command=("dis", plugin_category),
+    info={
+        "header": "Distorting media",
+        "usage": "{tr}dis <reply to media>",
+    },
+)
+async def lol(event):
+    "Reply this command to a video to convert it to distorted media"
+    reply = await event.get_reply_message()
+    mediatype = media_type(reply)
+    if mediatype and mediatype not in ["Gif", "Video", "Sticker", "Photo", "Voice"]:
+        return await eod(event, "__Reply to a media file__")
+    lol = await eor(event, "__🎞Converting into distorted media..__")
+    async with event.client.conversation("@distortionerbot") as conv:
+        try:
+            msg = await conv.send_message(reply)
+            media = await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+            if "Downloading" in media.raw_text:
+                media = await conv.get_response()
+        except YouBlockedUserError:
+            await lol.edit("Please unblock @distortionerbot and try again")
+            return
+        await lol.delete()
+        owo = await event.client.send_file(event.chat_id, media, reply_to=reply)
+        out = media_type(media)
+        if out in ["Gif", "Video", "Sticker"]:
+            await _legendutils.unsavegif(event, owo)
+    await event.client.delete_messages(conv.chat_id, [msg.id, media.id])
+
 
 
 @legend.legend_cmd(
