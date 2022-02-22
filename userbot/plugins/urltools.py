@@ -29,13 +29,12 @@ async def _(event):
         )
     check = url(input_str)
     if not check:
-        lolstr = "http://" + input_str
+        lolstr = f"http://{input_str}"
         check = url(lolstr)
     if not check:
         return await eod(event, "`the given link is not supported`", 5)
     sample_url = f"https://da.gd/dns/{input_str}"
-    response_api = requests.get(sample_url).text
-    if response_api:
+    if response_api := requests.get(sample_url).text:
         await eor(event, f"DNS records of {input_str} are \n{response_api}")
     else:
         await eor(event, f"__I can't seem to find `{input_str}` on the internet__")
@@ -62,15 +61,14 @@ async def _(event):
         )
     check = url(input_str)
     if not check:
-        lolstr = f"http://" + input_str
+        lolstr = f"http://{input_stt}"
         check = url(lolstr)
     if not check:
         return await eod(event, "`the given link is not supported`", 5)
     if not input_str.startswith("http"):
-        input_str = "http://" + input_str
+        input_str = f"http://{input_str}"
     sample_url = f"https://da.gd/s?url={input_str}"
-    response_api = requests.get(sample_url).text
-    if response_api:
+    if response_api := requests.get(sample_url).text:
         await eor(
             event, f"Generated {response_api} for {input_str}.", link_preview=False
         )
@@ -99,12 +97,12 @@ async def _(event):
         )
     check = url(input_str)
     if not check:
-        lolstr = "http://" + input_str
+        lolstr = f"http://{input_str}"
         check = url(lolstr)
     if not check:
         return await eod(event, "`the given link is not supported`", 5)
     if not input_str.startswith("http"):
-        input_str = "http://" + input_str
+        input_str = f"http://{input_str}"
     r = requests.get(input_str, allow_redirects=False)
     if str(r.status_code).startswith("3"):
         await eor(
@@ -141,8 +139,8 @@ async def _(event):
         )
     check = url(input_str)
     if not check:
-        lolstr = "http://" + input_str
+        lolstr = f"http://{input_str}"
         check = url(lolstr)
     if not check:
         return await eod(event, "`the given link is not supported`", 5)
-    await eor(event, "[ㅤㅤㅤㅤㅤㅤㅤ](" + input_str + ")")
+    await eor(event, f"[ㅤㅤㅤㅤㅤㅤㅤ]({input_str})")
