@@ -201,7 +201,7 @@ async def add_to_pack(
     except YouBlockedUserError:
         await args.client(functions.contacts.UnblockRequest("@Stickers"))
         await legendevent.edit(
-            "You have blocked the @stickers bot. unblock it and try."
+            "You have blocked the @stickers bot.Now unblocked Successfully and Now Try Again."
         )
         if not pkang:
             return None, None
@@ -510,7 +510,7 @@ async def pack_kang(args):  # sourcery no-metrics
             return
         if photo:
             splat = ("".join(args.text.split(maxsplit=1)[1:])).split()
-            emoji = emoji or "😂"
+            emoji = emoji or "⚜"
             if pack is None:
                 pack = 1
                 if len(splat) == 1:
@@ -627,7 +627,7 @@ async def pic2packcmd(event):
     except Exception:
         emoji = "🤖"
     chat = "@Stickers"
-    name = "LegendUserBot_" + "".join(
+    name = "LegendBot_XD" + "".join(
         random.choice(list(string.ascii_lowercase + string.ascii_uppercase))
         for _ in range(16)
     )
@@ -691,7 +691,7 @@ async def pic2packcmd(event):
         except YouBlockedUserError:
             await event.client(functions.contacts.UnblockRequest("@Stickers"))
             await legendevent.edit(
-                "__You blocked @Stickers bot. unblock it and try again__"
+                "__You blocked @Stickers bot. Now unblocked Successfully and Now try again__"
             )
 
 
