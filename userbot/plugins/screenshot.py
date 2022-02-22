@@ -1,5 +1,3 @@
-
-from ..helpers.utils import _format
 import io
 import traceback
 from datetime import datetime
