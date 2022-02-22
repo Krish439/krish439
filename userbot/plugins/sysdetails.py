@@ -91,7 +91,7 @@ async def psu(event):
 )
 async def cpu(event):
     "shows cpu information"
-    cmd = "lol /proc/cpuinfo | grep 'model name'"
+    cmd = "legend /proc/cpuinfo | grep 'model name'"
     o = (await _legendutils.runcmd(cmd))[0]
     await eor(
         event, f"**[Legend's](tg://need_update_for_some_feature/) CPU Model:**\n{o}"
