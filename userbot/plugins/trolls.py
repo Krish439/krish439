@@ -47,8 +47,8 @@ async def owobot(event):
     except exceptions.TelegraphException as exc:
         os.remove(download_location)
         return await output[0].edit(f"**Error: **\n`{exc}`")
-    legend = f"https://telegra.ph{response[0]}"
-    olt = await trash(legend)
+    lol = f"https://telegra.ph{response[0]}"
+    olt = await trash(lol)
     os.remove(download_location)
     await output[0].delete()
     await event.client.send_file(event.chat_id, olt, reply_to=swtid)
@@ -86,8 +86,8 @@ async def owobot(event):
     except exceptions.TelegraphException as exc:
         os.remove(download_location)
         return await output[0].edit(f"**Error: **\n`{exc}`")
-    legend = f"https://telegra.ph{response[0]}"
-    plo = await threats(legend)
+    lol = f"https://telegra.ph{response[0]}"
+    plo = await threats(lol)
     await output[0].delete()
     os.remove(download_location)
     await event.client.send_file(event.chat_id, plo, reply_to=swtid)
@@ -135,11 +135,11 @@ async def owobot(event):
     except exceptions.TelegraphException as exc:
         os.remove(download_location)
         return await output[0].edit(f"**Error: **\n`{exc}`")
-    legend = f"https://telegra.ph{response[0]}"
-    await trap(text1, text2, legend)
+    lol = f"https://telegra.ph{response[0]}"
+    dol = await trap(text1, text2, lol)
     await output[0].delete()
     os.remove(download_location)
-    await event.client.send_file(event.chat_id, legend, reply_to=swtid)
+    await event.client.send_file(event.chat_id, dol, reply_to=swtid)
 
 
 @legend.legend_cmd(
@@ -185,8 +185,8 @@ async def owobot(event):
     except exceptions.TelegraphException as exc:
         os.remove(download_location)
         return await output[0].edit(f"**Error: **\n`{exc}`")
-    legend = f"https://telegra.ph{response[0]}"
-    await phcomment(legend, text, username)
+    sex = f"https://telegra.ph{response[0]}"
+    hola = await phcomment(sex, text, username)
     await output[0].delete()
     os.remove(download_location)
-    await event.client.send_file(event.chat_id, legend, reply_to=swtid)
+    await event.client.send_file(event.chat_id, hola, reply_to=swtid)
