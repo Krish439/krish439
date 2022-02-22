@@ -19,7 +19,7 @@ menu_category = "useless"
 
 @legend.legend_cmd(
     pattern="dis$",
-    command=("dis", plugin_category),
+    command=("dis", menu_category),
     info={
         "header": "Distorting media",
         "usage": "{tr}dis <reply to media>",
