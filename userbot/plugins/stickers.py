@@ -23,6 +23,7 @@ from telethon.tl.types import (
     InputStickerSetID,
     MessageMediaPhoto,
 )
+from telethon.tl import functions
 
 from userbot import legend
 
@@ -135,6 +136,7 @@ async def newpacksticker(
     try:
         await conv.send_message(cmd)
     except YouBlockedUserError:
+        await 
         await legendevent.edit(
             "You have blocked the @stickers bot. unblock it and try."
         )
@@ -730,12 +732,12 @@ async def get_pack_info(event):
         if document_sticker.emoticon not in pack_emojis:
             pack_emojis.append(document_sticker.emoticon)
     OUTPUT = (
-        f"**Sticker Title:** `{get_stickerset.set.title}\n`"
-        f"**Sticker Short Name:** `{get_stickerset.set.short_name}`\n"
-        f"**Official:** `{get_stickerset.set.official}`\n"
-        f"**Archived:** `{get_stickerset.set.archived}`\n"
-        f"**Stickers In Pack:** `{get_stickerset.set.count}`\n"
-        f"**Emojis In Pack:**\n{' '.join(pack_emojis)}"
+        f"🔸️**Sticker Title:** `{get_stickerset.set.title}\n`"
+        f"🔹️**Sticker Short Name:** `{get_stickerset.set.short_name}`\n"
+        f"🔸️**Official:** `{get_stickerset.set.official}`\n"
+        f"🔹️**Archived:** `{get_stickerset.set.archived}`\n"
+        f"🔸️**Stickers In Pack:** `{get_stickerset.set.count}`\n"
+        f"🔹️**Emojis In Pack:**\n{' '.join(pack_emojis)}"
     )
     await legendevent.edit(OUTPUT)
 
