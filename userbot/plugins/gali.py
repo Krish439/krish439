@@ -330,7 +330,6 @@ async def lenssnd(event):
     )
 
 
-
 @legend.legend_cmd(
     pattern="lgali$",
     command=("lgali", menu_category),
