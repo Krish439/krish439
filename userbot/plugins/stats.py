@@ -109,9 +109,7 @@ async def stats(event):  # sourcery no-metrics
     response += f"   ▪ **Admin Rights:** `{admin_in_groups - creator_in_groups}` \n"
     response += f"**Admin in Channels:** {admin_in_broadcast_channels} \n"
     response += f"   ♡ **Creator:** `{creator_in_channels}` \n"
-    response += (
-        f"   ★ **Admin Rights:** `{admin_in_broadcast_channels - creator_in_channels}` \n"
-    )
+    response += f"   ★ **Admin Rights:** `{admin_in_broadcast_channels - creator_in_channels}` \n"
     response += f"**Unread:** {unread} \n"
     response += f"**Unread Mentions:** {unread_mentions} \n\n"
     response += f"🚩 __It Took:__ {stop_time:.02f}s \n"
