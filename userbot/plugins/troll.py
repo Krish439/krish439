@@ -15,14 +15,14 @@ from . import reply_id
 menu_category = "fun"
 
 
-async def mememaker(borg, msg, legend, chat_id, reply_to_id):
+async def mememaker(borg, msg, lol, chat_id, reply_to_id):
     async with borg.conversation("@themememakerbot") as conv:
         try:
             msg = await conv.send_message(msg)
             pic = await conv.get_response()
             await borg.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await legend.edit("Please unblock @themememakerbot and try again")
+            await lol.edit("Please unblock @themememakerbot and try again")
             return
         await borg.send_file(
             chat_id,
@@ -48,8 +48,8 @@ async def legend(event):
     if not input_text:
         return await eod(event, "`Give me some text to process...`")
     msg = f"/sf {input_text}"
-    await eor(event, "```Fox is on your way...```")
-    await mememaker(event.client, msg, legend, event.chat_id, reply_to_id)
+    lol = await eor(event, "```Fox is on your way...```")
+    await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
 
 
 @legend.legend_cmd(
@@ -68,8 +68,8 @@ async def legend(event):
     if not input_text:
         return await eod(event, "`Give me some text to process...`")
     msg = f"/ttm {input_text}"
-    await eor(event, "```Wait making your hardcore meme...```")
-    await mememaker(event.client, msg, legend, event.chat_id, reply_to_id)
+    lol = await eor(event, "```Wait making your hardcore meme...```")
+    await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
 
 
 @legend.legend_cmd(
@@ -88,8 +88,8 @@ async def legend(event):
     if not input_text:
         return await eod(event, "`Give me some text to process...`")
     msg = f"/bbn {input_text}"
-    await eor(event, "```You can't sleep...```")
-    await mememaker(event.client, msg, legend, event.chat_id, reply_to_id)
+    lol = await eor(event, "```You can't sleep...```")
+    await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
 
 
 @legend.legend_cmd(
@@ -128,5 +128,5 @@ async def legend(event):
     if not input_text:
         return await eod(event, "`Give me some text to process...`")
     msg = f"/love {input_text}"
-    await eor(event, "```Wait for your son......```")
-    await mememaker(event.client, msg, legend, event.chat_id, reply_to_id)
+    lol = await eor(event, "```Wait for your son......```")
+    await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
