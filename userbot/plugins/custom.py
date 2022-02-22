@@ -36,6 +36,7 @@ vlist = [
     "ROWS_IN_HELP",
     "COLUMNS_IN_HELP",
     "CUSTOM_STICKER_PACKNAME",
+    "CUSTOM_STICKER_SETNAME",
 ]
 
 oldvars = {
