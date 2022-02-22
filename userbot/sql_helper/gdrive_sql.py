@@ -53,8 +53,8 @@ def get_parent_id():
     finally:
         SESSION.close()
 
+
 def rmparent_id(folder_id):
     if note := SESSION.query(Gdrive).filter(Gdrive.legend == folder_id):
         note.delete()
         SESSION.commit()
-
