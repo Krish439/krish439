@@ -1,3 +1,4 @@
+import signal
 import time
 
 import heroku3
@@ -6,11 +7,13 @@ from .Config import Config
 from .core.logger import logging
 from .core.session import legend
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
+from .helpers.utils.utils import runasync
 
-__version__ = "3.0.5"
+
+__version__ = "1.0"
 __license__ = "GNU Affero General Public License v3.0"
 __author__ = "LegendBot <https://github.com/ITS-LEGENDBOT/LEGENDBOT>"
-__copyright__ = "LegendBot Copyright (C) 2020 - 2021  " + __author__
+__copyright__ = "LegendBot Copyright (C) 2020 - 2021  { __author__}"
 
 legend.version = __version__
 legend.tgbot.version = __version__
@@ -20,6 +23,16 @@ bot = legend
 
 StartTime = time.time()
 legendversion = "v1.0"
+
+
+def close_connection(*_):
+    print("Clossing Userbot connection.")
+    runasync(legend.disconnect())
+    sys.exit(143)
+
+
+signal.signal(signal.SIGTERM, close_connection)
+
 
 if Config.UPSTREAM_REPO == "PRO":
     UPSTREAM_REPO_URL = "https://github.com/ITS-LEGENDBOT/LEGENDBOT"
