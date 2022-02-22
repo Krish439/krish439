@@ -1,12 +1,23 @@
-from googletrans import LANGUAGES
+from asyncio import sleep
+from googletrans import LANGUAGES, Translator
 
 from ..core.managers import eod, eor
-from ..helpers.functions import getTranslate
 from ..sql_helper.globals import addgvar, gvarstatus
-from . import BOTLOG, BOTLOG_CHATID, deEmojify, legend
+from . import BOTLOG, BOTLOG_CHATID, deEmojify
+from userbot import legend 
 
 menu_category = "utils"
 
+async def getTranslate(text, **kwargs):
+    translator = Translator()
+    result = None
+    for _ in range(10):
+        try:
+            result = translator.translate(text, **kwargs)
+        except Exception:
+            translator = Translator()
+            await sleep(0.1)
+    return result
 
 @legend.legend_cmd(
     pattern="tl ([\s\S]*)",
@@ -23,18 +34,17 @@ menu_category = "utils"
 )
 async def _(event):
     "To translate the text."
-    input_str = event.pattern_match.group(1)
-    text = None
-    if ";" in input_str:
-        lan, text = input_str.split(";")
-    elif event.reply_to_msg_id and not text:
+    if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         text = previous_message.message
         lan = input_str or "en"
+    elif ";" in input_str:
+        lan, text = input_str.split(";")
     else:
         return await eod(event, "`.tl LanguageCode` as reply to a message", time=5)
     text = deEmojify(text.strip())
     lan = lan.strip()
+    Translator()
     try:
         translated = await getTranslate(text, dest=lan)
         after_tr_text = translated.text
