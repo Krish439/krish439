@@ -1,12 +1,15 @@
 from asyncio import sleep
+
 from googletrans import LANGUAGES, Translator
+
+from userbot import legend
 
 from ..core.managers import eod, eor
 from ..sql_helper.globals import addgvar, gvarstatus
 from . import BOTLOG, BOTLOG_CHATID, deEmojify
-from userbot import legend 
 
 menu_category = "utils"
+
 
 async def getTranslate(text, **kwargs):
     translator = Translator()
@@ -18,6 +21,7 @@ async def getTranslate(text, **kwargs):
             translator = Translator()
             await sleep(0.1)
     return result
+
 
 @legend.legend_cmd(
     pattern="tl ([\s\S]*)",
