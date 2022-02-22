@@ -1,9 +1,5 @@
-"""
-`Credits` @amnd33p
-from ..helpers.utils import _format
-Modified by @LEGEND_K_BOY
-"""
 
+from ..helpers.utils import _format
 import io
 import traceback
 from datetime import datetime
@@ -119,7 +115,7 @@ async def _(event):
     inputstr = input_str
     legendurl = url(inputstr)
     if not legendurl:
-        inputstr = "http://" + input_str
+        inputstr = f"http://{input_str}"
         legendurl = url(inputstr)
     if not legendurl:
         return await legendevent.edit("`The given input is not supported url`")
