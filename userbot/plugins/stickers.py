@@ -645,7 +645,7 @@ async def pack_kang(args):  # sourcery no-metrics
 
 @legend.legend_cmd(
     pattern="vmake$",
-    command=("vmake", plugin_category),
+    command=("vmake", menu_category),
     info={
         "header": "Converts video/gif to animated sticker",
         "description": "Converts video/gif to .webm file and send a temporary animated sticker of that file",
