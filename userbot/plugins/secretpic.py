@@ -2,6 +2,7 @@ from . import legend
 
 menu_category = "tools"
 
+
 @legend.legend_cmd(
     pattern="sdpic(?:\s|$)([\s\S]*)",
     command=("sdpic", menu_category),
