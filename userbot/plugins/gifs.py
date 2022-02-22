@@ -17,7 +17,6 @@ from . import legend
 menu_category = "useless"
 
 
-
 @legend.legend_cmd(
     pattern="dis$",
     command=("dis", plugin_category),
@@ -49,7 +48,6 @@ async def lol(event):
         if out in ["Gif", "Video", "Sticker"]:
             await _legendutils.unsavegif(event, owo)
     await event.client.delete_messages(conv.chat_id, [msg.id, media.id])
-
 
 
 @legend.legend_cmd(
