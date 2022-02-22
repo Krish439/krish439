@@ -132,13 +132,14 @@ async def newpacksticker(
     is_anim,
     otherpack=False,
     pkang=False,
+    args,
 ):
     try:
         await conv.send_message(cmd)
     except YouBlockedUserError:
-        await 
+        await args.client(functions.contacts.UnblockRequest("@Stickers"))
         await legendevent.edit(
-            "You have blocked the @stickers bot. unblock it and try."
+            "You have blocked the @stickers bot. Now Unblocked Try Again"
         )
         if not pkang:
             return None, None, None
@@ -200,6 +201,7 @@ async def add_to_pack(
     try:
         await conv.send_message("/addsticker")
     except YouBlockedUserError:
+        await args.client(functions.contacts.UnblockRequest("@Stickers"))
         await legendevent.edit(
             "You have blocked the @stickers bot. unblock it and try."
         )
@@ -426,9 +428,9 @@ async def kang(args):  # sourcery no-metrics
         "usage": "{tr}pkang [number]",
     },
 )
-async def pack_kang(event):  # sourcery no-metrics
+async def pack_kang(args):  # sourcery no-metrics
     "To kang entire sticker sticker."
-    user = await event.client.get_me()
+    user = await args.client.get_me()
     if user.username:
         username = user.username
     else:
@@ -441,21 +443,21 @@ async def pack_kang(event):  # sourcery no-metrics
     userid = user.id
     is_anim = False
     emoji = None
-    reply = await event.get_reply_message()
+    reply = await args.get_reply_message()
     legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     if not reply or media_type(reply) is None or media_type(reply) != "Sticker":
         return await eod(
-            event, "`reply to any sticker to send all stickers in that pack`"
+            args, "`reply to any sticker to send all stickers in that pack`"
         )
     try:
         stickerset_attr = reply.document.attributes[1]
         legendevent = await eor(
-            event, "`Fetching details of the sticker pack, please wait..`"
+            args, "`Fetching details of the sticker pack, please wait..`"
         )
     except BaseException:
-        return await eod(event, "`This is not a sticker. Reply to a sticker.`", 5)
+        return await eod(args, "`This is not a sticker. Reply to a sticker.`", 5)
     try:
-        get_stickerset = await event.client(
+        get_stickerset = await args.client(
             GetStickerSetRequest(
                 InputStickerSetID(
                     id=stickerset_attr.stickerset.id,
@@ -469,7 +471,7 @@ async def pack_kang(event):  # sourcery no-metrics
             "`I guess this sticker is not part of any pack. So, i cant kang this sticker pack try kang for this sticker`",
         )
     kangst = 1
-    reqd_sticker_set = await event.client(
+    reqd_sticker_set = await args.client(
         functions.messages.GetStickerSetRequest(
             stickerset=types.InputStickerSetShortName(
                 short_name=f"{get_stickerset.set.short_name}"
@@ -487,7 +489,7 @@ async def pack_kang(event):  # sourcery no-metrics
                 f"`This sticker pack is kanging now . Status of kang process : {kangst}/{noofst}`",
             )
             photo = io.BytesIO()
-            await event.client.download_file(message, photo)
+            await args.client.download_file(message, photo)
             if (
                 DocumentAttributeFilename(file_name="sticker.webp")
                 in message.attributes
@@ -498,7 +500,7 @@ async def pack_kang(event):  # sourcery no-metrics
                 legendevent,
                 f"`This sticker pack is kanging now . Status of kang process : {kangst}/{noofst}`",
             )
-            await event.client.download_file(message, "AnimatedSticker.tgs")
+            await args.client.download_file(message, "AnimatedSticker.tgs")
             attributes = message.attributes
             for attribute in attributes:
                 if isinstance(attribute, DocumentAttributeSticker):
@@ -509,7 +511,7 @@ async def pack_kang(event):  # sourcery no-metrics
             await eod(legendevent, "`Unsupported File!`")
             return
         if photo:
-            splat = ("".join(event.text.split(maxsplit=1)[1:])).split()
+            splat = ("".join(args.text.split(maxsplit=1)[1:])).split()
             emoji = emoji or "😂"
             if pack is None:
                 pack = 1
@@ -522,7 +524,7 @@ async def pack_kang(event):  # sourcery no-metrics
                     )
             try:
                 legend = Get(legend)
-                await event.client(legend)
+                await args.client(legend)
             except BaseException:
                 pass
             packnick = pack_nick(username, pack, is_anim)
@@ -543,12 +545,12 @@ async def pack_kang(event):  # sourcery no-metrics
                 "  A <strong>Telegram</strong> user has created the <strong>Sticker&nbsp;Set</strong>."
                 in htmlstr
             ):
-                async with event.client.conversation("@Stickers") as conv:
+                async with args.client.conversation("@Stickers") as conv:
                     pack, LEGENDBOTname = await newpacksticker(
                         legendevent,
                         conv,
                         cmd,
-                        event,
+                        args,
                         pack,
                         packnick,
                         stfile,
@@ -558,11 +560,11 @@ async def pack_kang(event):  # sourcery no-metrics
                         pkang=True,
                     )
             else:
-                async with event.client.conversation("@Stickers") as conv:
+                async with args.client.conversation("@Stickers") as conv:
                     pack, LEGENDBOTname = await add_to_pack(
                         legendevent,
                         conv,
-                        event,
+                        args,
                         packname,
                         pack,
                         userid,
@@ -689,6 +691,7 @@ async def pic2packcmd(event):
             )
 
         except YouBlockedUserError:
+            await event.client(functions.contacts.UnblockRequest("@Stickers"))
             await legendevent.edit(
                 "__You blocked @Stickers bot. unblock it and try again__"
             )
