@@ -132,7 +132,6 @@ async def newpacksticker(
     is_anim,
     otherpack=False,
     pkang=False,
-    args,
 ):
     try:
         await conv.send_message(cmd)
