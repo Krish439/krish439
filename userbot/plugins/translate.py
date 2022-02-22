@@ -38,6 +38,7 @@ async def getTranslate(text, **kwargs):
 )
 async def _(event):
     "To translate the text."
+    input_str = event.pattern_match.group(1)
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         text = previous_message.message
