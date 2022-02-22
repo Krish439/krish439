@@ -67,11 +67,11 @@ def verify_cond(owoarray, text):
 
 
 def pack_name(userid, pack, is_anim):
-    if gvarstatus("CUSTOM_STICKER_SETNAME" is not None:
+    if gvarstatus("CUSTOM_STICKER_SETNAME") is not None:
         if is_anim:
-            return f"{gvarstatus("CUSTOM_STICKER_SETNAME"}_{userid}_{pack}_anim"
+            return f"gvarstatus("CUSTOM_STICKER_SETNAME")_{userid}_{pack}_anim"
         else:
-            return f"{gvarstatus("CUSTOM_STICKER_SETNAME"}_{userid}_{pack}"
+            return f"gvarstatus("CUSTOM_STICKER_SETNAME")_{userid}_{pack}"
     elif is_anim:
         return f"LegendBot_{userid}_{pack}_anim"
     else:
@@ -85,9 +85,9 @@ def char_is_emoji(character):
 def pack_nick(username, pack, is_anim):
     if gvarstatus("CUSTOM_STICKER_PACKNAME") is not None:
         if is_anim:
-            return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack} (Animated)"
+            return f"gvarstatus("CUSTOM_STICKER_PACKNAME") Vol.{pack} (Animated)"
         else:
-            return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack}"
+            return f"gvarstatus("CUSTOM_STICKER_PACKNAME") Vol.{pack}"
     elif is_anim:
         return f"@{username} Vol.{pack} (Animated)"
     else:
