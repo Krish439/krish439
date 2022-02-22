@@ -148,9 +148,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         LOGS.error(e)
     ups_rem.fetch(ac_br)
     repo.git.reset("--hard", "FETCH_HEAD")
-    heroku_git_url = heroku_app.git_url.replace(
-        "https://", f"https://api:{API_KEY}@"
-    )
+    heroku_git_url = heroku_app.git_url.replace("https://", f"https://api:{API_KEY}@")
     if "heroku" in repo.remotes:
         remote = repo.remote("heroku")
         remote.set_url(heroku_git_url)
