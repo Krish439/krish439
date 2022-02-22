@@ -29,6 +29,7 @@ def run_sync(func, *args, **kwargs):
         None, functools.partial(func, *args, **kwargs)
     )
 
+
 def runasync(func: callable):
     """Run async functions with the right event loop."""
     asyncio.get_event_loop()
