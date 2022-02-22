@@ -67,9 +67,15 @@ def verify_cond(owoarray, text):
 
 
 def pack_name(userid, pack, is_anim):
-    if is_anim:
-        return f"LegendUserBot_{userid}_{pack}_anim"
-    return f"LegendUserBot_{userid}_{pack}"
+    if gvarstatus("CUSTOM_STICKER_SETNAME" is not None:
+        if is_anim:
+            return f"{gvarstatus("CUSTOM_STICKER_SETNAME"}_{userid}_{pack}_anim"
+        else:
+            return f"{gvarstatus("CUSTOM_STICKER_SETNAME"}_{userid}_{pack}"
+    elif is_anim:
+        return f"LegendBot_{userid}_{pack}_anim"
+    else:
+        return f"LegendBot_{userid}_{pack}"
 
 
 def char_is_emoji(character):
@@ -77,13 +83,11 @@ def char_is_emoji(character):
 
 
 def pack_nick(username, pack, is_anim):
-    if gvarstatus("CUSTOM_STICKER_PACKNAME"):
-        return (
-            f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack} (Animated)"
-            if is_anim
-            else f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack}"
-        )
-
+    if gvarstatus("CUSTOM_STICKER_PACKNAME") is not None:
+        if is_anim:
+            return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack} (Animated)"
+        else:
+            return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack}"
     elif is_anim:
         return f"@{username} Vol.{pack} (Animated)"
     else:
@@ -317,7 +321,7 @@ async def kang(args):  # sourcery no-metrics
         return
     if photo:
         splat = ("".join(args.text.split(maxsplit=1)[1:])).split()
-        emoji = emoji if emojibypass else "😂"
+        emoji = emoji if emojibypass else "⚜"
         pack = 1
         if len(splat) == 2:
             if char_is_emoji(splat[0][0]):
@@ -619,7 +623,7 @@ async def pic2packcmd(event):
         args = args.replace(emoji, "")
         emoji = emoji.replace("-e", "")
     except Exception:
-        emoji = "▫️"
+        emoji = "🤖"
     chat = "@Stickers"
     name = "LegendUserBot_" + "".join(
         random.choice(list(string.ascii_lowercase + string.ascii_uppercase))
