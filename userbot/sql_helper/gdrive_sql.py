@@ -18,7 +18,7 @@ from . import BASE, SESSION
 
 
 class Gdrive(BASE):
-    __tablename__ = "catgdrive"
+    __tablename__ = "legendgdrive"
     legend = Column(String(50), primary_key=True)
 
     def __init__(self, cat):
@@ -53,8 +53,8 @@ def get_parent_id():
     finally:
         SESSION.close()
 
-
 def rmparent_id(folder_id):
-    if note := SESSION.query(Gdrive).filter(Gdrive.legend == folder_id)
+    if note := SESSION.query(Gdrive).filter(Gdrive.legend == folder_id):
         note.delete()
         SESSION.commit()
+
