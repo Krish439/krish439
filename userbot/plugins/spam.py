@@ -216,7 +216,7 @@ async def stickerpack_spam(event):
 
 
 @legend.legend_cmd(
-    pattern="mspam$",
+    pattern="mspam ([\s\S]*)",
     command=("mspam", menu_category),
     info={
         "header": "To spam the chat with stickers.",
