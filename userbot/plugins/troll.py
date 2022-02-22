@@ -1,5 +1,3 @@
-
-
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot import legend
