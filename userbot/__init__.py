@@ -6,9 +6,8 @@ import heroku3
 from .Config import Config
 from .core.logger import logging
 from .core.session import legend
-from .sql_helper.globals import addgvar, delgvar, gvarstatus
 from .helpers.utils.utils import runasync
-
+from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
 __version__ = "1.0"
 __license__ = "GNU Affero General Public License v3.0"
