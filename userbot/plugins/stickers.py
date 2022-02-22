@@ -23,7 +23,6 @@ from telethon.tl.types import (
     InputStickerSetID,
     MessageMediaPhoto,
 )
-from telethon.tl import functions
 
 from userbot import legend
 
