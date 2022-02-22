@@ -1,9 +1,4 @@
-"""
-Created by @LegendBoy_XD
-plugin for Legend_UserBot
-☝☝☝
-You remove this, you gay.
-"""
+
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
@@ -41,7 +36,7 @@ async def mememaker(borg, msg, lol, chat_id, reply_to_id):
         "usage": "{tr}fox <text>",
     },
 )
-async def legend(event):
+async def ll(event):
     "sneeky fox troll"
     reply_to_id = await reply_id(event)
     input_text = event.pattern_match.group(1)
@@ -61,7 +56,7 @@ async def legend(event):
         "usage": "{tr}talkme <text>",
     },
 )
-async def legend(event):
+async def lsnks(event):
     "talk to me troll"
     reply_to_id = await reply_id(event)
     input_text = event.pattern_match.group(1)
@@ -81,7 +76,7 @@ async def legend(event):
         "usage": "{tr}slip <text>",
     },
 )
-async def legend(event):
+async def lsns(event):
     "Sleeping brain meme."
     reply_to_id = await reply_id(event)
     input_text = event.pattern_match.group(1)
@@ -101,7 +96,7 @@ async def legend(event):
         "usage": "{tr}sbob <text>",
     },
 )
-async def legend(event):
+async def lnzkz(event):
     "spongebob troll"
     reply_to_id = await reply_id(event)
     input_text = event.pattern_match.group(1)
@@ -121,7 +116,7 @@ async def legend(event):
         "usage": "{tr}child <text>",
     },
 )
-async def legend(event):
+async def lzkkz(event):
     "child troll"
     reply_to_id = await reply_id(event)
     input_text = event.pattern_match.group(1)
