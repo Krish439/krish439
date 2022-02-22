@@ -3,13 +3,12 @@ import os
 import time
 
 from telethon.tl.types import DocumentAttributeFilename
-from ..Config import Config
-from ..core.managers import eor
-from ..sql_helper.globals import gvarstatus
-from . import _legendtools, convert_toimage, deEmojify, legend
-from ..helpers import progress 
+
+from ..helpers import progress
+from . import legend
 
 menu_category = "utils"
+
 
 @legend.legend_cmd(
     pattern="ssvideo(?:\s|$)([\s\S]*)",
