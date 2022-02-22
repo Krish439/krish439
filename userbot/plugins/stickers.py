@@ -2,11 +2,12 @@ import asyncio
 import base64
 import io
 import math
+import os
 import random
 import re
 import string
 import urllib.request
-import os
+
 import cloudscraper
 import emoji as swtemoji
 from bs4 import BeautifulSoup as bs
@@ -88,7 +89,7 @@ def pack_nick(username, pack, is_anim, is_vid):
         if is_anim:
             return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack} (Animated)"
         elif is_vid:
-            return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack} (Video)" 
+            return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack} (Video)"
         else:
             return f"{gvarstatus('CUSTOM_STICKER_PACKNAME')} Vol.{pack}"
     elif is_anim:
@@ -138,7 +139,6 @@ async def delpack(catevent, conv, cmd, args, packname):
     await conv.send_message("Yes, I am totally sure.")
     await conv.get_response()
     await args.client.send_read_acknowledge(conv.chat_id)
-
 
 
 async def newpacksticker(
@@ -349,7 +349,7 @@ async def kang(args):  # sourcery no-metrics
             photo = 1
         elif message.media.document.mime_type in ["video/mp4", "video/webm"]:
             if message.media.document.mime_type == "video/webm":
-                legendeveng = await eor(args, f"`{random.choice(KANGING_STR)}`")
+                await eor(args, f"`{random.choice(KANGING_STR)}`")
                 sticker = await args.client.download_media(
                     message.media.document, "animate.webm"
                 )
@@ -642,6 +642,7 @@ async def pack_kang(args):  # sourcery no-metrics
         )
     await legendevent.edit(result)
 
+
 @legend.legend_cmd(
     pattern="vmake$",
     command=("vmake", plugin_category),
@@ -652,7 +653,7 @@ async def pack_kang(args):  # sourcery no-metrics
     },
 )
 async def lol(args):
-    "To kang a sticker." 
+    "To kang a sticker."
     message = await args.get_reply_message()
     user = await args.client.get_me()
     userid = user.id
@@ -712,8 +713,8 @@ async def lol(args):
     )
     if os.path.exists(sticker):
         os.remove(sticker)
-        
-        
+
+
 @legend.legend_cmd(
     pattern="gridpack(?:\s|$)([\s\S]*)",
     command=("gridpack", menu_category),
