@@ -158,11 +158,11 @@ async def _(event):
 
 
 @legend.legend_cmd(
-    pattern="vsudo$",
-    command=("vsudo", menu_category),
+    pattern="listsudo$",
+    command=("listsudo", menu_category),
     info={
         "header": "To list users for whom you are sudo.",
-        "usage": "{tr}vsudo",
+        "usage": "{tr}listsudo",
     },
 )
 async def _(event):
