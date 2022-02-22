@@ -1,11 +1,9 @@
 import glob
 import os
 import sys
-from asyncio.exceptions import CancelledError
 from datetime import timedelta
 from pathlib import Path
 
-import requests
 from telethon import Button, functions, types, utils
 from telethon.tl.functions.channels import JoinChannelRequest, LeaveChannelRequest
 
@@ -94,26 +92,6 @@ async def startupmessage():
     except Exception as e:
         LOGS.error(e)
         return None
-
-
-# don't know work or not just a try in future will use sleep
-async def ipchange():
-    """
-    Just to check if ip change or not
-    """
-    newip = (requests.get("https://httpbin.org/ip").json())["origin"]
-    if gvarstatus("ipaddress") is None:
-        addgvar("ipaddress", newip)
-        return None
-    oldip = gvarstatus("ipaddress")
-    if oldip != newip:
-        delgvar("ipaddress")
-        LOGS.info("Ip Change detected")
-        try:
-            await legend.disconnect()
-        except (ConnectionError, CancelledError):
-            pass
-        return "ip change"
 
 
 async def add_bot_to_logger_group(chat_id):
