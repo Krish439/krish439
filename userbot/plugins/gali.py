@@ -15,7 +15,7 @@ menu_category = "extra"
         "usage": "{tr}abuse",
     },
 )
-async def abusing(abused):
+async def abujjnsing(abused):
     "random abuse string"
     reply_text = random.choice(swtmemes.ABUSE_STRINGS)
     await eor(abused, reply_text)
@@ -29,7 +29,7 @@ async def abusing(abused):
         "usage": "{tr}abusehard",
     },
 )
-async def fuckedd(abusehard):
+async def fuckloedd(abusehard):
     "random gali string"
     reply_text = random.choice(swtmemes.ABUSEHARD_STRING)
     await eor(abusehard, reply_text)
@@ -43,7 +43,7 @@ async def fuckedd(abusehard):
         "usage": "{tr}rendi",
     },
 )
-async def metoo(e):
+async def met(e):
     "random gali string"
     txt = random.choice(swtmemes.RENDISTR)
     await eor(e, txt)
@@ -57,7 +57,7 @@ async def metoo(e):
         "usage": "{tr}fuck",
     },
 )
-async def chutiya(fuks):
+async def chuya(fuks):
     "random gali string"
     reply_text = random.choice(swtmemes.CHU_STRINGS)
     await eor(fuks, reply_text)
@@ -71,7 +71,7 @@ async def chutiya(fuks):
         "usage": "{tr}thanos",
     },
 )
-async def thanos(thanos):
+async def thaos(thanos):
     "random gali string"
     reply_text = random.choice(swtmemes.THANOS_STRINGS)
     await eor(thanos, reply_text)
@@ -85,7 +85,7 @@ async def thanos(thanos):
         "usage": "{tr}gf",
     },
 )
-async def kakashi(event):
+async def akai(event):
     "Bad stuff"
     animation_interval = 5
     animation_ttl = range(21)
@@ -126,7 +126,7 @@ async def kakashi(event):
         "usage": "{tr}fk <text>",
     },
 )
-async def kakashi(event):
+async def kakai(event):
     "Bad stuff"
     name = event.pattern_match.group(1)
     animation_interval = 3
@@ -158,7 +158,7 @@ async def kakashi(event):
         "usage": "{tr}chod",
     },
 )
-async def kakashi(event):
+async def kaashi(event):
     "Bad stuff"
     animation_interval = 5
     animation_ttl = range(11)
@@ -189,7 +189,7 @@ async def kakashi(event):
         "usage": "{tr}rape",
     },
 )
-async def kakashi(event):
+async def kashi(event):
     "Bad stuff"
     animation_interval = 0.2
     animation_ttl = range(30)
@@ -296,7 +296,7 @@ async def _(event):
         "usage": "{tr}nikal",
     },
 )
-async def kakashi(event):
+async def kakhi(event):
     "Bad stuff"
     animation_interval = 0.5
     animation_ttl = range(6)
@@ -322,7 +322,7 @@ async def kakashi(event):
         "usage": "{tr}gaali",
     },
 )
-async def legend(event):
+async def lenssnd(event):
     "random gali string"
     await eor(
         event,
@@ -330,7 +330,7 @@ async def legend(event):
     )
 
 
-"""
+
 @legend.legend_cmd(
     pattern="lgali$",
     command=("lgali", menu_category),
@@ -339,7 +339,7 @@ async def legend(event):
         "usage": "{tr}lgali",
     },
 )
-async def legend(event):
+async def legd(event):
     "random gali string"
     await eor(
         event,
@@ -355,10 +355,9 @@ async def legend(event):
         "usage": "{tr}egali",
     },
 )
-async def legend(event):
+async def lana(event):
     "random gali string"
     await eor(
         event,
         "This is for you your a fucking waste of sperm madfaka I   don't know why your parents give birth a worthless shit like you  you faggot ass with a fucking gay bi sextual laurstic slutty minded kid lemaric siliastic  crow  face and ass hahaha your like a pork shit 💩madfaka tell your father to fuck you everynight so that u can have your pussy more effective to everyone  who did fucked you till now  bullshit say to Infront of everyone eyes like I eat bunny's pees at the same time while am sucking his dick bleh 😂 haha 😂😂😂😂 madfaka what u thought maybe u thought like am from India bsdk am not and that's why am fucking isolated from you ya know what your a fucking black ass who is in form of an human you will get fucked again by this bunny wait for it didle doddoy kid with a fucking phony dick 😂😂😂😂😂😂😂😂😂 fuck you🖕i will come again and again  for fucking your black ass shit everytime you  will be in front of my eyes  i will be there for fucking your Lili crow as black face hahaha for you😂😂😂👉👌🖕maderchod who the fuck are u u fucking inferior shitty asshole u know what shit you are the shit who drink my pees instead of drinking water now I will fuck ur mom one-day I went to your house with a condom then literally I went up to your mom shitty asshole and fucked  it like a real hard coocky dicky sumty dick I know like your mom enjoyed it a lot much then your sis caz your mom was a mature shit tho u know what u fucking cow face porky poopypants I also know where do u live and how do u eat let me give a brief description about where do u live you live in a fucking slum where ur mom sell her pussy in a reatil price yo and that the shitty reason how u eat three times hahahaha😂😂😂😂We or I are gonna rape your whole ugly family even tho they are as much as ugly as my shitty poop but so what I will still fuck them and insist them by fucking harder to say it like Bunny Coney  is the best fucker in the  world he  even can defeat the most famous porn star Johnny sins hahaha 😂😂😂Well let me say some stories about your mom actually not your mom's only it's our strory tho Your mother name  is Mrs  Mia khalifa she comes of a fucking pornography hilometic whore family she can suck and lick and you know what she lick she lick my sweet heavy hunktik dick hehe she is so kind I meant  your mom caz she suck my dick too kindly wow  hehe 😍 🙄   your mother Love my coocky dick very much and in back I also  love her sexy sweet pussy  as well mm we love each other  in this way hehe now am gonna tell how I fucked your mom well I used to sleep with her in first place then I slowly used to unfasten your mom bra and 👙 hehe after that I began my part what is too good to go with for me I literally fucked her every night like if I calculate in hours full night huhu I enjoyed those night even tho I still fuck her  lot hmm maybe she also miss those days like I do who knows however   maybe her happiness was know no bounds  and yh in her face I did seen a beams of joy for my hard core fucking hmm  well in profound respect I really wanna fuck her again and again caz I am  indebted to her asshole you know why let me tell you why well I only did fucked her pussy not asshole that's why One-day your sis we're going to her collage and I and some ma friend were waiting for her caz as much as we were concerned about her is she is a fucking bitch who earn money through her pussy postitution  and that's what makes us horny and greedy then that's why we all give her proposal about fucking her  vagina  or u can say pussy in few bucks after that we get Alas!!! And said wait what she is gonna give her fucking Hippocratic pussy in that much money for few bucks then I asked her hey why are u selling your pussy in a retail price then she replied like listen we don't get 3 times food that's why I and my mom's do it at last but not least after that   u know what I said  and what she did  she did fucked me like a fucking horny bitch I swear I enjoyed this part.",
     )
-"""
