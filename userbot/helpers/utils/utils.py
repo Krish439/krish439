@@ -29,6 +29,11 @@ def run_sync(func, *args, **kwargs):
         None, functools.partial(func, *args, **kwargs)
     )
 
+def runasync(func: callable):
+    """Run async functions with the right event loop."""
+    asyncio.get_event_loop()
+    return loop.run_until_complete(func)
+
 
 def run_async(loop, coro):
     return asyncio.run_coroutine_threadsafe(coro, loop).result()
