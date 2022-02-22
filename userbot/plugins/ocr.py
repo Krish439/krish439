@@ -1,11 +1,10 @@
-"""import os
+import os
 
 import requests
 from googletrans import LANGUAGES
 
 from ..Config import Config
 from ..core.managers import eor
-from ..helpers.functions import getTranslate
 from ..sql_helper.globals import gvarstatus
 from . import _legendtools, convert_toimage, deEmojify, legend
 
@@ -106,4 +105,4 @@ async def ocr(event):
 )
 async def ocr(event):
     "To read text in media & paste with translated."
-"""
+
