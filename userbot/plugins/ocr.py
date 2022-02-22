@@ -1,4 +1,4 @@
-import os
+"""import os
 
 import requests
 from googletrans import LANGUAGES
@@ -106,3 +106,4 @@ async def ocr(event):
 )
 async def ocr(event):
     "To read text in media & paste with translated."
+"""
