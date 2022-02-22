@@ -8,6 +8,7 @@ import requests
 from googletrans import Translator
 
 from ..utils.extdl import install_pip
+from ..utils.utils import runcmd
 
 try:
     from imdb import IMDb
