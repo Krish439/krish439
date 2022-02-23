@@ -101,7 +101,7 @@ CRI = [
 
 
 @legend.legend_cmd(
-    pattern="cie$",
+    pattern="crie$",
     command=("crie", menu_category),
     info={
         "header": "Try Yourself",
@@ -152,7 +152,7 @@ async def shrugger(shg):
 )
 async def _(event):
     animation_interval = 0.1
-    animation_ttl = range(0, 36)
+    animation_ttl = range(0, 7)
     await edit_or_reply(event, "nope")
     animation_chars = [
         "No",
@@ -167,7 +167,7 @@ async def _(event):
     for i in animation_ttl:
 
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 18])
+        await event.edit(animation_chars[i % 7])
 
 
 @legend.legend_cmd(
