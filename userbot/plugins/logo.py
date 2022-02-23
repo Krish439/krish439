@@ -165,7 +165,7 @@ async def lg1(event):
     LOGO_FONT_STROKE_WIDTH = gvarstatus("LOGO_FONT_STROKE_WIDTH") or 0
     LOGO_FONT_STROKE_COLOR = gvarstatus("LOGO_FONT_STROKE_COLOR") or None
     fnt = await get_font_file(event.client, "@Legend_Fonts")
-"""
+    """
     cmd = event.pattern_match.group(1).lower()
     text = event.pattern_match.group(2)
     reply = await event.get_reply_message()
@@ -173,11 +173,11 @@ async def lg1(event):
         text = reply.text
     if not text:
         return await eod(event, "**ಠ∀ಠ Gimmi text to make logo**")
-"""
+    """
     if event.reply_to_msg_id:
         rply = await event.get_reply_message()
-        if reply.text:
-            logo_ = reply.text
+        if rply.text:
+            logo_ = rply.text
         else:
             logo_ = await rply.download_media()
     else:
