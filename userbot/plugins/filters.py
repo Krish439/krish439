@@ -26,7 +26,7 @@ async def filter_incoming_handler(event):  # sourcery no-metrics
     if not filters:
         return
     a_user = await event.get_sender()
-    chat = await event.get_chat()
+    await event.get_chat()
     me = await event.client.get_me()
     title = get_display_name(await event.get_chat()) or "this chat"
     mention = f"[{a_user.first_name}](tg://user?id={a_user.id})"
