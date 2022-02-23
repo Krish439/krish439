@@ -123,14 +123,14 @@ async def lens(event):
     reply_message = await event.get_reply_message()
     if not event.reply_to_msg_id or not reply_message.media:
         return await eod(event, "```Reply to a media file...```")
-    legend = await eor(event, "```Processing...```")
+    lsn = await eor(event, "```Processing...```")
     c_id = await reply_id(event)
     if not os.path.isdir("./temp"):
         os.mkdir("./temp")
     output_file = os.path.join("./temp", "Krishna.jpg")
     output = await _legendtools.media_to_pic(event, reply_message)
     outputt = convert_toimage(output[1], filename="./temp/Krishna.jpg")
-    await legend.delete()
+    await lsn.delete()
     await clippy(event.client, output_file, event.chat_id, c_id)
     if os.path.exists(output_file):
         os.remove(output_file)
