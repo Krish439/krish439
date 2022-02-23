@@ -118,7 +118,7 @@ async def pussy(event):
         ],
     },
 )
-async def legend(event):
+async def lens(event):
     "Make a media to clippy sticker"
     reply_message = await event.get_reply_message()
     if not event.reply_to_msg_id or not reply_message.media:
