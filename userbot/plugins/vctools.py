@@ -124,7 +124,7 @@ async def _(e):
 
 
 @legend.legend_cmd(
-    pattern="vctitle$",
+    pattern="vctitle(?:\s|$)([\s\S]*)",
     command=("vctitle", menu_category),
     info={
         "header": "To start vc of the group",
