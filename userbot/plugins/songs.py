@@ -55,6 +55,30 @@ SONGBOT_BLOCKED_STRING = "<code>Please unblock @songdl_bot and try again</code>"
 
 
 @legend.legend_cmd(
+    pattern="ytlink(?:\s|$)([\s\S]*)",
+    command=("ytlink", menu_category),
+    info={
+        "header": "Get Link of query from youtube limit 7",
+        "usage": "{tr}ytlink",
+    },
+)
+async def hmm(ytwala):
+    query = ytwala.pattern_match.group(1)
+    if not query:
+        await eor(ytwala, "`Enter query to search`")
+    await eor(ytwala, "`Processing...`")
+    try:
+        results = json.loads(YoutubeSearch(query, max_results=7).to_json())
+    except KeyError:
+        return await eor(ytwala, "Unable to find relevant search queries...")
+    output = f"**Search Query:**\n`{query}`\n\n**Results:**\n\n"
+    for i in results["videos"]:
+        output += f"--> `{i['title']}`\nhttps://www.youtube.com{i['url_suffix']}\n\n"
+    await eor(ytwala, output, link_preview=False)
+
+
+
+@legend.legend_cmd(
     pattern="slyrics(?:\s|$)([\s\S]*)",
     command=("slyrics", menu_category),
     info={
