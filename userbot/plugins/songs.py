@@ -117,7 +117,7 @@ async def nope(aura):
     },
 )
 async def _(event):
-    query = event.text[7:]
+    query = event.text[6:]
     max_results = 1
     if query == "":
         return await eod(event, "__Please give a song name to search.__")
