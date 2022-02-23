@@ -5,7 +5,7 @@ from asyncio import sleep
 from userbot import legend
 
 from ..core.managers import eor
-
+from . import mention
 menu_category = "extra"
 
 
