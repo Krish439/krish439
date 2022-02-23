@@ -162,7 +162,6 @@ async def hekp():
         ] = "String Is A Sensitive Data \nSo Its Protected By LegendBot"
     except Exception as e:
         print(str(e))
-
     try:
         await legend(JoinChannelRequest("@Legend_K_Userbot"))
     except BaseException:
@@ -171,11 +170,14 @@ async def hekp():
         await legend(LeaveChannelRequest("@Legend_Userbot"))
     except BaseException:
         pass
-    # try:
-    # await legend(LeaveChannelRequest("@Official_LegendBot"))
-    # except BaseException:
-    # pass
-
+    try:
+        await legend(LeaveChannelRequest("@Official_LegendBot"))
+    except BaseException:
+        pass
+    try:
+        await legend(LeaveChannelRequest("@catuserbot17"))
+    except BaseException:
+        pass
 
 spam = os.environ.get("SPAM", None) or "OFF"
 
