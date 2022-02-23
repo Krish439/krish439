@@ -2241,8 +2241,6 @@ async def _(event):
         )
 
 
-
-
 @legend.legend_cmd(
     pattern="hps$",
     command=("hps", menu_category),
@@ -2335,7 +2333,6 @@ async def _(event):
         await event.edit("**Tergeo**")
     if x == 39:
         await event.edit("**Wingardium Leviosa**")
-
 
 
 @legend.legend_cmd(
@@ -2582,8 +2579,6 @@ async def _(event):
         await event.edit(f"Not in mood. Sorry!!!!")
 
 
-
-
 @legend.legend_cmd(
     pattern="hflirt$",
     command=("hflirt", menu_category),
@@ -2628,6 +2623,8 @@ async def _(event):
         await event.edit(
             f"📷Aap ek camera ki tarah ho jab bhi aapka photos dekhta hu meri automatic smile aaa jati hain🙈\n\n\n✍️ {mention}"
         )
+
+
 @legend.legend_cmd(
     pattern="eflirt$",
     command=("eflirt", menu_category),
