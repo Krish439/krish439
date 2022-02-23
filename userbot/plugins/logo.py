@@ -156,6 +156,7 @@ async def very(event):
     },
 )
 async def lg1(event):
+    "To create a Random logo"
     event = await eor(event, "`Processing.....`")
     gvarstatus("LOGO_FONT_SIZE") or 220
     LOGO_FONT_WIDTH = gvarstatus("LOGO_FONT_WIDTH") or 2
@@ -164,9 +165,21 @@ async def lg1(event):
     LOGO_FONT_STROKE_WIDTH = gvarstatus("LOGO_FONT_STROKE_WIDTH") or 0
     LOGO_FONT_STROKE_COLOR = gvarstatus("LOGO_FONT_STROKE_COLOR") or None
     fnt = await get_font_file(event.client, "@Legend_Fonts")
+"""
+    cmd = event.pattern_match.group(1).lower()
+    text = event.pattern_match.group(2)
+    reply = await event.get_reply_message()
+    if not text and reply:
+        text = reply.text
+    if not text:
+        return await eod(event, "**ಠ∀ಠ Gimmi text to make logo**")
+"""
     if event.reply_to_msg_id:
         rply = await event.get_reply_message()
-        logo_ = await rply.download_media()
+        if reply.text:
+            logo_ = reply.text
+        else:
+            logo_ = await rply.download_media()
     else:
         async for i in event.client.iter_messages(
             "@LegendBot_Logos", filter=InputMessagesFilterPhotos
