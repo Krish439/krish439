@@ -2109,7 +2109,6 @@ async def _(event):  # sourcery no-metrics
         await event.edit("`Do You Know, We can't see Ghosts But Ghosts Can see Us...`")
 
 
-
 @legend.legend_cmd(
     pattern="attitude$",
     command=("attitude", menu_category),
@@ -2240,6 +2239,3 @@ async def _(event):
         await event.edit(
             f" तिरछी निगाहों से जो देखा उन्होंने,\nतो हम मदहोश हो चले,\nजब पता चला कि वो अलविदा कहने आए,\nतो हम बेहोश हो चले।\n\n\n✍️ [{DEFAULTUSER}](tg://user?id={KANNADIGA})"
         )
-
-
-
