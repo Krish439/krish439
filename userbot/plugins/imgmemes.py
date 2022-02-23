@@ -33,10 +33,10 @@ menu_category = "fun"
 )
 async def nekobot(lol):
     "Fake google search meme"
-    text = legend.pattern_match.group(1)
-    reply_to_id = await reply_id(legend)
+    text = lol.pattern_match.group(1)
+    reply_to_id = await reply_id(lol)
     if not text:
-        if legend.is_reply and not reply_to_id.media:
+        if lol.is_reply and not reply_to_id.media:
             text = reply_to_id.message
         else:
             return await eod(lol, "`What should i search in google.`", 5)
@@ -53,7 +53,7 @@ async def nekobot(lol):
         return
     swtfile = await fakegs(search, result)
     await asyncio.sleep(2)
-    await legend.client.send_file(legend.chat_id, swtfile, reply_to=reply_to_id)
+    await lol.client.send_file(lol.chat_id, swtfile, reply_to=reply_to_id)
     await swte.delete()
     if os.path.exists(swtfile):
         os.remove(swtfile)
@@ -68,15 +68,15 @@ async def nekobot(lol):
         "examples": "{tr}trump Legenduserbot is One of the Popular userbot",
     },
 )
-async def nekobot(legend):
+async def nekobot(lol):
     "trump tweet sticker with given custom text_"
-    text = legend.pattern_match.group(1)
+    text = lol.pattern_match.group(1)
     text = re.sub("&", "", text)
-    reply_to_id = await reply_id(legend)
+    reply_to_id = await reply_id(lol)
 
-    reply = await legend.get_reply_message()
+    reply = await lol.get_reply_message()
     if not text:
-        if legend.is_reply and not reply.media:
+        if lol.is_reply and not reply.media:
             text = reply.message
         else:
             return await eod(lol, "**Trump : **`What should I tweet`", 5)
@@ -84,7 +84,7 @@ async def nekobot(legend):
     text = deEmojify(text)
     await asyncio.sleep(2)
     swtfile = await trumptweet(text)
-    await legend.client.send_file(legend.chat_id, swtfile, reply_to=reply_to_id)
+    await lol.client.send_file(lol.chat_id, swtfile, reply_to=reply_to_id)
     await swte.delete()
     if os.path.exists(swtfile):
         os.remove(swtfile)
@@ -99,15 +99,15 @@ async def nekobot(legend):
         "examples": "{tr}modi Legenduserbot is One of the Popular userbot",
     },
 )
-async def nekobot(legend):
+async def nekobot(lol):
     "modi tweet sticker with given custom text"
-    text = legend.pattern_match.group(1)
+    text = lol.pattern_match.group(1)
     text = re.sub("&", "", text)
-    reply_to_id = await reply_id(legend)
+    reply_to_id = await reply_id(lol)
 
-    reply = await legend.get_reply_message()
+    reply = await lol.get_reply_message()
     if not text:
-        if legend.is_reply and not reply.media:
+        if lol.is_reply and not reply.media:
             text = reply.message
         else:
             return await eod(lol, "**Modi : **`What should I tweet`", 5)
@@ -115,7 +115,7 @@ async def nekobot(legend):
     text = deEmojify(text)
     await asyncio.sleep(2)
     swtfile = await moditweet(text)
-    await legend.client.send_file(legend.chat_id, swtfile, reply_to=reply_to_id)
+    await lol.client.send_file(lol.chat_id, swtfile, reply_to=reply_to_id)
     await swte.delete()
     if os.path.exists(swtfile):
         os.remove(swtfile)
@@ -130,14 +130,14 @@ async def nekobot(legend):
         "examples": "{tr}cmm Legenduserbot is One of the Popular userbot",
     },
 )
-async def nekobot(legend):
-    text = legend.pattern_match.group(1)
+async def nekobot(lol):
+    text = lol.pattern_match.group(1)
     text = re.sub("&", "", text)
-    reply_to_id = await reply_id(legend)
+    reply_to_id = await reply_id(lol)
 
-    reply = await legend.get_reply_message()
+    reply = await lol.get_reply_message()
     if not text:
-        if legend.is_reply and not reply.media:
+        if lol.is_reply and not reply.media:
             text = reply.message
         else:
             return await eod(lol, "`Give text to write on banner, man`", 5)
@@ -145,7 +145,7 @@ async def nekobot(legend):
     text = deEmojify(text)
     await asyncio.sleep(2)
     swtfile = await changemymind(text)
-    await legend.client.send_file(legend.chat_id, swtfile, reply_to=reply_to_id)
+    await lol.client.send_file(lol.chat_id, swtfile, reply_to=reply_to_id)
     await swte.delete()
     if os.path.exists(swtfile):
         os.remove(swtfile)
@@ -160,15 +160,15 @@ async def nekobot(legend):
         "examples": "{tr}kanna Legenduserbot is One of the Popular userbot",
     },
 )
-async def nekobot(legend):
+async def nekobot(lol):
     "kanna chan sticker with given custom text"
-    text = legend.pattern_match.group(1)
+    text = lol.pattern_match.group(1)
     text = re.sub("&", "", text)
-    reply_to_id = await reply_id(legend)
+    reply_to_id = await reply_id(lol)
 
-    reply = await legend.get_reply_message()
+    reply = await lol.get_reply_message()
     if not text:
-        if legend.is_reply and not reply.media:
+        if lol.is_reply and not reply.media:
             text = reply.message
         else:
             return await eod(lol, "**Kanna : **`What should i show you`", 5)
@@ -176,7 +176,7 @@ async def nekobot(legend):
     text = deEmojify(text)
     await asyncio.sleep(2)
     swtfile = await kannagen(text)
-    await legend.client.send_file(legend.chat_id, swtfile, reply_to=reply_to_id)
+    await lol.client.send_file(lol.chat_id, swtfile, reply_to=reply_to_id)
     await swte.delete()
     if os.path.exists(swtfile):
         os.remove(swtfile)
@@ -193,13 +193,13 @@ async def nekobot(legend):
 )
 async def nekobot(lol):
     "The desired person tweet sticker with given custom text"
-    text = legend.pattern_match.group(1)
+    text = lol.pattern_match.group(1)
     text = re.sub("&", "", text)
-    reply_to_id = await reply_id(legend)
+    reply_to_id = await reply_id(lol)
 
-    reply = await legend.get_reply_message()
+    reply = await lol.get_reply_message()
     if not text:
-        if legend.is_reply and not reply.media:
+        if lol.is_reply and not reply.media:
             text = reply.message
         else:
             return await eod(
@@ -220,7 +220,7 @@ async def nekobot(lol):
     text = deEmojify(text)
     await asyncio.sleep(2)
     swtfile = await tweets(text, username)
-    await legend.client.send_file(legend.chat_id, swtfile, reply_to=reply_to_id)
+    await lol.client.send_file(lol.chat_id, swtfile, reply_to=reply_to_id)
     await swte.delete()
     if os.path.exists(swtfile):
         os.remove(swtfile)
