@@ -444,10 +444,10 @@ async def kang(args):  # sourcery no-metrics
                     pack,
                     packnick,
                     is_vid,
-                    stfile,
                     emoji,
                     packname,
                     is_anim,
+                    stfile,
                 )
             if is_vid and os.path.exists(sticker):
                 os.remove(sticker)
