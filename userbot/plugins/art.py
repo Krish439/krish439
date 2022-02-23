@@ -15,24 +15,27 @@ menu_category = "fun"
 )
 async def _(event):
     "fun art command"
-    name = event.pattern_match.group(1)
-    await eor(
-        event,
-        f"{ALIVE_NAME} --- {name}          \n　　　　　|"
-        "\n　　　　　| \n"
-        "　　　　　| \n"
-        "　　　　　| \n"
-        "　　　　　| \n"
-        "　　　　　| \n"
-        "　　　　　| \n"
-        "　　　　　| \n"
-        "　／￣￣＼| \n"
-        "＜ ´･ 　　 |＼ \n"
-        "　|　３　 | 丶＼ \n"
-        "＜ 、･　　|　　＼ \n"
-        "　＼＿＿／∪ _ ∪) \n"
-        "　　　　　 Ｕ Ｕ\n",
-    )
+    name = event.text[4:]
+    if name:
+        await eor(
+            event,
+            f"{ALIVE_NAME} --- {name}          \n　　　　　|"
+            "\n　　　　　| \n"
+            "　　　　　| \n"
+            "　　　　　| \n"
+            "　　　　　| \n"
+            "　　　　　| \n"
+            "　　　　　| \n"
+            "　　　　　| \n"
+            "　／￣￣＼| \n"
+            "＜ ´･ 　　 |＼ \n"
+            "　|　３　 | 丶＼ \n"
+            "＜ 、･　　|　　＼ \n"
+            "　＼＿＿／∪ _ ∪) \n"
+            "　　　　　 Ｕ Ｕ\n",
+        )
+    else:
+        await eor(event, "Give me some text")
 
 
 @legend.legend_cmd(
