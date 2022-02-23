@@ -169,9 +169,24 @@ async def get_users(show):
                     mentions += (
                         f"\n[{user.first_name}](tg://user?id={user.id}) `{user.id}`"
                     )
-    except Exception as e:
-        mentions += " " + str(e) + "\n"
-    await eor(legendevent, mentions)
+    except ChatAdminRequiredError as err:
+            mentions += " " + str(err) + "\n"
+        try:
+            await eor(show, mentions)
+        except MessageTooLongError:
+            await eor(
+                show, "Damn, this is a huge group. Uploading users lists as file."
+            )
+            file = open("userslist.txt", "w+")
+            file.write(mentions)
+            file.close()
+            await show.client.send_file(
+                show.chat_id,
+                "userslist.txt",
+                caption="Users in {}".format(title),
+                reply_to=show.id,
+            )
+            os.remove("userslist.txt")
 
 
 @legend.legend_cmd(
