@@ -279,7 +279,7 @@ async def legendbroadcast_send(event):
             parse_mode=_format.parse_pre,
         )
     reply = await event.get_reply_message()
-    legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    legend = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     if not reply:
         return await eod(
             event,
@@ -344,7 +344,7 @@ async def legendbroadcast_send(event):
             parse_mode=_format.parse_pre,
         )
     reply = await event.get_reply_message()
-    legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    legend = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     if not reply:
         return await eod(
             event,

@@ -717,7 +717,7 @@ async def _(event):  # sourcery no-metrics
             else:
                 return await eod(event, "Use quality of range 0 to 721")
     swtreply = await event.get_reply_message()
-    swt_event = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    swt_event = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     if not swtreply or not swtreply.media or not swtreply.media.document:
         return await eor(event, "`Stupid!, This is not animated sticker.`")
     if swtreply.media.document.mime_type != "application/x-tgsticker":

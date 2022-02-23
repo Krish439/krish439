@@ -497,7 +497,7 @@ async def pack_kang(args):  # sourcery no-metrics
     is_vid = False
     emoji = None
     reply = await args.get_reply_message()
-    legend = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    legend = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     if not reply or media_type(reply) is None or media_type(reply) != "Sticker":
         return await eod(
             args, "`reply to any sticker to send all stickers in that pack`"

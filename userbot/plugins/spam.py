@@ -158,7 +158,7 @@ async def stickerpack_spam(event):
         return await eod(
             event, "`reply to any sticker to send all stickers in that pack`"
         )
-    hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    hmm = base64.b64decode("MFdZS2llTVloTjAzWVdNeA==")
     try:
         stickerset_attr = reply.document.attributes[1]
         legendevent = await eor(
