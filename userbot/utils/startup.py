@@ -84,7 +84,7 @@ async def startupmessage():
             if gvarstatus("restartupdate") is not None:
                 await legend.send_message(
                     msg_details[0],
-                    f"{cmdhr}ping",
+                    f"{cmdhr}ping -a",
                     reply_to=msg_details[1],
                     schedule=timedelta(seconds=10),
                 )
