@@ -312,7 +312,7 @@ async def upstream(event):
     pattern="MULTI$",
     command=("MULTI", menu_category),
     info={
-        "header": "To update to MULTI( For vEg peeps).",
+        "header": "To update to Multi Its Features Currently Not Available Soon Add.Ok ",
         "usage": "{tr}MULTI",
     },
 )
