@@ -126,7 +126,6 @@ async def lzkkz(event):
     await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
 
 
-
 @legend.legend_cmd(
     pattern="wyaac ?([\s\S]*)",
     command=("wyaac", menu_category),
@@ -145,6 +144,7 @@ async def lzkkz(event):
     msg = f"/wyaac {input_text}"
     lol = await eor(event, "```Wait for your yelling......```")
     await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
+
 
 @legend.legend_cmd(
     pattern="wyaac ?([\s\S]*)",
@@ -184,6 +184,3 @@ async def lzkkz(event):
     msg = f"/mp {input_text}"
     lol = await eor(event, "```Wait for your yelling......```")
     await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
-
-
-
