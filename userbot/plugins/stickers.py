@@ -651,7 +651,7 @@ async def pack_kang(args):  # sourcery no-metrics
     info={
         "header": "Converts video/gif to animated sticker",
         "description": "Converts video/gif to .webm file and send a temporary animated sticker of that file",
-        "usage": "{tr}vas <Reply to Video/Gif>",
+        "usage": "{tr}vmake <Reply to Video/Gif>",
     },
 )
 async def lol(args):
