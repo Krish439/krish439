@@ -1,5 +1,3 @@
-import asyncio
-
 from . import eor, legend, mention
 
 menu_category = "fun"
@@ -37,8 +35,6 @@ async def love(event):
         "__**HAPPY VALENTINE'S DAY**__ [❤️](https://telegra.ph/file/4d51f6a5d98ba94ae2af7.jpg)",
         link_preview=True,
     )
-
-
 
 
 @legend.legend_cmd(
@@ -158,9 +154,3 @@ async def gif(event):
             f"May this Valentine’s Day be filled with love, understanding, and contentment as you journey through life with those you hold dear. \n\n [✍️](https://telegra.ph/file/ae6dc5b359691d71f2d26.jpg) {mention}",
             link_preview=True,
         )
-
-
-
-
-
-

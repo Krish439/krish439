@@ -151,7 +151,7 @@ async def get_users(show):
             return await eod(show, f"`{e}`", 10)
     elif not show.is_group:
         return await eor(show, "`Are you sure this is a group?`")
-    legendevent = await eor(show, "`getting users list wait...`  ")
+    await eor(show, "`getting users list wait...`  ")
     try:
         if show.pattern_match.group(1):
             async for user in show.client.iter_participants(chat.id):
