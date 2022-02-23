@@ -5,13 +5,8 @@ from telethon.tl.functions.phone import EditGroupCallTitleRequest as settitle
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
-
-
-
 from ..core.logger import logging
 from ..core.managers import eod, eor
-from ..helpers import reply_id
-from . import BOTLOG, BOTLOG_CHATID
 
 LOGS = logging.getLogger(__name__)
 menu_category = "utils"
