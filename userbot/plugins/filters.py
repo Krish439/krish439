@@ -29,8 +29,6 @@ async def filter_incoming_handler(event):  # sourcery no-metrics
     chat = await event.get_chat()
     me = await event.client.get_me()
     title = get_display_name(await event.get_chat()) or "this chat"
-    participants = await event.client.get_participants(chat)
-    count = len(participants)
     mention = f"[{a_user.first_name}](tg://user?id={a_user.id})"
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
     first = a_user.first_name
@@ -61,7 +59,6 @@ async def filter_incoming_handler(event):  # sourcery no-metrics
                 filter_msg.format(
                     mention=mention,
                     title=title,
-                    count=count,
                     first=first,
                     last=last,
                     fullname=fullname,
@@ -87,7 +84,6 @@ async def filter_incoming_handler(event):  # sourcery no-metrics
         "option": {
             "{mention}": "To mention the user",
             "{title}": "To get chat name in message",
-            "{count}": "To get group members",
             "{first}": "To use user first name",
             "{last}": "To use user last name",
             "{fullname}": "To use user full name",
