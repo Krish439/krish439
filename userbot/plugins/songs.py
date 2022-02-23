@@ -77,7 +77,6 @@ async def hmm(ytwala):
     await eor(ytwala, output, link_preview=False)
 
 
-
 @legend.legend_cmd(
     pattern="slyrics(?:\s|$)([\s\S]*)",
     command=("slyrics", menu_category),
