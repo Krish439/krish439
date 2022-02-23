@@ -37,7 +37,7 @@ async def _(event):
     if reply_message.sender.bot:
         await event.edit("Reply to actual users message.")
         return
-    lol = await event.edit("recognizeing this media")
+    await event.edit("recognizeing this media")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -162,10 +162,10 @@ async def _(event):
 )
 async def _(event):
     bot = "@SpamBot"
-    lol = await eor(event, "Processing....")
+    await eor(event, "Processing....")
     async with event.client.conversation(bot) as conv:
         try:
-            dol = await conv.send_message("/start")
+            await conv.send_message("/start")
             yup = await conv.get_response()
             sweetie = yup.text
             if sweetie.startswith("Good"):
@@ -173,7 +173,9 @@ async def _(event):
                 await eod(event, "Congratulations, No Limits Are Apply")
             elif "automatically" in sweetie:
                 await conv.send_message("I was wrong, please release me now")
-                await eor(event, f"Ur Account Is Limited [Click Here](https://t.me/spambot)")
+                await eor(
+                    event, f"Ur Account Is Limited [Click Here](https://t.me/spambot)"
+                )
             else:
                 await eor(event, sweetie)
         except YouBlockedUserError:
