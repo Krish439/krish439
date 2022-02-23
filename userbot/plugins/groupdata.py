@@ -151,7 +151,7 @@ async def get_users(show):
             return await eod(show, f"`{e}`", 10)
     elif not show.is_group:
         return await eor(show, "`Are you sure this is a group?`")
-    await eor(show, "`getting users list wait...`  ")
+   legendevent = await eor(show, "`getting users list wait...`  ")
     try:
         if show.pattern_match.group(1):
             async for user in show.client.iter_participants(chat.id):
@@ -172,7 +172,7 @@ async def get_users(show):
     except ChatAdminRequiredError as err:
         mentions += " " + str(err) + "\n"
         try:
-            await eor(show, mentions)
+            await eor(legendevent, mentions)
         except MessageTooLongError:
             await eor(
                 show, "Damn, this is a huge group. Uploading users lists as file."
