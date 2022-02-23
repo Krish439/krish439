@@ -74,7 +74,7 @@ def pack_name(userid, pack, is_anim, is_vid):
             return f"{gvarstatus('CUSTOM_STICKER_SETNAME')}_{userid}_{pack}"
     elif is_anim:
         return f"LegendBot_{userid}_{pack}_anim"
-    elif is_video:
+    elif is_vid:
         return f"LegendBot_{userid}_{pack}_vid"
     else:
         return f"LegendBot_{userid}_{pack}"
