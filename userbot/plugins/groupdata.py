@@ -170,7 +170,7 @@ async def get_users(show):
                         f"\n[{user.first_name}](tg://user?id={user.id}) `{user.id}`"
                     )
     except ChatAdminRequiredError as err:
-            mentions += " " + str(err) + "\n"
+        mentions += " " + str(err) + "\n"
         try:
             await eor(show, mentions)
         except MessageTooLongError:
