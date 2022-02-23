@@ -37,7 +37,7 @@ async def _(event):
     if reply_message.sender.bot:
         await event.edit("Reply to actual users message.")
         return
-    legend = await event.edit("recognizeing this media")
+    lol = await event.edit("recognizeing this media")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -47,8 +47,7 @@ async def _(event):
             response = await response
         except YouBlockedUserError:
             await event.client(functions.contacts.UnblockRequest("@Rekognition_Bot"))
-            await event.edit("Unblocked Now try again")
-            await legend.delete()
+            await eod("Unblocked Successfully Now try again")
             return
         if response.text.startswith("See next message."):
             response = conv.wait_event(
@@ -56,10 +55,10 @@ async def _(event):
             )
             response = await response
             oye = response.message.message
-            await event.edit(oye)
+            await eod(oye)
             return
         else:
-            await event.edit("sorry, I couldnt find it")
+            await eod("sorry, I couldnt find it")
 
 
 @legend.legend_cmd(
@@ -83,28 +82,28 @@ async def _(event):
     if reply_message.sender.bot:
         await eod(event, "Need actual users. Not Bots")
         return
-    legend = await eor(event, "Checking...")
+    lol = await eor(event, "Checking...")
     async with event.client.conversation(chat) as conv:
         try:
             first = await conv.send_message(f"/search_id {victim}")
             response1 = await conv.get_response()
             response2 = await conv.get_response()
         except YouBlockedUserError:
-            await event.client(functions.contacts.UnblockRequest("@spambot"))
+            await event.client(functions.contacts.UnblockRequest("@Sangmatainfo_bot"))
             await eod(event, "Done Unblocked @Sangmatainfo_bot & Now Try Again")
             return
         if response1.text.startswith("Name History"):
-            await legend.edit(response1.text)
+            await lol.edit(response1.text)
             await event.client.delete_messages(
                 conv.chat_id, [first.id, response1.id, response2.id]
             )
         elif response2.text.startswith("Name History"):
-            await legend.edit(response2.text)
+            await lol.edit(response2.text)
             await event.client.delete_messages(
                 conv.chat_id, [first.id, response1.id, response2.id]
             )
         else:
-            await legend.edit("No Records Found !")
+            await lol.edit("No Records Found !")
 
 
 @legend.legend_cmd(
@@ -125,7 +124,7 @@ async def _(event):
     if reply_message.sender.bot:
         await eod(event, "Need actual users. Not Bots")
         return
-    legend = await eor(event, "Checking...")
+    lol = await eor(event, "Checking...")
     async with event.client.conversation(chat) as conv:
         try:
             first = await conv.send_message(f"/search_id {victim}")
@@ -133,21 +132,21 @@ async def _(event):
             response2 = await conv.get_response()
             response3 = await conv.get_response()
         except YouBlockedUserError:
-            await event.client(functions.contacts.UnblockRequest("@spambot"))
-            await eod(event, "Unblocked @Sangmatainfo_bot & Now Try Again")
+            await event.client(functions.contacts.UnblockRequest("@Sangmatainfo_bot"))
+            await eod(event, "Done Unblocked @Sangmatainfo_bot & Now Try Again")
             return
         if response1.text.startswith("Username History"):
-            await legend.edit(response1.text)
+            await lol.edit(response1.text)
             await event.client.delete_messages(
                 conv.chat_id, [first.id, response1.id, response2.id, response3.id]
             )
         elif response2.text.startswith("Username History"):
-            await legend.edit(response2.text)
+            await lol.edit(response2.text)
             await event.client.delete_messages(
                 conv.chat_id, [first.id, response1.id, response2.id, response3.id]
             )
         else:
-            await legend.edit("No Records Found !")
+            await lol.edit("No Records Found !")
 
 
 @legend.legend_cmd(
@@ -163,13 +162,21 @@ async def _(event):
 )
 async def _(event):
     bot = "@SpamBot"
-    sysarg = event.pattern_match.group(1)
-    if sysarg == "":
-        async with event.client.conversation(bot) as conv:
-            try:
-                await conv.send_message("/start")
-                yup = await conv.get_response()
-                await conv.send_message(event.chat_id, yup.text)
-            except YouBlockedUserError:
-                await event.client(functions.contacts.UnblockRequest("@spambot"))
-                await eod("**Unblocked @spambot and Now try Again")
+    lol = await eor(event, "Processing....")
+    async with event.client.conversation(bot) as conv:
+        try:
+            dol = await conv.send_message("/start")
+            yup = await conv.get_response()
+            sweetie = yup.text
+            if sweetie.startswith("Good"):
+                await conv.send_message("Cool, thanks")
+                await eod(event, "Congratulations, No Limits Are Apply")
+            elif "automatically" in sweetie:
+                await conv.send_message("I was wrong, please release me now")
+                await eor(event, f"Ur Account Is Limited [Click Here](https://t.me/spambot)")
+            else:
+                await eor(event, sweetie)
+        except YouBlockedUserError:
+            await event.client(functions.contacts.UnblockRequest("@spambot"))
+            await eod("**Unblocked @spambot and Now try Again")
+            return
