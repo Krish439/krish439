@@ -9,7 +9,6 @@ from ..core.managers import eor
 menu_category = "extra"
 
 
-
 @legend.legend_cmd(
     pattern="car$",
     command=("car", menu_category),
@@ -98,7 +97,6 @@ async def _(event):
         await event.edit(
             "Meri mardangi ke bare mein aap gaon ki kisi bhi ladki se pooch sakte ho ... report achchi milegi "
         )
-
 
 
 @legend.legend_cmd(
