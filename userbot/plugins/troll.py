@@ -14,6 +14,7 @@ async def mememaker(borg, msg, lol, chat_id, reply_to_id):
             msg = await conv.send_message(msg)
             pic = await conv.get_response()
             await borg.send_read_acknowledge(conv.chat_id)
+            await lol.delete()
         except YouBlockedUserError:
             await lol.edit("Please unblock @themememakerbot and try again")
             return
@@ -80,7 +81,7 @@ async def lsns(event):
     input_text = event.pattern_match.group(1)
     if not input_text:
         return await eod(event, "`Give me some text to process...`")
-    msg = f"/bbn {input_text}"
+    msg = f"/bbs {input_text}"
     lol = await eor(event, "```You can't sleep...```")
     await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
 
@@ -123,3 +124,66 @@ async def lzkkz(event):
     msg = f"/love {input_text}"
     lol = await eor(event, "```Wait for your son......```")
     await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
+
+
+
+@legend.legend_cmd(
+    pattern="wyaac ?([\s\S]*)",
+    command=("wyaac", menu_category),
+    info={
+        "header": "yelling",
+        "description": "Send you Woman Yelling At A Cat.",
+        "usage": "{tr}wyaac <text> ; <text>",
+    },
+)
+async def lzkkz(event):
+    "cat troll"
+    reply_to_id = await reply_id(event)
+    input_text = event.pattern_match.group(1)
+    if not input_text:
+        return await eod(event, "`Give me some text to process...`")
+    msg = f"/wyaac {input_text}"
+    lol = await eor(event, "```Wait for your yelling......```")
+    await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
+
+@legend.legend_cmd(
+    pattern="wyaac ?([\s\S]*)",
+    command=("wyaac", menu_category),
+    info={
+        "header": "yelling",
+        "description": "Send you Woman Yelling At A Cat.",
+        "usage": "{tr}wyaac <text> ; <text>",
+    },
+)
+async def lzkkz(event):
+    "cat troll"
+    reply_to_id = await reply_id(event)
+    input_text = event.pattern_match.group(1)
+    if not input_text:
+        return await eod(event, "`Give me some text to process...`")
+    msg = f"/wyaac {input_text}"
+    lol = await eor(event, "```Wait for your yelling......```")
+    await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
+
+
+@legend.legend_cmd(
+    pattern="mp ?([\s\S]*)",
+    command=("mp", menu_category),
+    info={
+        "header": "Monkey Puppet",
+        "description": "Send you Monkey Puppet.",
+        "usage": "{tr}mp <text>",
+    },
+)
+async def lzkkz(event):
+    "Monkey Puppet"
+    reply_to_id = await reply_id(event)
+    input_text = event.pattern_match.group(1)
+    if not input_text:
+        return await eod(event, "`Give me some text to process...`")
+    msg = f"/mp {input_text}"
+    lol = await eor(event, "```Wait for your yelling......```")
+    await mememaker(event.client, msg, lol, event.chat_id, reply_to_id)
+
+
+
