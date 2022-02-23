@@ -109,15 +109,15 @@ async def nope(aura):
 
 
 @legend.legend_cmd(
-    pattern="song(?:\s|$)([\s\S]*)",
-    command=("song", menu_category),
+    pattern="ssong(?:\s|$)([\s\S]*)",
+    command=("ssong", menu_category),
     info={
         "header": "Search Song",
-        "usage": "{tr}song",
+        "usage": "{tr}ssong",
     },
 )
 async def _(event):
-    query = event.text[6:]
+    query = event.text[7:]
     max_results = 1
     if query == "":
         return await eod(event, "__Please give a song name to search.__")
@@ -245,17 +245,17 @@ def time_to_seconds(time):
 
 
 @legend.legend_cmd(
-    pattern="fsong(?:\s|$)([\s\S]*)",
-    command=("fsong", menu_category),
+    pattern="song(?:\s|$)([\s\S]*)",
+    command=("song", menu_category),
     info={
         "header": "Search Song",
-        "usage": "{tr}fsong",
+        "usage": "{tr}ssong",
     },
 )
 async def shazamcmd(event):
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     m = await eor(event, "searching song")
-    query = event.text[7:]
+    query = event.text[6:]
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
