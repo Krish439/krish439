@@ -28,6 +28,7 @@ vlist = [
     "IALIVE_PIC",
     "IALIVE_EMOJI",
     "IALIVE_TEXT",
+    "PING_PIC",
     "PM_PIC",
     "PM_TEXT",
     "PM_BLOCK",
