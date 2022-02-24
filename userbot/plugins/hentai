@@ -7,12 +7,13 @@ from . import mention, eor, legend
 from ..helpers.nsfw import unsave_gif
 menu_category = "useless"
 
+
 @legend.legend_cmd(
-    pattern="ded ([\s\S]*)",
-    command=("ded", menu_category),
+    pattern="hpic ([\s\S]*)",
+    command=("hpic", menu_category),
     info={
-        "header": "Just a art command try out yourself to see",
-        "usage": "{tr}ded <text>",
+        "header": "This Is 18+ Plugin",
+        "usage": "{tr}hpic",
     },
 )
 async def _(event):
@@ -40,7 +41,14 @@ async def _(event):
 
 
 
-
+@legend.legend_cmd(
+    pattern="hfutanari ([\s\S]*)",
+    command=("hfutanari", menu_category),
+    info={
+        "header": "Just a art command try out yourself to see",
+        "usage": "{tr}hfutanari",
+    },
+)
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
@@ -64,7 +72,14 @@ async def _(event):
 
 
 
-
+@legend.legend_cmd(
+    pattern="hshota ([\s\S]*)",
+    command=("hshota", menu_category),
+    info={
+        "header": "Just a art command try out yourself to see",
+        "usage": "{tr}hshota",
+    },
+)
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
@@ -87,7 +102,14 @@ async def _(event):
         
 
 
-@borg.on(admin_cmd(pattern="hvideo?(.*)"))
+@legend.legend_cmd(
+    pattern="hvideo ([\s\S]*)",
+    command=("hvideo ", menu_category),
+    info={
+        "header": "Just a art command try out yourself to see",
+        "usage": "{tr}hvideo",
+    },
+)
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
@@ -110,7 +132,14 @@ async def _(event):
 
 
 
-@borg.on(admin_cmd(pattern="hoppai?(.*)"))
+@legend.legend_cmd(
+    pattern="hoppai ([\s\S]*)",
+    command=("hoppai", menu_category),
+    info={
+        "header": "Just a art command try out yourself to see",
+        "usage": "{tr}hoppai",
+    },
+)
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
@@ -133,7 +162,14 @@ async def _(event):
 
 
 
-@borg.on(admin_cmd(pattern="htrap?(.*)"))
+@legend.legend_cmd(
+    pattern="htrap ([\s\S]*)",
+    command=("htrap", menu_category),
+    info={
+        "header": "Just a art command try out yourself to see",
+        "usage": "{tr}htrap",
+    },
+)
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
@@ -156,7 +192,14 @@ async def _(event):
 
 
 
-@borg.on(admin_cmd(pattern="hbdsm?(.*)"))
+@legend.legend_cmd(
+    pattern="hbdsm ([\s\S]*)",
+    command=("hbdsm", menu_category),
+    info={
+        "header": "Just a art command try out yourself to see",
+        "usage": "{tr}hbdsm",
+    },
+)
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
@@ -179,7 +222,14 @@ async def _(event):
 
 
 
-@borg.on(admin_cmd(pattern="hfurry?(.*)"))
+@legend.legend_cmd(
+    pattern="hfurry ([\s\S]*)",
+    command=("hfurry", menu_category),
+    info={
+        "header": "Just a art command try out yourself to see",
+        "usage": "{tr}hfurry",
+    },
+)
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
@@ -202,7 +252,14 @@ async def _(event):
 
 
 
-@borg.on(admin_cmd(pattern="hgif?(.*)"))
+@legend.legend_cmd(
+    pattern="hgif ([\s\S]*)",
+    command=("hgif", menu_category),
+    info={
+        "header": "Just a art command try out yourself to see",
+        "usage": "{tr}hgif",
+    },
+)
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
@@ -225,7 +282,14 @@ async def _(event):
 
 
 
-@borg.on(admin_cmd(pattern="hcosplay?(.*)"))
+@legend.legend_cmd(
+    pattern="hcosplay ([\s\S]*)",
+    command=("hcosplay", menu_category),
+    info={
+        "header": "Just a art command try out yourself to see",
+        "usage": "{tr}hcosplay",
+    },
+)
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
