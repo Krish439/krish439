@@ -121,7 +121,9 @@ def paginate_help(
         number_of_cols = int(gvarstatus("COLUMNS_IN_HELP") or 2)
     except (ValueError, TypeError):
         number_of_cols = 2
-    HELP_EMOJI = gvarstatus("HELP_EMOJI") or "⚜"
+    LOL_EMOJI = gvarstatus("HELP_EMOJI") or "⚜"
+    lal = [x for x in LOL_EMOJI.split()]
+    HELP_EMOJI = random.choice(lal)
     helpable_plugins = [p for p in loaded_plugins if not p.startswith("_")]
     helpable_plugins = sorted(helpable_plugins)
     if len(HELP_EMOJI) == 2:
