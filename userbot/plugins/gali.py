@@ -17,12 +17,12 @@ heolls = True
     },
 )
 async def yashraid(event):
+    LEGEND = event.client
+    kek = event.chat_id
     while heolls != False:
-            await event.delete()
-        kek = event.chat_id
+        await event.delete()
         if gvarstatus("spamwork") is None:
             return
-        LEGEND = event.client
         await LEGEND.send_message(kek, "TERI MA KI CHOOXT MAARUU BSDKEE")
         await LEGEND.send_message(kek, "TERI BHN KA BHOSXDA FAAD DIA MADARCHOD")
         await LEGEND.send_message(kek, "TERI BHN KI GANXD ME DYNAMTE LAGA KE UDA DIA")
