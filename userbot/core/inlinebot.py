@@ -90,9 +90,9 @@ def main_menu():
         ],
         [
             custom.Button.inline("⚜ Alive ⚜", data="stats"),
-            custom.Button.inline("🕹 Ping 🕹", data="stping"),
+            Button.url("Support 🇮🇳", data="stping"),
         ],
-        [custom.Button.inline("❌ Close ❌", data="clise")],
+        [custom.Button.inline("❌", data="clise")],
     ]
     return text, buttons
 
