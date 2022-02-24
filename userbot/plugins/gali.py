@@ -7,7 +7,6 @@ from . import legend, swtmemes
 menu_category = "extra"
 
 
-
 @legend.legend_cmd(
     pattern="abuse$",
     command=("abuse", menu_category),
