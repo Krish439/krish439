@@ -177,7 +177,7 @@ async def _(event):
     },
 )
 async def very(event):
-    """Random porn post"""
+    #"""Random porn post"""
     reply_to = await reply_id(event)
     sub_r = event.pattern_match.group(1)
     await eor(event, "**Just hold a sec u horny kid...**")
