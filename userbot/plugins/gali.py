@@ -2,7 +2,7 @@ import asyncio
 import random
 
 from ..core.managers import eor
-from ..sql_helper.globals import gvarstatus
+from ..sql_helper.globals import gvarstatus, addgvar
 from . import legend, swtmemes
 
 menu_category = "extra"
@@ -19,6 +19,7 @@ heolls = True
     },
 )
 async def yashraid(event):
+    addgvar("spamwork", True)
     LEGEND = event.client
     kek = event.chat_id
     while heolls != False:
