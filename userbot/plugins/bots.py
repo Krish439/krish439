@@ -180,5 +180,5 @@ async def _(event):
                 await eor(event, sweetie)
         except YouBlockedUserError:
             await event.client(functions.contacts.UnblockRequest("@spambot"))
-            await eod(event, "**Unblocked @spambot and Now try Again")
+            await eor(event, "**Done Unblocked @spambot and Now try Again**")
             return
