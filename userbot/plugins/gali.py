@@ -8,6 +8,7 @@ menu_category = "extra"
 
 heolls = True
 
+
 @legend.legend_cmd(
     pattern="abuse$",
     command=("abuse", menu_category),
