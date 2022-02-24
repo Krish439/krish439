@@ -1,6 +1,12 @@
 import asyncio
 import os
+import asyncio
+import os
+import random
+import urllib
 
+import nekos
+import requests
 import requests
 from bs4 import BeautifulSoup
 from pySmartDL import SmartDL
@@ -12,8 +18,9 @@ from ..core.session import legend
 from ..helpers.functions import age_verification
 from ..helpers.utils import _legendutils, reply_id
 from . import useless
-
+from ..helpers.nsfw import hemtai as neko_category 
 API = useless.API
+from ..sql_helper.globals import gvarstatus 
 horny = useless.nsfw(useless.pawn)
 
 menu_category = "useless"
@@ -109,6 +116,53 @@ async def wants_ur_noods(event):
                 os.rmdir("./xvdo")
 
 
+
+@legend.legend_cmd(
+    pattern="porn(?:\s|$)([\s\S]*)",
+    command=("porn", menu_category),
+    info={
+        "header": "Get a porn video or gif or pic. Check [Nekos Queries](https://telegra.ph/Lêɠêɳdẞογ-02-24-2) ",
+        "usage": [
+            "{tr}porn",
+            "{tr}porn <options>",
+        ],
+        "examples": "{tr}nekos boobs",
+    },
+)
+async def _(event):
+    type = await useless.importent(event)
+    if type:
+        return
+    owo = gvarstatus("ABUSE")
+    if owo != "ON":
+        return await eor(
+            event,
+            "**This command is only for users with .setdb** `ABUSE` **as** `ON`",
+        )
+    owo = event.text[5:]
+    if owo in neko_category:
+        king = await eor(event, f"`Searching {owo} ...`")
+        link = nekos.img(owo)
+        x = await event.client.send_file(event.chat_id, link, force_document=False)
+        await king.delete()
+        if link.endswith((".gif")):
+            await unsave_gif(event, x)
+    elif owo == "":
+        king = await eor(event, "`Searching randoms...`")
+        uwu = random.choice(neko_category)
+        link = nekos.img(uwu)
+        x = await event.client.send_file(event.chat_id, link, force_document=False)
+        await king.delete()
+        if link.endswith((".gif")):
+            await unsave_gif(event, x)
+    else:
+        await eor(
+            event,
+            f"**Unmatched argument.** \n\n__Get all the required queries for nekos here__ -> **[Nekos Queries](https://telegra.ph/Lêɠêɳdẞογ-02-24-2)**",
+        )
+
+
+"""
 @legend.legend_cmd(
     pattern="porn(?:\s|$)([\s\S]*)",
     command=("porn", menu_category),
@@ -191,7 +245,7 @@ async def very(event):
                     event,
                     "**ಥ‿ಥ   Sorry i could'nt found, try with difference catagory**",
                 )
-
+"""
 
 @legend.legend_cmd(
     pattern="bulkporn(?:\s|$)([\s\S]*)",
