@@ -2,7 +2,7 @@ import asyncio
 import random
 
 from ..core.managers import eor
-from ..sql_helper.globals import gvarstatus, addgvar
+from ..sql_helper.globals import addgvar, gvarstatus
 from . import legend, swtmemes
 
 menu_category = "extra"
