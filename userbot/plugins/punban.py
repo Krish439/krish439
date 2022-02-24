@@ -123,15 +123,15 @@ async def wants_ur_noods(event):
             "{tr}porn",
             "{tr}porn <options>",
         ],
-        "examples": "{tr}nekos boobs",
+        "examples": "{tr}porn boobs",
     },
 )
 async def _(event):
     type = await useless.importent(event)
     if type:
         return
-    owo = gvarstatus("ABUSE")
-    if owo != "ON":
+    lol = gvarstatus("ABUSE")
+    if lol != "ON":
         return await eor(
             event,
             "**This command is only for users with .setdb** `ABUSE` **as** `ON`",
