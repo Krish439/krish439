@@ -8,10 +8,11 @@ from bs4 import BeautifulSoup
 from pySmartDL import SmartDL
 from telethon.errors.rpcerrorlist import WebpageCurlFailedError
 from urlextract import URLExtract
-from ..helpers.nsfw import unsave_gif
+
 from ..core.managers import eod, eor
 from ..core.session import legend
 from ..helpers.functions import age_verification
+from ..helpers.nsfw import unsave_gif
 from ..helpers.utils import _legendutils, reply_id
 from . import useless
 
