@@ -12,7 +12,6 @@ from urlextract import URLExtract
 from ..core.managers import eod, eor
 from ..core.session import legend
 from ..helpers.functions import age_verification
-from ..helpers.nsfw import hemtai as neko_category
 from ..helpers.utils import _legendutils, reply_id
 from . import useless
 
@@ -114,8 +113,76 @@ async def wants_ur_noods(event):
                 os.rmdir("./xvdo")
 
 
+
+neko_category = [
+    "feet",
+    "yuri",
+    "trap",
+    "futanari",
+    "hololewd",
+    "lewdkemo",
+    "solog",
+    "feetg",
+    "cum",
+    "erokemo",
+    "les",
+    "wallpaper",
+    "lewdk",
+    "ngif",
+    "tickle",
+    "lewd",
+    "feed",
+    "gecg",
+    "eroyuri",
+    "eron",
+    "cum_jpg",
+    "bj",
+    "nsfw_neko_gif",
+    "solo",
+    "kemonomimi",
+    "nsfw_avatar",
+    "gasm",
+    "poke",
+    "anal",
+    "slap",
+    "hentai",
+    "avatar",
+    "erofeet",
+    "holo",
+    "keta",
+    "blowjob",
+    "pussy",
+    "tits",
+    "holoero",
+    "lizard",
+    "pussy_jpg",
+    "pwankg",
+    "classic",
+    "kuni",
+    "waifu",
+    "pat",
+    "8ball",
+    "kiss",
+    "femdom",
+    "neko",
+    "spank",
+    "cuddle",
+    "erok",
+    "fox_girl",
+    "boobs",
+    "random_hentai_gif",
+    "smallboobs",
+    "hug",
+    "ero",
+    "smug",
+    "goose",
+    "baka",
+    "woof",
+]
+
+
 @legend.legend_cmd(
-    pattern="porn(?:\s|$)([\s\S]*)",
+    pattern="porn (?:\s|$)([\s\S]*)",
     command=("porn", menu_category),
     info={
         "header": "Get a porn video or gif or pic. Check [Nekos Queries](https://telegra.ph/Lêɠêɳdẞογ-02-24-2) ",
@@ -159,22 +226,22 @@ async def _(event):
         )
 
 
-"""
+
 @legend.legend_cmd(
-    pattern="porn(?:\s|$)([\s\S]*)",
-    command=("porn", menu_category),
+    pattern="xnxx (?:\s|$)([\s\S]*)",
+    command=("xnxx", menu_category),
     info={
         "header": "Get a porn video or gif or pic.",
         "usage": [
-            "{tr}porn",
-            "{tr}porn <options/subreddit>",
+            "{tr}xnxx",
+            "{tr}xnxx <options/subreddit>",
         ],
-        "examples": "{tr}porn nsfw_gifs",
+        "examples": "{tr}xnxx nsfw_gifs",
         "options": horny,
     },
 )
 async def very(event):
-    #Random porn post
+    """Random porn post"""
     reply_to = await reply_id(event)
     sub_r = event.pattern_match.group(1)
     await eor(event, "**Just hold a sec u horny kid...**")
@@ -242,11 +309,9 @@ async def very(event):
                     event,
                     "**ಥ‿ಥ   Sorry i could'nt found, try with difference catagory**",
                 )
-"""
-
 
 @legend.legend_cmd(
-    pattern="bulkporn(?:\s|$)([\s\S]*)",
+    pattern="bulkporn (?:\s|$)([\s\S]*)",
     command=("bulkporn", menu_category),
     info={
         "header": "download porn videos or gifs or pics in bulk.",
@@ -340,7 +405,7 @@ async def bad(event):
 
 
 @legend.legend_cmd(
-    pattern="rsearch(?:\s|$)([\s\S]*)",
+    pattern="rsearch (?:\s|$)([\s\S]*)",
     command=("rsearch", menu_category),
     info={
         "header": "Get a list porn video or gif or pic from reddit /redgif /imgur.",
@@ -411,7 +476,7 @@ async def pussy(event):
 
 
 @legend.legend_cmd(
-    pattern="xsearch(?:\s|$)([\s\S]*)",
+    pattern="xsearch (?:\s|$)([\s\S]*)",
     command=("xsearch", menu_category),
     info={
         "header": "Get a list of porn videos from xvideo",
