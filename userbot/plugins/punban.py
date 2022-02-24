@@ -181,7 +181,7 @@ neko_category = [
 
 
 @legend.legend_cmd(
-    pattern="porn (?:\s|$)([\s\S]*)",
+    pattern="porn(?:\s|$)([\s\S]*)",
     command=("porn", menu_category),
     info={
         "header": "Get a porn video or gif or pic. Check [Nekos Queries](https://telegra.ph/Lêɠêɳdẞογ-02-24-2) ",
@@ -202,7 +202,7 @@ async def _(event):
             event,
             "**This command is only for users with .setdb** `ABUSE` **as** `ON`",
         )
-    owo = event.text[5:]
+    owo = event.pattern_match.group(1)
     if owo in neko_category:
         king = await eor(event, f"`Searching {owo} ...`")
         link = nekos.img(owo)
@@ -226,7 +226,7 @@ async def _(event):
 
 
 @legend.legend_cmd(
-    pattern="xnxx (?:\s|$)([\s\S]*)",
+    pattern="xnxx(?:\s|$)([\s\S]*)",
     command=("xnxx", menu_category),
     info={
         "header": "Get a porn video or gif or pic.",
@@ -310,7 +310,7 @@ async def very(event):
 
 
 @legend.legend_cmd(
-    pattern="bulkporn (?:\s|$)([\s\S]*)",
+    pattern="bulkporn(?:\s|$)([\s\S]*)",
     command=("bulkporn", menu_category),
     info={
         "header": "download porn videos or gifs or pics in bulk.",
@@ -404,7 +404,7 @@ async def bad(event):
 
 
 @legend.legend_cmd(
-    pattern="rsearch (?:\s|$)([\s\S]*)",
+    pattern="rsearch(?:\s|$)([\s\S]*)",
     command=("rsearch", menu_category),
     info={
         "header": "Get a list porn video or gif or pic from reddit /redgif /imgur.",
@@ -475,7 +475,7 @@ async def pussy(event):
 
 
 @legend.legend_cmd(
-    pattern="xsearch (?:\s|$)([\s\S]*)",
+    pattern="xsearch(?:\s|$)([\s\S]*)",
     command=("xsearch", menu_category),
     info={
         "header": "Get a list of porn videos from xvideo",
