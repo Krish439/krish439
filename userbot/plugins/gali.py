@@ -8,7 +8,6 @@ menu_category = "extra"
 
 heolls = True
 
-
 @legend.legend_cmd(
     pattern="abuse$",
     command=("abuse", menu_category),
@@ -19,11 +18,11 @@ heolls = True
 )
 async def yashraid(event):
     while heolls != False:
-        await event.delete()
-        LEGEND = event.client
+            await event.delete()
         kek = event.chat_id
         if gvarstatus("spamwork") is None:
             return
+        LEGEND = event.client
         await LEGEND.send_message(kek, "TERI MA KI CHOOXT MAARUU BSDKEE")
         await LEGEND.send_message(kek, "TERI BHN KA BHOSXDA FAAD DIA MADARCHOD")
         await LEGEND.send_message(kek, "TERI BHN KI GANXD ME DYNAMTE LAGA KE UDA DIA")
