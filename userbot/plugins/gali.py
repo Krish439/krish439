@@ -18,7 +18,7 @@ menu_category = "extra"
 async def yashraid(event):
     while x != False:
         await event.delete()
-        LEGEND = event.client 
+        LEGEND = event.client
         kek = event.chat_id
         await LEGEND.send_message(kek, "TERI MA KI CHOOXT MAARUU BSDKEE")
         await LEGEND.send_message(kek, "TERI BHN KA BHOSXDA FAAD DIA MADARCHOD")
