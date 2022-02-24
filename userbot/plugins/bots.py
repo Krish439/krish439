@@ -165,12 +165,15 @@ async def _(event):
     await eor(event, "Processing....")
     async with event.client.conversation(bot) as conv:
         try:
-            await conv.send_message("/start")
+            first = await conv.send_message("/start")
             yup = await conv.get_response()
             sweetie = yup.text
             if sweetie.startswith("Good"):
-                await conv.send_message("Cool, thanks")
-                await eod(event, "Congratulations, No Limits Are Apply")
+                response = await conv.send_message("Cool, thanks")
+                await eor(event, "Congratulations, No Limits Are Apply")
+                await event.client.delete_messages(
+                    conv.chat_id, [first.id, yup.id, response.id]
+                )
             elif "automatically" in sweetie:
                 await conv.send_message("I was wrong, please release me now")
                 await eor(
