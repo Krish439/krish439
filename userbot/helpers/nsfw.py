@@ -1,5 +1,5 @@
 from ..core.managers import eor
-
+from telethon.tl import functions
 pawn = [
     "nsfw",
     "nsfw_gifs",
@@ -121,5 +121,17 @@ def nsfw(catagory):
         horny += f" `{i.lower()}` ||"
     return horny
 
+
+
+async def unsave_gif(event, hgif):
+    try:
+        await event.client(
+            functions.messages.SaveGifRequest(
+                id=get_input_document(hgif),
+                unsave=True,
+            )
+        )
+    except Exception as e:
+        LOGS.info(e)
 
 API = "https://weaverbottest.herokuapp.com/gimme"
