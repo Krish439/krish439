@@ -90,7 +90,7 @@ def main_menu():
         ],
         [
             custom.Button.inline("⚜ Alive ⚜", data="stats"),
-            Button.url("Support 🇮🇳", data="stping"),
+            Button.url("Support 🇮🇳", "https://t.me/Official_K_LegendBot"),
         ],
         [custom.Button.inline("❌", data="clise")],
     ]
