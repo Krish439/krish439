@@ -6,6 +6,7 @@ from . import legend, swtmemes
 
 menu_category = "extra"
 
+heolls = True
 
 @legend.legend_cmd(
     pattern="abuse$",
@@ -16,7 +17,7 @@ menu_category = "extra"
     },
 )
 async def yashraid(event):
-    while x != False:
+    while heolls != False:
         await event.delete()
         LEGEND = event.client
         kek = event.chat_id
