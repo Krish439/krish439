@@ -113,7 +113,6 @@ async def wants_ur_noods(event):
                 os.rmdir("./xvdo")
 
 
-
 neko_category = [
     "feet",
     "yuri",
@@ -226,7 +225,6 @@ async def _(event):
         )
 
 
-
 @legend.legend_cmd(
     pattern="xnxx (?:\s|$)([\s\S]*)",
     command=("xnxx", menu_category),
@@ -309,6 +307,7 @@ async def very(event):
                     event,
                     "**ಥ‿ಥ   Sorry i could'nt found, try with difference catagory**",
                 )
+
 
 @legend.legend_cmd(
     pattern="bulkporn (?:\s|$)([\s\S]*)",
