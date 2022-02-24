@@ -1,12 +1,8 @@
 import asyncio
 import os
-import asyncio
-import os
 import random
-import urllib
 
 import nekos
-import requests
 import requests
 from bs4 import BeautifulSoup
 from pySmartDL import SmartDL
@@ -16,11 +12,13 @@ from urlextract import URLExtract
 from ..core.managers import eod, eor
 from ..core.session import legend
 from ..helpers.functions import age_verification
+from ..helpers.nsfw import hemtai as neko_category
 from ..helpers.utils import _legendutils, reply_id
 from . import useless
-from ..helpers.nsfw import hemtai as neko_category 
+
 API = useless.API
-from ..sql_helper.globals import gvarstatus 
+from ..sql_helper.globals import gvarstatus
+
 horny = useless.nsfw(useless.pawn)
 
 menu_category = "useless"
@@ -114,7 +112,6 @@ async def wants_ur_noods(event):
             await event.delete()
             if os.path.isdir("./xvdo"):
                 os.rmdir("./xvdo")
-
 
 
 @legend.legend_cmd(
@@ -246,6 +243,7 @@ async def very(event):
                     "**ಥ‿ಥ   Sorry i could'nt found, try with difference catagory**",
                 )
 """
+
 
 @legend.legend_cmd(
     pattern="bulkporn(?:\s|$)([\s\S]*)",
