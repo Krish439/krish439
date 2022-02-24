@@ -1,10 +1,9 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-import asyncio
-
-from . import mention, eor, legend
 from ..helpers.nsfw import unsave_gif
+from . import legend
+
 menu_category = "useless"
 
 
@@ -38,9 +37,6 @@ async def _(event):
         await event.client.delete_message(conv.chat_id, [resp.id, lol.id])
 
 
-
-
-
 @legend.legend_cmd(
     pattern="hfutanari ([\s\S]*)",
     command=("hfutanari", menu_category),
@@ -70,8 +66,6 @@ async def _(event):
         await event.client.delete_message(conv.chat_id, [resp.id, lol.id])
 
 
-
-
 @legend.legend_cmd(
     pattern="hshota ([\s\S]*)",
     command=("hshota", menu_category),
@@ -99,7 +93,6 @@ async def _(event):
             xxxx = await event.client.send_file(event.chat_id, response.message)
             await unsave_gif(xxxx)
         await event.client.delete_message(conv.chat_id, [resp.id, lol.id])
-        
 
 
 @legend.legend_cmd(
@@ -131,7 +124,6 @@ async def _(event):
         await event.client.delete_message(conv.chat_id, [resp.id, lol.id])
 
 
-
 @legend.legend_cmd(
     pattern="hoppai ([\s\S]*)",
     command=("hoppai", menu_category),
@@ -159,7 +151,6 @@ async def _(event):
             xxxx = await event.client.send_file(event.chat_id, response.message)
             await unsave_gif(xxxx)
         await event.client.delete_message(conv.chat_id, [resp.id, lol.id])
-
 
 
 @legend.legend_cmd(
@@ -191,7 +182,6 @@ async def _(event):
         await event.client.delete_message(conv.chat_id, [resp.id, lol.id])
 
 
-
 @legend.legend_cmd(
     pattern="hbdsm ([\s\S]*)",
     command=("hbdsm", menu_category),
@@ -219,7 +209,6 @@ async def _(event):
             xxxx = await event.client.send_file(event.chat_id, response.message)
             await unsave_gif(xxxx)
         await event.client.delete_message(conv.chat_id, [resp.id, lol.id])
-
 
 
 @legend.legend_cmd(
@@ -251,7 +240,6 @@ async def _(event):
         await event.client.delete_message(conv.chat_id, [resp.id, lol.id])
 
 
-
 @legend.legend_cmd(
     pattern="hgif ([\s\S]*)",
     command=("hgif", menu_category),
@@ -281,7 +269,6 @@ async def _(event):
         await event.client.delete_message(conv.chat_id, [resp.id, lol.id])
 
 
-
 @legend.legend_cmd(
     pattern="hcosplay ([\s\S]*)",
     command=("hcosplay", menu_category),
@@ -309,4 +296,3 @@ async def _(event):
             xxxx = await event.client.send_file(event.chat_id, response.message)
             await unsave_gif(xxxx)
         await event.client.delete_message(conv.chat_id, [resp.id, lol.id])
-
