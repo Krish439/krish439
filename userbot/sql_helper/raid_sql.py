@@ -49,7 +49,7 @@ def rget_users(chat_id):
         SESSION.close()
 
 
-def get_all_users():
+def rget_all_users():
     try:
         return SESSION.query(RChatBot).all()
     except BaseException:
