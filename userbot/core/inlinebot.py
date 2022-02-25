@@ -51,7 +51,6 @@ def ibuild_keyboard(buttons):
 
 
 @legend.tgbot.on(CallbackQuery(data=re.compile(b"help_k_minu")))
-@check_owner
 async def on_plug_in_callback_query_handler(event):
     buttons = [
         (
@@ -613,7 +612,7 @@ async def inline_handler(event):  # sourcery no-metrics
                     buttons=buttons,
                 )
                 await event.answer([result] if result else None)
-        elif string == " ":
+        else:
             buttons = [
                 (
                     Button.url("Source code", "https://github.com/LEGEND-AI/LEGENDBOT"),
@@ -645,10 +644,6 @@ async def inline_handler(event):  # sourcery no-metrics
                 ),
             )
             await event.answer([result] if result else None)
-        else:
-            pass
-        await event.answer([result] if result else None)
-
 
 @legend.tgbot.on(CallbackQuery(data=re.compile(b"clise")))
 @check_owner
