@@ -221,8 +221,6 @@ async def pmpermit_on(event):
         await eod(event, "__Help Pic has been disabled for your account successfully__")
 
 
-
-
 @legend.legend_cmd(
     pattern="dc$",
     command=("dc", menu_category),
