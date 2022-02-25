@@ -198,6 +198,32 @@ async def _(event):
 
 
 @legend.legend_cmd(
+    pattern="helppic (on|off)$",
+    command=("helppic ", menu_category),
+    info={
+        "header": "To turn on or turn off helppic",
+        "usage": "{tr}helpic on/off",
+    },
+)
+async def pmpermit_on(event):
+    "Turn on/off help pic."
+    input_str = event.pattern_match.group(1)
+    if input_str == "on":
+        if gvarstatus("HELP_PIC") == "OFF":
+            delgvar("HELP_PIC")
+            await eod(
+                event, "__Help Pic has been enabled for your account successfully.__"
+            )
+        else:
+            await eod(event, "__Help Pic is already enabled for your account__")
+    else:
+        addgvar("HELP_PIC" "OFF")
+        await eod(event, "__Help Pic has been disabled for your account successfully__")
+
+
+
+
+@legend.legend_cmd(
     pattern="dc$",
     command=("dc", menu_category),
     info={
