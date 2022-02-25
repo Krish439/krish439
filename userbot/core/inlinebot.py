@@ -613,7 +613,7 @@ async def inline_handler(event):  # sourcery no-metrics
                     text=query,
                     buttons=buttons,
                 )
-                await event.answer([result] if result else None)
+            await event.answer([result] if result else None)
         else:
             buttons = [
                 (
