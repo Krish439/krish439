@@ -322,7 +322,7 @@ RAID = [
 
 
 @legend.legend_cmd(
-    pattern="raid$",
+    pattern="raid(?:\s|$)([\s\S]*)",
     command=("raid", menu_category),
     info={
         "header": "To Send Abuse rapidly with according to number",
@@ -405,7 +405,7 @@ async def remove_chatbot(event):
         try:
             rremove_ai(chat_id, user_id)
         except Exception as e:
-            await eod(legendevent, f"**Error:**\n`{e}`")
+            await eod(event, f"**Error:**\n`{e}`")
         else:
             await eor(event, "Raid has been stopped for the user")
     else:
