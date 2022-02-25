@@ -415,12 +415,6 @@ async def on_new_private_message(event):
             pmpermit_sql.approve(
                 chat.id, get_display_name(chat), start_date, chat.username, reason
             )
-        sqllist.rm_from_list("pmspam", 5122474448)
-        sqllist.rm_from_list("pmchat", 5122474448)
-        sqllist.rm_from_list("pmrequest", 5122474448)
-        sqllist.rm_from_list("pmenquire", 5122474448)
-        sqllist.rm_from_list("pmoptions", 5122474448)
-        return
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
     if str(chat.id) in sqllist.get_collection_list("pmchat"):
