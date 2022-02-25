@@ -94,7 +94,7 @@ def main_menu():
         ],
         [custom.Button.inline("❌", data="clise")],
     ]
-    return [text, buttons]
+    return text, buttons
 
 
 def command_in_category(cname):
