@@ -418,7 +418,6 @@ async def on_new_private_message(event):
             pmpermit_sql.approve(
                 chat.id, get_display_name(chat), start_date, chat.username, reason
             )
-            pass
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
     if str(chat.id) in sqllist.get_collection_list("pmchat"):
