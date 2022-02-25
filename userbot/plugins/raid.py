@@ -6,6 +6,7 @@ from userbot import legend
 
 from ..core.managers import eod, eor
 from ..helpers import get_user_from_event, rs_client
+from ..sql_helper.globals import gvarstatus
 from ..sql_helper.raid_sql import (
     raddai,
     rget_all_users,
@@ -15,7 +16,6 @@ from ..sql_helper.raid_sql import (
     rremove_all_users,
     rremove_users,
 )
-from ..sql_helper.globals import gvarstatus
 
 menu_category = "fun"
 
