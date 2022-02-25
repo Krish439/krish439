@@ -82,7 +82,7 @@ def rremove_ai(chat_id, user_id):
     to_check = ris_added(chat_id, user_id)
     if not to_check:
         return False
-    rem = SESSION.query(ChatBot).get((str(chat_id), str(user_id)))
+    rem = SESSION.query(RChatBot).get((str(chat_id), str(user_id)))
     SESSION.delete(rem)
     SESSION.commit()
     return True
