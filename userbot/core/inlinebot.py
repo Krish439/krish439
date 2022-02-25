@@ -51,6 +51,7 @@ def ibuild_keyboard(buttons):
 
 
 @legend.tgbot.on(CallbackQuery(data=re.compile(b"help_k_minu")))
+@check_owner
 async def on_plug_in_callback_query_handler(event):
     buttons = [
         (
@@ -73,13 +74,14 @@ async def on_plug_in_callback_query_handler(event):
     ]
     await event.edit(
         f"⚜『mention』⚜ ",
+        buttons=buttons,
         link_preview=False,
     )
 
 
 def main_menu():
     tol = gvarstatus("BOT_USERNAME")
-    text = f"⚜ hellol  ⚜"
+    text = f"⚜ {mention}  ⚜"
     buttons = [
         [custom.Button.inline("👨‍💻 Info 👨‍💻", data="check")],
         [
@@ -665,7 +667,6 @@ async def on_plugin_callback_query_handler(event):
         \n𝙲𝚘𝚖𝚖𝚊𝚗𝚍𝚜: {len(CMD_INFO)}\
         \n\n{tr}𝚑𝚎𝚕𝚙 <𝚙𝚕𝚞𝚐𝚒𝚗> : 𝙵𝚘𝚛 𝚜𝚙𝚎𝚌𝚒𝚏𝚒𝚌 𝚙𝚕𝚞𝚐𝚒𝚗 𝚒𝚗𝚏𝚘.\
         \n{tr}𝚑𝚎𝚕𝚙 -𝚌 <𝚌𝚘𝚖𝚖𝚊𝚗𝚍> : 𝙵𝚘𝚛 𝚊𝚗𝚢 𝚌𝚘𝚖𝚖𝚊𝚗𝚍 𝚒𝚗𝚏𝚘.\
-        \n{tr}𝚜 <𝚚𝚞𝚎𝚛𝚢> : 𝚃𝚘 𝚜𝚎𝚊𝚛𝚌𝚑 𝚊𝚗𝚢 𝚌𝚘𝚖𝚖𝚊𝚗𝚍𝚜.\
         "
     await event.answer(text, cache_time=0, alert=True)
 
