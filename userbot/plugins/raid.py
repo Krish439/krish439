@@ -20,7 +20,6 @@ from ..sql_helper.globals import gvarstatus
 menu_category = "fun"
 
 
-
 RAID = [
     "MADARCHOD TERI MAA KI CHUT ME GHUTKA KHAAKE THOOK DUNGA 🤣🤣",
     "TERE BEHEN K CHUT ME CHAKU DAAL KAR CHUT KA KHOON KAR DUGA",
@@ -322,8 +321,6 @@ RAID = [
 ]
 
 
-
-
 @legend.legend_cmd(
     pattern="addai$",
     command=("addai", menu_category),
@@ -352,8 +349,6 @@ async def spam(e):
                 await asyncio.sleep(0.3)
     else:
         await e.reply(usage, parse_mode=None, link_preview=None)
-
-
 
 
 @legend.legend_cmd(
@@ -539,4 +534,3 @@ async def ai_reply(event):
         except Exception as e:
             LOGS.error(str(e))
             await event.reply(random.choice(tired_response))
-
