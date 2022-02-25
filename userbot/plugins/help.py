@@ -200,11 +200,11 @@ async def _(event):
 
 
 @legend.legend_cmd(
-    pattern="hpic (on|off)$",
-    command=("hpic ", menu_category),
+    pattern="hlppic (on|off)(?: |$)([\s\S]*)",
+    command=("hlppic ", menu_category),
     info={
         "header": "To turn on or turn off helppic",
-        "usage": "{tr}hpic on/off",
+        "usage": "{tr}hlppic on/off",
     },
 )
 async def pmpermit_on(event):
