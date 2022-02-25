@@ -456,7 +456,7 @@ async def inline_handler(event):  # sourcery no-metrics
             else:
                 json.dump(newhide, open(hide, "w"))
         elif string == "help":
-            oso = gvarstatus("HELP_PIC")
+            oso = gvarstatus("HELP_IMG")
             if oso is None:
                 help_pic = "https://telegra.ph/file/144d8ea74fef8ca12253c.jpg"
             else:
