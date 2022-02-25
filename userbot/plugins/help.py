@@ -1,4 +1,5 @@
 from telethon import functions
+from validators.url import url
 
 from userbot import legend
 
@@ -199,15 +200,18 @@ async def _(event):
 
 
 @legend.legend_cmd(
-    pattern="helppic (on|off)$",
-    command=("helppic ", menu_category),
+    pattern="hpic (on|off)$",
+    command=("hpic ", menu_category),
     info={
         "header": "To turn on or turn off helppic",
-        "usage": "{tr}helpic on/off",
+        "usage": "{tr}hpic on/off",
     },
 )
 async def pmpermit_on(event):
     "Turn on/off help pic."
+    lol = await event.get_reply_message()
+    mol = lol.text
+    check = mol.split(" ")
     input_str = event.pattern_match.group(1)
     if input_str == "on":
         if gvarstatus("HELP_PIC") == "OFF":
@@ -217,9 +221,15 @@ async def pmpermit_on(event):
             )
         else:
             await eod(event, "__Help Pic is already enabled for your account__")
-    else:
-        addgvar("HELP_PIC" "OFF")
-        await eod(event, "__Help Pic has been disabled for your account successfully__")
+    elif input_str == "off":
+        addgvar("HELP_PIC" OFF)
+        return 
+    for i in check:
+        if not url(i):
+            await eod(event, "Give Me A Correct Link")
+        else:
+            addgvar("HELP_PIC" input_str)
+            await eod(event, "__Help Pic has been disabled for your account successfully__")
 
 
 @legend.legend_cmd(
