@@ -387,7 +387,7 @@ async def add_ensns(event):
 
 
 @legend.legend_cmd(
-    pattern"dreplyraid$",
+    pattern="dreplyraid$",
     command=("dreplyraid", menu_category),
     info={
         "header": "To stop raid on it.",
