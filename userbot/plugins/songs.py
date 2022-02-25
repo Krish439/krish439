@@ -253,19 +253,19 @@ def time_to_seconds(time):
     },
 )
 async def shazamcmd(event):
-    #ydl_opts = {"format": "bestvideo[ext=mp4]"}
+    # ydl_opts = {"format": "bestvideo[ext=mp4]"}
     ydl_opts = {
-    "format": "best",
-    "addmetadata": True,
-    "key": "FFmpegMetadata",
-    "age_limit": 25,
-    "prefer_ffmpeg": True,
-    "geo_bypass": True,
-    "nocheckcertificate": True,
-    "postprocessors": [{"key": "FFmpegVideoConvertor", "preferedformat": "mp4"}],
-    "outtmpl": "%(id)s.mp4",
-    "logtostderr": False,
-    "quiet": True,
+        "format": "best",
+        "addmetadata": True,
+        "key": "FFmpegMetadata",
+        "age_limit": 25,
+        "prefer_ffmpeg": True,
+        "geo_bypass": True,
+        "nocheckcertificate": True,
+        "postprocessors": [{"key": "FFmpegVideoConvertor", "preferedformat": "mp4"}],
+        "outtmpl": "%(id)s.mp4",
+        "logtostderr": False,
+        "quiet": True,
     }
     m = await eor(event, "searching video song")
     query = event.text[6:]
