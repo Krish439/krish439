@@ -463,7 +463,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 lol = [x for x in oso.split()]
                 help_pic = random.choice(lol)
             _result = main_menu()
-            if help_pic == "OFF":
+            if oso == "OFF":
                 result = builder.article(
                     title="© LegendBot Help",
                     description="Help menu for LegendBot",
