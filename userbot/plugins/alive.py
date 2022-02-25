@@ -140,7 +140,7 @@ pm_caption += f"**╭────────────**\n"
 pm_caption += f"┣»»»『{mention}』«««\n"
 pm_caption += f"┣Lêɠêɳ̃dẞø† ~ {legendversion}\n"
 pm_caption += f"┣Lêɠêɳ̃d  ~ [Owner](https://t.me/Legend_K_Boy)\n"
-pm_caption += f"┣Support ~ [G𝖗ουρ](https://t.me/Legend_K_Usernot)\n"
+pm_caption += f"┣Support ~ [G𝖗ουρ](https://t.me/Legend_K_Usebnot)\n"
 pm_caption += f"┣Řepô    ~ [Rєρο](https://github.com/LEGEND-AI/LEGENDBOT)\n"
 pm_caption += f"**╰────────────**\n"
 
