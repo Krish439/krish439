@@ -362,11 +362,11 @@ async def add_ensns(event):
     if event.reply_to_msg_id is None:
         return await eor(event, "`Reply to a User's message to activate raid on `")
     legendevent = await eor(event, "`Adding Raid to user...`")
-    b = await event.client.get_entity(a.sender_id)
+    reply_msg = await event.get_reply_message()
+    b = await event.client.get_entity(reply_msg.sender_id)
     g = b.id
     c = b.first_name
     username = f"[{c}](tg://user?id={g})"
-    reply_msg = await event.get_reply_message()
     chat_id = event.chat_id
     user_id = reply_msg.sender_id
     if event.is_private:
