@@ -253,7 +253,7 @@ def time_to_seconds(time):
     },
 )
 async def shazamcmd(event):
-    ydl_opts = {"format": "bestvideo[ext=mp4]"}
+    ydl_opts = {"format": "bestaudio[ext=mp4]"}
     m = await eor(event, "searching video song")
     query = event.text[6:]
     try:
