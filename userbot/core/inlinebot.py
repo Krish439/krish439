@@ -585,7 +585,10 @@ async def inline_handler(event):  # sourcery no-metrics
             buttons = [
                 Button.inline(text="👨‍💻 Open PM Menu 💝", data="show_pmpermit_options"),
             ]
-            PM_PIC = gvarstatus("PM_PIC") or "https://telegra.ph/file/69fa26f4659e377dea80e.jpg"
+            PM_PIC = (
+                gvarstatus("PM_PIC")
+                or "https://telegra.ph/file/69fa26f4659e377dea80e.jpg"
+            )
             if PM_PIC:
                 legend = [x for x in PM_PIC.split()]
                 PIC = list(legend)

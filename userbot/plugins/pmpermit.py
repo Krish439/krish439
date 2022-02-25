@@ -133,7 +133,10 @@ Don't spam my inbox. say reason and wait until my response.__"""
             results = await event.client.inline_query(Config.BOT_USERNAME, "pmpermit")
             msg = await results[0].click(chat.id, reply_to=reply_to_id, hide_via=True)
         else:
-            PM_PIC = gvarstatus("PM_PIC") or "https://telegra.ph/file/69fa26f4659e377dea80e.jpg"
+            PM_PIC = (
+                gvarstatus("PM_PIC")
+                or "https://telegra.ph/file/69fa26f4659e377dea80e.jpg"
+            )
             if PM_PIC:
                 legend = [x for x in PM_PIC.split()]
                 PIC = list(legend)
