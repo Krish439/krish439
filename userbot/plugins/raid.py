@@ -1,5 +1,6 @@
-import random
 import asyncio
+import random
+
 from telethon.utils import get_display_name
 
 from userbot import legend
