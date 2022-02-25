@@ -6,14 +6,14 @@ from userbot import legend
 
 from ..core.managers import eod, eor
 from ..helpers import get_user_from_event, rs_client
-from ..sql_helper.chatbot_sql import (
-    addai,
-    get_all_users,
-    get_users,
-    is_added,
-    remove_ai,
-    remove_all_users,
-    remove_users,
+from ..sql_helper.raid_sql import (
+    raddai,
+    rget_all_users,
+    rget_users,
+    ris_added,
+    rremove_ai,
+    rremove_all_users,
+    rremove_users,
 )
 from ..sql_helper.globals import gvarstatus
 
@@ -322,11 +322,11 @@ RAID = [
 
 
 @legend.legend_cmd(
-    pattern="addai$",
-    command=("addai", menu_category),
+    pattern="raddai$",
+    command=("raddai", menu_category),
     info={
         "header": "To add ai chatbot to replied account.",
-        "usage": "{tr}addai <reply>",
+        "usage": "{tr}raddai <reply>",
     },
 )
 async def spam(e):
@@ -352,11 +352,11 @@ async def spam(e):
 
 
 @legend.legend_cmd(
-    pattern="addai$",
-    command=("addai", menu_category),
+    pattern="raddai$",
+    command=("raddai", menu_category),
     info={
         "header": "To add ai chatbot to replied account.",
-        "usage": "{tr}addai <reply>",
+        "usage": "{tr}raddai <reply>",
     },
 )
 async def add_chatbot(event):
@@ -378,10 +378,10 @@ async def add_chatbot(event):
         chat_type = "Group"
     user_name = user.first_name
     user_username = user.username
-    if is_added(chat_id, user_id):
+    if ris_added(chat_id, user_id):
         return await eor(event, "`The user is already enabled with ai.`")
     try:
-        addai(chat_id, user_id, chat_name, user_name, user_username, chat_type)
+        raddai(chat_id, user_id, chat_name, user_name, user_username, chat_type)
     except Exception as e:
         await eod(legendevent, f"**Error:**\n`{e}`")
     else:
@@ -403,9 +403,9 @@ async def remove_chatbot(event):
     reply_msg = await event.get_reply_message()
     user_id = reply_msg.sender_id
     chat_id = event.chat_id
-    if is_added(chat_id, user_id):
+    if ris_added(chat_id, user_id):
         try:
-            remove_ai(chat_id, user_id)
+            rremove_ai(chat_id, user_id)
         except Exception as e:
             await eod(legendevent, f"**Error:**\n`{e}`")
         else:
@@ -431,25 +431,25 @@ async def delete_chatbot(event):
     "To delete ai in this chat."
     input_str = event.pattern_match.group(1)
     if input_str:
-        lecho = get_all_users()
+        lecho = rget_all_users()
         if len(lecho) == 0:
             return await eod(
                 event, "You havent enabled ai atleast for one user in any chat."
             )
         try:
-            remove_all_users()
+            rremove_all_users()
         except Exception as e:
             await eod(event, f"**Error:**\n`{str(e)}`", 10)
         else:
             await eor(event, "Deleted ai for all enabled users in all chats.")
     else:
-        lecho = get_users(event.chat_id)
+        lecho = rget_users(event.chat_id)
         if len(lecho) == 0:
             return await eod(
                 event, "You havent enabled ai atleast for one user in this chat."
             )
         try:
-            remove_users(event.chat_id)
+            rremove_users(event.chat_id)
         except Exception as e:
             await eod(event, f"**Error:**\n`{e}`", 10)
         else:
@@ -476,7 +476,7 @@ async def list_chatbot(event):  # sourcery no-metrics
     private_chats = ""
     output_str = "**Ai enabled users:**\n\n"
     if input_str:
-        lsts = get_all_users()
+        lsts = rget_all_users()
         group_chats = ""
         if len(lsts) <= 0:
             return await eor(event, "There are no ai enabled users")
@@ -500,7 +500,7 @@ async def list_chatbot(event):  # sourcery no-metrics
         if group_chats != "":
             output_str += "**Group Chats**\n" + group_chats
     else:
-        lsts = get_users(event.chat_id)
+        lsts = rget_users(event.chat_id)
         if len(lsts) <= 0:
             return await eor(event, "There are no ai enabled users in this chat")
         for echos in lsts:
@@ -518,7 +518,7 @@ async def list_chatbot(event):  # sourcery no-metrics
 
 @legend.legend_cmd(incoming=True, edited=False)
 async def ai_reply(event):
-    if is_added(event.chat_id, event.sender_id) and (event.message.text):
+    if ris_added(event.chat_id, event.sender_id) and (event.message.text):
         AI_LANG = gvarstatus("AI_LANG") or "en"
         master_name = get_display_name(await event.client.get_me())
         try:
