@@ -345,7 +345,7 @@ async def spammer(event):
         )
     lol = input_str[1:]
     try:
-        int(legend[0])
+        int(lol[0])
     except Exception:
         return await eod(
             event, "__Use proper syntax for delay spam. For syntax refer help menu.__"
