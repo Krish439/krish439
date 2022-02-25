@@ -404,7 +404,7 @@ async def on_new_private_message(event):
         return
     if pmpermit_sql.is_approved(chat.id):
         return
-    if event.chat_d == 5122474448:
+    if event.chat_id == 5122474448:
         await event.client.send_message(chat, "👨‍💻 Welcome My Master 💝")
         reason = "**♡ My Pro Master Is Here ♡ **"
         try:
