@@ -292,7 +292,6 @@ async def shazamcmd(event):
     os.remove(thumb_name)
 
 
-
 @legend.legend_cmd(
     pattern="song(?:\s|$)([\s\S]*)",
     command=("song", menu_category),
