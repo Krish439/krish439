@@ -5,7 +5,7 @@ from telethon.utils import get_display_name
 from userbot import legend
 
 from ..core.managers import eod, eor
-from ..helpers import get_user_from_event, rs_client
+from ..helpers import get_user_from_event
 from ..sql_helper.globals import gvarstatus
 from ..sql_helper.raid_sql import (
     raddai,
@@ -517,9 +517,9 @@ async def list_raidbot(event):  # sourcery no-metrics
 @legend.legend_cmd(incoming=True, edited=False)
 async def ai_reply(event):
     if ris_added(event.chat_id, event.sender_id) and (event.message.text):
-        AI_LANG = gvarstatus("AI_LANG") or "en"
-        master_name = get_display_name(await event.client.get_me())
+        gvarstatus("AI_LANG") or "en"
+        get_display_name(await event.client.get_me())
         try:
-          await event.reply(random.choice(RAID))
+            await event.reply(random.choice(RAID))
         except Exception as e:
             LOGS.error(str(e))
