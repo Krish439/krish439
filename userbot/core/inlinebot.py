@@ -617,7 +617,7 @@ async def inline_handler(event):  # sourcery no-metrics
                     buttons=buttons,
                 )
             await event.answer([result] if result else None)
-        else:
+        elif string == " ":
             buttons = [
                 (
                     Button.url("Source code", "https://github.com/LEGEND-AI/LEGENDBOT"),
@@ -649,6 +649,8 @@ async def inline_handler(event):  # sourcery no-metrics
                 ),
             )
             await event.answer([result] if result else None)
+        else:
+            pass
 
 
 @legend.tgbot.on(CallbackQuery(data=re.compile(b"clise")))
