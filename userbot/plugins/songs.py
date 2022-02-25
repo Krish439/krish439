@@ -177,11 +177,11 @@ async def _(event):
 
 
 @legend.legend_cmd(
-    pattern="vsong(?:\s|$)([\s\S]*)",
-    command=("vsong", menu_category),
+    pattern="vssong(?:\s|$)([\s\S]*)",
+    command=("vssong", menu_category),
     info={
         "header": "Search Song",
-        "usage": "{tr}vsong",
+        "usage": "{tr}vssong",
     },
 )
 async def _(event):
