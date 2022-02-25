@@ -99,8 +99,8 @@ async def get_user_from_id(user, event):
     pattern="gpromote(?:\s|$)([\s\S]*)",
     command=("gpromote", menu_category),
     info={
-        "header": "To ban user in every group where you are admin.",
-        "description": "Will ban the person in every group where you are admin only.",
+        "header": "To promote user in every group where you are admin(have a right to promote).",
+        "description": "Will promote the person in every group where you are admin(have a right to promote).",
         "usage": "{tr}gpromote <username/reply/userid> <reason (optional)>",
     },
 )
@@ -165,8 +165,8 @@ async def _(legendevent):
     pattern="gdemote(?:\s|$)([\s\S]*)",
     command=("gdemote", menu_category),
     info={
-        "header": "To ban user in every group where you are admin.",
-        "description": "Will ban the person in every group where you are admin only.",
+        "header": "To demote user in that group where you promote person to admin.",
+        "description": "Will demote the person in that group where you promote person to admin",
         "usage": "{tr}gdemote <username/reply/userid> <reason (optional)>",
     },
 )
