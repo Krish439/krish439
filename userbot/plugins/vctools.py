@@ -134,7 +134,7 @@ async def _(e):
         ],
     },
     groups_only=True,
-    required_admin=True,
+    require_admin=True,
 )
 async def _(e):
     title = e.pattern_match.group(1)
