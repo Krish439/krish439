@@ -16,6 +16,7 @@ from ..sql_helper.raid_sql import (
     rremove_all_users,
     rremove_users,
 )
+from ..sql_helper.globals import addgvar, gvarstatus
 
 menu_category = "fun"
 
@@ -333,6 +334,7 @@ async def spam(e):
     lol = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
     await e.get_reply_message()
     if e.reply_to_msg_id:
+        addgvar("spamwork")
         a = await e.get_reply_message()
         b = await e.client.get_entity(a.sender_id)
         g = b.id
@@ -340,6 +342,8 @@ async def spam(e):
         counter = int(lol[0])
         username = f"[{c}](tg://user?id={g})"
         for _ in range(counter):
+            if gvarstatus("spamwork") is None:
+                return
             reply = random.choice(RAID)
             caption = f"{username} {reply}"
             async with e.client.action(e.chat_id, "typing"):
