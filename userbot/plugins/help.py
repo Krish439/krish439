@@ -222,16 +222,15 @@ async def pmpermit_on(event):
         else:
             await eod(event, "__Help Pic is already enabled for your account__")
     elif input_str == "off":
-        addgvar("HELP_PIC", OFF)
-        return
+        ossi = "OFF"
+        addgvar("HELP_PIC", ossi)
+        return 
     for i in check:
         if not url(i):
             await eod(event, "Give Me A Correct Link")
         else:
             addgvar("HELP_PIC", input_str)
-            await eod(
-                event, "__Help Pic has been disabled for your account successfully__"
-            )
+            await eod(event, "__Help Pic has been disabled for your account successfully__")
 
 
 @legend.legend_cmd(
