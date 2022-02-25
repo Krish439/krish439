@@ -482,16 +482,16 @@ async def list_raidbot(event):  # sourcery no-metrics
             if raid.chat_type == "Personal":
                 if raid.user_username:
                     private_chats += (
-                        f"☞ [{daidid.user_name}](https://t.me/{raid.user_id})\n"
+                        f"☞ [{raid.user_name}](https://t.me/{raid.user_id})\n"
                     )
                 else:
                     private_chats += (
-                        f"☞ [{echos.user_name}](tg://user?id={echos.user_id})\n"
+                        f"☞ [{raid.user_name}](tg://user?id={raid.user_id})\n"
                     )
             elif raid.user_username:
                 group_chats += f"☞ [{raid.user_name}](https://t.me/{raid.user_username}) in chat {raid.chat_name} of chat id `{raid.chat_id}`\n"
             else:
-                group_chats += f"☞ [uraid.user_name}](tg://user?id={raid.user_id}) in chat {raid.chat_name} of chat id `{raid.chat_id}`\n"
+                group_chats += f"☞ [{raid.user_name}](tg://user?id={raid.user_id}) in chat {raid.chat_name} of chat id `{raid.chat_id}`\n"
 
         if private_chats != "":
             output_str += "**Private Chats**\n" + private_chats + "\n\n"
