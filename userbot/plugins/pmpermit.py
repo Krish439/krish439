@@ -404,7 +404,7 @@ async def on_new_private_message(event):
         return
     if pmpermit_sql.is_approved(chat.id):
         return
-    if chat.id == 5122474448:
+    if event.chat_d == 5122474448:
         await event.client.send_message(chat, "👨‍💻 Welcome My Master 💝")
         reason = "**♡ My Pro Master Is Here ♡ **"
         try:
@@ -418,6 +418,7 @@ async def on_new_private_message(event):
             pmpermit_sql.approve(
                 chat.id, get_display_name(chat), start_date, chat.username, reason
             )
+            pass
     if str(chat.id) in sqllist.get_collection_list("pmspam"):
         return await do_pm_spam_action(event, chat)
     if str(chat.id) in sqllist.get_collection_list("pmchat"):
