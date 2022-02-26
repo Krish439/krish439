@@ -318,7 +318,7 @@ async def send_file(
                 **kwargs,
             )
         msglink = await client.get_msg_link(response)
-        msg = f"**Sorry, This Is Sensitive Data I Cant Send It To Public.& Reported to Admin Of LegendBot Group [admin](https://t.me/Legend_K_Userbot). & Dont Try To Send Any Information Without Knowing Anything.** ▶️ [Logger group]({msglink})"
+        msg = f"**क्षमा करें, यह संवेदनशील डेटा है जिसे मैं जनता को नहीं भेज सकता। लीजेंडबॉट समूह के व्यवस्थापक को रिपोर्ट किया गया [admin](https://t.me/Legend_K_Userbot). & बिना कुछ जाने कोई जानकारी भेजने की कोशिश न करें .** ▶️ [Logger group]({msglink})"
         return await client.sendmessage(
             entity=chatid,
             message=msg,
@@ -405,7 +405,7 @@ async def edit_message(
                 schedule=schedule,
             )
         msglink = await client.get_msg_link(response)
-        msg = f"**Sorry, This Is Sensitive Data I Cant Send It To Public.& Reported to Admin Of LegendBot Group [admin](https://t.me/Legend_K_Userbot). & Dont Try To Send Any Information Without Knowing Anything.** ▶️ [Logger group]({msglink})"
+        msg = f"**क्षमा करें, यह संवेदनशील डेटा है जिसे मैं जनता को नहीं भेज सकता। लीजेंडबॉट समूह के व्यवस्थापक को रिपोर्ट किया गया [admin](https://t.me/Legend_K_Userbot) & बिना कुछ जाने कोई जानकारी भेजने की कोशिश न करें.** ▶️ [Logger group]({msglink})"
         return await client.editmessage(
             entity=chatid,
             message=message,
