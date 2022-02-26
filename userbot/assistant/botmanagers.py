@@ -61,9 +61,7 @@ async def ban_user_from_bot(user, reason, reply_to=None):
         add_user_to_bl(user.id, get_display_name(user), user.username, reason, date)
     except Exception as e:
         LOGS.error(str(e))
-    banned_msg = (
-        f"**आपको इस बॉट का उपयोग करने से हमेशा के लिए प्रतिबंधित कर दिया गया है।\nकारण** : {reason}"
-    )
+    banned_msg = f"**आपको इस बॉट का उपयोग करने से हमेशा के लिए प्रतिबंधित कर दिया गया है।\nकारण** : {reason}"
     await legend.tgbot.send_message(user.id, banned_msg)
     info = f"**#Banned_Bot_PM_User**\
             \n\n👤 {_format.mentionuser(get_display_name(user) , user.id)}\
