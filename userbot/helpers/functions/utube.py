@@ -59,10 +59,10 @@ async def ytsearch(query, limit):
     for v in videolinks.result()["result"]:
         textresult = f"[{v['title']}](https://www.youtube.com/watch?v={v['id']})\n"
         try:
-            textresult += f"**Description : **`{v['descriptionSnippet'][-1]['text']}`\n"
+            textresult += f"**डिस्क्रिप्शंस : **`{v['descriptionSnippet'][-1]['text']}`\n"
         except Exception:
-            textresult += "**Description : **`None`\n"
-        textresult += f"**Duration : **__{v['duration']}__  **Views : **__{v['viewCount']['short']}__\n"
+            textresult += "**डिस्क्रिप्शंस : **`None`\n"
+        textresult += f"**ड्यूरेशन : **__{v['duration']}__  **Views : **__{v['viewCount']['short']}__\n"
         result += f"☞ {textresult}\n"
     return result
 
@@ -158,12 +158,12 @@ async def result_formatter(results: list):
             out += "<code>{}</code>\n\n".format(
                 "".join(x.get("text") for x in r.get("descriptionSnippet"))
             )
-        out += f'<b>❯  Duration:</b> {r.get("accessibility").get("duration")}\n'
-        views = f'<b>❯  Views:</b> {r.get("viewCount").get("short")}\n'
+        out += f'<b>❯  ड्यूरेशन:</b> {r.get("accessibility").get("duration")}\n'
+        views = f'<b>❯  व्यूज:</b> {r.get("viewCount").get("short")}\n'
         out += views
-        out += f'<b>❯  Upload date:</b> {r.get("publishedTime")}\n'
+        out += f'<b>❯  अपलोड तारीख:</b> {r.get("publishedTime")}\n'
         if upld:
-            out += "<b>❯  Uploader:</b> "
+            out += "<b>❯  अपलोडर्स:</b> "
             out += f'<a href={upld.get("link")}>{upld.get("name")}</a>'
 
         output[index] = dict(
@@ -182,7 +182,7 @@ def yt_search_btns(
     buttons = [
         [
             Button.inline(
-                text="⬅️  Back",
+                text="⬅️ पीछे",
                 data=f"ytdl_back_{data_key}_{page}",
             ),
             Button.inline(
@@ -192,11 +192,11 @@ def yt_search_btns(
         ],
         [
             Button.inline(
-                text="📜  List all",
+                text="📜 सबकी सूची बनाओ",
                 data=f"ytdl_listall_{data_key}_{page}",
             ),
             Button.inline(
-                text="⬇️  Download",
+                text="⬇️ डाउनलोड",
                 data=f"ytdl_download_{vid}_0",
             ),
         ],
@@ -216,9 +216,9 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
         vid_data = {"formats": []}
     buttons = [
         [
-            Button.inline("⭐️ BEST - 📹 MKV", data=f"ytdl_download_{vid}_mkv_v"),
+            Button.inline("⭐️ अच्छा - 📹 एमकेवी", data=f"ytdl_download_{vid}_mkv_v"),
             Button.inline(
-                "⭐️ BEST - 📹 WebM/MP4",
+                "⭐️ अच्छा - 📹 वेब/एमपी४",
                 data=f"ytdl_download_{vid}_mp4_v",
             ),
         ]
@@ -258,7 +258,7 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
             )
     buttons += sublists(video_btns, width=2)
     buttons += [
-        [Button.inline("⭐️ BEST - 🎵 320Kbps - MP3", data=f"ytdl_download_{vid}_mp3_a")]
+        [Button.inline("⭐️ बेस्ट - 320केबीपीएस - एमपी3", data=f"ytdl_download_{vid}_mp3_a")]
     ]
     buttons += sublists(
         [
