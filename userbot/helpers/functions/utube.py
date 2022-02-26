@@ -59,7 +59,9 @@ async def ytsearch(query, limit):
     for v in videolinks.result()["result"]:
         textresult = f"[{v['title']}](https://www.youtube.com/watch?v={v['id']})\n"
         try:
-            textresult += f"**डिस्क्रिप्शंस : **`{v['descriptionSnippet'][-1]['text']}`\n"
+            textresult += (
+                f"**डिस्क्रिप्शंस : **`{v['descriptionSnippet'][-1]['text']}`\n"
+            )
         except Exception:
             textresult += "**डिस्क्रिप्शंस : **`None`\n"
         textresult += f"**ड्यूरेशन : **__{v['duration']}__  **Views : **__{v['viewCount']['short']}__\n"
@@ -258,7 +260,11 @@ def download_button(vid: str, body: bool = False):  # sourcery no-metrics
             )
     buttons += sublists(video_btns, width=2)
     buttons += [
-        [Button.inline("⭐️ बेस्ट - 320केबीपीएस - एमपी3", data=f"ytdl_download_{vid}_mp3_a")]
+        [
+            Button.inline(
+                "⭐️ बेस्ट - 320केबीपीएस - एमपी3", data=f"ytdl_download_{vid}_mp3_a"
+            )
+        ]
     ]
     buttons += sublists(
         [
