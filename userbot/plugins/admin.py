@@ -31,12 +31,12 @@ from ..sql_helper.mute_sql import is_muted, mute, unmute
 from . import BOTLOG, BOTLOG_CHATID, main_pic
 
 # =================== STRINGS ============
-PP_TOO_SMOL = "`The image is too small`"
-PP_ERROR = "`Failure while processing the image`"
-NO_ADMIN = "`I am not an admin nub nibba!`"
-NO_PERM = "`I don't have sufficient permissions! This is so sed. Alexa play despacito`"
-CHAT_PP_CHANGED = "`Chat Picture Changed`"
-INVALID_MEDIA = "`Invalid Extension`"
+PP_TOO_SMOL = "`ये तस्वीर बोहोत छोटी है।`"
+PP_ERROR = "`प्रोसेसिंग के वक्त फेल हो गया।`"
+NO_ADMIN = "`अबे नुबड़े में एडमिन नही हु`"
+NO_PERM = "`मेरे पास इतनी क्षमता नहीं है। बोहोत बुरा हुआ`"
+CHAT_PP_CHANGED = "`फोटो चेंज हो गया भाई।`"
+INVALID_MEDIA = "`ये वेलिड नही है।`"
 
 BANNED_RIGHTS = ChatBannedRights(
     until_date=None,
@@ -81,11 +81,11 @@ menu_category = "admin"
     pattern="gpic( -s| -d)$",
     command=("gpic", menu_category),
     info={
-        "header": "For changing group display pic or deleting display pic",
-        "description": "Reply to Image for changing display picture",
+        "header": "ग्रुप का फोटो बदलने के लिए अथवा फोटो लगाने के लिए",
+        "description": "फोटो को रिप्लाई करके इस कमांड को उसे करे।",
         "flags": {
-            "-s": "To set group pic",
-            "-d": "To delete group pic",
+            "-s": "ग्रुप फोटो सेट करने के लिए",
+            "-d": "ग्रुप फोटो डिलीट करने के लिए",
         },
         "usage": [
             "{tr}gpic -s <reply to image>",
@@ -96,7 +96,7 @@ menu_category = "admin"
     require_admin=True,
 )
 async def set_group_photo(event):  # sourcery no-metrics
-    "For changing Group dp"
+    "ग्रुप फोटो चेंज करने के लिए"
     type = (event.pattern_match.group(1)).strip()
     if type == "-s":
         replymsg = await event.get_reply_message()
@@ -118,7 +118,7 @@ async def set_group_photo(event):  # sourcery no-metrics
                 await bot.send_file(
                     event.chat_id,
                     help_pic,
-                    caption=f"⚜ `Group Profile Pic Changed` ⚜\n🔰Chat ~ {gpic.chat.title}",
+                    caption=f"⚜ `ग्रुप फोटो चेंज हो गया` ⚜\n🔰 चैट ~ {gpic.chat.title}",
                 )
             except PhotoCropSizeSmallError:
                 return await eod(event, PP_TOO_SMOL)
@@ -133,7 +133,7 @@ async def set_group_photo(event):  # sourcery no-metrics
         except Exception as e:
             return await eod(event, f"**Error : **`{e}`")
         process = "deleted"
-        await eod(event, "```successfully group profile pic deleted.```")
+        await eod(event, "```ग्रुप फोटो डिलीट कर दिया.```")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -147,9 +147,9 @@ async def set_group_photo(event):  # sourcery no-metrics
     pattern="promote(?:\s|$)([\s\S]*)",
     command=("promote", menu_category),
     info={
-        "header": "To give admin rights for a person",
-        "description": "Provides admin rights to the person in the chat\
-            \nNote : You need proper rights for this",
+        "header": "किसी को एडमिन बनाने के लिए",
+        "description": "किसी यूज़र को एडमिन बनाने के लिए\
+            \nNote : तुम्हारे पास उतनी राइट्स होनी चाहिए",
         "usage": [
             "{tr}promote <userid/username/reply>",
             "{tr}promote <userid/username/reply> <custom title>",
@@ -179,7 +179,7 @@ async def promote(event):
         rank = "ℓєgєи∂"
     if not user:
         return
-    legendevent = await eor(event, "`Promoting...`")
+    legendevent = await eor(event, "`प्रोमोटिंग...`")
     try:
         await event.client(EditAdminRequest(event.chat_id, user.id, new_rights, rank))
     except BadRequestError:
@@ -187,7 +187,7 @@ async def promote(event):
     await bot.send_file(
         event.chat_id,
         "https://te.legra.ph/file/74530a36e7b5e60ced878.jpg",
-        caption=f"**⚜Promoted ~** [{user.first_name}](tg://user?id={user.id})⚜\n**Successfully In** ~ `{event.chat.title}`!! \n**Admin Tag ~**  `{rank}`",
+        caption=f"**⚜प्रोमोटेड ~** [{user.first_name}](tg://user?id={user.id})⚜\n**सफलतापूर्वक ** ~ `{event.chat.title}`!! \n**एडमिन का टैग ~**  `{rank}`",
     )
     await event.delete()
     if BOTLOG:
@@ -203,9 +203,9 @@ async def promote(event):
     pattern="demote(?:\s|$)([\s\S]*)",
     command=("demote", menu_category),
     info={
-        "header": "To remove a person from admin list",
-        "description": "Removes all admin rights for that peron in that chat\
-            \nNote : You need proper rights for this and also u must be owner or admin who promoted that guy",
+        "header": "किसी को एडमिन से हटाने के लिए",
+        "description": "किसी यूज़र को एडमिन से हटाने के लिए\
+            \nNote : आपको इसके लिए उचित अधिकारों की आवश्यकता है और आपको उस व्यक्ति का प्रचार करने वाले स्वामी या व्यवस्थापक भी होने चाहिए।आपको इसके लिए उचित अधिकारों की आवश्यकता है और आपको उस व्यक्ति का प्रचार करने वाले स्वामी या व्यवस्थापक भी होने चाहिए",
         "usage": [
             "{tr}demote <userid/username/reply>",
             "{tr}demote <userid/username/reply> <custom title>",
@@ -225,7 +225,7 @@ async def demote(event):
     user, _ = await get_user_from_event(event)
     if not user:
         return
-    legendevent = await eor(event, "`Demoting...`")
+    legendevent = await eor(event, "`डेमोटिंग ...`")
     newrights = ChatAdminRights(
         add_admins=None,
         invite_users=None,
@@ -242,7 +242,7 @@ async def demote(event):
     await bot.send_file(
         event.chat_id,
         help_pic,
-        caption=f"Demoted Successfully\nUser:[{user.first_name}](tg://{user.id})\n Chat: {event.chat.title}",
+        caption=f"डेमोटेड \nUser:[{user.first_name}](tg://{user.id})\n चैट: {event.chat.title}",
     )
     if BOTLOG:
         await event.client.send_message(
@@ -257,9 +257,9 @@ async def demote(event):
     pattern="ban(?:\s|$)([\s\S]*)",
     command=("ban", menu_category),
     info={
-        "header": "Will ban the guy in the group where you used this command.",
-        "description": "Permanently will remove him from this group and he can't join back\
-            \nNote : You need proper rights for this.",
+        "header": "यूज़र को बेन करने के लिए",
+        "description": "उस यूज़र को परमानेंट बन करने के लिए\
+            \nनोट : तुम्हारे पास इतनी राइट्स होनी चाहिए.",
         "usage": [
             "{tr}ban <userid/username/reply>",
             "{tr}ban <userid/username/reply> <reason>",
@@ -269,13 +269,13 @@ async def demote(event):
     require_admin=True,
 )
 async def _ban_person(event):
-    "To ban a person in group"
+    "किसी को बन करने के लिए"
     user, reason = await get_user_from_event(event)
     if not user:
         return
     if user.id == event.client.uid:
-        return await eod(event, "__You cant ban yourself.__")
-    legendevent = await eor(event, "`Whacking the pest!`")
+        return await eod(event, "__खुद को बेन नही कर सकते!!.__")
+    legendevent = await eor(event, "`बेन हो रहा है..!`")
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
@@ -286,35 +286,35 @@ async def _ban_person(event):
             await reply.delete()
     except BadRequestError:
         return await legendevent.edit(
-            "`I dont have message nuking rights! But still he is banned!`"
+            "`मेरे पास मैसेज डिलीट करने की राइट्स नही है! लेकिन फिर भी बेन हो गया!`"
         )
     if reason:
         await bot.send_file(
             event.chat_id,
             help_pic,
-            caption=f"{_format.mentionuser(user.first_name ,user.id)}` is banned !!`\n**Reason : **`{reason}`",
+            caption=f"{_format.mentionuser(user.first_name ,user.id)}` बेन हो गया !!`\n**कारण : **`{reason}`",
         )
     else:
         await bot.send_file(
             event.chat_id,
             help_pic,
-            caption=f"{_format.mentionuser(user.first_name ,user.id)} `is banned !!`",
+            caption=f"{_format.mentionuser(user.first_name ,user.id)} `बेन हो गया !!`",
         )
     if BOTLOG:
         if reason:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"#BAN\
-                \nUSER: [{user.first_name}](tg://user?id={user.id})\
-                \nCHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)\
-                \nREASON : {reason}",
+                \nयूज़र: [{user.first_name}](tg://user?id={user.id})\
+                \nचैट: {get_display_name(await event.get_chat())}(`{event.chat_id}`)\
+                \nकारण : {reason}",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"#BAN\
-                \nUSER: [{user.first_name}](tg://user?id={user.id})\
-                \nCHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
+                \nयूज़र: [{user.first_name}](tg://user?id={user.id})\
+                \nचैट: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
             )
 
 
@@ -670,8 +670,8 @@ async def pin(event):
     pattern="undlt( -u)?(?: |$)(\d*)?",
     command=("undlt", menu_category),
     info={
-        "header": "To get recent deleted messages in group",
-        "description": "To check recent deleted messages in group, by default will show 5. you can get 1 to 15 messages.",
+        "header": "हालही में डिलीट मैसेज को देखने के लिए",
+        "description": "हाल ही में डिलीट किए गए मैसेज को देखने के लिए, डिफॉल्ट रूप से सिर्फ 5 मैसेज शो होंगे. आप 1 से 15 के बीच में मैसेज देख सकते हो.",
         "flags": {
             "u": "use this type to upload media to chat else will just show as media."
         },
@@ -681,15 +681,15 @@ async def pin(event):
         ],
         "examples": [
             "{tr}undlt 7",
-            "{tr}undlt -u 7 (this will reply all 7 messages to this message",
+            "{tr}undlt -u 7 (इससे आपको 7 मैसेज मिलेंगे इसको रिप्लाई करते हुए",
         ],
     },
     groups_only=True,
     require_admin=True,
 )
 async def _iundlt(event):  # sourcery no-metrics
-    "To check recent deleted messages in group"
-    legendevent = await eor(event, "`Searching recent actions .....`")
+    "ग्रुप के डिलीट मैसेज देखने के लिए"
+    legendevent = await eor(event, "`सर्च जारी है .....`")
     type = event.pattern_match.group(1)
     if event.pattern_match.group(2) != "":
         lim = int(event.pattern_match.group(2))
@@ -702,7 +702,7 @@ async def _iundlt(event):  # sourcery no-metrics
     adminlog = await event.client.get_admin_log(
         event.chat_id, limit=lim, edit=False, delete=True
     )
-    deleted_msg = f"⚜ **Recent {lim} Deleted message(s) in this group are:~** ⚜"
+    deleted_msg = f"⚜ **समूह में {lim} हाल ही में डिलीट किए गए है:~** ⚜"
     if not type:
         for msg in adminlog:
             sweet = (
@@ -710,9 +710,9 @@ async def _iundlt(event):  # sourcery no-metrics
             ).user
             _media_type = media_type(msg.old)
             if _media_type is None:
-                deleted_msg += f"\n☞ __{msg.old.message}__ **Sent by** {_format.mentionuser(sweet.first_name ,sweet.id)}"
+                deleted_msg += f"\n☞ __{msg.old.message}__ **इसने भेजा** {_format.mentionuser(sweet.first_name ,sweet.id)}"
             else:
-                deleted_msg += f"\n☞ __{_media_type}__ **Sent by** {_format.mentionuser(sweet.first_name ,sweet.id)}"
+                deleted_msg += f"\n☞ __{_media_type}__ **इसने भेजा** {_format.mentionuser(sweet.first_name ,sweet.id)}"
             await eor(legendevent, deleted_msg)
     else:
         main_msg = await eor(legendevent, deleted_msg)
@@ -723,10 +723,10 @@ async def _iundlt(event):  # sourcery no-metrics
             _media_type = media_type(msg.old)
             if _media_type is None:
                 await main_msg.reply(
-                    f"{msg.old.message}\n**Sent by** {_format.mentionuser(sweet.first_name ,sweet.id)}"
+                    f"{msg.old.message}\n**इसने भेजा** {_format.mentionuser(sweet.first_name ,sweet.id)}"
                 )
             else:
                 await main_msg.reply(
-                    f"{msg.old.message}\n**Sent by** {_format.mentionuser(sweet.first_name ,sweet.id)}",
+                    f"{msg.old.message}\n**इसने भेजा** {_format.mentionuser(sweet.first_name ,sweet.id)}",
                     file=msg.old.media,
                 )
