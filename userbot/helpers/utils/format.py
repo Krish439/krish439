@@ -33,7 +33,6 @@ def htmlmentionuser(name, userid):
     return f"<a href='tg://user?id={userid}'>{name}</a>"
 
 
-
 def reformattext(text):
     return text.replace("~", "").replace("_", "").replace("*", "").replace("`", "")
 
