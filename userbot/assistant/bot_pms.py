@@ -251,7 +251,7 @@ async def bot_pms(event):  # sourcery no-metrics
                 if BOTLOG:
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        f**एरर**\nजब मैं आपकी मैसेज डाटाब्से में स्टोर कर रहा हु तो\n`{str(e)}`",
+                        f"**एरर**\nजब मैं आपकी मैसेज डाटाब्से में स्टोर कर रहा हु तो\n`{str(e)}`",
                     )
                      
 
