@@ -12,7 +12,7 @@ from .sql_helper.globals import addgvar, delgvar, gvarstatus
 __version__ = "१.०"
 __license__ = "जीएनयू अफेरो जनरल पब्लिक ३.०"
 __author__ = "लीजेंड बोट <https://github.com/ITS-LEGENDBOT/LEGENDBOT>"
-__copyright__ = f"लीजेंड बोट कॉपीराइट (C)२०२१ - २०२२  { __ऑथर__}"
+__copyright__ = f"लीजेंड बोट कॉपीराइट (C)२०२१ - २०२२  { __author__}"
 
 legend.version = __वर्जन__
 legend.tgbot.version = __वर्जन__
