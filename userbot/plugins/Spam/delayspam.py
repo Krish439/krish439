@@ -17,7 +17,7 @@ async def gifspam(e, smex):
 import asyncio
 import os
 
-from telethon import events, functions, types
+from telethon import functions, types
 
 from . import *
 
