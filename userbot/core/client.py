@@ -266,17 +266,17 @@ class LegendClient(TelegramClient):
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-                        ftext = f"\nअस्वीकरण:\nयह फ़ाइल केवल यहाँ चिपकाई गई है, केवल यहाँ,\
-                                   \nहमने केवल त्रुटि और तारीख का तथ्य लॉग किया है,\nहम आपकी गोपनीयता का सम्मान करते हैं,\
-                                   \nआप इस त्रुटि की रिपोर्ट नहीं कर सकते हैं यदि आपने\ 
-                                   \nकोई गोपनीय डेटा यहां, कोई भी आपका डेटा नहीं देखेगा\
-                                   \n\n -------- यूजरबोट ट्रैसबैक लॉग शुरू करें --------\
-                                   \nतारीख: {date}\nग्रुप आईडी: {str(check.chat_id)}\
-                                   \nप्रेषक आईडी: {str(check.sender_id)}\ 
-                                   \nसंदेश लिंक: {await check.client.get_msg_link(check)}\ 
-                                   \n\nइवेंट ट्रिगर:\n{str(check.text)}\
-                                   \n\nट्रेसबैक जानकारी:\n{str(traceback.format_exc ())}\
-                                   \n\nत्रुटि पाठ:\n{str(sys.exc_info()[1])}"
+                        ftext = f"\nDisclaimer:\nThis file is pasted only here ONLY here,\
+                                    \nwe logged only fact of error and date,\nwe respect your privacy,\
+                                    \nyou may not report this error if you've\
+                                    \nany confidential data here, no one will see your data\
+                                    \n\n--------BEGIN USERBOT TRACEBACK LOG--------\
+                                    \nDate: {date}\nGroup ID: {str(check.chat_id)}\
+                                    \nSender ID: {str(check.sender_id)}\
+                                    \nMessage Link: {await check.client.get_msg_link(check)}\
+                                    \n\nEvent Trigger:\n{str(check.text)}\
+                                    \n\nTraceback info:\n{str(traceback.format_exc())}\
+                                    \n\nError text:\n{str(sys.exc_info()[1])}"
                         new = {
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
