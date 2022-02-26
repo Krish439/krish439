@@ -154,9 +154,9 @@ class LegendClient(TelegramClient):
                                   \nआप इस त्रुटि की रिपोर्ट नहीं कर सकते हैं यदि आपने\ 
                                   \nकोई गोपनीय डेटा यहां, कोई भी आपका डेटा नहीं देखेगा\ 
                                   \n\n -------- यूजरबोट ट्रैसबैक लॉग शुरू करें --------\ 
-                                  \nतारीख: {तारीख}\nग्रुप आईडी: {str(check.chat_id)}\ 
+                                  \nतारीख: {date}\nग्रुप आईडी: {str(check.chat_id)}\ 
                                   \nप्रेषक आईडी: {str(check.sender_id)}\ 
-                                  \nलिंक: {प्रतीक्षा check.client.get_msg_link(check)}\
+                                  \nलिंक: {await check.client.get_msg_link(check)}\
                                   \n\nइवेंट ट्रिगर:\n{str(check.text)}\
                                   \n\nट्रेसबैक जानकारी:\n{str(traceback.format_exc ())}\ 
                                   \n\nत्रुटि पाठ:\n{str(sys.exc_info()[1])}"
@@ -271,9 +271,9 @@ class LegendClient(TelegramClient):
                                    \nआप इस त्रुटि की रिपोर्ट नहीं कर सकते हैं यदि आपने\ 
                                    \nकोई गोपनीय डेटा यहां, कोई भी आपका डेटा नहीं देखेगा\
                                    \n\n -------- यूजरबोट ट्रैसबैक लॉग शुरू करें --------\
-                                   \nतारीख: {तारीख}\nग्रुप आईडी: {str(check.chat_id)}\
+                                   \nतारीख: {date}\nग्रुप आईडी: {str(check.chat_id)}\
                                    \nप्रेषक आईडी: {str(check.sender_id)}\ 
-                                   \nसंदेश लिंक: {प्रतीक्षा check.client.get_msg_link(check)}\ 
+                                   \nसंदेश लिंक: {await check.client.get_msg_link(check)}\ 
                                    \n\nइवेंट ट्रिगर:\n{str(check.text)}\
                                    \n\nट्रेसबैक जानकारी:\n{str(traceback.format_exc ())}\
                                    \n\nत्रुटि पाठ:\n{str(sys.exc_info()[1])}"
