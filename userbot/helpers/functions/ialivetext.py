@@ -11,7 +11,6 @@ Heroku = heroku3.from_key(Config.API_KEY)
 heroku_api = "https://api.heroku.com"
 
 
-
 def check_data_base_heal_th():
     # https://stackoverflow.com/a/41961968
     is_database_working = False
