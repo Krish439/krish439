@@ -150,17 +150,15 @@ class LegendClient(TelegramClient):
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
                         ftext = f"\nअस्वीकरण:\
-                                  \nआप इस त्रुटि की रिपोर्ट नहीं कर सकते हैं यदि आपने\
-                                  \nकोई गोपनीय डेटा यहां, कोई भी आपका डेटा नहीं देखेगा\
-                                  \n\n -------- यूजरबोट ट्रैसबैक लॉग शुरू करें --------\ 
-                                  \nतारीख: {date}\nग्रुप आईडी: {str(check.chat_id)}\ 
-                                  \nप्रेषक आईडी: {str(check.sender_id)}\ 
-                                  \nलिंक: {await check.client.get_msg_link(check)}\
-                                  \n\nइवेंट ट्रिगर:\n{str(check.text)}\
-                                  \n\nट्रेसबैक जानकारी:\n{str(traceback.format_exc ())}\ 
-                                  \n\nत्रुटि पाठ:\n{str(sys.exc_info()[1])}"
-                                 
-                               
+                                   \nआप इस त्रुटि की रिपोर्ट नहीं कर सकते हैं यदि आपने\
+                                   \nकोई गोपनीय डेटा यहां कोई भी आपका डेटा नहीं देखेगा\
+                                   \n\n -------- यूजरबोट ट्रैसबैक लॉग शुरू करें --------\ 
+                                   \nतारीख: {date}\nग्रुप आईडी: {str(check.chat_id)}\ 
+                                   \nप्रेषक आईडी: {str(check.sender_id)}\ 
+                                   \nलिंक: {await check.client.get_msg_link(check)}\
+                                   \n\nइवेंट ट्रिगर:\n{str(check.text)}\
+                                   \n\nट्रेसबैक जानकारी:\n{str(traceback.format_exc ())}\ 
+                                   \n\nत्रुटि पाठ:\n{str(sys.exc_info()[1])}"                    
                         new = {
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
