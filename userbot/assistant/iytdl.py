@@ -107,19 +107,19 @@ async def ytdl_download_callback(c_q: CallbackQuery):  # sourcery no-metrics
     if str(choice_id).isdigit():
         choice_id = int(choice_id)
         if choice_id == 0:
-            await c_q.answer("🔄  Processing...", alert=False)
+            await c_q.answer("🔄  प्रसंस्करण...", alert=False)
             await c_q.edit(buttons=(await download_button(yt_code)))
             return
     startTime = time()
     choice_str, disp_str = get_choice_by_id(choice_id, downtype)
     media_type = "Video" if downtype == "v" else "Audio"
-    callback_continue = f"Downloading {media_type} Please Wait..."
+    callback_continue = f"डाउनलोड {media_type} रुकिए..."
     callback_continue += f"\n\nFormat Code : {disp_str}"
     await c_q.answer(callback_continue, alert=True)
     upload_msg = await c_q.client.send_message(BOTLOG_CHATID, "Uploading...")
     yt_url = BASE_YT_URL + yt_code
     await c_q.edit(
-        f"<b>⬇️ Downloading {media_type} ....</b>\n\n🔗  <a href={yt_url}> <b>Link</b></a>\n🆔  <b>Format Code</b> : {disp_str}",
+        f"<b>⬇️ डाउनलोड {media_type} ....</b>\n\n🔗  <a href={yt_url}> <b>Link</b></a>\n🆔  <b>Format Code</b> : {disp_str}",
         parse_mode="html",
     )
     if downtype == "v":
@@ -166,7 +166,7 @@ async def ytdl_download_callback(c_q: CallbackQuery):  # sourcery no-metrics
     uploaded_media = await c_q.client.send_file(
         BOTLOG_CHATID,
         file=media,
-        caption=f"<b>File Name : </b><code>{os.path.basename(Path(_fpath))}</code>",
+        caption=f"<b>फ़ाइल का नाम : </b><code>{os.path.basename(Path(_fpath))}</code>",
         parse_mode="html",
     )
     await upload_msg.delete()
@@ -208,7 +208,7 @@ async def ytdl_callback(c_q: CallbackQuery):
     total = len(search_data) if search_data is not None else 0
     if total == 0:
         return await c_q.answer(
-            "Search again your bot lost the information about this.", alert=True
+            "फिर से खोजें आपके बॉट ने इस बारे में जानकारी खो दी है.", alert=True
         )
     if choosen_btn == "back":
         index = int(page) - 1
@@ -259,13 +259,13 @@ async def ytdl_callback(c_q: CallbackQuery):
             buttons=[
                 (
                     Button.url(
-                        "↗️  Click To Open",
+                        "↗️ खोलने के लिए क्लिक करें ",
                         url=telegraph,
                     )
                 ),
                 (
                     Button.inline(
-                        "📰  Detailed View",
+                        "📰  विस्तृत विवरण",
                         data=f"ytdl_detail_{data_key}_{page}",
                     )
                 ),
@@ -273,7 +273,7 @@ async def ytdl_callback(c_q: CallbackQuery):
         )
     else:  # Detailed
         index = 1
-        await c_q.answer("View Changed to:  📰  Detailed", alert=False)
+        await c_q.answer("देखें परिवर्तित: विस्तृत", alert=False)
         first = search_data.get(str(index))
         await c_q.edit(
             text=first.get("message"),
