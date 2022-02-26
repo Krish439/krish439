@@ -149,7 +149,7 @@ class LegendClient(TelegramClient):
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-                        ftext = f"\nअस्वीकरण:\                        jncmkfjj
+                        ftext = f"\nअस्वीकरण:\
                                   \nआप इस त्रुटि की रिपोर्ट नहीं कर सकते हैं यदि आपने\
                                   \nकोई गोपनीय डेटा यहां, कोई भी आपका डेटा नहीं देखेगा\
                                   \n\n -------- यूजरबोट ट्रैसबैक लॉग शुरू करें --------\ 
