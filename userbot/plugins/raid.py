@@ -333,7 +333,7 @@ async def spam(e):
     lol = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
     await e.get_reply_message()
     if e.reply_to_msg_id:
-        addgvar("spamwork")
+        addgvar("spamwork" True)
         a = await e.get_reply_message()
         b = await e.client.get_entity(a.sender_id)
         g = b.id
