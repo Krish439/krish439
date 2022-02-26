@@ -253,7 +253,9 @@ async def verifyLoggerGroup():
         except ValueError:
             LOGS.error("PM_LOGGER_GROUP_ID नहीं मिला। सुनिश्चित करें कि यह सही है।")
         except TypeError:
-            LOGS.error("PM_LOGGER_GROUP_ID समर्थित नहीं है। सुनिश्चित करें कि यह सही है.")
+            LOGS.error(
+                "PM_LOGGER_GROUP_ID समर्थित नहीं है। सुनिश्चित करें कि यह सही है."
+            )
         except Exception as e:
             LOGS.error(
                 "PM_LOGGER_GROUP_ID को सत्यापित करने का प्रयास करने पर एक अपवाद उत्पन्न हुआ.\n"
