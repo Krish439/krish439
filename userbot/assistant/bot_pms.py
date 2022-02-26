@@ -108,23 +108,23 @@ async def bot_start(event):
             start_msg = f"Hey! 👤{mention},\nI am {my_mention}'s assistant bot.\nYou can contact to my master from here.\n\nPowered by [LegendBot](https://t.me/LEGEND_K_USERBOT)"
             buttons = [
                 (
-                    Button.inline("🔰Rules🔰 ", data="rules"),
-                    Button.inline(" Deploy 🚀", data="deploy"),
+                    Button.inline("🔰 रूल्स 🔰 ", data="rules"),
+                    Button.inline(" डिप्लॉय 🚀", data="deploy"),
                 ),
-                (Button.url(" 🔱Support🔱 ", "https://t.me/LEGEND_K_USERBOT"),),
+                (Button.url("🔱 सपोर्ट 🔱", "https://t.me/LEGEND_K_USERBOT"),),
             ]
     else:
-        start_msg = "Hey Master!\nHow can i help you ?"
+        start_msg = "हेलो सर!\nमैं आपका कैसे मदद कर सकता हु?"
         buttons = [
             (
-                Button.url(" Support ", "https://t.me/LEGEND_K_USERBOT"),
-                Button.url(" Updates ", "https://t.me/OFFICIAL_K_LEGENDBOT"),
+                Button.url(" सपोर्ट ", "https://t.me/LEGEND_K_USERBOT"),
+                Button.url(" अपडेट्स ", "https://t.me/OFFICIAL_K_LEGENDBOT"),
             ),
             (
-                Button.inline(" Users ", data="users"),
-                Button.inline(" Settings ", data="osg"),
+                Button.inline(" यूजर्स ", data="users"),
+                Button.inline(" सेटिंग्स ", data="osg"),
             ),
-            (Button.inline(" Hack ", data="hack"),),
+            (Button.inline(" हैक ", data="hack"),),
         ]
     try:
         await event.client.send_message(
@@ -160,7 +160,7 @@ async def help(event):
 async def users(event):
     if event.query.user_id == bot.uid:
         total_users = get_all_users()
-        users_list = "⚜List Of Total Users In Bot.⚜ \n\n"
+        users_list = "⚜ जो भी आपका यूजरबॉट उसे किया है सबका लिस्ट है.⚜ \n\n"
         for starked in total_users:
             users_list += ("==> {} \n").format(int(starked.chat_id))
         with io.BytesIO(str.encode(users_list)) as tedt_file:
@@ -169,12 +169,12 @@ async def users(event):
                 event.chat_id,
                 tedt_file,
                 force_document=True,
-                caption="Total Users In Your Bot.",
+                caption="सबका लिस्ट .",
                 allow_cache=False,
             )
     else:
         await event.answer(
-            "Wait ... Sorry U are Not My Owmer So, U Cant Acesss It",
+            "रुकिए आप मेरे मास्टर नही हो सो मैं आपको इस बटन का क्लिक करने का एक्सेस नही दे सकता हु",
             cache_time=0,
             alert=True,
         )
@@ -185,13 +185,13 @@ async def help(event):
     if event.query.user_id == bot.uid:
         await tgbot.send_message(
             event.chat_id,
-            message="You Can Deploy LegendBot In Heroku By Following Steps Bellow, You Can See Some Quick Guides On Support Channel Or On Your Own Assistant Bot. \nThank You For Contacting Me.",
+            message="सुन fix",
             link_preview=False,
             buttons=[
-                (Button.inline("Tutorial", data="LOGED"),),
+                (Button.inline(" ट्यूटोरियल ", data="LOGED"),),
                 (
                     Button.url(
-                        "Github Repo ❓", "https://github.com/LEGEND-AI/LEGENDBOT"
+                        "गीतहब ❓", "https://github.com/LEGEND-AI/LEGENDBOT"
                     ),
                 ),
             ],
@@ -212,7 +212,7 @@ async def bot_pms(event):  # sourcery no-metrics
             if BOTLOG:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    f"**Error**\nWhile storing messages details in database\n`{str(e)}`",
+                    f"**एरर**\nजब मैं आपकी मैसेज डाटाब्से में स्टोर कर रहा हु तो\n`{str(e)}`",
                 )
     else:
         if event.text.startswith("/"):
@@ -239,9 +239,9 @@ async def bot_pms(event):  # sourcery no-metrics
                         user_id, event.text, reply_to=reply_msg, link_preview=False
                     )
             except UserIsBlockedError:
-                return await event.reply("𝗧𝗵𝗶𝘀 𝗯𝗼𝘁 𝘄𝗮𝘀 𝗯𝗹𝗼𝗰𝗸𝗲𝗱 𝗯𝘆 𝘁𝗵𝗲 𝘂𝘀𝗲𝗿. ❌")
+                return await event.reply("यह बोट यूजर ने ब्लॉक किया है| ❌")
             except Exception as e:
-                return await event.reply(f"**Error:**\n`{e}`")
+                return await event.reply(f"**इरर:**\n`{e}`")
             try:
                 add_user_to_db(
                     reply_to, user_name, user_id, reply_msg, event.id, msg.id
@@ -251,8 +251,9 @@ async def bot_pms(event):  # sourcery no-metrics
                 if BOTLOG:
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        f"**Error**\nWhile storing messages details in database\n`{e}`",
+                        f**एरर**\nजब मैं आपकी मैसेज डाटाब्से में स्टोर कर रहा हु तो\n`{str(e)}`",
                     )
+                     
 
 
 @legend.bot_cmd(edited=True)
@@ -275,7 +276,7 @@ async def bot_pms_edit(event):  # sourcery no-metrics
         ):
             await event.client.send_message(
                 Config.OWNER_ID,
-                f"⬆️ **This message was edited by the user** {_format.mentionuser(get_display_name(chat) , chat.id)} as :",
+                f"⬆️ **ये वाला मैसेज यूजर ने एडिट किया हैं।** {_format.mentionuser(get_display_name(chat) , chat.id)} as :",
                 reply_to=reply_msg,
             )
             msg = await event.forward_to(Config.OWNER_ID)
@@ -286,7 +287,7 @@ async def bot_pms_edit(event):  # sourcery no-metrics
                 if BOTLOG:
                     await event.client.send_message(
                         BOTLOG_CHATID,
-                        f"**Error**\nWhile storing messages details in database\n`{e}`",
+                        f**एरर**\nजब मैं आपकी मैसेज डाटाब्से में स्टोर कर रहा हु तो\n`{str(e)}`",
                     )
 
     else:
@@ -348,7 +349,7 @@ async def handler(event):
                         return
                     await event.client.send_message(
                         Config.OWNER_ID,
-                        f"⬆️ **This message was deleted by the user** {_format.mentionuser(user_name , user_id)}.",
+                        f"⬆️ **ये मैसेज यूजर ने डिलीट किया है** {_format.mentionuser(user_name , user_id)}.",
                         reply_to=reply_msg,
                     )
             except Exception as e:
@@ -362,13 +363,13 @@ async def bot_start(event):
         return await event.reply("Reply to a message to get message info")
     info_msg = await event.client.send_message(
         event.chat_id,
-        "`🔎 Searching for this user in my database ...`",
+        "`🔎 सर्च कर रहा हु टेलीग्राम डाटाब्स में ...`",
         reply_to=reply_to,
     )
     users = get_user_id(reply_to)
     if users is None:
         return await info_msg.edit(
-            "**ERROR:** \n`Sorry !, Can't Find this user in my database :(`"
+            "**एरर:** \n`सॉरी मैं उससे भी ढूंढ पाया पूरे डाटाब्से में से !, :(`"
         )
     for usr in users:
         user_id = int(usr.chat_id)
@@ -376,11 +377,11 @@ async def bot_start(event):
         break
     if user_id is None:
         return await info_msg.edit(
-            "**ERROR:** \n`Sorry !, Can't Find this user in my database :(`"
+            "**एरर:** \n`सॉरी मैं उससे भी ढूंढ पाया पूरे डाटाब्से में से !, :(`"
         )
-    uinfo = f"This message was sent by 👤 {_format.mentionuser(user_name , user_id)}\
-            \n**First Name:** {user_name}\
-            \n**User ID:** `{user_id}`"
+    uinfo = f"यह मैसेज भेजा है - 👤 {_format.mentionuser(user_name , user_id)}\
+            \n**पहला नाम:** {user_name}\
+            \n**यूजर आईडी:** `{user_id}`"
     await info_msg.edit(uinfo)
 
 
@@ -388,9 +389,9 @@ async def send_flood_alert(user_) -> None:
     # sourcery no-metrics
     buttons = [
         (
-            Button.inline("🚫  BAN", data=f"bot_pm_ban_{user_.id}"),
+            Button.inline("🚫 बैन", data=f"bot_pm_ban_{user_.id}"),
             Button.inline(
-                "Bot Antiflood [OFF]",
+                "बोट एंटीफ्लूड [ऑफ]",
                 data="toggle_bot-antiflood_off",
             ),
         )
@@ -407,7 +408,7 @@ async def send_flood_alert(user_) -> None:
             if BOTLOG:
                 await legend.tgbot.send_message(
                     BOTLOG_CHATID,
-                    f"**Error:**\nWhile updating flood count\n`{e}`",
+                    f"**एरोर:**\nजब मैं आपका एंटीफ्लुड अपडेट कर रहा हु तो\n`{e}`",
                 )
 
         flood_count = FloodConfig.ALERT[user_.id]["count"]
@@ -415,28 +416,28 @@ async def send_flood_alert(user_) -> None:
         flood_count = FloodConfig.ALERT[user_.id]["count"] = 1
 
     flood_msg = (
-        r"⚠️ **#Flood_Warning**"
+        r"⚠️ **#फ्लूड वार्निंग**"
         "\n\n"
-        f"  ID: `{user_.id}`\n"
-        f"  Name: {get_display_name(user_)}\n"
-        f"  👤 User: {_format.mentionuser(get_display_name(user_), user_.id)}"
-        f"\n\n**Is spamming your bot !** ->  [ Flood rate ({flood_count}) ]\n"
-        "__Quick Action__: Ignored from bot for a while."
+        f"  आईडी: `{user_.id}`\n"
+        f"  नाम: {get_display_name(user_)}\n"
+        f"  👤 यूजर: {_format.mentionuser(get_display_name(user_), user_.id)}"
+        f"\n\n**स्पैम कर रहा है। !** ->  [ Flood rate ({flood_count}) ]\n"
+        "__क्विक एक्शन__: बोट से कनैक्शन टूट गया है।."
     )
 
     if found:
         if flood_count >= FloodConfig.AUTOBAN:
             if user_.id in Config.SUDO_USERS:
                 sudo_spam = (
-                    f"**Sudo User** {_format.mentionuser(user_.first_name , user_.id)}:\n  ID: {user_.id}\n\n"
-                    "Is Flooding your bot !, Check `.help delsudo` to remove the user from Sudo."
+                    f"**सूडो यूजर** {_format.mentionuser(user_.first_name , user_.id)}:\n  ID: {user_.id}\n\n"
+                    "फ्लूडिंग कर रहा है। !, Check `.help delsudo` to remove the user from Sudo."
                 )
                 if BOTLOG:
                     await legend.tgbot.send_message(BOTLOG_CHATID, sudo_spam)
             else:
                 await ban_user_from_bot(
                     user_,
-                    f"Automated Ban for Flooding bot [exceeded flood rate of ({FloodConfig.AUTOBAN})]",
+                    f"ऑटोमैटिक ब्लॉक्ड [exceeded flood rate of ({FloodConfig.AUTOBAN})]",
                 )
                 FloodConfig.USERS[user_.id].clear()
                 FloodConfig.ALERT[user_.id].clear()
@@ -463,11 +464,11 @@ async def send_flood_alert(user_) -> None:
             chat = await legend.tgbot.get_entity(BOTLOG_CHATID)
             await legend.tgbot.send_message(
                 Config.OWNER_ID,
-                f"⚠️  **[Bot Flood Warning !](https://t.me/c/{chat.id}/{fa_msg.id})**",
+                f"⚠️  **[बोट फ्लड वार्निंग !](https://t.me/c/{chat.id}/{fa_msg.id})**",
             )
         except UserIsBlockedError:
             if BOTLOG:
-                await legend.tgbot.send_message(BOTLOG_CHATID, "**Unblock your bot !**")
+                await legend.tgbot.send_message(BOTLOG_CHATID, "**अनब्लॉक् करो आपका बोट !**")
     if FloodConfig.ALERT[user_.id].get("fa_id") is None and fa_msg:
         FloodConfig.ALERT[user_.id]["fa_id"] = fa_msg.id
 
@@ -479,11 +480,11 @@ async def bot_pm_ban_cb(c_q: CallbackQuery):
     try:
         user = await legend.get_entity(user_id)
     except Exception as e:
-        await c_q.answer(f"Error:\n{e}")
+        await c_q.answer(f"एरर:\n{e}")
     else:
-        await c_q.answer(f"Banning UserID -> {user_id} ...", alert=False)
+        await c_q.answer(f"बैनिंग यूजर -> {user_id} ...", alert=False)
         await ban_user_from_bot(user, "Spamming Bot")
-        await c_q.edit(f"✅ **Successfully Banned**  User ID: {user_id}")
+        await c_q.edit(f"✅ **बैन हो गया**  यूजर आईडी: {user_id}")
 
 
 def time_now() -> Union[float, int]:
@@ -518,10 +519,10 @@ def is_flood(uid: int) -> Optional[bool]:
 @check_owner
 async def settings_toggle(c_q: CallbackQuery):
     if gvarstatus("bot_antif") is None:
-        return await c_q.answer("Bot Antiflood was already disabled.", alert=False)
+        return await c_q.answer("बोट एंटीफ्लूड पहले से बंद है।.", alert=False)
     delgvar("bot_antif")
-    await c_q.answer("Bot Antiflood disabled.", alert=False)
-    await c_q.edit("BOT_ANTIFLOOD is now disabled !")
+    await c_q.answer("बोट एंटीफ्लूड ऑफ हो गया ।.", alert=False)
+    await c_q.edit("बोट एंटीफ्लूड ऑफ हो गया !")
 
 
 @legend.bot_cmd(incoming=True, func=lambda e: e.is_private)
