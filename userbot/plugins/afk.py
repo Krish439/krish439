@@ -118,7 +118,9 @@ async def on_afk(event):  # sourcery no-metrics
                     f"`में AFK हु .\n\nइतने टाइम से {endtime}\nReason : {AFK_.reason}`"
                 )
             else:
-                message_to_reply = f"`में AFK हु.\n\nइतने टाइम से {endtime}\nकारण : नही पता ( ಠ ʖ̯ ಠ)`"
+                message_to_reply = (
+                    f"`में AFK हु.\n\nइतने टाइम से {endtime}\nकारण : नही पता ( ಠ ʖ̯ ಠ)`"
+                )
             if event.chat_id:
                 msg = await event.reply(message_to_reply, file=AFK_.media_afk.media)
         elif AFK_.afk_type == "text":
@@ -245,12 +247,11 @@ async def _(event):
     reply = await event.get_reply_message()
     media_t = media_type(reply)
     if media_t == "Sticker" or not media_t:
-        return await eor(
-            event, "`तुमने मीडिया को रिप्लाई नही किया। Afk ऑन नही हुआ`"
-        )
+        return await eor(event, "`तुमने मीडिया को रिप्लाई नही किया। Afk ऑन नही हुआ`")
     if not BOTLOG:
         return await eor(
-            event, "`मीडिया afk उसे करने के लिए ये PRIVATE_GROUP_BOT_API_ID Config सेट करो`"
+            event,
+            "`मीडिया afk उसे करने के लिए ये PRIVATE_GROUP_BOT_API_ID Config सेट करो`",
         )
     AFK_.USERAFK_ON = {}
     AFK_.afk_time = None
