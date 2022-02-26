@@ -55,22 +55,22 @@ def ibuild_keyboard(buttons):
 async def on_plug_in_callback_query_handler(event):
     buttons = [
         (
-            Button.inline(f"Admin ({len(GRP_INFO['admin'])})", data="admin_menu"),
-            Button.inline(f"Bot ({len(GRP_INFO['bot'])})", data="bot_menu"),
+            Button.inline(f"व्यवस्थापक ({len(GRP_INFO['admin'])})", data="admin_menu"),
+            Button.inline(f"बोट ({len(GRP_INFO['bot'])})", data="bot_menu"),
         ),
         (
-            Button.inline(f"Fun ({len(GRP_INFO['fun'])})", data="fun_menu"),
-            Button.inline(f"Misc ({len(GRP_INFO['misc'])})", data="misc_menu"),
+            Button.inline(f"फन ({len(GRP_INFO['fun'])})", data="fun_menu"),
+            Button.inline(f"मिसक ({len(GRP_INFO['misc'])})", data="misc_menu"),
         ),
         (
-            Button.inline(f"Tools ({len(GRP_INFO['tools'])})", data="tools_menu"),
-            Button.inline(f"Utils ({len(GRP_INFO['utils'])})", data="utils_menu"),
+            Button.inline(f"टूल्स ({len(GRP_INFO['tools'])})", data="tools_menu"),
+            Button.inline(f"यूटिल ({len(GRP_INFO['utils'])})", data="utils_menu"),
         ),
         (
-            Button.inline(f"Extra ({len(GRP_INFO['extra'])})", data="extra_menu"),
-            Button.inline(f"Useless ({len(GRP_INFO['useless'])})", data="useless_menu"),
+            Button.inline(f"एक्स्ट्रा ({len(GRP_INFO['extra'])})", data="extra_menu"),
+            Button.inline(f"यूजलेस ({len(GRP_INFO['useless'])})", data="useless_menu"),
         ),
-        (Button.inline(f"👨‍💻 Main Menu", data="mainmenu"),),
+        (Button.inline(f"👨‍💻 मुख्य मेनू", data="mainmenu"),),
     ]
     await event.edit(
         f"💝『{mention}』💝",
@@ -83,14 +83,14 @@ def main_menu():
     tol = gvarstatus("BOT_USERNAME")
     text = f"⚜ {mention}  ⚜"
     buttons = [
-        [custom.Button.inline("👨‍💻 Info 👨‍💻", data="check")],
+        [custom.Button.inline("👨‍💻 जानकारी 👨‍💻", data="check")],
         [
-            custom.Button.inline("🔰 Plugins 🔰", data="help_k_minu"),
-            Button.url("✨ Assistant ✨", f"https://t.me/{tol}"),
+            custom.Button.inline("🔰 प्लगिनस 🔰", data="help_k_minu"),
+            Button.url("✨ असिस्टेंट ✨", f"https://t.me/{tol}"),
         ],
         [
-            custom.Button.inline("⚜ Alive ⚜", data="stats"),
-            Button.url("Support 🇮🇳", "https://t.me/Official_K_LegendBot"),
+            custom.Button.inline("⚜ एलिव ⚜", data="stats"),
+            Button.url("सपोर्ट 🇮🇳", "https://t.me/Official_K_LegendBot"),
         ],
         [custom.Button.inline("❌", data="clise")],
     ]
@@ -287,13 +287,13 @@ async def inline_handler(event):  # sourcery no-metrics
         elif query == "repo":
             result = builder.article(
                 title="Repository",
-                text=f"**⚜ Legendary Af LegendBot ⚜**",
+                text=f"**⚜ लेजेंडरी ऑफ लीजेंडबोट ⚜**",
                 buttons=[
-                    [Button.url("♥️ Tutorial ♥", "https://youtu.be/9dQgdUJfk_k")],
-                    [Button.url("📍 𝚁𝚎𝚙𝚘 📍", "https://github.com/PROBOY-OP/LegendBot")],
+                    [Button.url("♥️ ट्यूटोरियल ♥", "https://youtu.be/9dQgdUJfk_k")],
+                    [Button.url("📍 रेपो 📍", "https://github.com/PROBOY-OP/LegendBot")],
                     [
                         Button.url(
-                            "💞 Deploy 💞",
+                            "💞 डिप्लॉय 💞",
                             "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FPROBOY-OP%2FPRO-LEGENDBOT&template=https%3A%2F%2Fgithub.com%2FPROBOY-OP%2FPRO-LEGENDBOT",
                         )
                     ],
@@ -557,8 +557,8 @@ async def inline_handler(event):  # sourcery no-metrics
                 )
         elif string == "age_verification_alert":
             buttons = [
-                Button.inline(text="Yes I'm 18+", data="age_verification_true"),
-                Button.inline(text="No I'm Not", data="age_verification_false"),
+                Button.inline(text="हाँ मैं 18+ . का हूँ", data="age_verification_true"),
+                Button.inline(text="नहीं, मैं नहीं हूँ", data="age_verification_false"),
             ]
             markup = event.client.build_reply_markup(buttons)
             photo = types.InputWebDocument(
@@ -568,7 +568,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 attributes=[],
             )
             text, msg_entities = await event.client._parse_message_text(
-                "<b>ARE YOU OLD ENOUGH FOR THIS ?</b>", "html"
+                "<b>क्या आप इसके लिए काफी उम्रदराज हैं? ?</b>", "html"
             )
             result = types.InputBotInlineResult(
                 id=str(uuid4()),
@@ -583,7 +583,7 @@ async def inline_handler(event):  # sourcery no-metrics
             await event.answer([result] if result else None)
         elif string == "pmpermit":
             buttons = [
-                Button.inline(text="👨‍💻 Open PM Menu 💝", data="show_pmpermit_options"),
+                Button.inline(text="👨‍💻 पीएम मेनू खोलें 💝", data="show_pmpermit_options"),
             ]
             PM_PIC = (
                 gvarstatus("PM_PIC")
@@ -620,9 +620,9 @@ async def inline_handler(event):  # sourcery no-metrics
         elif string == " ":
             buttons = [
                 (
-                    Button.url("Source code", "https://github.com/LEGEND-AI/LEGENDBOT"),
+                    Button.url("सोर्स कोड", "https://github.com/LEGEND-AI/LEGENDBOT"),
                     Button.url(
-                        "Deploy",
+                        "डिप्लॉय",
                         "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FLEGEND-AI%2FLEGENDBOT&template=https%3A%2F%2Fgithub.com%2FLEGEND-AI%2FLEGENDBOT",
                     ),
                 )
@@ -633,13 +633,13 @@ async def inline_handler(event):  # sourcery no-metrics
                 url=ALV_PIC, size=0, mime_type="image/jpeg", attributes=[]
             )
             text, msg_entities = await event.client._parse_message_text(
-                f"⚜ **Lêɠêɳ̃dẞø†** ⚜\n------------\n🔰 Owner ~ {mention}\n\n👨‍💻 Support ~ {Legend_grp}",
+                f"⚜ **लेजेंडबोट** ⚜\n------------\n🔰 मालिक ~ {mention}\n\n👨‍💻 सपोर्ट ~ {Legend_grp}",
                 "md",
             )
             result = types.InputBotInlineResult(
                 id=str(uuid4()),
                 type="photo",
-                title=f"Lêɠêɳ̃dẞø†",
+                title=f"लेजेंडबोट",
                 description=f"Lêɠêɳ̃dẞø†\nhttps://t.me/Legend_K_Userbot",
                 url="https://github.com/LEGEND-AI/LEGENDBOT",
                 thumb=photo,
@@ -657,10 +657,10 @@ async def inline_handler(event):  # sourcery no-metrics
 @check_owner
 async def on_plug_in_callback_query_handler(event):
     buttons = [
-        (Button.inline("Re-Open Menu", data="mainmenu"),),
+        (Button.inline("मेनू फिर से खोलें", data="mainmenu"),),
     ]
     await event.edit(
-        f"📜 Menu Provider Has Been Closed\n\n🔰 Bot Of : {mention}\n\n             [©️Lêɠêɳ̃dẞø†](https://t.me/Legend_K_Userbot)",
+        f"📜मेनू प्रदाता बंद कर दिया गया है \n\n🔰 बोट ऑफ : {mention}\n\n             [©️ लीजेंडबोट](https://t.me/Legend_K_Userbot)",
         buttons=buttons,
         link_preview=False,
     )
@@ -668,10 +668,10 @@ async def on_plug_in_callback_query_handler(event):
 
 @legend.tgbot.on(CallbackQuery(data=re.compile(b"check")))
 async def on_plugin_callback_query_handler(event):
-    text = f"𝙿𝚕𝚞𝚐𝚒𝚗𝚜: {len(PLG_INFO)}\
-        \n𝙲𝚘𝚖𝚖𝚊𝚗𝚍𝚜: {len(CMD_INFO)}\
-        \n\n{tr}𝚑𝚎𝚕𝚙 <𝚙𝚕𝚞𝚐𝚒𝚗> : 𝙵𝚘𝚛 𝚜𝚙𝚎𝚌𝚒𝚏𝚒𝚌 𝚙𝚕𝚞𝚐𝚒𝚗 𝚒𝚗𝚏𝚘.\
-        \n{tr}𝚑𝚎𝚕𝚙 -𝚌 <𝚌𝚘𝚖𝚖𝚊𝚗𝚍> : 𝙵𝚘𝚛 𝚊𝚗𝚢 𝚌𝚘𝚖𝚖𝚊𝚗𝚍 𝚒𝚗𝚏𝚘.\
+    text = f"प्लगिंस: {len(PLG_INFO)}\
+        \nकमांड: {len(CMD_INFO)}\
+        \n\n{tr}help <plugin> : विशिष्ट प्लगइन के लिए.\
+        \n{tr}help -c <command> : किसी भी आदेश की जानकारी के लिए.\
         "
     await event.answer(text, cache_time=0, alert=True)
 
@@ -681,9 +681,9 @@ async def on_plugin_callback_query_handler(event):
 async def on_plug_in_callback_query_handler(event):
     category = str(event.pattern_match.group(1).decode("UTF-8"))
     buttons = paginate_help(0, GRP_INFO[category], category)
-    text = f"**📜Category: **{category}\
-        \n**🔰Total plugins :** {len(GRP_INFO[category])}\
-        \n**🕹Total Commands:** {command_in_category(category)}"
+    text = f"**📜श्रेणी: **{category}\
+        \n**🔰कुल प्लगइन्स :** {len(GRP_INFO[category])}\
+        \n**🕹कुल आदेश :** {command_in_category(category)}"
     await event.edit(text, buttons=buttons)
 
 
@@ -699,9 +699,9 @@ async def on_plug_in_callback_query_handler(event):
     pgno = int(event.pattern_match.group(3).decode("UTF-8"))
     if mtype == "plugin":
         buttons = paginate_help(pgno, GRP_INFO[category], category)
-        text = f"**📜Category: **`{category}`\
-            \n**🔰Total plugins :** __{len(GRP_INFO[category])}__\
-            \n**🕹Total Commands:** __{command_in_category(category)}__"
+        text = f"**📜श्रेणी :**`{category}`\
+            \n**🔰कुल प्लगइन्स :** __{len(GRP_INFO[category])}__\
+            \n**🕹कुल आदेश :** __{command_in_category(category)}__"
     else:
         category_plugins = str(event.pattern_match.group(4).decode("UTF-8"))
         category_pgno = int(event.pattern_match.group(5).decode("UTF-8"))
@@ -713,9 +713,9 @@ async def on_plug_in_callback_query_handler(event):
             category_plugins=category_plugins,
             category_pgno=category_pgno,
         )
-        text = f"**🔰Plugin: **`{category}`\
-                \n**📜Category: **__{getkey(category)}__\
-                \n**🕹Total Commands:** __{len(PLG_INFO[category])}__"
+        text = f"**🔰प्लगइन्स: **`{category}`\
+                \n**📜श्रेणी: **__{getkey(category)}__\
+                \n**🕹कुल आदेश:** __{len(PLG_INFO[category])}__"
     await event.edit(text, buttons=buttons)
 
 
@@ -747,9 +747,9 @@ async def on_plug_in_callback_query_handler(event):
             category_plugins=category_plugins,
             category_pgno=category_pgno,
         )
-        text = f"**🔰Plugin: **`{category}`\
-                \n**📜Category: **__{getkey(category)}__\
-                \n**🕹Total Commands:** __{len(PLG_INFO[category])}__"
+        text = f"**🔰प्लगइन्स: **`{category}`\
+                \n**📜श्रेणी: **__{getkey(category)}__\
+                \n**🕹कुल आदेश:** __{len(PLG_INFO[category])}__"
         try:
             return await event.edit(text, buttons=buttons)
         except Exception as e:
@@ -800,14 +800,14 @@ async def on_plug_in_callback_query_handler(event):
     buttons = [
         (
             Button.inline(
-                "⬅️ Back ",
+                "⬅️ पीछे ",
                 data=f"back_command_{category}_{pgno}_{category_plugins}_{category_pgno}",
             ),
-            Button.inline("Main Menu", data="mainmenu"),
+            Button.inline("मुख्य मेन्यू", data="mainmenu"),
         )
     ]
-    text = f"**🕹Command :** `{tr}{cmd}`\
-        \n**🔰Plugin :** `{category}`\
-        \n**📍Category :** `{category_plugins}`\
-        \n\n**📜 Intro :**\n{CMD_INFO[cmd][0]}"
+    text = f"**🕹कमांड :** `{tr}{cmd}`\
+        \n**🔰प्लगिन्स :** `{category}`\
+        \n**📜श्रेणीश्रेणी :** `{category_plugins}`\
+        \n\n**⭐परिचय :**\n{CMD_INFO[cmd][0]}"
     await event.edit(text, buttons=buttons)
