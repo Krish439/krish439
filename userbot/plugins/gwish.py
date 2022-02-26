@@ -29,7 +29,7 @@ LOGS = logging.getLogger(__name__)
 async def xd(event):
     "Help U To Send Good Morning Message In All Group & User"
     await event.get_reply_message()
-    type = event.text[7:9] or "-a"
+    type = event.text[8:10]
     hol = await eor(event, "`Sending Good Morning message...`")
     sed = 0
     lol = 0
@@ -112,7 +112,7 @@ async def xd(event):
 async def xd(event):
     "Help U To Send Good Afternoon Message In All Group & User"
     await event.get_reply_message()
-    type = event.text[7:9] or "-a"
+    type = event.text[11:12]
     hol = await eor(event, "`Sending Good Afternoon message...`")
     sed = 0
     lol = 0
@@ -194,8 +194,7 @@ async def xd(event):
 )
 async def xd(event):
     "Help U To Send Good Evening Message In All Group & User"
-    await event.get_reply_message()
-    type = event.text[7:9] or "-a"
+    type = event.text[8:10]
     hol = await eor(event, "`Sending Good Evening message...`")
     sed = 0
     lol = 0
