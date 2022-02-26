@@ -24,7 +24,7 @@ from . import *
 spam = os.environ.get("SPAM", None) or "OFF"
 
 
-@tgbot.on(events.NewMessage(pattern="/delayspam"))
+@legend.bot_cmd(pattern="/delayspam", func=lambda e: e.sender_id == bot.uid)
 async def spam(e):
     if spam == "ON":
         if e.text[0].isalpha() and e.text[0] in ("/", "#", "@", "!"):
