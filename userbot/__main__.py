@@ -17,18 +17,18 @@ from .utils import (
     verifyLoggerGroup,
 )
 
-LOGS = logging.getLogger("LegendUserBot")
+LOGS = logging.getLogger("लीजेंड्यूजर बोट")
 
 print(userbot.__copyright__)
-print("Licensed under the terms of the " + userbot.__license__)
+print("लिसन। अंडर द टर्मे ऑफ द " + userbot.__license__)
 
 cmdhr = Config.HANDLER
 
 
 try:
-    LOGS.info("Starting Userbot")
+    LOGS.info("स्टार्टिंग यूजरबोट")
     legend.loop.run_until_complete(setup_bot())
-    LOGS.info("TG Bot Startup Completed")
+    LOGS.info("टेलीग्राम बोट स्टार्टअप सक्सेसफुल")
 except Exception as e:
     LOGS.error(f"{e}")
     sys.exit()
@@ -41,8 +41,8 @@ async def startup_process():
     await killer()
     await spams()
     print("----------------")
-    print("Starting Bot Mode!")
-    print("⚜ LegendBot Has Been Deployed Successfully ⚜")
+    print("स्टार्टिंग बोट मोड!")
+    print("⚜ लीजेंडबोट डिप्लॉय हो गया h ⚜")
     print("----------------")
     await verifyLoggerGroup()
     await add_bot_to_logger_group(BOTLOG_CHATID)
