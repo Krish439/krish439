@@ -21,7 +21,7 @@ async def gifspam(e, smex):
 
 import asyncio
 
-from telethon import events, functions, types
+from telethon import functions, types
 
 
 @legend.bot_cmd(pattern="/bigspam", func=lambda e: e.sender_id == bot.uid)
