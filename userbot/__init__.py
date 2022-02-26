@@ -14,8 +14,8 @@ __license__ = "जीएनयू अफेरो जनरल पब्लि�
 __author__ = "लीजेंड बोट <https://github.com/ITS-LEGENDBOT/LEGENDBOT>"
 __copyright__ = f"लीजेंड बोट कॉपीराइट (C)२०२१ - २०२२  { __author__}"
 
-legend.version = __वर्जन__
-legend.tgbot.version = __वर्जन__
+legend.version = __version__
+legend.tgbot.version = __version__
 LOGS = logging.getLogger("लीजेंडयूजरबॉट")
 bot = legend
 
