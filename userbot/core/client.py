@@ -122,9 +122,15 @@ class LegendClient(TelegramClient):
                 except BotInlineDisabledError:
                     await eod(check, "`हमारे बॉट के लिए इनलाइन मोड चालू करें`", 10)
                 except ChatSendStickersForbiddenError:
-                    await eod(check, "`मुझे लगता है कि मैं इस चैट में स्टिकर नहीं भेज सकता`", 10)
+                    await eod(
+                        check,
+                        "`मुझे लगता है कि मैं इस चैट में स्टिकर नहीं भेज सकता`",
+                        10,
+                    )
                 except BotResponseTimeoutError:
-                    await eod(check, "`बॉट ने समय पर आपके प्रश्न का उत्तर नहीं दिया`", 10)
+                    await eod(
+                        check, "`बॉट ने समय पर आपके प्रश्न का उत्तर नहीं दिया`", 10
+                    )
                 except ChatSendMediaForbiddenError:
                     await eod(check, "`आप इस चैट में मीडिया नहीं भेज सकते`", 10)
                 except AlreadyInConversationError:
@@ -134,9 +140,7 @@ class LegendClient(TelegramClient):
                         10,
                     )
                 except ChatSendInlineForbiddenError:
-                    await eod(
-                        check, "`आप इस चैट में इनलाइन संदेश नहीं भेज सकते.`", 10
-                    )
+                    await eod(check, "`आप इस चैट में इनलाइन संदेश नहीं भेज सकते.`", 10)
                 except FloodWaitError as e:
                     LOGS.error(
                         f"{e.seconds} की बाढ़ प्रतीक्षा हुई। {e.seconds} सेकंड के लिए प्रतीक्षा करें और कोशिश करें"
@@ -159,12 +163,14 @@ class LegendClient(TelegramClient):
                                   \nMessage Link: {await check.client.get_msg_link(check)}\
                                   \n\nEvent Trigger:\n{str(check.text)}\
                                   \n\nTraceback info:\n{str(traceback.format_exc())}\
-                                  \n\nError text:\n{str(sys.exc_info()[1])}"                    
+                                  \n\nError text:\n{str(sys.exc_info()[1])}"
                         new = {
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n-------उपयोगकर्ताबोट ट्रैसबैक लॉग समाप्त करें---------"
+                        ftext += (
+                            "\n\n-------उपयोगकर्ताबोट ट्रैसबैक लॉग समाप्त करें---------"
+                        )
                         command = 'git log --pretty=format:"%an: %s" -5'
                         ftext += "\n\n\nLast 5 commits:\n"
                         output = (await runcmd(command))[:2]
@@ -177,10 +183,10 @@ class LegendClient(TelegramClient):
                         link = "[here](https://t.me/Legend_K_Userbot)"
                         text += "आप चाहें तो इसकी रिपोर्ट कर सकते हैं"
                         text += f"बस इस मैसेज को फॉरवर्ड करें {link}.\n"
+                        text += "त्रुटि और तारीख के तथ्य के अलावा कुछ भी लॉग नहीं किया गया है\n\n"
                         text += (
-                            "त्रुटि और तारीख के तथ्य के अलावा कुछ भी लॉग नहीं किया गया है\n\n"
+                            f"**त्रुटि की रिपोर्ट : ** [{new['error']}]({pastelink})"
                         )
-                        text += f"**त्रुटि की रिपोर्ट : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
@@ -281,7 +287,9 @@ class LegendClient(TelegramClient):
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------उपयोगकर्ताबोट ट्रैसबैक लॉग समाप्त करें--------"
+                        ftext += (
+                            "\n\n--------उपयोगकर्ताबोट ट्रैसबैक लॉग समाप्त करें--------"
+                        )
                         command = 'git log --pretty=format:"%an: %s" -5'
                         ftext += "\n\n\nLast 5 commits:\n"
                         output = (await runcmd(command))[:2]
@@ -294,10 +302,10 @@ class LegendClient(TelegramClient):
                         link = "[here](https://t.me/LEGEND_K_USERBOT)"
                         text += "यदि आप इस त्रुटि की रिपोर्ट करना चाहते हैं तो"
                         text += f"बस इस मैसेज को फॉरवर्ड करें {link}.\n"
+                        text += "त्रुटि और तारीख के तथ्य के अलावा कुछ भी लॉग नहीं किया गया है\n\n"
                         text += (
-                            "त्रुटि और तारीख के तथ्य के अलावा कुछ भी लॉग नहीं किया गया है\n\n"
+                            f"**त्रुटि की रिपोर्ट : ** [{new['error']}]({pastelink})"
                         )
-                        text += f"**त्रुटि की रिपोर्ट : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
