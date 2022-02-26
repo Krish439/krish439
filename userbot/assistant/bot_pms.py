@@ -189,11 +189,7 @@ async def help(event):
             link_preview=False,
             buttons=[
                 (Button.inline(" ट्यूटोरियल ", data="LOGED"),),
-                (
-                    Button.url(
-                        "गीतहब ❓", "https://github.com/LEGEND-AI/LEGENDBOT"
-                    ),
-                ),
+                (Button.url("गीतहब ❓", "https://github.com/LEGEND-AI/LEGENDBOT"),),
             ],
         )
 
@@ -253,7 +249,6 @@ async def bot_pms(event):  # sourcery no-metrics
                         BOTLOG_CHATID,
                         f"**एरर**\nजब मैं आपकी मैसेज डाटाब्से में स्टोर कर रहा हु तो\n`{str(e)}`",
                     )
-                     
 
 
 @legend.bot_cmd(edited=True)
@@ -468,7 +463,9 @@ async def send_flood_alert(user_) -> None:
             )
         except UserIsBlockedError:
             if BOTLOG:
-                await legend.tgbot.send_message(BOTLOG_CHATID, "**अनब्लॉक् करो आपका बोट !**")
+                await legend.tgbot.send_message(
+                    BOTLOG_CHATID, "**अनब्लॉक् करो आपका बोट !**"
+                )
     if FloodConfig.ALERT[user_.id].get("fa_id") is None and fa_msg:
         FloodConfig.ALERT[user_.id]["fa_id"] = fa_msg.id
 
