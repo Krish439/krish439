@@ -116,30 +116,30 @@ class LegendClient(TelegramClient):
                 except KeyboardInterrupt:
                     pass
                 except MessageNotModifiedError:
-                    LOGS.error("Message was same as previous message")
+                    LOGS.error("संदेश पिछले संदेश जैसा ही था")
                 except MessageIdInvalidError:
-                    LOGS.error("Message was deleted or cant be found")
+                    LOGS.error("संदेश हटा दिया गया था या पाया नहीं जा सकता")
                 except BotInlineDisabledError:
-                    await eod(check, "`Turn on Inline mode for our bot`", 10)
+                    await eod(check, "`हमारे बॉट के लिए इनलाइन मोड चालू करें`", 10)
                 except ChatSendStickersForbiddenError:
-                    await eod(check, "`I guess i can't send stickers in this chat`", 10)
+                    await eod(check, "`मुझे लगता है कि मैं इस चैट में स्टिकर नहीं भेज सकता`", 10)
                 except BotResponseTimeoutError:
-                    await eod(check, "`The bot didnt answer to your query in time`", 10)
+                    await eod(check, "`बॉट ने समय पर आपके प्रश्न का उत्तर नहीं दिया`", 10)
                 except ChatSendMediaForbiddenError:
-                    await eod(check, "`You can't send media in this chat`", 10)
+                    await eod(check, "`आप इस चैट में मीडिया नहीं भेज सकते`", 10)
                 except AlreadyInConversationError:
                     await eod(
                         check,
-                        "`A conversation is already happening with the given chat. try again after some time.`",
+                        "`दी गई चैट के साथ बातचीत पहले से ही हो रही है। कुछ समय बाद पुनः प्रयास करें.`",
                         10,
                     )
                 except ChatSendInlineForbiddenError:
                     await eod(
-                        check, "`You can't send inline messages in this chat.`", 10
+                        check, "`आप इस चैट में इनलाइन संदेश नहीं भेज सकते.`", 10
                     )
                 except FloodWaitError as e:
                     LOGS.error(
-                        f"A flood wait of {e.seconds} occured. wait for {e.seconds} seconds and try"
+                        f"{e.seconds} की बाढ़ प्रतीक्षा हुई। {e.seconds} सेकंड के लिए प्रतीक्षा करें और कोशिश करें"
                     )
                     await check.delete()
                     await asyncio.sleep(e.seconds + 5)
@@ -149,22 +149,13 @@ class LegendClient(TelegramClient):
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-                        ftext = f"\nDisclaimer:\nThis file is pasted only here ONLY here,\
-                                  \nwe logged only fact of error and date,\nwe respect your privacy,\
-                                  \nyou may not report this error if you've\
-                                  \nany confidential data here, no one will see your data\
-                                  \n\n--------BEGIN USERBOT TRACEBACK LOG--------\
-                                  \nDate: {date}\nGroup ID: {str(check.chat_id)}\
-                                  \nSender ID: {str(check.sender_id)}\
-                                  \nMessage Link: {await check.client.get_msg_link(check)}\
-                                  \n\nEvent Trigger:\n{str(check.text)}\
-                                  \n\nTraceback info:\n{str(traceback.format_exc())}\
-                                  \n\nError text:\n{str(sys.exc_info()[1])}"
+                        ftext = f"\nअस्वीकरण:\nयह फ़ाइल केवल यहाँ चिपकाई गई है, केवल यहाँ,\
+                                  \nहमने केवल त्रुटि और तारीख का तथ्य लॉग किया है,\nहम आपकी गोपनीयता का सम्मान करते हैं,\ \nआप इस त्रुटि की रिपोर्ट नहीं कर सकते हैं यदि आपने\ \nकोई गोपनीय डेटा यहां, कोई भी आपका डेटा नहीं देखेगा\ \n\n -------- यूजरबोट ट्रैसबैक लॉग शुरू करें --------\ \nतारीख: {तारीख}\nग्रुप आईडी: {str(check.chat_id)}\ \nप्रेषक आईडी: {str(check.sender_id)}\ \nसंदेश लिंक: {प्रतीक्षा check.client.get_msg_link(check)}\ \n\nइवेंट ट्रिगर:\n{str(check.text)}\ \n\nट्रेसबैक जानकारी:\n{str(traceback.format_exc ())}\ \n\nत्रुटि पाठ:\n{str(sys.exc_info()[1])}"
                         new = {
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+                        ftext += "\n\n-------उपयोगकर्ताबोट ट्रैसबैक लॉग समाप्त करें---------"
                         command = 'git log --pretty=format:"%an: %s" -5'
                         ftext += "\n\n\nLast 5 commits:\n"
                         output = (await runcmd(command))[:2]
@@ -173,14 +164,14 @@ class LegendClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        text = "**LegendBot Error report**\n\n"
+                        text = "**लीजेंडबॉट त्रुटि रिपोर्ट**\n\n"
                         link = "[here](https://t.me/Legend_K_Userbot)"
-                        text += "If you wanna you can report it"
-                        text += f"- just forward this message {link}.\n"
+                        text += "आप चाहें तो इसकी रिपोर्ट कर सकते हैं"
+                        text += f"बस इस मैसेज को फॉरवर्ड करें {link}.\n"
                         text += (
-                            "Nothing is logged except the fact of error and date\n\n"
+                            "त्रुटि और तारीख के तथ्य के अलावा कुछ भी लॉग नहीं किया गया है\n\n"
                         )
-                        text += f"**Error report : ** [{new['error']}]({pastelink})"
+                        text += f"**त्रुटि की रिपोर्ट : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
@@ -266,22 +257,12 @@ class LegendClient(TelegramClient):
                         if Config.PRIVATE_GROUP_BOT_API_ID == 0:
                             return
                         date = (datetime.datetime.now()).strftime("%m/%d/%Y, %H:%M:%S")
-                        ftext = f"\nDisclaimer:\nThis file is pasted only here ONLY here,\
-                                    \nwe logged only fact of error and date,\nwe respect your privacy,\
-                                    \nyou may not report this error if you've\
-                                    \nany confidential data here, no one will see your data\
-                                    \n\n--------BEGIN USERBOT TRACEBACK LOG--------\
-                                    \nDate: {date}\nGroup ID: {str(check.chat_id)}\
-                                    \nSender ID: {str(check.sender_id)}\
-                                    \nMessage Link: {await check.client.get_msg_link(check)}\
-                                    \n\nEvent Trigger:\n{str(check.text)}\
-                                    \n\nTraceback info:\n{str(traceback.format_exc())}\
-                                    \n\nError text:\n{str(sys.exc_info()[1])}"
+                        ftext = f"\nअस्वीकरण:\nयह फ़ाइल केवल यहाँ चिपकाई गई है, केवल यहाँ,\ \nहमने केवल त्रुटि और तारीख का तथ्य लॉग किया है,\nहम आपकी गोपनीयता का सम्मान करते हैं,\ \nआप इस त्रुटि की रिपोर्ट नहीं कर सकते हैं यदि आपने\ \nकोई गोपनीय डेटा यहां, कोई भी आपका डेटा नहीं देखेगा\ \n\n -------- यूजरबोट ट्रैसबैक लॉग शुरू करें --------\ \nतारीख: {तारीख}\nग्रुप आईडी: {str(check.chat_id)}\ \nप्रेषक आईडी: {str(check.sender_id)}\ \nसंदेश लिंक: {प्रतीक्षा check.client.get_msg_link(check)}\ \n\nइवेंट ट्रिगर:\n{str(check.text)}\ \n\nट्रेसबैक जानकारी:\n{str(traceback.format_exc ())}\ \n\nत्रुटि पाठ:\n{str(sys.exc_info()[1])}"
                         new = {
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+                        ftext += "\n\n--------उपयोगकर्ताबोट ट्रैसबैक लॉग समाप्त करें--------"
                         command = 'git log --pretty=format:"%an: %s" -5'
                         ftext += "\n\n\nLast 5 commits:\n"
                         output = (await runcmd(command))[:2]
@@ -290,14 +271,14 @@ class LegendClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        text = "**LegendBot Error report**\n\n"
+                        text = "**लीजेंडबॉट त्रुटि रिपोर्ट**\n\n"
                         link = "[here](https://t.me/LEGEND_K_USERBOT)"
-                        text += "If U Want To Report This Error Then"
-                        text += f"- just forward this message {link}.\n"
+                        text += "यदि आप इस त्रुटि की रिपोर्ट करना चाहते हैं तो"
+                        text += f"बस इस मैसेज को फॉरवर्ड करें {link}.\n"
                         text += (
-                            "Nothing is logged except the fact of error and date\n\n"
+                            "त्रुटि और तारीख के तथ्य के अलावा कुछ भी लॉग नहीं किया गया है\n\n"
                         )
-                        text += f"**Error report : ** [{new['error']}]({pastelink})"
+                        text += f"**त्रुटि की रिपोर्ट : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
