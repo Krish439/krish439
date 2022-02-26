@@ -1,7 +1,5 @@
 from telethon import events
 
-
-
 PM_IMG = "https://telegra.ph/file/c26fc61e904476083baa7.jpg"
 pm_caption = f"⚜『Lêɠêɳ̃dẞø†』Is Ôñĺîne⚜ \n\n"
 pm_caption += f"Ôwñêř ~ 『{legend_mention}』\n"
@@ -15,7 +13,8 @@ pm_caption += f"┣Assistant ~ By [『Lêɠêɳ̃dẞøy』 ](https://t.me/Its_L
 pm_caption += f"╰────────────\n"
 pm_caption += f"       »»» [『Lêɠêɳ̃dẞø†』](https://t.me/Legend_Userbot) «««"
 
-from telethon import events, functions, types
+from telethon import events
+
 
 @tgbot.on(events.NewMessage(pattern="^/alive"))
 async def _(event):
