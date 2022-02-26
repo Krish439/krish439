@@ -557,7 +557,9 @@ async def inline_handler(event):  # sourcery no-metrics
                 )
         elif string == "age_verification_alert":
             buttons = [
-                Button.inline(text="हाँ मैं 18+ . का हूँ", data="age_verification_true"),
+                Button.inline(
+                    text="हाँ मैं 18+ . का हूँ", data="age_verification_true"
+                ),
                 Button.inline(text="नहीं, मैं नहीं हूँ", data="age_verification_false"),
             ]
             markup = event.client.build_reply_markup(buttons)
@@ -583,7 +585,9 @@ async def inline_handler(event):  # sourcery no-metrics
             await event.answer([result] if result else None)
         elif string == "pmpermit":
             buttons = [
-                Button.inline(text="👨‍💻 पीएम मेनू खोलें 💝", data="show_pmpermit_options"),
+                Button.inline(
+                    text="👨‍💻 पीएम मेनू खोलें 💝", data="show_pmpermit_options"
+                ),
             ]
             PM_PIC = (
                 gvarstatus("PM_PIC")
