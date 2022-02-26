@@ -6,14 +6,14 @@ from telethon.sessions import StringSession
 from ..Config import Config
 from .client import LegendClient
 
-__version__ = "1.10.6"
+__version__ = "१.१०.६"
 
 loop = None
 
 if Config.LEGEND_STRING:
     session = StringSession(str(Config.LEGEND_STRING))
 else:
-    session = "LegendUserBot"
+    session = "लेजेंडयूजरबॉट"
 
 try:
     legend = LegendClient(
