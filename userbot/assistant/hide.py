@@ -15,7 +15,7 @@ async def on_plug_in_callback_query_handler(event):
         try:
             reply_pop_up_alert = jsondata[f"{timestamp}"]["text"]
         except KeyError:
-            reply_pop_up_alert = "This message no longer exists in legend server"
+            reply_pop_up_alert = "यह संदेश अब लेजेंड सर्वर में मौजूद नहीं है"
     else:
-        reply_pop_up_alert = "This message no longer exists "
+        reply_pop_up_alert = "यह संदेश अब लेजेंड सर्वर में मौजूद नहीं है "
     await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
