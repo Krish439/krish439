@@ -17,19 +17,19 @@ async def age_verification_true(event: CallbackQuery):
     u_id = event.query.user_id
     if u_id != Config.OWNER_ID and u_id not in Config.SUDO_USERS:
         return await event.answer(
-            "Given That It's A Stupid-Ass Decision, I've Elected To Ignore It.",
+            "यह देखते हुए कि यह एक मूर्खतापूर्ण निर्णय है, मैंने इसे अनदेखा करने के लिए चुना है.",
             alert=True,
         )
-    await event.answer("Yes I'm 18+", alert=False)
+    await event.answer("हाँ मैं 18+ का हूँ", alert=False)
     buttons = [
         Button.inline(
-            text="Unsure / Change of Decision ❔",
+            text="अनिश्चित / निर्णय में परिवर्तन ❔",
             data="chg_of_decision_",
         )
     ]
     try:
         await event.edit(
-            text="Set `ALLOW_NSFW` = True in Database Vars to access this plugin",
+            text="इस प्लगइन को एक्सेस करने के लिए डेटाबेस वर्र्स में `ALLOW_NSFW` = True सेट करें",
             file="https://telegra.ph/file/85f3071c31279bcc280ef.jpg",
             buttons=buttons,
         )
@@ -42,19 +42,19 @@ async def age_verification_false(event: CallbackQuery):
     u_id = event.query.user_id
     if u_id != Config.OWNER_ID and u_id not in Config.SUDO_USERS:
         return await event.answer(
-            "Given That It's A Stupid-Ass Decision, I've Elected To Ignore It.",
+            "यह देखते हुए कि यह एक मूर्खतापूर्ण निर्णय है, मैंने इसे अनदेखा करने के लिए चुना है.",
             alert=True,
         )
-    await event.answer("No I'm Not", alert=False)
+    await event.answer("नहीं, मैं नहीं हूँ", alert=False)
     buttons = [
         Button.inline(
-            text="Unsure / Change of Decision ❔",
+            text="अनिश्चित / निर्णय में परिवर्तन ❔",
             data="chg_of_decision_",
         )
     ]
     try:
         await event.edit(
-            text="GO AWAY KID !",
+            text="बच्चे चले जाओ !",
             file="https://telegra.ph/file/1140f16a883d35224e6a1.jpg",
             buttons=buttons,
         )
@@ -67,19 +67,19 @@ async def chg_of_decision_(event: CallbackQuery):
     u_id = event.query.user_id
     if u_id != Config.OWNER_ID and u_id not in Config.SUDO_USERS:
         return await event.answer(
-            "Given That It's A Stupid-Ass Decision, I've Elected To Ignore It.",
+            "यह देखते हुए कि यह एक मूर्खतापूर्ण निर्णय है, मैंने इसे अनदेखा करने के लिए चुना है।",
             alert=True,
         )
     await event.answer("Unsure", alert=False)
     buttons = [
         (
-            Button.inline(text="Yes I'm 18+", data="age_verification_true"),
-            Button.inline(text="No I'm Not", data="age_verification_false"),
+            Button.inline(text="हाँ मैं 18+ का हूँ", data="age_verification_true"),
+            Button.inline(text="नहीं, मैं नहीं हूँ", data="age_verification_false"),
         )
     ]
     try:
         await event.edit(
-            text="**ARE YOU OLD ENOUGH FOR THIS ?**",
+            text="**क्या आप इसके लिए काफी उम्रदराज हैं? ?**",
             file="https://telegra.ph/file/238f2c55930640e0e8c56.jpg",
             buttons=buttons,
         )
