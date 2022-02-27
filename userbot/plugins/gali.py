@@ -8,7 +8,6 @@ from . import legend, swtmemes
 menu_category = "extra"
 
 
-
 RAID = [
     "MADARCHOD TERI MAA KI CHUT ME GHUTKA KHAAKE THOOK DUNGA 🤣🤣",
     "TERE BEHEN K CHUT ME CHAKU DAAL KAR CHUT KA KHOON KAR DUGA",
@@ -312,9 +311,6 @@ RAID = [
 ]
 
 
-
-
-
 @legend.legend_cmd(
     pattern="abuse$",
     command=("abuse", menu_category),
@@ -338,7 +334,6 @@ async def yashraid(event):
         reply = random.choice(RAID)
         caption = f" {reply}"
         await e.client.send_message(e.chat_id, caption)
-                
 
 
 @legend.legend_cmd(
