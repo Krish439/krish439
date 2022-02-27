@@ -19,7 +19,7 @@ heolls = True
     },
 )
 async def yashraid(event):
-    addgvar("spamwork", True)
+    addgvar("spamwork", "True")
     LEGEND = event.client
     kek = event.chat_id
     while heolls != False:
