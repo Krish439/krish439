@@ -61,20 +61,18 @@ async def get_user_from_event(
             previous_message = await event.get_reply_message()
             if previous_message.from_id is None:
                 if not noedits:
-                    await eod(legendevent, "`वैसे यह एक अनाम व्यवस्थापक है !`")
+                    await eod(legendevent, "`Well that's an anonymous admin !`")
                 return None, None
             user_obj = await event.client.get_entity(previous_message.sender_id)
             return user_obj, extra
         if not args:
             if not noedits:
-                await eod(
-                    legendevent, "`उपयोगकर्ता का उपयोगकर्ता नाम, आईडी या उत्तर दें!`", 5
-                )
+                await eod(legendevent, "`Pass the user's username, id or reply!`", 5)
             return None, None
     except Exception as e:
         LOGS.error(str(e))
     if not noedits:
-        await eod(legendevent, "__आगे बढ़ने के लिए उपयोगकर्ता को नहीं लाया जा सका.__")
+        await eod(legendevent, "__Couldn't fetch user to proceed further.__")
     return None, None
 
 
