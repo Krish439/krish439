@@ -70,6 +70,7 @@ async def _(event):
         "usage": [
             "{tr}trt",
             "{tr}trt <text>",
+            "{tr}trt <lang> | <text>",
         ],
     },
 )
