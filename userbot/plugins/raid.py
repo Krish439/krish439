@@ -334,10 +334,10 @@ RAID = [
 )
 async def spam(e):
     lol = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
-    reply_to = await reply_id(event)
-    if await age_verification(event, reply_to):
+    reply_to = await reply_id(e)
+    if await age_verification(e, reply_to):
         return
-    type = await useless.importent(event)
+    type = await useless.importent(e)
     if type:
         return
     await e.get_reply_message()
