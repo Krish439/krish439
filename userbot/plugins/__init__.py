@@ -63,7 +63,7 @@ if "@" in my_group:
 
 # My Channel
 chnl_link = "https://t.me/Official_K_LegendBot"
-Legend_channel = f"[Lêɠêɳ̃dẞø† ]({chnl_link})"
+Legend_channel = f"[लीजेंडबोट ]({chnl_link})"
 grp_link = "https://t.me/LEGEND_K_USERBOT"
 Legend_grp = f"[लीजेंडबोट]({grp_link})"
 
