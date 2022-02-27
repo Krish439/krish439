@@ -62,8 +62,8 @@ async def startupmessage():
             Config.LEGENDUBLOGO = await legend.tgbot.send_file(
                 BOTLOG_CHATID,
                 "https://telegra.ph/file/294b4dbdb74334fb0a8c1.jpg",
-                caption="**आपका लीजेंडबॉट सफलतापूर्वक शुरू हो गया है.**",
-                buttons=[(Button.url("सपोर्ट", "https://t.me/LEGEND_K_USERBOT"),)],
+                caption="**Your LegendBot has been started successfully.**",
+                buttons=[(Button.url("Support", "https://t.me/LEGEND_K_USERBOT"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -159,7 +159,7 @@ async def hekp():
     try:
         os.environ[
             "LEGEND_STRING"
-        ] = "स्ट्रिंग एक संवेदनशील डेटा है \nइसलिए इसे लेजेंडबॉट द्वारा संरक्षित किया गया है"
+        ] = "String Is A Sensitive Data \nSo Its Protected By LegendBot"
     except Exception as e:
         print(str(e))
     try:
@@ -205,33 +205,33 @@ async def verifyLoggerGroup():
             if not isinstance(entity, types.User) and not entity.creator:
                 if entity.default_banned_rights.send_messages:
                     LOGS.info(
-                        "निर्दिष्ट के लिए संदेश भेजने के लिए अनुमतियाँ अनुपलब्ध PRIVATE_GROUP_BOT_API_ID."
+                        "Permissions missing to send messages for the specified PRIVATE_GROUP_BOT_API_ID."
                     )
                 if entity.default_banned_rights.invite_users:
                     LOGS.info(
-                        "निर्दिष्ट के लिए संदेश भेजने के लिए अनुमतियाँ अनुपलब्ध PRIVATE_GROUP_BOT_API_ID."
+                        "Permissions missing to addusers for the specified PRIVATE_GROUP_BOT_API_ID."
                     )
         except ValueError:
             LOGS.error(
-                "PRIVATE_GROUP_BOT_API_ID पाया नहीं जा सकता। सुनिश्चित करें कि यह सही है."
+                "PRIVATE_GROUP_BOT_API_ID cannot be found. Make sure it's correct."
             )
         except TypeError:
             LOGS.error(
-                "PRIVATE_GROUP_BOT_API_ID पाया नहीं जा सकता। सुनिश्चित करें कि यह सही है."
+                "PRIVATE_GROUP_BOT_API_ID is unsupported. Make sure it's correct."
             )
         except Exception as e:
             LOGS.error(
-                "सत्यापित करने का प्रयास करने पर एक अपवाद उत्पन्न हुआ PRIVATE_GROUP_BOT_API_ID.\n"
+                "An Exception occured upon trying to verify the PRIVATE_GROUP_BOT_API_ID.\n"
                 + str(e)
             )
     else:
-        descript = "इस समूह को न हटाएं या समूह में न बदलें (यदि आप अपने पिछले सभी अंशों को समूह बदलते हैं, तो स्वागत खो जाएगा।),"
+        descript = "Don't delete this group or change to group(If you change group all your previous snips, welcome will be lost.)"
         _, groupid = await create_supergroup(
-            "लीजेंडबोट्स लग ग्रुप", legend, Config.BOT_USERNAME, descript
+            "LegendBot Log Group", legend, Config.BOT_USERNAME, descript
         )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print(
-            "PRIVATE_GROUP_BOT_API_ID के लिए निजी समूह सफलतापूर्वक बनाया गया और vars में जोड़ा गया."
+            "Private Group for PRIVATE_GROUP_BOT_API_ID is created successfully and added to vars."
         )
         type = True
     if PM_LOGGER_GROUP_ID != -100:
@@ -240,21 +240,19 @@ async def verifyLoggerGroup():
             if not isinstance(entity, types.User) and not entity.creator:
                 if entity.default_banned_rights.send_messages:
                     LOGS.info(
-                        "निर्दिष्ट PM_LOGGER_GROUP_ID के लिए संदेश भेजने के लिए अनुमतियाँ अनुपलब्ध हैं."
+                        "Permissions missing to send messages for the specified PM_LOGGER_GROUP_ID."
                     )
                 if entity.default_banned_rights.invite_users:
                     LOGS.info(
-                        "निर्दिष्ट PM_LOGGER_GROUP_ID के लिए संदेश भेजने के लिए अनुमतियाँ अनुपलब्ध हैं."
+                        "Permissions missing to addusers for the specified PM_LOGGER_GROUP_ID."
                     )
         except ValueError:
-            LOGS.error("PM_LOGGER_GROUP_ID नहीं मिला। सुनिश्चित करें कि यह सही है।")
+            LOGS.error("PM_LOGGER_GROUP_ID cannot be found. Make sure it's correct.")
         except TypeError:
-            LOGS.error(
-                "PM_LOGGER_GROUP_ID समर्थित नहीं है। सुनिश्चित करें कि यह सही है."
-            )
+            LOGS.error("PM_LOGGER_GROUP_ID is unsupported. Make sure it's correct.")
         except Exception as e:
             LOGS.error(
-                "PM_LOGGER_GROUP_ID को सत्यापित करने का प्रयास करने पर एक अपवाद उत्पन्न हुआ.\n"
+                "An Exception occured upon trying to verify the PM_LOGGER_GROUP_ID.\n"
                 + str(e)
             )
     if type:
