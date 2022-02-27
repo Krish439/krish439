@@ -31,12 +31,12 @@ from ..sql_helper.mute_sql import is_muted, mute, unmute
 from . import BOTLOG, BOTLOG_CHATID, main_pic
 
 # =================== STRINGS ============
-PP_TOO_SMOL = "`ये तस्वीर बोहोत छोटी है।`"
-PP_ERROR = "`प्रोसेसिंग के वक्त फेल हो गया।`"
-NO_ADMIN = "`अबे नुबड़े में एडमिन नही हु`"
-NO_PERM = "`मेरे पास इतनी क्षमता नहीं है। बोहोत बुरा हुआ`"
-CHAT_PP_CHANGED = "`फोटो चेंज हो गया भाई।`"
-INVALID_MEDIA = "`ये वेलिड नही है।`"
+PP_TOO_SMOL = "`The image is too small`"
+PP_ERROR = "`Failure while processing the image`"
+NO_ADMIN = "`I am not an admin nub nibba!`"
+NO_PERM = "`I don't have sufficient permissions! This is so sed. Alexa play despacito`"
+CHAT_PP_CHANGED = "`Chat Picture Changed`"
+INVALID_MEDIA = "`Invalid Extension`"
 
 BANNED_RIGHTS = ChatBannedRights(
     until_date=None,
@@ -81,11 +81,11 @@ menu_category = "admin"
     pattern="gpic( -s| -d)$",
     command=("gpic", menu_category),
     info={
-        "header": "ग्रुप का फोटो बदलने के लिए अथवा फोटो लगाने के लिए",
-        "description": "फोटो को रिप्लाई करके इस कमांड को उसे करे।",
+        "header": "For changing group display pic or deleting display pic",
+        "description": "Reply to Image for changing display picture",
         "flags": {
-            "-s": "ग्रुप फोटो सेट करने के लिए",
-            "-d": "ग्रुप फोटो डिलीट करने के लिए",
+            "-s": "To set group pic",
+            "-d": "To delete group pic",
         },
         "usage": [
             "{tr}gpic -s <reply to image>",
@@ -96,7 +96,7 @@ menu_category = "admin"
     require_admin=True,
 )
 async def set_group_photo(event):  # sourcery no-metrics
-    "ग्रुप फोटो चेंज करने के लिए"
+    "For changing Group dp"
     type = (event.pattern_match.group(1)).strip()
     if type == "-s":
         replymsg = await event.get_reply_message()
@@ -118,7 +118,7 @@ async def set_group_photo(event):  # sourcery no-metrics
                 await bot.send_file(
                     event.chat_id,
                     help_pic,
-                    caption=f"⚜ `ग्रुप फोटो चेंज हो गया` ⚜\n🔰 चैट ~ {gpic.chat.title}",
+                    caption=f"⚜ `Group Profile Pic Changed` ⚜\n🔰Chat ~ {gpic.chat.title}",
                 )
             except PhotoCropSizeSmallError:
                 return await eod(event, PP_TOO_SMOL)
@@ -133,13 +133,13 @@ async def set_group_photo(event):  # sourcery no-metrics
         except Exception as e:
             return await eod(event, f"**Error : **`{e}`")
         process = "deleted"
-        await eod(event, "```ग्रुप फोटो डिलीट कर दिया.```")
+        await eod(event, "```successfully group profile pic deleted.```")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
             "#GROUPPIC\n"
             f"Group profile pic {process} successfully "
-            f"चाट: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
+            f"CHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
         )
 
 
@@ -147,9 +147,9 @@ async def set_group_photo(event):  # sourcery no-metrics
     pattern="promote(?:\s|$)([\s\S]*)",
     command=("promote", menu_category),
     info={
-        "header": "किसी को एडमिन बनाने के लिए",
-        "description": "किसी यूज़र को एडमिन बनाने के लिए\
-            \nNote : तुम्हारे पास उतनी राइट्स होनी चाहिए",
+        "header": "To give admin rights for a person",
+        "description": "Provides admin rights to the person in the chat\
+            \nNote : You need proper rights for this",
         "usage": [
             "{tr}promote <userid/username/reply>",
             "{tr}promote <userid/username/reply> <custom title>",
@@ -179,7 +179,7 @@ async def promote(event):
         rank = "ℓєgєи∂"
     if not user:
         return
-    legendevent = await eor(event, "`प्रोमोटिंग...`")
+    legendevent = await eor(event, "`Promoting...`")
     try:
         await event.client(EditAdminRequest(event.chat_id, user.id, new_rights, rank))
     except BadRequestError:
@@ -187,15 +187,15 @@ async def promote(event):
     await bot.send_file(
         event.chat_id,
         "https://te.legra.ph/file/74530a36e7b5e60ced878.jpg",
-        caption=f"**⚜प्रोमोटेड ~** [{user.first_name}](tg://user?id={user.id})⚜\n**सफलतापूर्वक ** ~ `{event.chat.title}`!! \n**एडमिन का टैग ~**  `{rank}`",
+        caption=f"**⚜Promoted ~** [{user.first_name}](tg://user?id={user.id})⚜\n**Successfully In** ~ `{event.chat.title}`!! \n**Admin Tag ~**  `{rank}`",
     )
     await event.delete()
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
             f"#PROMOTE\
-            \nयूजर: [{user.first_name}](tg://user?id={user.id})\
-            \nचाट: {get_display_name(await event.get_chat())} (`{event.chat_id}`)",
+            \nUSER: [{user.first_name}](tg://user?id={user.id})\
+            \nCHAT: {get_display_name(await event.get_chat())} (`{event.chat_id}`)",
         )
 
 
@@ -203,9 +203,9 @@ async def promote(event):
     pattern="demote(?:\s|$)([\s\S]*)",
     command=("demote", menu_category),
     info={
-        "header": "किसी को एडमिन से हटाने के लिए",
-        "description": "किसी यूज़र को एडमिन से हटाने के लिए\
-            \nNote : आपको इसके लिए उचित अधिकारों की आवश्यकता है और आपको उस व्यक्ति का प्रचार करने वाले स्वामी या व्यवस्थापक भी होने चाहिए।आपको इसके लिए उचित अधिकारों की आवश्यकता है और आपको उस व्यक्ति का प्रचार करने वाले स्वामी या व्यवस्थापक भी होने चाहिए",
+        "header": "To remove a person from admin list",
+        "description": "Removes all admin rights for that peron in that chat\
+            \nNote : You need proper rights for this and also u must be owner or admin who promoted that guy",
         "usage": [
             "{tr}demote <userid/username/reply>",
             "{tr}demote <userid/username/reply> <custom title>",
@@ -225,7 +225,7 @@ async def demote(event):
     user, _ = await get_user_from_event(event)
     if not user:
         return
-    legendevent = await eor(event, "`डेमोटिंग ...`")
+    legendevent = await eor(event, "`Demoting...`")
     newrights = ChatAdminRights(
         add_admins=None,
         invite_users=None,
@@ -242,14 +242,14 @@ async def demote(event):
     await bot.send_file(
         event.chat_id,
         help_pic,
-        caption=f"डेमोटेड \nUser:[{user.first_name}](tg://{user.id})\n चैट: {event.chat.title}",
+        caption=f"Demoted Successfully\nUser:[{user.first_name}](tg://{user.id})\n Chat: {event.chat.title}",
     )
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
             f"#DEMOTE\
-            \nयूजर: [{user.first_name}](tg://user?id={user.id})\
-            \nचाट: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
+            \nUSER: [{user.first_name}](tg://user?id={user.id})\
+            \nCHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
         )
 
 
@@ -257,9 +257,9 @@ async def demote(event):
     pattern="ban(?:\s|$)([\s\S]*)",
     command=("ban", menu_category),
     info={
-        "header": "यूज़र को बेन करने के लिए",
-        "description": "उस यूज़र को परमानेंट बन करने के लिए\
-            \nनोट : तुम्हारे पास इतनी राइट्स होनी चाहिए.",
+        "header": "Will ban the guy in the group where you used this command.",
+        "description": "Permanently will remove him from this group and he can't join back\
+            \nNote : You need proper rights for this.",
         "usage": [
             "{tr}ban <userid/username/reply>",
             "{tr}ban <userid/username/reply> <reason>",
@@ -269,13 +269,13 @@ async def demote(event):
     require_admin=True,
 )
 async def _ban_person(event):
-    "किसी को बन करने के लिए"
+    "To ban a person in group"
     user, reason = await get_user_from_event(event)
     if not user:
         return
     if user.id == event.client.uid:
-        return await eod(event, "__खुद को बैन नही कर सकते!!.__")
-    legendevent = await eor(event, "`बैन हो रहा है..!`")
+        return await eod(event, "__You cant ban yourself.__")
+    legendevent = await eor(event, "`Whacking the pest!`")
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
@@ -286,35 +286,35 @@ async def _ban_person(event):
             await reply.delete()
     except BadRequestError:
         return await legendevent.edit(
-            "`मेरे पास मैसेज डिलीट करने की राइट्स नही है! लेकिन फिर भी बैन हो गया!`"
+            "`I dont have message nuking rights! But still he is banned!`"
         )
     if reason:
         await bot.send_file(
             event.chat_id,
             help_pic,
-            caption=f"{_format.mentionuser(user.first_name ,user.id)}` बेन हो गया !!`\n**कारण : **`{reason}`",
+            caption=f"{_format.mentionuser(user.first_name ,user.id)}` is banned !!`\n**Reason : **`{reason}`",
         )
     else:
         await bot.send_file(
             event.chat_id,
             help_pic,
-            caption=f"{_format.mentionuser(user.first_name ,user.id)} `बेन हो गया !!`",
+            caption=f"{_format.mentionuser(user.first_name ,user.id)} `is banned !!`",
         )
     if BOTLOG:
         if reason:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"#BAN\
-                \nयूज़र: [{user.first_name}](tg://user?id={user.id})\
-                \nचैट: {get_display_name(await event.get_chat())}(`{event.chat_id}`)\
-                \nकारण : {reason}",
+                \nUSER: [{user.first_name}](tg://user?id={user.id})\
+                \nCHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)\
+                \nREASON : {reason}",
             )
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 f"#BAN\
-                \nयूज़र: [{user.first_name}](tg://user?id={user.id})\
-                \nचैट: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
+                \nUSER: [{user.first_name}](tg://user?id={user.id})\
+                \nCHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
             )
 
 
@@ -322,9 +322,9 @@ async def _ban_person(event):
     pattern="unban(?:\s|$)([\s\S]*)",
     command=("unban", menu_category),
     info={
-        "header": "जिस समूह में आपने इस आदेश का उपयोग किया है, उस व्यक्ति पर प्रतिबंध लगा देंगे.",
-        "description": "उपयोगकर्ता खाते को समूह की प्रतिबंधित सूची से हटाता है\
-            \nनोट : इसके लिए आपको उचित अधिकार चाहिए.",
+        "header": "Will unban the guy in the group where you used this command.",
+        "description": "Removes the user account from the banned list of the group\
+            \nNote : You need proper rights for this.",
         "usage": [
             "{tr}unban <userid/username/reply>",
             "{tr}unban <userid/username/reply> <reason>",
@@ -338,23 +338,23 @@ async def nothanos(event):
     user, _ = await get_user_from_event(event)
     if not user:
         return
-    legendevent = await eor(event, "`अनबैनिंग...`")
+    legendevent = await eor(event, "`Unbanning...`")
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS))
         await legendevent.edit(
-            f"{_format.mentionuser(user.first_name ,user.id)} `सफलतापूर्वक प्रतिबंधित कर दिया गया है। एक और मौका देना।`"
+            f"{_format.mentionuser(user.first_name ,user.id)} `is Unbanned Successfully. Granting another chance.`"
         )
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#UNBAN\n"
-                f"यूजर: [{user.first_name}](tg://user?id={user.id})\n"
-                f"चाट: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
+                f"USER: [{user.first_name}](tg://user?id={user.id})\n"
+                f"CHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
             )
     except UserIdInvalidError:
-        await legendevent.edit("`उह ओह मेरा अप्रतिबंधित तर्क टूट गया!`")
+        await legendevent.edit("`Uh oh my unban logic broke!`")
     except Exception as e:
-        await legendevent.edit(f"**एरर :**\n`{e}`")
+        await legendevent.edit(f"**Error :**\n`{e}`")
 
 
 @legend.legend_cmd(incoming=True)
@@ -370,10 +370,10 @@ async def watcher(event):
     pattern="mute(?:\s|$)([\s\S]*)",
     command=("mute", menu_category),
     info={
-        "header": "उस उपयोगकर्ता से संदेश भेजना बंद करने के लिए",
-        "description": "यदि व्यवस्थापक नहीं है तो समूह में उसकी अनुमति बदल देता है,\
-            यदि वह व्यवस्थापक है या यदि आप व्यक्तिगत चैट में प्रयास करते हैं तो उसके संदेश हटा दिए जाएंगे\
-            \nनोट : इसके लिए आपको उचित अधिकार चाहिए.",
+        "header": "To stop sending messages from that user",
+        "description": "If is is not admin then changes his permission in group,\
+            if he is admin or if you try in personal chat then his messages will be deleted\
+            \nNote : You need proper rights for this.",
         "usage": [
             "{tr}mute <userid/username/reply>",
             "{tr}mute <userid/username/reply> <reason>",
@@ -381,31 +381,29 @@ async def watcher(event):
     },  # sourcery no-metrics
 )
 async def startmute(event):
-    "उस विशेष चैट में किसी व्यक्ति को म्यूट करने के लिए"
+    "To mute a person in that paticular chat"
     if event.is_private:
-        await event.edit("`अनपेक्षित समस्याएँ या बदसूरत त्रुटियाँ हो सकती हैं!`")
+        await event.edit("`Unexpected issues or ugly errors may occur!`")
         await sleep(2)
         await event.get_reply_message()
         replied_user = await event.client(GetFullUserRequest(event.chat_id))
         if is_muted(event.chat_id, event.chat_id):
             return await event.edit(
-                "`यह उपयोगकर्ता इस चैट में पहले से ही मौन है ~~lmfao sed rip~~`"
+                "`This user is already muted in this chat ~~lmfao sed rip~~`"
             )
         if event.chat_id == legend.uid:
-            return await eod(event, "`आप खुद को म्यूट नहीं कर सकते`")
+            return await eod(event, "`You cant mute yourself`")
         try:
             mute(event.chat_id, event.chat_id)
         except Exception as e:
-            await event.edit(f"**एरर: **\n`{e}`")
+            await event.edit(f"**Error **\n`{e}`")
         else:
-            await event.edit(
-                "`उस व्यक्ति को सफलतापूर्वक म्यूट कर दिया.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **`"
-            )
+            await event.edit("`Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **`")
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#PM_MUTE\n"
-                f"यूजर : [{replied_user.user.first_name}](tg://user?id={event.chat_id})\n",
+                f"**User :** [{replied_user.user.first_name}](tg://user?id={event.chat_id})\n",
             )
     else:
         chat = await event.get_chat()
@@ -413,29 +411,28 @@ async def startmute(event):
         creator = chat.creator
         if not admin and not creator:
             return await eor(
-                event,
-                "`आप व्यवस्थापक अधिकारों के बिना किसी व्यक्ति को म्यूट नहीं कर सकते niqq.` ಥ﹏ಥ  ",
+                event, "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  "
             )
         user, reason = await get_user_from_event(event)
         if not user:
             return
         if user.id == legend.uid:
-            return await eor(event, "`माफ़ करें, मैं खुद को म्यूट नहीं कर सकता`")
+            return await eor(event, "`Sorry, I can't mute myself`")
         if is_muted(user.id, event.chat_id):
             return await eor(
-                event, "`यह उपयोगकर्ता इस चैट में पहले से ही मौन है ~~lmfao sed rip~~`"
+                event, "`This user is already muted in this chat ~~lmfao sed rip~~`"
             )
         result = await event.client.get_permissions(event.chat_id, user.id)
         try:
             if result.participant.banned_rights.send_messages:
                 return await eor(
                     event,
-                    "`यह उपयोगकर्ता इस चैट में पहले से ही मौन है ~~lmfao sed rip~~`",
+                    "`This user is already muted in this chat ~~lmfao sed rip~~`",
                 )
         except AttributeError:
             pass
         except Exception as e:
-            return await eor(event, f"**एरर : **`{e}`", 10)
+            return await eor(event, f"**Error : **`{e}`", 10)
         try:
             await event.client(EditBannedRequest(event.chat_id, user.id, MUTE_RIGHTS))
         except UserAdminInvalidError:
@@ -443,21 +440,20 @@ async def startmute(event):
                 if chat.admin_rights.delete_messages is not True:
                     return await eor(
                         event,
-                        "`यदि आपके पास संदेशों को हटाने की अनुमति नहीं है तो आप किसी व्यक्ति को म्यूट नहीं कर सकते. ಥ﹏ಥ`",
+                        "`You can't mute a person if you dont have delete messages permission. ಥ﹏ಥ`",
                     )
             elif "creator" not in vars(chat):
                 return await eor(
-                    event,
-                    "`यदि आपके पास संदेशों को हटाने की अनुमति नहीं है तो आप किसी व्यक्ति को म्यूट नहीं कर सकते.` ಥ﹏ಥ  ",
+                    event, "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  "
                 )
             mute(user.id, event.chat_id)
         except Exception as e:
-            return await eor(event, f"एरर : `{e}`", 10)
+            return await eor(event, f"**Error : **`{e}`", 10)
         if reason:
             await eor(
                 event,
                 f"{_format.mentionuser(user.first_name ,user.id)} `is muted in {get_display_name(await event.get_chat())}`\n"
-                f"`कारण:`{reason}",
+                f"`Reason:`{reason}",
             )
         else:
             await eor(
@@ -468,8 +464,8 @@ async def startmute(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#MUTE\n"
-                f"यूजर : [{user.first_name}](tg://user?id={user.id})\n"
-                f"चाट : {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
+                f"**User :** [{user.first_name}](tg://user?id={user.id})\n"
+                f"**Chat :** {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
             )
 
 
@@ -477,9 +473,9 @@ async def startmute(event):
     pattern="unmute(?:\s|$)([\s\S]*)",
     command=("unmute", menu_category),
     info={
-        "header": "उपयोगकर्ता को फिर से संदेश भेजने की अनुमति देने के लिए",
-        "description": "फिर से संदेश भेजने के लिए उपयोगकर्ता अनुमतियों को समूह में बदल देगा.\
-        \nनोट : इसके लिए आपको उचित अधिकार चाहिए.",
+        "header": "To allow user to send messages again",
+        "description": "Will change user permissions ingroup to send messages again.\
+        \nNote : You need proper rights for this.",
         "usage": [
             "{tr}unmute <userid/username/reply>",
             "{tr}unmute <userid/username/reply> <reason>",
@@ -487,28 +483,28 @@ async def startmute(event):
     },
 )
 async def endmute(event):
-    "उस विशेष चैट में किसी व्यक्ति को म्यूट करने के लिए"
+    "To mute a person in that paticular chat"
     if event.is_private:
-        await event.edit("`अनपेक्षित समस्याएँ या बदसूरत त्रुटियाँ हो सकती हैं!`")
+        await event.edit("`Unexpected issues or ugly errors may occur!`")
         await sleep(1)
         replied_user = await event.client(GetFullUserRequest(event.chat_id))
         if not is_muted(event.chat_id, event.chat_id):
             return await event.edit(
-                "`__यह उपयोगकर्ता इस चैट में म्यूट नहीं है__\n（ ^_^）o自自o（^_^ ）`"
+                "`__This user is not muted in this chat__\n（ ^_^）o自自o（^_^ ）`"
             )
         try:
             unmute(event.chat_id, event.chat_id)
         except Exception as e:
-            await event.edit(f"**एरर **\n`{e}`")
+            await event.edit(f"**Error **\n`{e}`")
         else:
             await event.edit(
-                "`उस व्यक्ति को सफलतापूर्वक अनम्यूट किया गया\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍`"
+                "`Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍`"
             )
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#PM_UNMUTE\n"
-                f"यूजर : [{replied_user.user.first_name}](tg://user?id={event.chat_id})\n",
+                f"**User :** [{replied_user.user.first_name}](tg://user?id={event.chat_id})\n",
             )
     else:
         user, _ = await get_user_from_event(event)
@@ -526,7 +522,7 @@ async def endmute(event):
         except AttributeError:
             return await eor(
                 event,
-                "`यह उपयोगकर्ता पहले से ही इस चैट में खुलकर बात कर सकता है ~~lmfao sed rip~~`",
+                "`This user can already speak freely in this chat ~~lmfao sed rip~~`",
             )
         except Exception as e:
             return await eor(event, f"**Error : **`{e}`")
@@ -538,8 +534,8 @@ async def endmute(event):
             await event.client.send_message(
                 BOTLOG_CHATID,
                 "#UNMUTE\n"
-                f"यूजर : [{user.first_name}](tg://user?id={user.id})\n"
-                f"चाट : {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
+                f"**User :** [{user.first_name}](tg://user?id={user.id})\n"
+                f"**Chat :** {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
             )
 
 
@@ -547,9 +543,9 @@ async def endmute(event):
     pattern="kick(?:\s|$)([\s\S]*)",
     command=("kick", menu_category),
     info={
-        "header": "समूह से किसी व्यक्ति को लात मारने के लिए",
-        "description": "उपयोगकर्ता को समूह से लात मार देगा ताकि वह वापस शामिल हो सके.\
-        \nनोट : इसके लिए आपको उचित अधिकार चाहिए.",
+        "header": "To kick a person from the group",
+        "description": "Will kick the user from the group so he can join back.\
+        \nNote : You need proper rights for this.",
         "usage": [
             "{tr}kick <userid/username/reply>",
             "{tr}kick <userid/username/reply> <reason>",
@@ -559,29 +555,29 @@ async def endmute(event):
     require_admin=True,
 )
 async def endmute(event):
-    "किसी उपयोगकर्ता को चैट से बाहर निकालने के लिए इसका उपयोग करें"
+    "use this to kick a user from chat"
     user, reason = await get_user_from_event(event)
     if not user:
         return
-    legendevent = await eor(event, "`कईकिंग...`")
+    legendevent = await eor(event, "`Kicking...`")
     try:
         await event.client.kick_participant(event.chat_id, user.id)
     except Exception as e:
         return await legendevent.edit(NO_PERM + f"\n{e}")
     if reason:
         await legendevent.edit(
-            f"`किकेड` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
+            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
         )
     else:
         await legendevent.edit(
-            f"`किक्ड` [{user.first_name}](tg://user?id={user.id})`!`"
+            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`"
         )
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
             "#KICK\n"
-            f"यूजर: [{user.first_name}](tg://user?id={user.id})\n"
-            f"चाट: {get_display_name(await event.get_chat())}(`{event.chat_id}`)\n",
+            f"USER: [{user.first_name}](tg://user?id={user.id})\n"
+            f"CHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)\n",
         )
 
 
@@ -589,10 +585,10 @@ async def endmute(event):
     pattern="pin( loud|$)",
     command=("pin", menu_category),
     info={
-        "header": "चैट में संदेशों को पिन करने के लिए",
-        "description": "चैट में इसे पिन करने के लिए एक संदेश का उत्तर दें\
-        \nनोट : यदि आप समूह में उपयोग करना चाहते हैं तो इसके लिए आपको उचित अधिकारों की आवश्यकता है.",
-        "options": {"loud": "इसके बिना सभी को सूचित करने के लिए यह चुपचाप पिन करेगा"},
+        "header": "For pining messages in chat",
+        "description": "reply to a message to pin it in that in chat\
+        \nNote : You need proper rights for this if you want to use in group.",
+        "options": {"loud": "To notify everyone without this it will pin silently"},
         "usage": [
             "{tr}pin <reply>",
             "{tr}pin loud <reply>",
@@ -600,10 +596,10 @@ async def endmute(event):
     },
 )
 async def pin(event):
-    "चैट में संदेश पिन करने के लिए"
+    "To pin a message in chat"
     to_pin = event.reply_to_msg_id
     if not to_pin:
-        return await eod(event, "`किसी संदेश को पिन करने के लिए उसका उत्तर दें.`", 5)
+        return await eod(event, "`Reply to a message to pin it.`", 5)
     options = event.pattern_match.group(1)
     is_silent = bool(options)
     try:
@@ -618,8 +614,8 @@ async def pin(event):
             BOTLOG_CHATID,
             f"#PIN\
                 \n__successfully pinned a message in chat__\
-                \nचाट: {get_display_name(await event.get_chat())}(`{event.chat_id}`)\
-                \nलाउड: {is_silent}",
+                \nCHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)\
+                \nLOUD: {is_silent}",
         )
 
 
@@ -627,10 +623,10 @@ async def pin(event):
     pattern="unpin( all|$)",
     command=("unpin", menu_category),
     info={
-        "header": "चैट में संदेशों को अनपिन करने के लिए",
-        "description": "किसी संदेश को चैट में अनपिन करने के लिए उसका उत्तर दें\
-        \nNote : यदि आप समूह में उपयोग करना चाहते हैं तो आपको इसके लिए उचित अधिकार चाहिए.",
-        "options": {"all": "चैट में सभी संदेशों को अनपिन करने के लिए"},
+        "header": "For unpining messages in chat",
+        "description": "reply to a message to unpin it in that in chat\
+        \nNote : You need proper rights for this if you want to use in group.",
+        "options": {"all": "To unpin all messages in the chat"},
         "usage": [
             "{tr}unpin <reply>",
             "{tr}unpin all",
@@ -638,13 +634,13 @@ async def pin(event):
     },
 )
 async def pin(event):
-    "समूह में संदेशों को अनपिन करने के लिए"
+    "To unpin message(s) in the group"
     to_unpin = event.reply_to_msg_id
     options = (event.pattern_match.group(1)).strip()
     if not to_unpin and options != "all":
         return await eod(
             event,
-            "__किसी संदेश को अनपिन करने या उपयोग करने के लिए उसका उत्तर दें__`.unpin all`__ to unpin all__",
+            "__Reply to a message to unpin it or use __`.unpin all`__ to unpin all__",
             5,
         )
     try:
@@ -666,7 +662,7 @@ async def pin(event):
             BOTLOG_CHATID,
             f"#UNPIN\
                 \n__successfully unpinned message(s) in chat__\
-                \nचाट: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
+                \nCHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
         )
 
 
@@ -674,10 +670,10 @@ async def pin(event):
     pattern="undlt( -u)?(?: |$)(\d*)?",
     command=("undlt", menu_category),
     info={
-        "header": "हालही में डिलीट मैसेज को देखने के लिए",
-        "description": "हाल ही में डिलीट किए गए मैसेज को देखने के लिए, डिफॉल्ट रूप से सिर्फ 5 मैसेज शो होंगे. आप 1 से 15 के बीच में मैसेज देख सकते हो.",
+        "header": "To get recent deleted messages in group",
+        "description": "To check recent deleted messages in group, by default will show 5. you can get 1 to 15 messages.",
         "flags": {
-            "u": "मीडिया को चैट करने के लिए अपलोड करने के लिए इस प्रकार का उपयोग करें अन्यथा केवल मीडिया के रूप में दिखाई देगा."
+            "u": "use this type to upload media to chat else will just show as media."
         },
         "usage": [
             "{tr}undlt <count>",
@@ -685,15 +681,15 @@ async def pin(event):
         ],
         "examples": [
             "{tr}undlt 7",
-            "{tr}undlt -u 7 (इससे आपको 7 मैसेज मिलेंगे इसको रिप्लाई करते हुए",
+            "{tr}undlt -u 7 (this will reply all 7 messages to this message",
         ],
     },
     groups_only=True,
     require_admin=True,
 )
 async def _iundlt(event):  # sourcery no-metrics
-    "ग्रुप के डिलीट मैसेज देखने के लिए"
-    legendevent = await eor(event, "`सर्च जारी है .....`")
+    "To check recent deleted messages in group"
+    legendevent = await eor(event, "`Searching recent actions .....`")
     type = event.pattern_match.group(1)
     if event.pattern_match.group(2) != "":
         lim = int(event.pattern_match.group(2))
@@ -706,7 +702,7 @@ async def _iundlt(event):  # sourcery no-metrics
     adminlog = await event.client.get_admin_log(
         event.chat_id, limit=lim, edit=False, delete=True
     )
-    deleted_msg = f"⚜ **समूह में {lim} हाल ही में डिलीट किए गए है:~** ⚜"
+    deleted_msg = f"⚜ **Recent {lim} Deleted message(s) in this group are:~** ⚜"
     if not type:
         for msg in adminlog:
             sweet = (
@@ -714,9 +710,9 @@ async def _iundlt(event):  # sourcery no-metrics
             ).user
             _media_type = media_type(msg.old)
             if _media_type is None:
-                deleted_msg += f"\n☞ __{msg.old.message}__ **इसने भेजा** {_format.mentionuser(sweet.first_name ,sweet.id)}"
+                deleted_msg += f"\n☞ __{msg.old.message}__ **Sent by** {_format.mentionuser(sweet.first_name ,sweet.id)}"
             else:
-                deleted_msg += f"\n☞ __{_media_type}__ **इसने भेजा** {_format.mentionuser(sweet.first_name ,sweet.id)}"
+                deleted_msg += f"\n☞ __{_media_type}__ **Sent by** {_format.mentionuser(sweet.first_name ,sweet.id)}"
             await eor(legendevent, deleted_msg)
     else:
         main_msg = await eor(legendevent, deleted_msg)
@@ -727,10 +723,10 @@ async def _iundlt(event):  # sourcery no-metrics
             _media_type = media_type(msg.old)
             if _media_type is None:
                 await main_msg.reply(
-                    f"{msg.old.message}\n**इसने भेजा** {_format.mentionuser(sweet.first_name ,sweet.id)}"
+                    f"{msg.old.message}\n**Sent by** {_format.mentionuser(sweet.first_name ,sweet.id)}"
                 )
             else:
                 await main_msg.reply(
-                    f"{msg.old.message}\n**इसने भेजा** {_format.mentionuser(sweet.first_name ,sweet.id)}",
+                    f"{msg.old.message}\n**Sent by** {_format.mentionuser(sweet.first_name ,sweet.id)}",
                     file=msg.old.media,
                 )

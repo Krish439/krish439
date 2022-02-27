@@ -12,14 +12,14 @@ cmdprefix = Config.HANDLER
 menu_category = "tools"
 
 hemojis = {
-    "एडमिन": "👮‍♂️",
-    "बोट": "🤖",
-    "फन": "🎨",
-    "मिस्क": "🧩",
-    "टूल्स": "🧰",
-    "यूटिलस": "🗂",
-    "एक्स्ट्रा": "➕",
-    "यूजलेस": "⚰️",
+    "admin": "👮‍♂️",
+    "bot": "🤖",
+    "fun": "🎨",
+    "misc": "🧩",
+    "tools": "🧰",
+    "utils": "🗂",
+    "extra": "➕",
+    "useless": "⚰️",
 }
 
 
@@ -48,22 +48,22 @@ async def cmdinfo(input_str, event, plugin=False):
         if plugin:
             await eod(
                 event,
-                f"आपके बॉट में `{input_str}` के रूप में कोई प्लगइन या कमांड नहीं है.",
+                f"**There is no plugin or command as **`{input_str}`** in your bot.**",
             )
             return None
-        await eod(event, f"आपके बॉट में `{input_str}` जैसी कोई कमांड नहीं है।")
+        await eod(event, f"**There is no command as **`{input_str}`** in your bot.**")
         return None
     except Exception as e:
         await eod(event, f"**Error**\n`{e}`")
         return None
-    outstr = f"**🕹कमांड :** `{cmdprefix}{input_str}`\n"
+    outstr = f"**🕹Command :** `{cmdprefix}{input_str}`\n"
     plugin = get_key(input_str)
     if plugin is not None:
-        outstr += f"**🔰प्लगइन :** `{plugin}`\n"
+        outstr += f"**🔰Plugin :** `{plugin}`\n"
         category = getkey(plugin)
         if category is not None:
-            outstr += f"**📍 कैटेगरी :** `{category}`\n\n"
-    outstr += f"**📜 इंट्रो :**\n{about[0]}"
+            outstr += f"**📍Category :** `{category}`\n\n"
+    outstr += f"**📜 Intro :**\n{about[0]}"
     return outstr
 
 
@@ -74,30 +74,30 @@ async def plugininfo(input_str, event, type):
         outstr = await cmdinfo(input_str, event, plugin=True)
         return outstr
     except Exception as e:
-        await eod(event, f"एरर\n`{e}`")
+        await eod(event, f"**Error**\n`{e}`")
         return None
     if len(cmds) == 1 and (type is None or (type and type != "-p")):
         outstr = await cmdinfo(cmds[0], event, plugin=False)
         return outstr
-    outstr = f"प्लगइन : `{input_str}`\n"
-    outstr += f"कमांड्स अवेलेबल: `{len(cmds)}`\n"
+    outstr = f"**Plugin : **`{input_str}`\n"
+    outstr += f"**Commands Available :** `{len(cmds)}`\n"
     category = getkey(input_str)
     if category is not None:
-        outstr += f"📍कैटेगरी : `{category}`\n\n"
+        outstr += f"📍**Category :** `{category}`\n\n"
     for cmd in sorted(cmds):
-        outstr += f"**🕹कमांड :** `{cmdprefix}{cmd}`\n"
+        outstr += f"**🕹Command :** `{cmdprefix}{cmd}`\n"
         try:
-            outstr += f"**📜इंफॉर्मेशन :** __{CMD_INFO[cmd][1]}__\n\n"
+            outstr += f"**📜Info :** __{CMD_INFO[cmd][1]}__\n\n"
         except IndexError:
-            outstr += "**📜इंफॉर्मेशन :** `None`\n\n"
-    outstr += f"**👨‍💻 यूसेज : ** `{cmdprefix}help <command name>`\
-        \nनोट : यदि कमांड का नाम प्लगइन नाम के समान है तो इसका उपयोग करें `{cmdprefix}help -l <command name>`."
+            outstr += "**📜Info :** `None`\n\n"
+    outstr += f"**👨‍💻 Usage : ** `{cmdprefix}help <command name>`\
+        \n**Note : **If command name is same as plugin name then use this `{cmdprefix}help -l <command name>`."
     return outstr
 
 
 async def grpinfo():
-    outstr = "प्लगइंस इन द लीजेंडबॉट्:\n\n"
-    outstr += f"**👨‍💻 यूसेज : ** `{cmdprefix}help <plugin name>`\n\n"
+    outstr = "**Plugins in LegendBot are:**\n\n"
+    outstr += f"**👨‍💻 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
     category = ["admin", "bot", "fun", "misc", "tools", "utils", "extra", "useless"]
     for legend in category:
         plugins = GRP_INFO[legend]
@@ -109,7 +109,7 @@ async def grpinfo():
 
 
 async def cmdlist():
-    outstr = "आपके लीजेंडबॉट में कमांड की कुल सूची है :\n\n"
+    outstr = "**Total list of Commands in your LegendBot are :**\n\n"
     category = ["admin", "bot", "fun", "misc", "tools", "utils", "extra"]
     for legend in category:
         plugins = GRP_INFO[legend]
@@ -120,7 +120,7 @@ async def cmdlist():
             for cmd in sorted(cmds):
                 outstr += f"  - `{cmdprefix}{cmd}`\n"
             outstr += "\n"
-    outstr += f"**👨‍💻 यूसेज : ** `{cmdprefix}help -l <command name>`"
+    outstr += f"**👨‍💻 Usage : ** `{cmdprefix}help -l <command name>`"
     return outstr
 
 
@@ -128,13 +128,13 @@ async def cmdlist():
     pattern="help ?(-l|-p|-t)? ?([\s\S]*)?",
     command=("help", menu_category),
     info={
-        "header": "लीजेंडबोट के लिए गाइड पाने के लिए.",
-        "description": "कमांड या प्लगइन के लिए जानकारी या गाइड प्राप्त करने के लिए",
-        "note": "यदि कमांड का नाम और प्लगइन का नाम समान है तो आपको प्लगइन के लिए गाइड मिलता है। तो इस प्रकार का उपयोग करने से आपको कमांड गाइड मिलती है",
+        "header": "To get guide for LegendBot.",
+        "description": "To get information or guide for the command or plugin",
+        "note": "if command name and plugin name is same then you get guide for plugin. So by using this type you get command guide",
         "flags": {
-            "l": "कमांड की जानकारी प्राप्त करने के लिए.",
-            "p": "प्लगइन की जानकारी प्राप्त करने के लिए.",
-            "t": "सभी प्लगइन्स को टेक्स्ट फॉर्मेट में प्राप्त करने के लिए.",
+            "l": "To get info of command.",
+            "p": "To get info of plugin.",
+            "t": "To get all plugins in text format.",
         },
         "usage": [
             "{tr}help (plugin/command name)",
@@ -144,7 +144,7 @@ async def cmdlist():
     },
 )
 async def _(event):
-    "लीजेंडबोट के लिए गाइड पाने के लिए."
+    "To get guide for LegendBot."
     type = event.pattern_match.group(1)
     input_str = event.pattern_match.group(2)
     reply_to_id = await reply_id(event)
@@ -193,7 +193,7 @@ async def _(event):
         outstr = f"**📜 {input_str.title()} has {len(cmds)} commands**\n"
         for cmd in cmds:
             outstr += f"  - `{cmdprefix}{cmd}`\n"
-        outstr += f"**👨‍💻  यूसेज : ** `{cmdprefix}help -l <command name>`"
+        outstr += f"**👨‍💻  Usage : ** `{cmdprefix}help -l <command name>`"
     await eor(event, outstr, aslink=True, linktext="Total Commands of LegendBot are :")
 
 
