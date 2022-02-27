@@ -22,9 +22,9 @@ async def yashraid(event):
     addgvar("spamwork", "True")
     LEGEND = event.client
     kek = event.chat_id
+    if gvarstatus("spamwork") is None:
+        return
     while heolls != False:
-        if gvarstatus("spamwork") is None:
-            return
         await LEGEND.send_message(kek, "TERI MA KI CHOOXT MAARUU BSDKEE")
         await LEGEND.send_message(kek, "TERI BHN KA BHOSXDA FAAD DIA MADARCHOD")
         await LEGEND.send_message(kek, "TERI BHN KI GANXD ME DYNAMTE LAGA KE UDA DIA")
