@@ -35,8 +35,6 @@ async def lon(frog):
     await eor(frog, D)
 
 
-
-
 @legend.legend_cmd(
     pattern="shitos$",
     command=("shitos", menu_category),
@@ -144,4 +142,3 @@ async def bluedevilbye(event):
         lol = "Bye Friends"
         await event.delete()
         await event.client.send_file(event.chat_id, BYE_PIC, caption=lol)
-        
