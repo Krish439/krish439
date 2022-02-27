@@ -225,6 +225,7 @@ async def _(event):
             f"**Unmatched argument.** \n\n__Get all the required queries for nekos here__ -> **[Nekos Queries](https://telegra.ph/Lêɠêɳdẞογ-02-24-2)**",
         )
 
+
 """
 @legend.legend_cmd(
     pattern="xnxx(?:\s|$)([\s\S]*)",
@@ -474,6 +475,7 @@ async def pussy(event):
         pwnlist += f"<b><i>{i}. <a href = {media_url}>{t}</a></b>\n"
     await eor(event, pwnlist, parse_mode="html")
 """
+
 
 @legend.legend_cmd(
     pattern="xsearch(?:\s|$)([\s\S]*)",
