@@ -271,7 +271,7 @@ async def add_to_pack(
         os.remove("animate.webm")
     if is_anim:
         await conv.send_file("AnimatedSticker.tgs")
-        remove("AnimatedSticker.tgs")
+        os.remove("AnimatedSticker.tgs")
     else:
         stfile.seek(0)
         await conv.send_file(stfile, force_document=True)
