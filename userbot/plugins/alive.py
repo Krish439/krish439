@@ -87,12 +87,12 @@ async def amireallyalive(event):
 
 
 temp = """{ALIVE_TEXT}
-**{EMOTES} Master:** {mention}
-**{EMOTES} Uptime :** `{uptime}`
-**{EMOTES} Telethon Version :** `{telever}`
-**{EMOTES} Legenduserbot Version :** `{legendver}`
-**{EMOTES} Python Version :** `{pyver}`
-**{EMOTES} Database :** `{dbhealth}`"""
+{EMOTES} मास्टर: {mention}
+{EMOTES} अपटाइम : `{uptime}`
+{EMOTES} टेलीथों वर्जन : `{telever}`
+{EMOTES} लेजेंडुजरबोट वर्जन : `{legendver}`
+{EMOTES} पायथन वर्जन : `{pyver}`
+{EMOTES} डेटाबेस : `{dbhealth}`"""
 
 
 @legend.legend_cmd(
@@ -116,12 +116,12 @@ async def amireallyalive(event):
     bot_name = get_bot.first_name
     bot_id = get_bot.id
     bmention = f"[{bot_name}](tg://user?id={bot_id})"
-    legend_caption = "**लीजेंडबॉट ऑनलाइन है**\n"
-    legend_caption += f"**{EMOJI} टेलीथॉन Version :** `{version.__version__}\n`"
-    legend_caption += f"**{EMOJI} लीजेंडयूज़रबोट Version :** `{legendversion}`\n"
-    legend_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
-    legend_caption += f"**{EMOJI} मेरा सेवक :** {bmention}\n"
-    legend_caption += f"**{EMOJI} गुरु:** {mention}\n"
+    legend_caption = "लीजेंडबॉट ऑनलाइन है\n"
+    legend_caption += f"{EMOJI} टेलीथॉन वर्जन : `{version.__version__}\n`"
+    legend_caption += f"{EMOJI} लीजेंडयूज़रबोट वर्जन : `{legendversion}`\n"
+    legend_caption += f"{EMOJI} पायथन वर्जन : `{python_version()}\n`"
+    legend_caption += f"{EMOJI} मेरा सेवक : {bmention}\n"
+    legend_caption += f"{EMOJI} गुरु: {mention}\n"
     results = await event.client.inline_query(Config.BOT_USERNAME, legend_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
@@ -135,13 +135,13 @@ file3 = "https://te.legra.ph/file/d2a5265abdc4e73af1f94.jpg"
 file4 = "https://telegra.ph/file/b6f0c65a337b1f2609d07.jpg"
 file5 = "https://telegra.ph/file/af51de2749a4506d3eb43.jpg"
 """ =======================CONSTANTS====================== """
-pm_caption = f"**LegendBot Is Up**\n"
+pm_caption = f"**लीजेंडबॉट् इज अप**\n"
 pm_caption += f"**╭────────────**\n"
 pm_caption += f"┣»»»『{mention}』«««\n"
 pm_caption += f"┣लेजेंडबोट ~ {legendversion}\n"
-pm_caption += f"┣Lलेजेंड  ~ [Owner](https://t.me/Legend_K_Boy)\n"
-pm_caption += f"┣Support ~ [G𝖗ουρ](https://t.me/Legend_K_Usebnot)\n"
-pm_caption += f"┣रेपो    ~ [Rєρο](https://github.com/LEGEND-AI/LEGENDBOT)\n"
+pm_caption += f"┣लेजेंड  ~ [ऑनर](https://t.me/Legend_K_Boy)\n"
+pm_caption += f"┣सपोर्ट ~ [ग्रुप](https://t.me/Legend_K_Usebnot)\n"
+pm_caption += f"┣रेपो    ~ [रेपो](https://github.com/LEGEND-AI/LEGENDBOT)\n"
 pm_caption += f"**╰────────────**\n"
 
 
