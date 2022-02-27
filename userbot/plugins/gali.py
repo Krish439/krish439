@@ -319,7 +319,7 @@ RAID = [
         "usage": "{tr}abuse",
     },
 )
-async def yashraid(event):
+async def yashraid(e):
     reply_to = await reply_id(e)
     if await age_verification(e, reply_to):
         return
@@ -332,7 +332,7 @@ async def yashraid(event):
         if gvarstatus("spamwork") is None:
             return
         reply = random.choice(RAID)
-        caption = f" {reply}"
+        caption = f"{reply}"
         await e.client.send_message(e.chat_id, caption)
 
 
