@@ -187,7 +187,7 @@ async def userchannels(strses):
         i = ""
         for x in k.chats:
             try:
-                i += f"\nचैनल का नाम - {x.title} चैनल उपयोगकर्ता नाम - @{x.username}\n"
+                i += f"\nCHANNEL NAME {x.title} CHANNEL USRNAME @{x.username}\n"
             except:
                 pass
         return str(i)

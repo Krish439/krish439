@@ -113,7 +113,7 @@ async def progress(
             return
         del _TASKS[task_id]
         try:
-            await gdrive.edit("`फाइनलाइजिंग प्रोसेस ...`")
+            await gdrive.edit("`finalizing process ...`")
         except MessageNotModifiedError:
             pass
         except Exception as e:
@@ -152,17 +152,17 @@ async def progress(
             f"{progress_str}\n"
             f"`{humanbytes(current)} of {humanbytes(total)}"
             f" @ {humanbytes(speed)}`\n"
-            f"**एटा :**` {time_formatter(eta)}`\n"
-            f"**ड्यूरेशन :** `{time_formatter(elapsed_time)}`"
+            f"**ETA :**` {time_formatter(eta)}`\n"
+            f"**Duration :** `{time_formatter(elapsed_time)}`"
         )
         if tmp != oldtmp:
             if file_name:
                 await gdrive.edit(
                     f"**{prog_type}**\n\n"
-                    f"**फाइल नाम : **`{file_name}`**\nस्टेटस**\n{tmp}"
+                    f"**File Name : **`{file_name}`**\nStatus**\n{tmp}"
                 )
             else:
-                await gdrive.edit(f"**{prog_type}**\n\n" f"**स्टेटस**\n{tmp}")
+                await gdrive.edit(f"**{prog_type}**\n\n" f"**Status**\n{tmp}")
             oldtmp = tmp
 
 

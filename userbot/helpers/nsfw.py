@@ -118,7 +118,7 @@ async def importent(event):
 
 def nsfw(catagory):
     catagory.sort(key=str.casefold)
-    horny = "**कैटेगरी :** "
+    horny = "**Catagory :** "
     for i in catagory:
         horny += f" `{i.lower()}` ||"
     return horny
