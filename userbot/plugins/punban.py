@@ -201,7 +201,7 @@ async def _(event):
     if lol != "ON":
         return await eor(
             event,
-            "**This command is only for users with .setdb** `ABUSE` **as** `ON`",
+            "**This command is only for users with `.setdb ABUSE ON`",
         )
     owo = event.pattern_match.group(1)
     if owo in neko_category:
@@ -225,7 +225,7 @@ async def _(event):
             f"**Unmatched argument.** \n\n__Get all the required queries for nekos here__ -> **[Nekos Queries](https://telegra.ph/Lêɠêɳdẞογ-02-24-2)**",
         )
 
-
+"""
 @legend.legend_cmd(
     pattern="xnxx(?:\s|$)([\s\S]*)",
     command=("xnxx", menu_category),
@@ -413,7 +413,7 @@ async def bad(event):
             "{tr}rsearch",
             "{tr}rsearch <count> <options/subreddit>",
         ],
-        "examples": "{tr}rsearch 10 nsfw_gifs",
+        "examples": "{tr}rsearch 10 nsfw_gifs,",
         "options": horny,
     },
 )
@@ -473,7 +473,7 @@ async def pussy(event):
             media_url = m
         pwnlist += f"<b><i>{i}. <a href = {media_url}>{t}</a></b>\n"
     await eor(event, pwnlist, parse_mode="html")
-
+"""
 
 @legend.legend_cmd(
     pattern="xsearch(?:\s|$)([\s\S]*)",
