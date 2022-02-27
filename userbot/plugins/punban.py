@@ -240,7 +240,7 @@ async def _(event):
     },
 )
 async def very(event):
-    """Random porn post"""
+    Random porn post
     reply_to = await reply_id(event)
     sub_r = event.pattern_match.group(1)
     await eor(event, "**Just hold a sec u horny kid...**")
@@ -324,7 +324,7 @@ async def very(event):
     },
 )
 async def bad(event):
-    """Download porn in bulk"""
+    Download porn in bulk
     reply_to = await reply_id(event)
     intxt = event.pattern_match.group(1)
     if intxt and " " in intxt:
@@ -418,7 +418,7 @@ async def bad(event):
     },
 )
 async def pussy(event):
-    """Send a list of reddit posts"""
+    Send a list of reddit posts
     reply_to = await reply_id(event)
     intxt = event.pattern_match.group(1)
     if intxt and " " in intxt:
