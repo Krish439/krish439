@@ -6,6 +6,7 @@ from telethon.utils import get_display_name
 from userbot import legend
 
 from ..core.managers import eod, eor
+from ..helpers.functions import age_verification
 from ..sql_helper.globals import addgvar, gvarstatus
 from ..sql_helper.raid_sql import (
     raddai,
@@ -16,9 +17,6 @@ from ..sql_helper.raid_sql import (
     rremove_all_users,
     rremove_users,
 )
-from ..helpers.functions import age_verification
-from ..helpers.nsfw import unsave_gif
-from ..helpers.utils import _legendutils, reply_id
 from . import useless
 
 menu_category = "fun"
