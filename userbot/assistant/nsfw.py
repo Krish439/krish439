@@ -8,6 +8,7 @@ from userbot import legend
 
 from ..Config import Config
 from ..core.logger import logging
+from ..sql_helper.globals import addgvar
 
 LOGS = logging.getLogger(__name__)
 
@@ -28,8 +29,9 @@ async def age_verification_true(event: CallbackQuery):
         )
     ]
     try:
+        addgvar("ALLOW_NSFW", "true")
         await event.edit(
-            text="Set `ALLOW_NSFW` = True in Database Vars to access this plugin",
+            text="Done Now Use Again",
             file="https://telegra.ph/file/85f3071c31279bcc280ef.jpg",
             buttons=buttons,
         )

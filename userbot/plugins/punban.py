@@ -17,7 +17,6 @@ from ..helpers.utils import _legendutils, reply_id
 from . import useless
 
 API = useless.API
-from ..sql_helper.globals import gvarstatus
 
 horny = useless.nsfw(useless.pawn)
 
@@ -200,12 +199,6 @@ async def _(event):
     type = await useless.importent(event)
     if type:
         return
-    lol = gvarstatus("ABUSE")
-    if lol != "ON":
-        return await eor(
-            event,
-            "**This command is only for users with `.setdb ABUSE ON`",
-        )
     owo = event.pattern_match.group(1)
     if owo in neko_category:
         king = await eor(event, f"`Searching {owo} ...`")
