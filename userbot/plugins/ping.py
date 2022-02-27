@@ -12,13 +12,13 @@ menu_category = "tools"
     pattern="ping( -a|$)",
     command=("ping", menu_category),
     info={
-        "header": "अपने बोट का पिंग देखने के लिए",
+        "header": "check how long it takes to ping your userbot",
         "flags": {"-a": "average ping"},
         "usage": ["{tr}ping", "{tr}ping -a"],
     },
 )
 async def _(event):
-    "बोट का पिंग देखने के लिए।"
+    "To check ping"
     type = event.pattern_match.group(1)
     start = datetime.now()
     if type == " -a":
@@ -30,20 +30,20 @@ async def _(event):
         end = datetime.now()
         tms = (end - start).microseconds / 1000
         ms = round((tms - 0.6) / 3, 3)
-        await legendevent.edit(f"**👨‍💻 एवरेज पोंग!**\n➥ {ms} ms")
+        await legendevent.edit(f"**👨‍💻 Average Pong!**\n➥ {ms} ms")
     else:
         sweetie = (
             gvarstatus("PING_PIC")
             or "https://telegra.ph/file/e15a2fe1430358e26713c.jpg"
         )
-        legendevent = await eor(event, "<b><i>⚡ **पोंग!** ⚡</b></i>", "html")
+        legendevent = await eor(event, "<b><i>⚡ **Pong!** ⚡</b></i>", "html")
         end = datetime.now()
         ms = (end - start).microseconds / 1000
         await legendevent.delete()
         await event.client.send_file(
             event.chat_id,
             sweetie,
-            caption=f"<b><i>👨‍💻 पोंग </b></i>\n\n   🚩 {ms} <b><i>ms\n   Bot : {hmention}</b></i>",
+            caption=f"<b><i>👨‍💻 Pong </b></i>\n\n   🚩 {ms} <b><i>ms\n   Bot : {hmention}</b></i>",
             parse_mode="html",
         )
 
@@ -51,10 +51,10 @@ async def _(event):
 @legend.legend_cmd(
     pattern="hping$",
     command=("hping", menu_category),
-    info={"header": "एनीमेशन के साथ पिंग देखने के लिए", "usage": "{tr}fping"},
+    info={"header": "Shows the server ping with extra animation", "usage": "{tr}fping"},
 )
 async def _(event):
-    "एनीमेशन के साथ पिंग देखने के लिए"
+    "To check ping with animation"
     start = datetime.now()
     animation_interval = 0.3
     animation_ttl = range(26)
