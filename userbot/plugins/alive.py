@@ -29,8 +29,8 @@ menu_category = "utils"
     pattern="legend$",
     command=("legend", menu_category),
     info={
-        "header": "To check bot's alive status",
-        "options": "To show media in this cmd you need to set ALIVE_PIC with media link, get this by replying the media by .tgm",
+        "header": "बॉट की जीवित स्थिति की जांच करने के लिए",
+        "options": "इस कमांड में मीडिया दिखाने के लिए आपको मीडिया लिंक के साथ ALIVE_PIC सेट करना होगा, मीडिया को .tgm द्वारा जवाब देकर इसे प्राप्त करो",
         "usage": [
             "{tr}legend",
         ],
@@ -46,7 +46,7 @@ async def amireallyalive(event):
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     EMOJI = gvarstatus("ALIVE_EMOJI") or "✥"
-    LOL_TEXT = gvarstatus("ALIVE_TEXT") or "**⚜ LegendBot Is Online ⚜**"
+    LOL_TEXT = gvarstatus("ALIVE_TEXT") or "**⚜ लीजेंडबॉट ऑनलाइन है ⚜**"
     LEGEND_IMG = (
         gvarstatus("IALIVE_PIC") or "https://telegra.ph/file/144d8ea74fef8ca12253c.jpg"
     )
@@ -77,7 +77,7 @@ async def amireallyalive(event):
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await eor(
                 legendevent,
-                f"**Media Value Error!!**\n__Change the link by __`.setdv`\n\n**__Can't get media from this link :-**__ `{PIC}`",
+                f"**Media Value Error!!**\n__Change the link by __`.setdv`\n\n**__इस लिंक से मीडिया नहीं मिल सकता :-**__ `{PIC}`",
             )
     else:
         await eor(
@@ -99,15 +99,15 @@ temp = """{ALIVE_TEXT}
     pattern="alive$",
     command=("alive", menu_category),
     info={
-        "header": "To check bot's alive status via inline mode",
-        "options": "To show media in this cmd you need to set ALIVE_PIC with media link, get this by replying the media by .tgm",
+        "header": "इनलाइन मोड के माध्यम से बॉट की जीवित स्थिति की जांच करने के लिए",
+        "options": "इस सीएमडी में मीडिया दिखाने के लिए आपको मीडिया लिंक के साथ ALIVE_PIC सेट करना होगा, मीडिया को .tgm द्वारा जवाब देकर इसे प्राप्त करें।",
         "usage": [
             "{tr}alive",
         ],
     },
 )
 async def amireallyalive(event):
-    "A kind of showing bot details by your inline bot"
+    "आपके इनलाइन बॉट द्वारा बॉट विवरण दिखाने का एक प्रकार"
     reply_to_id = await reply_id(event)
     a = gvarstatus("ALIVE_EMOJI") or "✥"
     Legend = [x for x in a.split()]
@@ -116,12 +116,12 @@ async def amireallyalive(event):
     bot_name = get_bot.first_name
     bot_id = get_bot.id
     bmention = f"[{bot_name}](tg://user?id={bot_id})"
-    legend_caption = "**LegendBot Is Online**\n"
-    legend_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
-    legend_caption += f"**{EMOJI} Legenduserbot Version :** `{legendversion}`\n"
+    legend_caption = "**लीजेंडबॉट ऑनलाइन है**\n"
+    legend_caption += f"**{EMOJI} टेलीथॉन Version :** `{version.__version__}\n`"
+    legend_caption += f"**{EMOJI} लीजेंडयूज़रबोट Version :** `{legendversion}`\n"
     legend_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
-    legend_caption += f"**{EMOJI} My Assistant :** {bmention}\n"
-    legend_caption += f"**{EMOJI} Master:** {mention}\n"
+    legend_caption += f"**{EMOJI} मेरा सेवक :** {bmention}\n"
+    legend_caption += f"**{EMOJI} गुरु:** {mention}\n"
     results = await event.client.inline_query(Config.BOT_USERNAME, legend_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
@@ -138,10 +138,10 @@ file5 = "https://telegra.ph/file/af51de2749a4506d3eb43.jpg"
 pm_caption = f"**LegendBot Is Up**\n"
 pm_caption += f"**╭────────────**\n"
 pm_caption += f"┣»»»『{mention}』«««\n"
-pm_caption += f"┣Lêɠêɳ̃dẞø† ~ {legendversion}\n"
-pm_caption += f"┣Lêɠêɳ̃d  ~ [Owner](https://t.me/Legend_K_Boy)\n"
+pm_caption += f"┣लेजेंडबोट ~ {legendversion}\n"
+pm_caption += f"┣Lलेजेंड  ~ [Owner](https://t.me/Legend_K_Boy)\n"
 pm_caption += f"┣Support ~ [G𝖗ουρ](https://t.me/Legend_K_Usebnot)\n"
-pm_caption += f"┣Řepô    ~ [Rєρο](https://github.com/LEGEND-AI/LEGENDBOT)\n"
+pm_caption += f"┣रेपो    ~ [Rєρο](https://github.com/LEGEND-AI/LEGENDBOT)\n"
 pm_caption += f"**╰────────────**\n"
 
 
@@ -149,8 +149,8 @@ pm_caption += f"**╰────────────**\n"
     pattern="about$",
     command=("about", menu_category),
     info={
-        "header": "To check bot's alive status ",
-        "options": "Random Media Automatically Get It",
+        "header": "बॉट की जीवित स्थिति की जांच करने के लिए ",
+        "options": "रैंडम मीडिया स्वचालित रूप से इसे प्राप्त करें",
         "usage": [
             "{tr}about",
         ],
