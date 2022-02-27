@@ -1,11 +1,10 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
+
 from ..helpers.functions import age_verification
 from ..helpers.nsfw import unsave_gif
-from ..helpers.utils import _legendutils, reply_id
-from . import useless
-from ..helpers.nsfw import unsave_gif
-from . import legend
+from ..helpers.utils import reply_id
+from . import legend, useless
 
 menu_category = "useless"
 
