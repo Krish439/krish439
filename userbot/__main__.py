@@ -44,7 +44,7 @@ async def startup_process():
     print("Starting Bot Mode!")
     print("⚜ LegendBot Has Been Deployed Successfully ⚜")
     print("OWNER - @LegendBoy_XD")
-    print("Group - @LegendBot_XD')
+    print("Group - @LegendBot_XD")
     print("----------------")
     await verifyLoggerGroup()
     await add_bot_to_logger_group(BOTLOG_CHATID)
