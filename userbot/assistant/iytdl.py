@@ -43,9 +43,9 @@ menu_category = "bot"
     pattern="iytdl(?:\s|$)([\s\S]*)",
     command=("iytdl", menu_category),
     info={
-        "header": "ytdl with inline buttons.",
-        "description": "To search and download youtube videos by inline buttons.",
-        "usage": "{tr}iytdl [URL / Text] or [Reply to URL / Text]",
+        "header": "ytdl इनलाइन बटन के साथ।",
+        "description": "इनलाइन बटन से वीडियो सर्च या डाउनलोड करने के लिए।",
+        "usage": "{tr}iytdl [URL / Text] or [रिप्लाई URL / Text]",
     },
 )
 async def iytdl_inline(event):
@@ -59,8 +59,8 @@ async def iytdl_inline(event):
     elif reply and reply.text:
         input_url = (reply.text).strip()
     if not input_url:
-        return await eod(event, "Give input or reply to a valid youtube URL")
-    legendevent = await eor(event, f"🔎 Searching Youtube for: `'{input_url}'`")
+        return await eod(event, "वैलिड यूट्यूब को इनपुट दें या रिप्लाई करें ")
+    legendevent = await eor(event, f"🔎 यूट्यूब सर्च कर रहे हैं: `'{input_url}'`")
     type = True
     cout = 0
     results = None
@@ -79,7 +79,7 @@ async def iytdl_inline(event):
         await legendevent.delete()
         await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     else:
-        await legendevent.edit("`Sorry!. Can't find any results`")
+        await legendevent.edit("`माफ़ करना! कोई परिणाम नहीं मिल रहा`")
 
 
 @legend.tgbot.on(
@@ -136,7 +136,7 @@ async def ytdl_download_callback(c_q: CallbackQuery):  # sourcery no-metrics
         else:
             _fpath = _path
     if not _fpath:
-        await eod(upload_msg, "nothing found !")
+        await eod(upload_msg, "n कुछ नहीं मिला!")
         return
     if not thumb_pic:
         thumb_pic = str(await pool.run_in_thread(download)(await get_ytthumb(yt_code)))
@@ -199,7 +199,7 @@ async def ytdl_callback(c_q: CallbackQuery):
     )
     if not os.path.exists(PATH):
         return await c_q.answer(
-            "Search data doesn't exists anymore, please perform search again ...",
+            "खोज डेटा अब मौजूद नहीं है, कृपया फिर से खोज करें ...",
             alert=True,
         )
     with open(PATH) as f:
@@ -245,13 +245,13 @@ async def ytdl_callback(c_q: CallbackQuery):
             parse_mode="html",
         )
     elif choosen_btn == "listall":
-        await c_q.answer("View Changed to:  📜  List", alert=False)
+        await c_q.answer("दृश्य बदल गया:  📜  List", alert=False)
         list_res = "".join(
             search_data.get(vid_s).get("list_view") for vid_s in search_data
         )
 
         telegraph = await post_to_telegraph(
-            f"Showing {total} youtube video results for the given query ...",
+            f"दी गई क्वेरी के लिए youtube वीडियो परिनाम {total} ...",
             list_res,
         )
         await c_q.edit(
