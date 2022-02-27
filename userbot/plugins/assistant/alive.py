@@ -1,17 +1,17 @@
 from telethon import events
 
 PM_IMG = "https://telegra.ph/file/c26fc61e904476083baa7.jpg"
-pm_caption = f"⚜『Lêɠêɳ̃dẞø†』Is Ôñĺîne⚜ \n\n"
-pm_caption += f"Ôwñêř ~ 『{legend_mention}』\n"
+pm_caption = f"⚜『लीजेंडबोट』ऑनलाइन है⚜ \n\n"
+pm_caption += f"मालिक ~ 『{legend_mention}』\n"
 pm_caption += f"**╭───────────**\n"
-pm_caption += f"┣Ťêlethon ~ `1.15.0` \n"
-pm_caption += f"┣『Lêɠêɳ̃dẞø†』~ `{LEGENDversion}` \n"
-pm_caption += f"┣Çhâññel ~ [Channel](https://t.me/Its_LegendBot)\n"
-pm_caption += f"┣**License** ~ [License v3.0](github.com/The-LegendBot/LEGENBOT/blob/master/LICENSE)\n"
-pm_caption += f"┣Copyright ~ By [『Lêɠêɳ̃dẞø†』 ](https://t.me/Legend_Userbot)\n"
-pm_caption += f"┣Assistant ~ By [『Lêɠêɳ̃dẞøy』 ](https://t.me/Its_LegendBoy)\n"
+pm_caption += f"┣टेलेथोंन ~ `1.15.0` \n"
+pm_caption += f"┣『लीजेंडबोट』~ `{LEGENDversion}` \n"
+pm_caption += f"┣चैनल ~ [चैनल](https://t.me/Official_K_LegendBot)\n"
+pm_caption += f"┣**लाइसेंस** ~ [लाइसेंस ३.०](https://github.com/ITS-LEGENDBOT/LEGENDBOT/blob/master/LICENSE)\n"
+pm_caption += f"┣कॉपीराइट ~ By [लीजेंडबोट』 ](https://t.me/Legend_K_Userbot)\n"
+pm_caption += f"┣असिटेंट ~  [『लीजेंडबॉय』 ](https://t.me/LegendBoy_XD)\n"
 pm_caption += f"╰────────────\n"
-pm_caption += f"       »»» [『Lêɠêɳ̃dẞø†』](https://t.me/Legend_Userbot) «««"
+pm_caption += f"       »»» [『लीजेंडबोट』](https://t.me/Legend_K_Userbot) «««"
 
 from telethon import events
 
