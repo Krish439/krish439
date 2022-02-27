@@ -20,11 +20,9 @@ async def on_plug_in_callback_query_handler(event):
                 encrypted_tcxt = message["text"]
                 reply_pop_up_alert = encrypted_tcxt
             else:
-                reply_pop_up_alert = (
-                    "तुम इस बकवास को क्यों देख रहे थे, जाओ और अपना काम करो, बेवकूफ"
-                )
+                reply_pop_up_alert = "why were you looking at this shit go away and do your own work, idiot"
         except KeyError:
-            reply_pop_up_alert = "यह संदेश अब लेजेंड सर्वर में मौजूद नहीं है।"
+            reply_pop_up_alert = "This message no longer exists in legend server"
     else:
-        reply_pop_up_alert = "यह संदेश अब लेजेंड सर्वर में मौजूद नहीं है।"
+        reply_pop_up_alert = "This message no longer exists "
     await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
