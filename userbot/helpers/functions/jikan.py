@@ -207,7 +207,7 @@ async def formatJSON(outData):
     jsonData = json.loads(outData)
     res = list(jsonData.keys())
     if "errors" in res:
-        msg += f"**एरर** : `{jsonData['errors'][0]['message']}`"
+        msg += f"**Error** : `{jsonData['errors'][0]['message']}`"
         return msg
     jsonData = jsonData["data"]["Media"]
     if "bannerImage" in jsonData.keys():
@@ -217,15 +217,15 @@ async def formatJSON(outData):
     title = jsonData["title"]["romaji"]
     link = f"https://anilist.co/anime/{jsonData['id']}"
     msg += f"[{title}]({link})"
-    msg += f"\n\n**टाइप** : {jsonData['format']}"
+    msg += f"\n\n**Type** : {jsonData['format']}"
     msg += "\n**Genres** : "
     for g in jsonData["genres"]:
         msg += g + " "
-    msg += f"\n**स्टेटस** : {jsonData['status']}"
-    msg += f"\n**एपिसोड** : {jsonData['episodes']}"
-    msg += f"\n**ईयर** : {jsonData['startDate']['year']}"
-    msg += f"\n**स्कोर** : {jsonData['averageScore']}"
-    msg += f"\n**ड्यूरेशन** : {jsonData['duration']} min\n\n"
+    msg += f"\n**Status** : {jsonData['status']}"
+    msg += f"\n**Episode** : {jsonData['episodes']}"
+    msg += f"\n**Year** : {jsonData['startDate']['year']}"
+    msg += f"\n**Score** : {jsonData['averageScore']}"
+    msg += f"\n**Duration** : {jsonData['duration']} min\n\n"
     # https://t.me/OFFICIAL_K_LEGENDBOT/19496
     legend = "{jsonData['description']}"
     msg += " __" + re.sub("<br>", "\n", legend) + "__"
@@ -238,9 +238,9 @@ def shorten(description, info="anilist.co"):
     msg = ""
     if len(description) > 700:
         description = description[0:200] + "....."
-        msg += f"\n**डिस्क्रिप्टइन**:\n{description} [Read More]({info})"
+        msg += f"\n**Description**:\n{description} [Read More]({info})"
     else:
-        msg += f"\n**डिस्क्रिप्टइन**: \n   {description}"
+        msg += f"\n**Description**: \n   {description}"
     return (
         msg.replace("<br>", "")
         .replace("</br>", "")
@@ -263,18 +263,18 @@ async def anilist_user(input_str):
     user_data = result["data"]["User"]
     stats = textwrap.dedent(
         f"""
-**यूजर नेम :** [{user_data['name']}]({user_data['siteUrl']})
-**एनिलिस्ट आईडी :** `{user_data['id']}` 
-**✙  एनीमे स्टेटस**
-• **टोटल एनिमे वाचेड :** `{user_data["statistics"]["anime"]['count']}`
-• **टोटल एपिसोड वॉचेड : **`{user_data["statistics"]["anime"]['episodesWatched']}`
-• **कुल समय बिताया : **`{readable_time(user_data["statistics"]["anime"]['minutesWatched']*60)}`
-• **औसत अंक :** `{user_data["statistics"]["anime"]['meanScore']}`
-**✙  मांगा स्टेटस**
-• **कुल मंगा पढ़ें :** `{user_data["statistics"]["manga"]['count']}`
-• **कुल अध्याय पढ़ें :** `{user_data["statistics"]["manga"]['chaptersRead']}`
-• **कुल मात्रा पढ़ें : **`{user_data["statistics"]["manga"]['volumesRead']}`
-• **औसत अंक : **`{user_data["statistics"]["manga"]['meanScore']}`
+**User name :** [{user_data['name']}]({user_data['siteUrl']})
+**Anilist ID :** `{user_data['id']}` 
+**✙  Anime Stats**
+• **Total Anime Watched :** `{user_data["statistics"]["anime"]['count']}`
+• **Total Episode Watched : **`{user_data["statistics"]["anime"]['episodesWatched']}`
+• **Total Time Spent : **`{readable_time(user_data["statistics"]["anime"]['minutesWatched']*60)}`
+• **Average Score :** `{user_data["statistics"]["anime"]['meanScore']}`
+**✙  Manga Stats**
+• **Total Manga Read :** `{user_data["statistics"]["manga"]['count']}`
+• **Total Chapters Read :** `{user_data["statistics"]["manga"]['chaptersRead']}`
+• **Total Volumes Read : **`{user_data["statistics"]["manga"]['volumesRead']}`
+• **Average Score : **`{user_data["statistics"]["manga"]['meanScore']}`
 """
     )
     return stats, f'https://img.anili.st/user/{user_data["id"]}?a={time.time()}'
@@ -426,18 +426,18 @@ async def get_anime_manga(mal_id, search_type, _user_id):  # sourcery no-metrics
     if search_type == "anime_anime":
         caption += textwrap.dedent(
             f"""
-        🆎 <b>टाइप</b>: <i>{result['type']}</i>
-        🆔 <b>मेल आईडी</b>: <i>{result['mal_id']}</i>
-        📡 <b>स्टेटस</b>: <i>{result['status']}</i>
-        🎙️ <b>एयर्ड</b>: <i>{result['aired']['string']}</i>
-        🔢 <b>एपिसोड्स</b>: <i>{result['episodes']}</i>
-        🔞 <b>रेटिंग</b>: <i>{result['rating']}</i>
-        💯 <b>स्कोर</b>: <i>{result['score']}</i>
-        🌐 <b>प्रीमियर</b>: <i>{result['premiered']}</i>
-        ⌛ <b>ड्यूरेशन</b>: <i>{result['duration']}</i>
-        🎭 <b>जेनरस</b>: <i>{genre_string}</i>
-        🎙️ <b>स्टूडियोज</b>: <i>{studio_string}</i>
-        💸 <b>प्रोड्यूसर्स</b>: <i>{producer_string}</i>
+        🆎 <b>Type</b>: <i>{result['type']}</i>
+        🆔 <b>MAL ID</b>: <i>{result['mal_id']}</i>
+        📡 <b>Status</b>: <i>{result['status']}</i>
+        🎙️ <b>Aired</b>: <i>{result['aired']['string']}</i>
+        🔢 <b>Episodes</b>: <i>{result['episodes']}</i>
+        🔞 <b>Rating</b>: <i>{result['rating']}</i>
+        💯 <b>Score</b>: <i>{result['score']}</i>
+        🌐 <b>Premiered</b>: <i>{result['premiered']}</i>
+        ⌛ <b>Duration</b>: <i>{result['duration']}</i>
+        🎭 <b>Genres</b>: <i>{genre_string}</i>
+        🎙️ <b>Studios</b>: <i>{studio_string}</i>
+        💸 <b>Producers</b>: <i>{producer_string}</i>
         """
         )
         synopsis_link = await post_to_telegraph(
@@ -451,14 +451,14 @@ async def get_anime_manga(mal_id, search_type, _user_id):  # sourcery no-metrics
     elif search_type == "anime_manga":
         caption += textwrap.dedent(
             f"""
-        🆎 <b>टाइप</b>: <i>{result['type']}</i>
-        📡 <b>स्टेटस</b>: <i>{result['status']}</i>
-        🔢 <b>वॉल्यूम्स</b>: <i>{result['volumes']}</i>
-        📃 <b>चैप्टर्स</b>: <i>{result['chapters']}</i>
-        📊 <b>रैंक</b>: <i>{result['rank']}</i>
-        💯 <b>स्कोर</b>: <i>{result['score']}</i>
-        🎭 <b>जेनरेस</b>: <i>{genre_string}</i>
-        📖 <b>सिनोप्सिस</b>: <i>{synopsis_string}</i>
+        🆎 <b>Type</b>: <i>{result['type']}</i>
+        📡 <b>Status</b>: <i>{result['status']}</i>
+        🔢 <b>Volumes</b>: <i>{result['volumes']}</i>
+        📃 <b>Chapters</b>: <i>{result['chapters']}</i>
+        📊 <b>Rank</b>: <i>{result['rank']}</i>
+        💯 <b>Score</b>: <i>{result['score']}</i>
+        🎭 <b>Genres</b>: <i>{genre_string}</i>
+        📖 <b>Synopsis</b>: <i>{synopsis_string}</i>
         """
         )
     return caption, image
