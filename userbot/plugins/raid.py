@@ -6,6 +6,8 @@ from telethon.utils import get_display_name
 from userbot import legend
 
 from ..core.managers import eod, eor
+from ..helpers.functions import age_verification
+from ..helpers.utils import reply_id
 from ..sql_helper.globals import addgvar, gvarstatus
 from ..sql_helper.raid_sql import (
     raddai,
@@ -16,6 +18,7 @@ from ..sql_helper.raid_sql import (
     rremove_all_users,
     rremove_users,
 )
+from . import useless
 
 menu_category = "fun"
 
@@ -331,6 +334,12 @@ RAID = [
 )
 async def spam(e):
     lol = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     await e.get_reply_message()
     if e.reply_to_msg_id:
         addgvar("spamwork", True)
@@ -364,6 +373,12 @@ async def add_ensns(event):
     "To raid for the replied person"
     if event.reply_to_msg_id is None:
         return await eor(event, "`Reply to a User's message to activate raid on `")
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     legendevent = await eor(event, "`Adding Raid to user...`")
     reply_msg = await event.get_reply_message()
     b = await event.client.get_entity(reply_msg.sender_id)

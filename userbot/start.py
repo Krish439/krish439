@@ -132,7 +132,7 @@ async def help(event):
             message="Which Type Of Setting Do U Want Sir",
             buttons=[
                 [
-                    custom.Button.inline("♻️ Restart", data="restart"),
+                    custom.Button.inline("♻️ Restart", data="res_tart"),
                     custom.Button.inline("🤖 Shut Down", data="shutdown"),
                 ],
                 [
@@ -166,8 +166,8 @@ async def rel(event):
         )
 
 
-@legend.tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
-async def restart(event):
+@legend.tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"res_tart")))
+async def res_ttart(event):
     if event.query.user_id == bot.uid:
         await event.answer("Restarting Please Wait 4 min... ", cache_time=0, alert=True)
         if BOTLOG:

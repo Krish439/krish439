@@ -194,6 +194,9 @@ neko_category = [
     },
 )
 async def _(event):
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
     type = await useless.importent(event)
     if type:
         return
@@ -201,7 +204,7 @@ async def _(event):
     if lol != "ON":
         return await eor(
             event,
-            "**This command is only for users with .setdb** `ABUSE` **as** `ON`",
+            "**This command is only for users with `.setdb ABUSE ON`",
         )
     owo = event.pattern_match.group(1)
     if owo in neko_category:
@@ -226,6 +229,7 @@ async def _(event):
         )
 
 
+"""
 @legend.legend_cmd(
     pattern="xnxx(?:\s|$)([\s\S]*)",
     command=("xnxx", menu_category),
@@ -240,7 +244,7 @@ async def _(event):
     },
 )
 async def very(event):
-    """Random porn post"""
+    Random porn post
     reply_to = await reply_id(event)
     sub_r = event.pattern_match.group(1)
     await eor(event, "**Just hold a sec u horny kid...**")
@@ -324,7 +328,7 @@ async def very(event):
     },
 )
 async def bad(event):
-    """Download porn in bulk"""
+    Download porn in bulk
     reply_to = await reply_id(event)
     intxt = event.pattern_match.group(1)
     if intxt and " " in intxt:
@@ -413,12 +417,12 @@ async def bad(event):
             "{tr}rsearch",
             "{tr}rsearch <count> <options/subreddit>",
         ],
-        "examples": "{tr}rsearch 10 nsfw_gifs",
+        "examples": "{tr}rsearch 10 nsfw_gifs,",
         "options": horny,
     },
 )
 async def pussy(event):
-    """Send a list of reddit posts"""
+    Send a list of reddit posts
     reply_to = await reply_id(event)
     intxt = event.pattern_match.group(1)
     if intxt and " " in intxt:
@@ -473,6 +477,7 @@ async def pussy(event):
             media_url = m
         pwnlist += f"<b><i>{i}. <a href = {media_url}>{t}</a></b>\n"
     await eor(event, pwnlist, parse_mode="html")
+"""
 
 
 @legend.legend_cmd(
