@@ -3,7 +3,7 @@ from . import ALIVE_NAME, eor
 
 menu_category = "useless"
 
-"""
+
 @legend.legend_cmd(
     pattern="dead$",
     command=("dead", menu_category),
@@ -33,8 +33,6 @@ async def lon(frog):
         "⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
     )
     await eor(frog, D)
-
-"""
 
 
 @legend.legend_cmd(
@@ -140,7 +138,7 @@ async def bluedevilbye(event):
     "fun art command"
     BYE_PIC = "https://te.legra.ph/file/aa16cad62645045062c0f.jpg"
     if BYE_PIC:
-        event = await event.send_message(bye, "**❛ Bye ❜!**")
+        event = await eor(event, "**❛ Bye ❜!**")
         lol = "Bye Friends"
-        await event.client.send_file(event.chat_id, BYE_PIC, caption=lol)
         await event.delete()
+        await event.client.send_file(event.chat_id, BYE_PIC, caption=lol)

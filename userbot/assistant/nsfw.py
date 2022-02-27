@@ -8,7 +8,7 @@ from userbot import legend
 
 from ..Config import Config
 from ..core.logger import logging
-from ..sql_helper.globals import addgvar
+from ..sql_helper.globals import addgvar, delgvar
 
 LOGS = logging.getLogger(__name__)
 
@@ -55,6 +55,7 @@ async def age_verification_false(event: CallbackQuery):
         )
     ]
     try:
+        delgvar("ALLOW_NSFW")
         await event.edit(
             text="GO AWAY KID !",
             file="https://telegra.ph/file/1140f16a883d35224e6a1.jpg",

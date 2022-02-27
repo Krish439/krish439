@@ -1,6 +1,9 @@
 from telethon.tl import functions
 
+from ..core.logger import logging
 from ..core.managers import eor
+
+LOGS = logging.getLogger("LegendUserBot")
 
 pawn = [
     "nsfw",
