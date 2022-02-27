@@ -4,7 +4,19 @@ import random
 from ..core.managers import eor
 from ..sql_helper.globals import addgvar, gvarstatus
 from . import legend, swtmemes
-
+from ..helpers.functions import age_verification
+from ..helpers.utils import reply_id
+from ..sql_helper.globals import addgvar, gvarstatus
+from ..sql_helper.raid_sql import (
+    raddai,
+    rget_all_users,
+    rget_users,
+    ris_added,
+    rremove_ai,
+    rremove_all_users,
+    rremove_users,
+)
+from . import useless
 menu_category = "extra"
 
 
