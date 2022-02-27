@@ -4,6 +4,7 @@ import random
 from telethon.utils import get_display_name
 
 from userbot import legend
+from ..helpers.utils import _legendutils, reply_id
 
 from ..core.managers import eod, eor
 from ..helpers.functions import age_verification
@@ -333,6 +334,7 @@ RAID = [
 )
 async def spam(e):
     lol = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+    reply_to = await reply_id(event)
     if await age_verification(event, reply_to):
         return
     type = await useless.importent(event)
@@ -371,6 +373,7 @@ async def add_ensns(event):
     "To raid for the replied person"
     if event.reply_to_msg_id is None:
         return await eor(event, "`Reply to a User's message to activate raid on `")
+    reply_to = await reply_id(event)
     if await age_verification(event, reply_to):
         return
     type = await useless.importent(event)
