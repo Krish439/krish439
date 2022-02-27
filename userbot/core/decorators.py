@@ -22,7 +22,7 @@ def check_owner(func):
         else:
             HELP_TEXT = (
                 gvarstatus("HELP_TEXT")
-                or "केवल माई मास्टर ही इस बटन को एक्सेस कर सकते हैं !!\n\nअपना खुद का लीजेंडबॉट तैनात करें."
+                or "Only My Master can Access This Button !!\n\nDeploy your own LegendBot."
             )
             await c_q.answer(
                 HELP_TEXT,
