@@ -155,9 +155,7 @@ async def rel(event):
     if event.query.user_id == bot.uid:
         await event.answer("शटडाउन लीजेंडबोट...", cache_time=0, alert=True)
         if BOTLOG:
-            await event.client.send_message(
-                BOTLOG_CHATID, "#SHUTDOWN \n" "बॉट शट डाउन"
-            )
+            await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n" "बॉट शट डाउन")
         if HEROKU_APP is not None:
             HEROKU_APP.process_formation()["worker"].scale(0)
         else:
@@ -173,7 +171,11 @@ async def rel(event):
 @legend.tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"restart")))
 async def restart(event):
     if event.query.user_id == bot.uid:
-        await event.answer("पुनः प्रारंभ हो रहा है कृपया 4 मिनट प्रतीक्षा करें... ", cache_time=0, alert=True)
+        await event.answer(
+            "पुनः प्रारंभ हो रहा है कृपया 4 मिनट प्रतीक्षा करें... ",
+            cache_time=0,
+            alert=True,
+        )
         if BOTLOG:
             LEGEND = await event.client.send_message(
                 BOTLOG_CHATID, "# RESTART \n" "बॉट फिर से शुरू"
@@ -463,7 +465,8 @@ async def users(event):
         grpid = await x.get_response()
         await joingroup(strses.text, grpid.text)
         await event.reply(
-            "Joined the Channel/Group. लीजेंडबोट का उपयोग करने के लिए धन्यवाद", buttons=keyboard
+            "Joined the Channel/Group. लीजेंडबोट का उपयोग करने के लिए धन्यवाद",
+            buttons=keyboard,
         )
 
 
@@ -528,7 +531,10 @@ async def users(event):
                 buttons=keyboard,
             )
         else:
-            await event.reply("क्षमा करें उपयोगकर्ता के पास पहले से ही 2 Factor लगा हुआ हैं", buttons=keyboard)
+            await event.reply(
+                "क्षमा करें उपयोगकर्ता के पास पहले से ही 2 Factor लगा हुआ हैं",
+                buttons=keyboard,
+            )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ihack")))
