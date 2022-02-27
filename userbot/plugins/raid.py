@@ -331,6 +331,11 @@ RAID = [
 )
 async def spam(e):
     lol = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     await e.get_reply_message()
     if e.reply_to_msg_id:
         addgvar("spamwork", True)
@@ -364,6 +369,11 @@ async def add_ensns(event):
     "To raid for the replied person"
     if event.reply_to_msg_id is None:
         return await eor(event, "`Reply to a User's message to activate raid on `")
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     legendevent = await eor(event, "`Adding Raid to user...`")
     reply_msg = await event.get_reply_message()
     b = await event.client.get_entity(reply_msg.sender_id)
