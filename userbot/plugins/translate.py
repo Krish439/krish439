@@ -1,4 +1,5 @@
 from asyncio import sleep
+
 import emoji
 from googletrans import LANGUAGES, Translator
 
@@ -102,6 +103,7 @@ async def translateme(trans):
         await eor(event, output_str)
     except Exception as exc:
         await eor(event, str(exc))
+
 
 @legend.legend_cmd(
     pattern="lang (ai|trt|tocr) ([\s\S]*)",
