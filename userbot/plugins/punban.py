@@ -194,6 +194,9 @@ neko_category = [
     },
 )
 async def _(event):
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
     type = await useless.importent(event)
     if type:
         return
