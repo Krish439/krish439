@@ -65,7 +65,7 @@ async def _(event):
     command=("trt", menu_category),
     info={
         "header": "To translate the text to required language.",
-        "note": "for this command set lanuage by `.lang trt` command.",
+        "note": "for this command set lanuage by `.lang trt <code name>` command.",
         "usage": [
             "{tr}trt",
             "{tr}trt <text>",
