@@ -17,7 +17,6 @@ from ..helpers.utils import _legendutils, reply_id
 from . import useless
 
 API = useless.API
-from ..sql_helper.globals import gvarstatus
 
 horny = useless.nsfw(useless.pawn)
 
