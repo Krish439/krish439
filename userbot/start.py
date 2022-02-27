@@ -132,11 +132,8 @@ async def help(event):
             message="आप किस प्रकार की सेटिंग चाहते हैं सर",
             buttons=[
                 [
-
-
                     custom.Button.inline("♻️ पुनर्प्रारंभ करें", data="res_tart"),
                     custom.Button.inline("🤖 शट डाउन", data="shutdown"),
-
                 ],
                 [
                     custom.Button.inline("🗒 वार", data="strvar"),
