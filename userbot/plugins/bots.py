@@ -116,7 +116,10 @@ async def _(event):
 )
 async def _(event):
     if not event.reply_to_msg_id:
-        await eod(event, "`कृपया इस CMD कार्य को प्राप्त करने के लिए किसी उपयोगकर्ता को उत्तर दें`")
+        await eod(
+            event,
+            "`कृपया इस CMD कार्य को प्राप्त करने के लिए किसी उपयोगकर्ता को उत्तर दें`",
+        )
         return
     reply_message = await event.get_reply_message()
     chat = "Sangmatainfo_bot"
@@ -133,7 +136,9 @@ async def _(event):
             response3 = await conv.get_response()
         except YouBlockedUserError:
             await event.client(functions.contacts.UnblockRequest("@Sangmatainfo_bot"))
-            await eod(event, "अनब्लॉक किया गया @Sangmatainfo_bot और अब पुनः प्रयास करें")
+            await eod(
+                event, "अनब्लॉक किया गया @Sangmatainfo_bot और अब पुनः प्रयास करें"
+            )
             return
         if response1.text.startswith("Username History"):
             await lol.edit(response1.text)
