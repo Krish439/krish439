@@ -244,7 +244,7 @@ async def inline_handler(event):  # sourcery no-metrics
         match2 = re.findall(inf, query)
         hid = re.compile("hide (.*)")
         match3 = re.findall(hid, query)
-        if query.startswith("**LegendBot"):
+        if query.startswith("**लीजेंडबॉट"):
             buttons = [
                 (Button.url(f"{ALIVE_NAME}", f"tg://openmessage?user_id={USERID}"),),
                 (
