@@ -84,15 +84,13 @@ async def translateme(event):
         text = previous_message.message
         lan = input_str or gvarstatus("TRT_LANG")
     elif "|" in input_str:
-        lan, text = input_str.split("|")
+        lan, text = input_str.split("|") 
     else:
         await eor(
             event,
             f"If U Want To Set permanently language to english then do `.lang trt en` To Get ~ [Language codes](https://da.gd/ueaQbH)",
         )
         return
-    text = emoji.demojize(text.strip())
-    lan = lan.strip()
     translator = Translator()
     try:
         translated = translator.translate(text, dest=lan)
