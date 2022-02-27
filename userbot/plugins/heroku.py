@@ -59,18 +59,18 @@ async def variable(var):  # sourcery no-metrics
         await asyncio.sleep(1.0)
         try:
             variable = var.pattern_match.group(2).split()[0]
-            if "LEGEND_STRING" in heroku_var:
-                return await legend.edit(
-                    "Legend String Is A Sensitive Data So Its Protected By LegendBot"
+            legend = "**ConfigVars**:" f"\n\n {variable} = `{heroku_var[variable]}`\n"
+            if "LEGEND_STRING" in variable:
+                await eor(
+                    var, "Legend String is a Sensetive Data.\nProtected By LegendBot"
                 )
                 return
             elif variable in heroku_var:
-                return await legend.edit(
-                    "**ConfigVars**:" f"\n\n`{variable}` = `{heroku_var[variable]}`\n"
+                await eor(var, legend)
+            else:
+                return await var.edit(
+                    "**ConfigVars**:" f"\n\n`Error:\n-> {variable} don't exists`"
                 )
-            await legend.edit(
-                "**ConfigVars**:" f"\n\n__Error:\n-> __`{variable}`__ don't exists__"
-            )
         except IndexError:
             configs = prettyjson(heroku_var.to_dict(), indent=2)
             with open("configs.json", "w") as fp:
