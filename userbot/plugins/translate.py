@@ -73,7 +73,7 @@ async def _(event):
         ],
     },
 )
-async def translateme(trans):
+async def translateme(event):
     "To translate the text to required language."
     if "trim" in event.raw_text:
         return
