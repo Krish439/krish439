@@ -119,7 +119,7 @@ async def get_users(event):
             error = str(e)
             f = f + 1
     return await LEGEND.edit(
-        f"[Terminal Finished](https://t.me/Legend_Userbot) \n\n🔸 Successfully Invited `{s}` ρєορℓє \n⚠️ Failed To Invite`{f}` ρєορℓє"
+        f"[Terminal Finished](https://t.me/Legend_K_Userbot) \n\n🔸 Successfully Invited `{s}` ρєορℓє \n⚠️ Failed To Invite`{f}` ρєορℓє"
     )
 
 
