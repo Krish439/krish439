@@ -45,7 +45,7 @@ async def get_user_and_reason(event):
 
 def progress_str(total: int, current: int) -> str:
     percentage = current * 100 / total
-    prog_arg = "**Progress** : `{}%`\n" "```[{}{}]```"
+    prog_arg = "**प्रगति** : `{}%`\n" "```[{}{}]```"
     return prog_arg.format(
         percentage,
         "".join((Config.FINISHED_PROGRESS_STR for i in range(floor(percentage / 5)))),
@@ -61,15 +61,13 @@ async def ban_user_from_bot(user, reason, reply_to=None):
         add_user_to_bl(user.id, get_display_name(user), user.username, reason, date)
     except Exception as e:
         LOGS.error(str(e))
-    banned_msg = (
-        f"**You have been Banned Forever from using this bot.\nReason** : {reason}"
-    )
+    banned_msg = f"**आपको इस बॉट का उपयोग करने से हमेशा के लिए प्रतिबंधित कर दिया गया है।\nकारण** : {reason}"
     await legend.tgbot.send_message(user.id, banned_msg)
     info = f"**#Banned_Bot_PM_User**\
             \n\n👤 {_format.mentionuser(get_display_name(user) , user.id)}\
-            \n**First Name:** {user.first_name}\
-            \n**User ID:** `{user.id}`\
-            \n**Reason:** `{reason}`"
+            \n**पहला नाम :** {user.first_name}\
+            \n**आईडी:** `{user.id}`\
+            \n**कारण:** `{reason}`"
     if BOTLOG:
         await legend.send_message(BOTLOG_CHATID, info)
     return info
@@ -80,15 +78,15 @@ async def unban_user_from_bot(user, reason, reply_to=None):
         rem_user_from_bl(user.id)
     except Exception as e:
         LOGS.error(str(e))
-    banned_msg = "**You have been Unbanned from this bot. From now on you can send messages here to contact my master.**"
+    banned_msg = "**आपको इस बॉट से अप्रतिबंधित कर दिया गया है। अब से आप मेरे गुरु से संपर्क करने के लिए यहां संदेश भेज सकते हैं.**"
 
     if reason is not None:
-        banned_msg += f"\n**Reason:** __{reason}__"
+        banned_msg += f"\n**कारण:** __{reason}__"
     await legend.tgbot.send_message(user.id, banned_msg)
     info = f"**#Unbanned_Bot_PM_User**\
             \n\n👤 {_format.mentionuser(get_display_name(user) , user.id)}\
-            \n**First Name:** {user.first_name}\
-            \n**User ID:** `{user.id}`"
+            \n**पहला नाम:** {user.first_name}\
+            \n**आईडी:** `{user.id}`"
     if BOTLOG:
         await legend.send_message(BOTLOG_CHATID, info)
     return info

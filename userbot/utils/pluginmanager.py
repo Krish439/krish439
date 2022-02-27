@@ -13,7 +13,7 @@ from ..helpers.tools import media_type
 from ..helpers.utils import _format, _legendtools, _legendutils, install_pip, reply_id
 from .decorators import admin_cmd, sudo_cmd
 
-LOGS = logging.getLogger("LegendUserBot")
+LOGS = logging.getLogger("लेजेंडयूजरबॉट")
 
 
 def load_module(shortname, plugin_path=None):
@@ -26,7 +26,7 @@ def load_module(shortname, plugin_path=None):
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        LOGS.info("Successfully imported " + shortname)
+        LOGS.info("सफलतापूर्वक आयात किया गया " + shortname)
     else:
         if plugin_path is None:
             path = Path(f"userbot/plugins/{shortname}.py")
@@ -58,7 +58,7 @@ def load_module(shortname, plugin_path=None):
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["userbot.plugins." + shortname] = mod
-        LOGS.info("LegendBot " + shortname)
+        LOGS.info("लीजेंडबोट " + shortname)
 
 
 def start_spam(shortname):
@@ -74,8 +74,8 @@ def start_spam(shortname):
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        print("Starting Your Spam Bot.")
-        print("SpamBot Sucessfully imported " + shortname)
+        print("अपना स्पैमबोट शुरू करना.")
+        print("स्पैम बॉट सफलतापूर्वक आयात किया गया" + shortname)
     else:
         import importlib
         import sys
@@ -88,7 +88,7 @@ def start_spam(shortname):
         mod.tgbot = legend.tgbot
         spec.loader.exec_module(mod)
         sys.modules["Spam" + shortname] = mod
-        print("[🔰Spam🔰 3.0] ~ HAS ~ 💞Installed💞 ~" + shortname)
+        print("स्पैम बॉट सफलतापूर्वक आयात किया गया ~" + shortname)
 
 
 def remove_plugin(shortname):

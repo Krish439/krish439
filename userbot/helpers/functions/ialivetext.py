@@ -10,21 +10,11 @@ from .utils import get_readable_time
 Heroku = heroku3.from_key(Config.API_KEY)
 heroku_api = "https://api.heroku.com"
 
-# UniBorg Telegram UseRBot
-# Copyright (C) 2020 @UniBorg
-# This code is licensed under
-# the "you can't use this for anything - public or private,
-# unless you know the two prime factors to the number below" license
-# 543935563961418342898620676239017231876605452284544942043082635399903451854594062955
-# വിവരണം അടിച്ചുമാറ്റിക്കൊണ്ട് പോകുന്നവർ
-# ക്രെഡിറ്റ് വെച്ചാൽ സന്തോഷമേ ഉള്ളു..!
-# uniborg
-
 
 def check_data_base_heal_th():
     # https://stackoverflow.com/a/41961968
     is_database_working = False
-    output = "No Database is set"
+    output = "कोई डेटाबेस सेट नहीं है"
     if not Config.DB_URI:
         return is_database_working, output
     from ...sql_helper import SESSION
@@ -36,14 +26,14 @@ def check_data_base_heal_th():
         output = f"❌ {e}"
         is_database_working = False
     else:
-        output = "Functioning"
+        output = "कार्यकरण"
         is_database_working = True
     return is_database_working, output
 
 
 async def legendalive(StartTime):
     _, check_sgnirts = check_data_base_heal_th()
-    sudo = "Enabled" if Config.SUDO_USERS else "Disabled"
+    sudo = "Enabled" if Config.SUDO_USERS else "नही है।"
     uptime = await get_readable_time((time.time() - StartTime))
     try:
         useragent = (
@@ -83,4 +73,4 @@ async def legendalive(StartTime):
         f"{AppHours}h {AppMinutes}m/{hours}h {minutes}m"
     except Exception:
         pass
-    return f"꧁⚜ LegendBot Stats ⚜꧂\n\n༄ Database : {check_sgnirts}\n༄ Sudo : {sudo}\n༄ Uptime : {uptime}"
+    return f"꧁⚜ लीजेंडबोट स्टेटस ⚜꧂\n\n༄ डाटाब्से : {check_sgnirts}\n༄ सूडो : {sudo}\n༄ अप्टाइम : {uptime}"

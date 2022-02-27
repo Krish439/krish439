@@ -116,30 +116,34 @@ class LegendClient(TelegramClient):
                 except KeyboardInterrupt:
                     pass
                 except MessageNotModifiedError:
-                    LOGS.error("Message was same as previous message")
+                    LOGS.error("संदेश पिछले संदेश जैसा ही था")
                 except MessageIdInvalidError:
-                    LOGS.error("Message was deleted or cant be found")
+                    LOGS.error("संदेश हटा दिया गया था या पाया नहीं जा सकता")
                 except BotInlineDisabledError:
-                    await eod(check, "`Turn on Inline mode for our bot`", 10)
+                    await eod(check, "`हमारे बॉट के लिए इनलाइन मोड चालू करें`", 10)
                 except ChatSendStickersForbiddenError:
-                    await eod(check, "`I guess i can't send stickers in this chat`", 10)
+                    await eod(
+                        check,
+                        "`मुझे लगता है कि मैं इस चैट में स्टिकर नहीं भेज सकता`",
+                        10,
+                    )
                 except BotResponseTimeoutError:
-                    await eod(check, "`The bot didnt answer to your query in time`", 10)
+                    await eod(
+                        check, "`बॉट ने समय पर आपके प्रश्न का उत्तर नहीं दिया`", 10
+                    )
                 except ChatSendMediaForbiddenError:
-                    await eod(check, "`You can't send media in this chat`", 10)
+                    await eod(check, "`आप इस चैट में मीडिया नहीं भेज सकते`", 10)
                 except AlreadyInConversationError:
                     await eod(
                         check,
-                        "`A conversation is already happening with the given chat. try again after some time.`",
+                        "`दी गई चैट के साथ बातचीत पहले से ही हो रही है। कुछ समय बाद पुनः प्रयास करें.`",
                         10,
                     )
                 except ChatSendInlineForbiddenError:
-                    await eod(
-                        check, "`You can't send inline messages in this chat.`", 10
-                    )
+                    await eod(check, "`आप इस चैट में इनलाइन संदेश नहीं भेज सकते.`", 10)
                 except FloodWaitError as e:
                     LOGS.error(
-                        f"A flood wait of {e.seconds} occured. wait for {e.seconds} seconds and try"
+                        f"{e.seconds} की बाढ़ प्रतीक्षा हुई। {e.seconds} सेकंड के लिए प्रतीक्षा करें और कोशिश करें"
                     )
                     await check.delete()
                     await asyncio.sleep(e.seconds + 5)
@@ -164,7 +168,9 @@ class LegendClient(TelegramClient):
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+                        ftext += (
+                            "\n\n-------उपयोगकर्ताबोट ट्रैसबैक लॉग समाप्त करें---------"
+                        )
                         command = 'git log --pretty=format:"%an: %s" -5'
                         ftext += "\n\n\nLast 5 commits:\n"
                         output = (await runcmd(command))[:2]
@@ -173,14 +179,14 @@ class LegendClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        text = "**LegendBot Error report**\n\n"
+                        text = "**लीजेंडबॉट त्रुटि रिपोर्ट**\n\n"
                         link = "[here](https://t.me/Legend_K_Userbot)"
-                        text += "If you wanna you can report it"
-                        text += f"- just forward this message {link}.\n"
+                        text += "आप चाहें तो इसकी रिपोर्ट कर सकते हैं"
+                        text += f"बस इस मैसेज को फॉरवर्ड करें {link}.\n"
+                        text += "त्रुटि और तारीख के तथ्य के अलावा कुछ भी लॉग नहीं किया गया है\n\n"
                         text += (
-                            "Nothing is logged except the fact of error and date\n\n"
+                            f"**त्रुटि की रिपोर्ट : ** [{new['error']}]({pastelink})"
                         )
-                        text += f"**Error report : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
@@ -281,7 +287,9 @@ class LegendClient(TelegramClient):
                             "error": str(sys.exc_info()[1]),
                             "date": datetime.datetime.now(),
                         }
-                        ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+                        ftext += (
+                            "\n\n--------उपयोगकर्ताबोट ट्रैसबैक लॉग समाप्त करें--------"
+                        )
                         command = 'git log --pretty=format:"%an: %s" -5'
                         ftext += "\n\n\nLast 5 commits:\n"
                         output = (await runcmd(command))[:2]
@@ -290,14 +298,14 @@ class LegendClient(TelegramClient):
                         pastelink = await paste_message(
                             ftext, pastetype="s", markdown=False
                         )
-                        text = "**LegendBot Error report**\n\n"
+                        text = "**लीजेंडबॉट त्रुटि रिपोर्ट**\n\n"
                         link = "[here](https://t.me/LEGEND_K_USERBOT)"
-                        text += "If U Want To Report This Error Then"
-                        text += f"- just forward this message {link}.\n"
+                        text += "यदि आप इस त्रुटि की रिपोर्ट करना चाहते हैं तो"
+                        text += f"बस इस मैसेज को फॉरवर्ड करें {link}.\n"
+                        text += "त्रुटि और तारीख के तथ्य के अलावा कुछ भी लॉग नहीं किया गया है\n\n"
                         text += (
-                            "Nothing is logged except the fact of error and date\n\n"
+                            f"**त्रुटि की रिपोर्ट : ** [{new['error']}]({pastelink})"
                         )
-                        text += f"**Error report : ** [{new['error']}]({pastelink})"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )

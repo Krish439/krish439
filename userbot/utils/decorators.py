@@ -157,12 +157,12 @@ def errors_handler(func):
             result = output[0] + output[1]
             ftext += result
             pastelink = await paste_message(ftext)
-            text = "**LegendBot Error report**\n\n"
+            text = "**लीजेंडबॉट त्रुटि रिपोर्ट**\n\n"
             link = "[here](https://t.me/Legend_K_Userbot)"
-            text += "If you wanna you can report it"
-            text += f"- just forward this message {link}.\n"
-            text += "Nothing is logged except the fact of error and date\n\n"
-            text += f"**Error report : ** [{new['error']}]({pastelink})"
+            text += "आप चाहें तो इसकी रिपोर्ट कर सकते हैं"
+            text += f"बस इस मैसेज को फॉरवर्ड करें {link}.\n"
+            text += "त्रुटि और तारीख के तथ्य के अलावा कुछ भी लॉग नहीं किया गया है\n\n"
+            text += f"**त्रुटि की रिपोर्ट : ** [{new['error']}]({pastelink})"
             await check.client.send_message(
                 Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
             )

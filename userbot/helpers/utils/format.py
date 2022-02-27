@@ -16,7 +16,7 @@ async def paste_message(text, pastetype="p", extension=None, markdown=True):
     response = await pastetext(text, pastetype, extension)
     if "url" in response:
         return response["url"]
-    return "Error while pasting text to site"
+    return "साइट पर टेक्स्ट पेस्ट करते समय त्रुटि"
 
 
 def md_to_text(md):
@@ -31,10 +31,6 @@ def mentionuser(name, userid):
 
 def htmlmentionuser(name, userid):
     return f"<a href='tg://user?id={userid}'>{name}</a>"
-
-
-# kanged from uniborg @spechide
-# https://github.com/SpEcHiDe/UniBorg/blob/d8b852ee9c29315a53fb27055e54df90d0197f0b/uniborg/utils.py#L250
 
 
 def reformattext(text):

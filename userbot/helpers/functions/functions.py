@@ -84,7 +84,7 @@ async def animator(media, mainevent, textevent):
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
     LegendOp = await mainevent.client.download_media(media, Config.TEMP_DIR)
-    await textevent.edit("__🎞Converting into Animated sticker..__")
+    await textevent.edit("__🎞एनिमेटेड स्टिकर में कनवर्ट हो रहा है।.__")
     await runcmd(
         f"ffmpeg -ss 00:00:00 -to 00:00:02.900 -i {LegendOp} -vf scale={w}:{h} -c:v libvpx-vp9 -crf 30 -b:v 560k -maxrate 560k -bufsize 256k -an animate.webm"
     )  # pain
@@ -197,7 +197,7 @@ async def clippy(borg, msg, chat_id, reply_to_id):
             pic = await conv.get_response()
             await borg.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await kakashi.edit("Please unblock @clippy and try again")
+            await kakashi.edit("कृपया अनब्लॉक करें @clippy और पुन: प्रयास करे।")
             return
         await borg.send_file(
             chat_id,

@@ -37,7 +37,7 @@ async def eor(
     if not noformat:
         text = md_to_text(text)
     if aslink or deflink:
-        linktext = linktext or "Message was to big so pasted to bin"
+        linktext = linktext or "संदेश बड़ा था इसलिए बिन में चिपकाया गया"
         response = await paste_message(text, pastetype="s")
         text = linktext + f" [here]({response})"
         if event.sender_id in sudo_users:

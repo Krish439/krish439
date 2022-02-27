@@ -405,7 +405,7 @@ async def _(e):
             qeue = que.get(g)
             appendable = [g]
             qeue.append(appendable)
-            text = f"Activated Reply Raid By {Config.ALIVE_NAME}"
+            text = f"रिप्लाई रेड स्टार्ट कर दी गई है {Config.ALIVE_NAME}"
             await e.reply(text, parse_mode=None, link_preview=None)
         elif e.reply_to_msg_id:
             a = await e.get_reply_message()
@@ -415,7 +415,7 @@ async def _(e):
             qeue = que.get(g)
             appendable = [g]
             qeue.append(appendable)
-            text = f"**Activated Reply Raid By {legend_mention}**"
+            text = f"**रिप्लाई रेड स्टार्ट कर दी जय है {legend_mention}**"
             await e.reply(text, parse_mode=None, link_preview=None)
         else:
             await e.reply(usage, parse_mode=None, link_preview=None)
@@ -440,7 +440,7 @@ async def _(e):
             qeue = que.get(g)
             appendable = [g]
             qeue.append(appendable)
-            text = "** Deactivated Reply Raid **"
+            text = "** रिप्लाई रेड रोक दी गई है। **"
             await e.reply(text, parse_mode=None, link_preview=None)
         elif e.reply_to_msg_id:
             a = await e.get_reply_message()
@@ -450,7 +450,7 @@ async def _(e):
             qeue = que.get(g)
             appendable = [g]
             qeue.append(appendable)
-            text = "** Deactivated Reply Raid **"
+            text = "** रिप्लाई रेड रोक दी गई है। **"
             await e.reply(text, parse_mode=None, link_preview=None)
         else:
             await e.reply(usage, parse_mode=None, link_preview=None)

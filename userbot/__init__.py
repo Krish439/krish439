@@ -9,23 +9,23 @@ from .core.session import legend
 from .helpers.utils.utils import runasync
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
-__version__ = "1.0"
-__license__ = "GNU Affero General Public License v3.0"
-__author__ = "LegendBot <https://github.com/ITS-LEGENDBOT/LEGENDBOT>"
-__copyright__ = f"LegendBot Copyright (C) 2020 - 2021  { __author__}"
+__version__ = "१.०"
+__license__ = "जीएनयू अफेरो जनरल पब्लिक ३.०"
+__author__ = "लीजेंड बोट <https://github.com/ITS-LEGENDBOT/LEGENDBOT>"
+__copyright__ = f"लीजेंड बोट कॉपीराइट (C)२०२१ - २०२२  { __author__}"
 
 legend.version = __version__
 legend.tgbot.version = __version__
-LOGS = logging.getLogger("LegendUserBot")
+LOGS = logging.getLogger("लीजेंडयूजरबॉट")
 bot = legend
 
 
 StartTime = time.time()
-legendversion = "v1.0"
+legendversion = "v१.०"
 
 
 def close_connection(*_):
-    print("Clossing Userbot connection.")
+    print("क्लोजिंग यूजरबॉट कनेक्शन .")
     runasync(legend.disconnect())
     sys.exit(143)
 
@@ -33,9 +33,9 @@ def close_connection(*_):
 signal.signal(signal.SIGTERM, close_connection)
 
 
-if Config.UPSTREAM_REPO == "PRO":
+if Config.UPSTREAM_REPO == "pro":
     UPSTREAM_REPO_URL = "https://github.com/ITS-LEGENDBOT/LEGENDBOT"
-elif Config.UPSTREAM_REPO == "MULTI":
+elif Config.UPSTREAM_REPO == "multi":
     UPSTREAM_REPO_URL = "https://github.com/ITS-LEGENDBOT/LEGENDUSERBOT"
 else:
     UPSTREAM_REPO_URL = Config.UPSTREAM_REPO
