@@ -40,9 +40,7 @@ async def killer():
     The_LegendBoy = bot.uid
     legd_mention = f"[{LEGEND_USER}](tg://user?id={The_LegendBoy})"
     name = f"{legd_mention}'s सहायक"
-    description = (
-        f"मैं {legd_mention} का सहायक हूं। यह बॉट आपको मेरे मास्टर के साथ चैट करने में मदद कर सकता है"
-    )
+    description = f"मैं {legd_mention} का सहायक हूं। यह बॉट आपको मेरे मास्टर के साथ चैट करने में मदद कर सकता है"
     starkbot = await legend.tgbot.get_me()
     bot_name = starkbot.first_name
     botname = f"@{starkbot.username}"
@@ -120,7 +118,9 @@ async def help(event):
             ],
         )
     else:
-        await event.answer("क्षमा करें आप इस बटन को एक्सेस नहीं कर सकते", cache_time=0, alert=True)
+        await event.answer(
+            "क्षमा करें आप इस बटन को एक्सेस नहीं कर सकते", cache_time=0, alert=True
+        )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"osg")))
@@ -144,7 +144,9 @@ async def help(event):
         )
     else:
         await event.answer(
-            "क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं", cache_time=0, alert=True
+            "क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं",
+            cache_time=0,
+            alert=True,
         )
 
 
@@ -162,7 +164,9 @@ async def rel(event):
             os._exit(143)
     else:
         await event.answer(
-            "क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं", cache_time=0, alert=True
+            "क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं",
+            cache_time=0,
+            alert=True,
         )
 
 
@@ -193,7 +197,9 @@ async def restart(event):
             LOGS.error(e)
     else:
         await event.answer(
-            "क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं ", cache_time=0, alert=True
+            "क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं ",
+            cache_time=0,
+            alert=True,
         )
 
 
@@ -213,7 +219,11 @@ async def help(event):
             ],
         )
     else:
-        await event.answer("क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं", cache_time=0, alert=True)
+        await event.answer(
+            "क्षमा करें केवल मेरे गुरु ही इस बटन तक पहुंच सकते हैं",
+            cache_time=0,
+            alert=True,
+        )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"var")))
@@ -327,7 +337,8 @@ async def start(event):
         await event.delete()
         async with tgbot.conversation(event.chat_id) as x:
             await x.send_message(
-                f"चुनें कि आप स्ट्रिंग सत्र के साथ क्या चाहते हैं \n\n{menu}", buttons=keyboard
+                f"चुनें कि आप स्ट्रिंग सत्र के साथ क्या चाहते हैं \n\n{menu}",
+                buttons=keyboard,
             )
     else:
         await event.answer(
@@ -342,7 +353,8 @@ async def start(event):
     global menu
     async with tgbot.conversation(event.chat_id) as x:
         await x.send_message(
-            f"चुनें कि आप स्ट्रिंग सत्र के साथ क्या चाहते हैं \n\n{menu}", buttons=keyboard
+            f"चुनें कि आप स्ट्रिंग सत्र के साथ क्या चाहते हैं \n\n{menu}",
+            buttons=keyboard,
         )
 
 
@@ -372,7 +384,8 @@ async def users(event):
             system("rm -rf session.txt")
         else:
             await event.reply(
-                i + "\n\nलीजेंडबॉय बोट का उपयोग करने के लिए धन्यवाद. \n/hack", buttons=keyboard
+                i + "\n\nलीजेंडबॉय बोट का उपयोग करने के लिए धन्यवाद. \n/hack",
+                buttons=keyboard,
             )
 
 
@@ -390,7 +403,8 @@ async def users(event):
             )
         i = await userinfo(strses.text)
         await event.reply(
-            i + "\n\nलीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद.\n/hack", buttons=keyboard
+            i + "\n\nलीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद.\n/hack",
+            buttons=keyboard,
         )
 
 
@@ -410,7 +424,8 @@ async def users(event):
         grpid = await x.get_response()
         await userbans(strses.text, grpid.text)
         await event.reply(
-            "Banning all members. लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद", buttons=keyboard
+            "Banning all members. लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद",
+            buttons=keyboard,
         )
 
 
@@ -427,7 +442,9 @@ async def users(event):
                 "यह स्ट्रिंग सत्र समाप्त कर दिया गया है.", buttons=keyboard
             )
         i = await usermsgs(strses.text)
-        await event.reply(i + "\n\nलीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद", buttons=keyboard)
+        await event.reply(
+            i + "\n\nलीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद", buttons=keyboard
+        )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Ehack")))
@@ -466,7 +483,8 @@ async def users(event):
         grpid = await x.get_response()
         await leavegroup(strses.text, grpid.text)
         await event.reply(
-            "Leaved the Channel/Group लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद,", buttons=keyboard
+            "Leaved the Channel/Group लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद,",
+            buttons=keyboard,
         )
 
 
@@ -486,7 +504,8 @@ async def users(event):
         grpid = await x.get_response()
         await delgroup(strses.text, grpid.text)
         await event.reply(
-            "Deleted the Channel/Group लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद.", buttons=keyboard
+            "Deleted the Channel/Group लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद.",
+            buttons=keyboard,
         )
 
 
@@ -664,7 +683,9 @@ async def users(event):
         try:
             i = await login(strses.text, apiid, apihash, grp.text, urgrp.text)
             await asyncio.sleep(20)
-            await event.reply(i + "लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद Check Member Is Adding")
+            await event.reply(
+                i + "लीजेंडबॉयबोट का उपयोग करने के लिए धन्यवाद Check Member Is Adding"
+            )
         except Exception as e:
             await event.respond(
                 "SEND THIS ERROR TO - @Legend_Userbot\n**LOGS**\n" + str(e)
