@@ -63,7 +63,8 @@ async def variable(var):  # sourcery no-metrics
                 return await legend.edit(
                     "Legend String Is A Sensitive Data So Its Protected By LegendBot"
                 )
-            if variable in heroku_var:
+                return
+            elif variable in heroku_var:
                 return await legend.edit(
                     "**ConfigVars**:" f"\n\n`{variable}` = `{heroku_var[variable]}`\n"
                 )
