@@ -67,7 +67,7 @@ def rand_key():
 
 async def age_verification(event, reply_to_id):
     ALLOW_NSFW = gvarstatus("ALLOW_NSFW") or "False"
-    if ALLOW_NSFW.lower() == "True":
+    if ALLOW_NSFW.lower() == "true":
         return False
     results = await event.client.inline_query(
         Config.BOT_USERNAME, "age_verification_alert"
