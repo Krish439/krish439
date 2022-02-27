@@ -398,7 +398,9 @@ async def startmute(event):
         except Exception as e:
             await event.edit(f"**एरर: **\n`{e}`")
         else:
-            await event.edit("`उस व्यक्ति को सफलतापूर्वक म्यूट कर दिया.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **`")
+            await event.edit(
+                "`उस व्यक्ति को सफलतापूर्वक म्यूट कर दिया.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **`"
+            )
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
@@ -411,7 +413,8 @@ async def startmute(event):
         creator = chat.creator
         if not admin and not creator:
             return await eor(
-                event, "`आप व्यवस्थापक अधिकारों के बिना किसी व्यक्ति को म्यूट नहीं कर सकते niqq.` ಥ﹏ಥ  "
+                event,
+                "`आप व्यवस्थापक अधिकारों के बिना किसी व्यक्ति को म्यूट नहीं कर सकते niqq.` ಥ﹏ಥ  ",
             )
         user, reason = await get_user_from_event(event)
         if not user:
@@ -444,7 +447,8 @@ async def startmute(event):
                     )
             elif "creator" not in vars(chat):
                 return await eor(
-                    event, "`यदि आपके पास संदेशों को हटाने की अनुमति नहीं है तो आप किसी व्यक्ति को म्यूट नहीं कर सकते.` ಥ﹏ಥ  "
+                    event,
+                    "`यदि आपके पास संदेशों को हटाने की अनुमति नहीं है तो आप किसी व्यक्ति को म्यूट नहीं कर सकते.` ಥ﹏ಥ  ",
                 )
             mute(user.id, event.chat_id)
         except Exception as e:
