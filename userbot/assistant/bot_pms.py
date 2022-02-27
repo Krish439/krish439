@@ -50,14 +50,14 @@ async def check_bot_started_users(user, event):
     check = get_starter_details(user.id)
     if check is None:
         start_date = str(datetime.now().strftime("%B %d, %Y"))
-        notification = f"👤 {_format.mentionuser(user.first_name , user.id)} has started me.\
+        notification = f"👤 {_format.mentionuser(user.first_name , user.id)} ने चालू किया है मुझे।\
                 \n**ID: **`{user.id}`\
-                \n**Name: **{get_display_name(user)}"
+                \n*नाम: **{get_display_name(user)}"
     else:
         start_date = check.date
-        notification = f"👤 {_format.mentionuser(user.first_name , user.id)} has restarted me.\
+        notification = f"👤 {_format.mentionuser(user.first_name , user.id)} ने रिस्टार्ट किया है मुझे।\
                 \n**ID: **`{user.id}`\
-                \n**Name: **{get_display_name(user)}"
+                \n**नाम: **{get_display_name(user)}"
     try:
         add_starter_to_db(user.id, get_display_name(user), start_date, user.username)
     except Exception as e:
@@ -105,7 +105,7 @@ async def bot_start(event):
                 my_mention=my_mention,
             )
         else:
-            start_msg = f"Hey! 👤{mention},\nI am {my_mention}'s assistant bot.\nYou can contact to my master from here.\n\nPowered by [LegendBot](https://t.me/LEGEND_K_USERBOT)"
+            start_msg = f"हेलो 👤{mention},\nमें {my_mention} का असिस्टेंट बोट हु।\n आप मेरे गुरु से यहाँ से संपर्क कर सकते हैं\n\n [LegendBot](https://t.me/LEGEND_K_USERBOT)"
             buttons = [
                 (
                     Button.inline("🔰 रूल्स 🔰 ", data="rules"),
@@ -145,7 +145,7 @@ async def bot_start(event):
 @legend.tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rules")))
 async def help(event):
     if event.query.user_id == bot.uid:
-        await event.answer("This Is Not For U My Master", cache_time=0, alert=True)
+        await event.answer("यह आपके लिए नहीं है मेरे गुरु", cache_time=0, alert=True)
     else:
         await tgbot.send_message(
             event.chat_id,
