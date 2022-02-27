@@ -1,6 +1,9 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-
+from ..helpers.functions import age_verification
+from ..helpers.nsfw import unsave_gif
+from ..helpers.utils import _legendutils, reply_id
+from . import useless
 from ..helpers.nsfw import unsave_gif
 from . import legend
 
@@ -18,6 +21,12 @@ menu_category = "useless"
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     async with event.client.conversation(chat) as conv:
         try:
             resp = conv.wait_event(
@@ -48,6 +57,12 @@ async def _(event):
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     async with event.client.conversation(chat) as conv:
         try:
             resp = conv.wait_event(
@@ -77,6 +92,12 @@ async def _(event):
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     async with event.client.conversation(chat) as conv:
         try:
             resp = conv.wait_event(
@@ -106,6 +127,12 @@ async def _(event):
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     async with event.client.conversation(chat) as conv:
         try:
             resp = conv.wait_event(
@@ -135,6 +162,12 @@ async def _(event):
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -164,6 +197,12 @@ async def _(event):
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -193,6 +232,12 @@ async def _(event):
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     async with event.client.conversation(chat) as conv:
         try:
             resp = conv.wait_event(
@@ -222,6 +267,12 @@ async def _(event):
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     async with event.client.conversation(chat) as conv:
         try:
             resp = conv.wait_event(
@@ -251,6 +302,12 @@ async def _(event):
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     async with event.client.conversation(chat) as conv:
         try:
             resp = conv.wait_event(
@@ -280,6 +337,12 @@ async def _(event):
 async def _(event):
     chat = "@LoliHeavenBot"
     await event.edit("```Checking...```")
+    reply_to = await reply_id(event)
+    if await age_verification(event, reply_to):
+        return
+    type = await useless.importent(event)
+    if type:
+        return
     async with event.client.conversation(chat) as conv:
         try:
             resp = conv.wait_event(
