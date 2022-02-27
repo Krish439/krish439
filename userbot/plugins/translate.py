@@ -1,5 +1,5 @@
 from asyncio import sleep
-
+import emoji
 from googletrans import LANGUAGES, Translator
 
 from userbot import legend
@@ -74,30 +74,34 @@ async def _(event):
 )
 async def translateme(trans):
     "To translate the text to required language."
-    textx = await trans.get_reply_message()
-    message = trans.pattern_match.group(1)
-    if message:
-        pass
-    elif textx:
-        message = textx.text
+    if "trim" in event.raw_text:
+        return
+    input_str = event.pattern_match.group(1)
+    if event.reply_to_msg_id:
+        previous_message = await event.get_reply_message()
+        text = previous_message.message
+        lan = input_str or gvarstatus("TRT_LANG")
+    elif "|" in input_str:
+        lan, text = input_str.split("|")
     else:
-        return await eor(trans, "`Give a text or reply to a message to translate!`")
-    TRT_LANG = gvarstatus("TRT_LANG") or "en"
-    try:
-        reply_text = await getTranslate(deEmojify(message), dest=TRT_LANG)
-    except ValueError:
-        return await eod(trans, "`Invalid destination language.`", time=5)
-    source_lan = LANGUAGES[f"{reply_text.src.lower()}"]
-    transl_lan = LANGUAGES[f"{reply_text.dest.lower()}"]
-    reply_text = f"**From {source_lan.title()}({reply_text.src.lower()}) to {transl_lan.title()}({reply_text.dest.lower()}) :**\n`{reply_text.text}`"
-
-    await eor(trans, reply_text)
-    if BOTLOG:
-        await trans.client.send_message(
-            BOTLOG_CHATID,
-            f"`Translated some {source_lan.title()} stuff to {transl_lan.title()} just now.`",
+        await eor(
+            event,
+            f"If U Want To Set permanently language to english then do `.lang trt en` To Get ~ [Language codes](https://da.gd/ueaQbH)",
         )
-
+        return
+    text = emoji.demojize(text.strip())
+    lan = lan.strip()
+    translator = Translator()
+    try:
+        translated = translator.translate(text, dest=lan)
+        after_tr_text = translated.text
+        output_str = """**Translated**\nFrom {} to {}
+{}""".format(
+            translated.src, lan, after_tr_text
+        )
+        await eor(event, output_str)
+    except Exception as exc:
+        await eor(event, str(exc))
 
 @legend.legend_cmd(
     pattern="lang (ai|trt|tocr) ([\s\S]*)",
