@@ -5,10 +5,10 @@ from telethon.errors import MessageNotModifiedError
 from telethon.events import CallbackQuery
 
 from userbot import legend
-from ..sql_helper.globals import gvarstatus, addgvar
 
 from ..Config import Config
 from ..core.logger import logging
+from ..sql_helper.globals import addgvar
 
 LOGS = logging.getLogger(__name__)
 
