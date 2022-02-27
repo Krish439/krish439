@@ -117,7 +117,7 @@ async def bot_broadcast(event):
     },
 )
 async def ban_starters(event):
-    "To get list of users who started bot."
+    "बोट को शुरू करने वाले उपयोगकर्ताओं की सूची प्राप्त करने के लिए"
     ulist = get_all_starters()
     if len(ulist) == 0:
         return await eod(event, "`अभी तक किसी ने आपका बॉट शुरू नहीं किया.`")
@@ -183,7 +183,7 @@ async def ban_botpms(event):
         return await event.client.send_message(
             event.chat_id,
             f"#User_Not_Banned\
-            \n👤 {_format.mentionuser(user.first_name , user.id)} doesn't exist in my Banned Users list.",
+            \n👤 {_format.mentionuser(user.first_name , user.id)} मेरी प्रतिबंधित उपयोगकर्ता सूची में मौजूद नहीं है",
         )
     msg = await unban_user_from_bot(user, reason, reply_to)
     await event.reply(msg)
