@@ -69,7 +69,7 @@ async def _(event):
         "usage": [
             "{tr}trt",
             "{tr}trt <text>",
-            "{tr}trt <lang> | <text>",
+            "{tr}trt <lang> ; <text>",
         ],
     },
 )
@@ -77,13 +77,18 @@ async def translateme(event):
     "To translate the text to required language."
     if "trim" in event.raw_text:
         return
+    if gvarstatus("TRT_LANG") is None:
+        await eor(
+            event,
+            f"Set permanently language to english then do `.lang trt en` To Get ~ [Language codes](https://da.gd/ueaQbH)",
+        )
     input_str = event.pattern_match.group(1)
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         text = previous_message.message
         lan = input_str or gvarstatus("TRT_LANG")
-    elif "|" in input_str:
-        lan, text = input_str.split("|")
+    elif ";" in input_str:
+        lan, text = input_str.split(";")
     else:
         await eor(
             event,
