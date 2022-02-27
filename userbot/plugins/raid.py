@@ -16,6 +16,10 @@ from ..sql_helper.raid_sql import (
     rremove_all_users,
     rremove_users,
 )
+from ..helpers.functions import age_verification
+from ..helpers.nsfw import unsave_gif
+from ..helpers.utils import _legendutils, reply_id
+from . import useless
 
 menu_category = "fun"
 
