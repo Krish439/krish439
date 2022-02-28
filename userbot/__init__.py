@@ -25,7 +25,7 @@ legendversion = "v1.0"
 
 
 def close_connection(*_):
-    print("Clossing Userbot connection.")
+    print("Closing Userbot connection.")
     runasync(legend.disconnect())
     sys.exit(143)
 
@@ -33,9 +33,9 @@ def close_connection(*_):
 signal.signal(signal.SIGTERM, close_connection)
 
 
-if Config.UPSTREAM_REPO == "PRO":
+if Config.UPSTREAM_REPO == "pro":
     UPSTREAM_REPO_URL = "https://github.com/ITS-LEGENDBOT/LEGENDBOT"
-elif Config.UPSTREAM_REPO == "MULTI":
+elif Config.UPSTREAM_REPO == "multi":
     UPSTREAM_REPO_URL = "https://github.com/ITS-LEGENDBOT/LEGENDUSERBOT"
 else:
     UPSTREAM_REPO_URL = Config.UPSTREAM_REPO
