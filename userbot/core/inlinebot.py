@@ -627,7 +627,7 @@ async def inline_handler(event):  # sourcery no-metrics
                     ),
                 )
             ]
-            ALV_PIC = "https://telegra.ph/file/c5bca604b23070cd81a7c.jpg"
+            ALV_PIC = "https://telegra.ph/file/8d79a264916a247fe28d2.jpg"
             markup = event.client.build_reply_markup(buttons)
             photo = types.InputWebDocument(
                 url=ALV_PIC, size=0, mime_type="image/jpeg", attributes=[]
